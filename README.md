@@ -9,7 +9,10 @@
    - [1.2 Algorithm and Flowchart](#12-algorithm-and-flowchart)  
    - [1.3 Introduction to C program](#13-introduction-to-c-programming)
    - [1.4 First C program and its parts](#14-first-c-program-ans-its-various-parts)  
-2. [2. Intermediate C](#basic-c)
+   - [1.5 Comments and Escape sequences](#15-comments-and-escape-sequences)  
+   - [1.6 Keywords, Variables, Data types](#16-keywords-variables-data-types)  
+   - [1.7 Input and output functions](#17-input-and-output-functions)  
+2. [2. Intermediate C]()
    - []()
 3. [3. Advanced C](#basic-c)
    - []()
@@ -135,7 +138,6 @@ int main()
   printf("hello world");
   return 0;
 }
-
 ```
 
 - Let's break down the code to understand each line:
@@ -143,3 +145,529 @@ int main()
   - #include <stdio.h> The function used for generating output is defined in stdio.h. In order to use the printf function, we need to first include the required file, also called a header file.
 
   - int main() The main() function is the entry point to a program. Curly brackets { } indicate the beginning and end of a function (also called a code block). The statements inside the brackets determine what the function does when executed.
+
+### 1.5 Comments and Escape sequences
+
+In C programming, comments and escape sequences are important for code documentation and character representation. It also help for debugging and leave explanation of codes. Here's an explanation of each:
+
+**Comments:**
+
+Comments in C are used to provide explanations or descriptions within the code. They are ignored by the compiler and serve as documentation for programmers. C provides two types of comments:
+
+1. **Single-Line Comments:** Single-line comments begin with `//` and continue to the end of the line. They are often used for short explanations on a single line.
+
+   ```c
+   // This is a single-line comment
+   ```
+
+2. **Multi-Line Comments:** Multi-line comments are enclosed between `/*` and `*/`. They can span multiple lines and are often used for longer explanations.
+
+   ```c
+   /* This is a
+      multi-line comment */
+   ```
+
+Example of comments in C code:
+
+   ```c
+   #include <stdio.h>
+
+   int main() {
+      // This is a single-line comment
+      printf("Hello, World!\n"); // This comment is at the end of the line
+
+      /* This is a
+         multi-line comment */
+      
+      return 0;
+   }
+   ```
+
+**Escape Sequences:**
+
+Escape sequences are special character combinations that are used to represent characters that are not directly typable or printable. They begin with a backslash `\` followed by a character. Here are some common escape sequences in C:
+
+- `\n`: Newline character.
+- `\t`: Tab character.
+- `\"`: Double quotation mark.
+- `\'`: Single quotation mark.
+- `\\`: Backslash.
+
+Escape sequences are often used when you need to insert special characters into strings, such as newline characters to format text or escape quotation marks within a string.
+
+Example of escape sequences in C code:
+
+   ```c
+   #include <stdio.h>
+
+   int main() {
+      printf("This is a newline: \n");
+      printf("This is a tab: \t");
+      printf("This is a double quote: \"\n");
+      printf("This is a single quote: \'\n");
+      printf("This is a backslash: \\\n");
+
+      return 0;
+   }
+   ```
+
+When you run the code, you will see that the escape sequences are interpreted and displayed as the corresponding special characters.
+
+### 1.6 Keywords, Variables, Data types
+
+- Tokens of any programming language: keywords, identifiers, data types, operators, special symbols, string.
+
+In C programming, you'll work with keywords, variables, and various data types to create programs. Here's an overview of these fundamental concepts:
+
+#### **Keywords:**
+
+Keywords are reserved words in C that have special meanings and are used to define the structure and logic of the program. You cannot use keywords as identifiers (variable or function names). Some common C keywords include:
+
+auto       double     int        struct
+break      else       long       switch
+case       enum       register   typedef
+char       extern     return     union
+const      float      short      unsigned
+continue   for        signed     void
+default    goto       sizeof     volatile
+do         if         static     while
+
+- `int`: Defines an integer data type.
+- `char`: Defines a character data type.
+- `float`: Defines a floating-point data type.
+- `double`: Defines a double-precision floating-point data type.
+- `if`: Used for conditional statements.
+- `else`: Used in conjunction with `if` for alternative actions.
+- `while`: Used to create loops.
+- `for`: Used for loop control.
+- `switch`: Used for multi-way branching.
+- `return`: Specifies the return value of a function.
+- `break`: Exits a loop or a `switch` statement.
+- `continue`: Jumps to the next iteration of a loop.
+- `void`: Indicates that a function returns no value.
+
+#### **Variables:**
+
+Variables are used to store and manipulate data within a C program. When declaring a variable, you specify its data type, a name, and an optional initial value. Variable names must be unique within a scope (a block of code). Examples of variable declarations:
+
+- `int age;` (Declares an integer variable named `age`.)
+- `float salary = 5000.50;` (Declares a floating-point variable named `salary` and assigns it an initial value.)
+- `char initial = 'A';` (Declares a character variable named `initial` and assigns it the character 'A'.)
+
+Naming conventions and rules for variables in C are essential for writing readable and maintainable code. They help developers understand the purpose of variables and ensure consistency across projects. Here are some common naming conventions and rules for variables in C:
+
+**Variable Naming Rules:**
+
+1. **Valid Characters:** Variable names can consist of letters (both uppercase and lowercase), digits, and underscores. They must start with a letter or an underscore. C is case-sensitive, so `myVariable` and `myvariable` are considered different names.
+
+2. **Reserved Keywords:** Variable names cannot be the same as C reserved keywords (e.g., `int`, `if`, `while`). Avoid using these keywords as variable names.
+
+3. **No Special Characters:** Avoid using special characters like `@`, `$`, or `%` in variable names. Stick to letters, numbers, and underscores.
+
+4. **Length:** Variable names can be as long as necessary, but it's a good practice to keep them reasonably short and descriptive.
+
+**Variable Naming Conventions:**
+
+1. **Use Descriptive Names:** Choose variable names that clearly convey the purpose of the variable. For example, use `counter` instead of `c` for a counter variable.
+
+2. **Camel Case:** For multi-word variable names, use camel case. Start with a lowercase letter, and capitalize the first letter of each subsequent word. For example, `myVariableName`.
+
+3. **Meaningful Names:** Make sure variable names reflect the data they hold. For example, use `studentName` instead of `name` for a student's name.
+
+4. **Avoid Single Letters:** Generally, avoid using single letters (except for loop counters) as variable names. This improves code readability.
+
+5. **Constants:** If a variable is a constant (a value that does not change), use uppercase letters with underscores to separate words. For example, `MAX_VALUE`.
+
+6. **Prefixes and Suffixes:** You can use prefixes or suffixes to indicate variable types. For example, `strName` for a string and `nCount` for an integer count.
+
+7. **Avoid Ambiguity:** Ensure your variable names are not ambiguous. For example, if you have both `customerName` and `customerAddress`, it's clear what they represent.
+
+8. **Consistency:** Maintain a consistent naming style across your codebase. If you start with camel case, continue with camel case.
+
+**Examples:**
+
+   ```c
+   // Good variable naming examples
+   int numberOfStudents;
+   char studentName[50];
+   const int MAX_ATTEMPTS = 3;
+
+   // Avoid using single letters and cryptic names
+   int n; // Avoid using single letters like 'n'
+   int x; // Avoid cryptic variable names
+
+   // Meaningful names and clear intent
+   double temperatureCelsius;
+   char customerAddress[100];
+
+   // Consistent style and camel case
+   int totalSalesCount;
+   ```
+
+Adhering to these naming conventions and rules will improve the readability and maintainability of your C code and make it easier for you and other developers to understand and work with your programs.
+
+#### **Data Types:**
+
+C provides several built-in data types, allowing you to store different types of data in variables. Common data types include:
+
+1. **Integer Data Types:**
+   - `int`: Used to store whole numbers.
+   - `short`: Used for short integers.
+   - `long`: Used for long integers.
+   - `long long`: Used for very long integers.
+   - `signed` and `unsigned`: Modifiers to specify whether the integer can be negative or non-negative.
+
+   In C, the memory allocated for integer data types like `int`, `short`, `long`, and `long long` can vary depending on the specific implementation (compiler and system). However, there are general guidelines and common memory sizes associated with these data types on most systems.
+
+      Here's an example of integer data types and their common memory sizes:
+
+      **`int`:**
+         - Common memory size: 4 bytes (32 bits)
+         - Typical range: -2,147,483,648 to 2,147,483,647
+
+      ```c
+      int myInt; // Declaration of an integer variable
+      ```
+
+      **`short` (or `short int`):**
+         - Common memory size: 2 bytes (16 bits)
+         - Typical range: -32,768 to 32,767
+
+      ```c
+      short myShort; // Declaration of a short integer variable
+      ```
+
+      **`long`:**
+         - Common memory size: 4 bytes (32 bits) or 8 bytes (64 bits, on 64-bit systems)
+         - Typical range: -2,147,483,648 to 2,147,483,647 (32-bit), or -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (64-bit)
+
+      ```c
+      long myLong; // Declaration of a long integer variable
+      ```
+
+      **`long long` (or `long long int`):**
+         - Common memory size: 8 bytes (64 bits)
+         - Typical range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+
+      ```c
+      long long myLongLong; // Declaration of a long long integer variable
+      ```
+
+      **`signed` and `unsigned`:**
+         - These qualifiers can be used with integer data types to specify whether the values are signed (can be positive or negative) or unsigned (only non-negative).
+
+      ```c
+      signed int mySignedInt;       // A signed integer
+      unsigned long long myUnsignedLongLong; // An unsigned long long integer
+      ```
+
+      Please note that the actual memory sizes and ranges can vary depending on the specific compiler and system architecture (32-bit vs. 64-bit). You can use the `sizeof` operator in C to determine the size of data types on your system:
+
+      ```c
+      printf("Size of int: %lu bytes\n", sizeof(int));
+      printf("Size of short: %lu bytes\n", sizeof(short));
+      printf("Size of long: %lu bytes\n", sizeof(long));
+      printf("Size of long long: %lu bytes\n", sizeof(long long));
+      ```
+
+      This code will output the sizes of these data types on your specific system.
+
+2. **Floating-Point Data Types:**
+   - `float`: Used for single-precision floating-point numbers.
+   - `double`: Used for double-precision floating-point numbers.
+   - `long double`: Used for extended precision floating-point numbers.
+
+      In C, the memory allocated for floating-point data types like `float`, `double`, and `long double` can also vary depending on the specific implementation (compiler and system). However, there are general guidelines and common memory sizes associated with these data types on most systems.
+
+      Here's an example of floating-point data types and their common memory sizes:
+
+      **`float`:**
+         - Common memory size: 4 bytes (32 bits)
+         - Typical range: Approximately 3.4e-38 to 3.4e38
+
+      ```c
+      float myFloat; // Declaration of a floating-point variable
+      ```
+
+      **`double`:**
+         - Common memory size: 8 bytes (64 bits)
+         - Typical range: Approximately 1.7e-308 to 1.7e308
+
+      ```c
+      double myDouble; // Declaration of a double-precision floating-point variable
+      ```
+
+      **`long double`:**
+         - Common memory size: 8 bytes (64 bits) or 16 bytes (128 bits, on some systems)
+         - Typical range: Similar to `double` but with greater precision
+
+      ```c
+      long double myLongDouble; // Declaration of a long double floating-point variable
+      ```
+
+      Please note that the actual memory sizes and ranges can vary depending on the specific compiler and system architecture (32-bit vs. 64-bit). You can use the `sizeof` operator in C to determine the size of data types on your system, as shown in the previous answer.
+
+      Here's how you can determine the size of `float`, `double`, and `long double` on your system:
+
+      ```c
+      printf("Size of float: %lu bytes\n", sizeof(float));
+      printf("Size of double: %lu bytes\n", sizeof(double));
+      printf("Size of long double: %lu bytes\n", sizeof(long double));
+      ```
+
+      This code will output the sizes of these floating-point data types on your specific system.
+
+3. **Character Data Type:**
+   - `char`: Used to store a single character.
+
+   In C, character data is represented using the `char` data type. Here's an example of using the `char` data type to declare character variables and store character values:
+
+   ```c
+   #include <stdio.h>
+
+   int main() {
+      // Declaring and initializing character variables
+      char grade = 'A'; // Single character
+      char firstInitial = 'J';
+      char lastInitial = 'D';
+
+      // Displaying character variables
+      printf("Grade: %c\n", grade);
+      printf("First Initial: %c\n", firstInitial);
+      printf("Last Initial: %c\n", lastInitial);
+
+      // Character values can also be assigned as integer ASCII values
+      char letter = 65; // ASCII value for 'A'
+
+      // Displaying character values as integers
+      printf("Character as an integer: %d\n", letter);
+
+      return 0;
+   }
+   ```
+
+   In this example: We declare character variables `grade`, `firstInitial`, and `lastInitial` and initialize them with character values. We use the `%c` format specifier to print character values. We can also assign character values using their corresponding ASCII values. The ASCII value of 'A' is 65. We display a character as an integer using the `%d` format specifier. When you run this code, you'll see the character values and their corresponding ASCII values printed to the console. Character variables are useful for working with individual characters, such as letters, digits, and symbols, in C programs.
+
+4. **Derived Data Types:**
+   - `arrays`: Collections of variables of the same type.
+   - `structures`: User-defined data types grouping variables of different data types.
+   - `unions`: Like structures but share memory space for variables.
+   - `pointers`: Used to store memory addresses.
+   - `enum`: Defines a set of named integer constants.
+
+5. **Void Data Type:**
+   - `void`: Represents the absence of type. Used when a function doesn't return a value.
+
+Example of variable declarations with data types:
+
+   ```c
+   int age;
+   double salary = 5000.50;
+   char initial = 'A';
+   int numbers[5]; // Array of integers
+   struct Person {
+      char name[50];
+      int age;
+   };
+   typedef enum { RED, GREEN, BLUE } Color;
+   ```
+
+These fundamental concepts are essential for understanding and writing C programs, as they govern how data is stored, processed, and manipulated within the language.
+
+#### Format specifiers
+
+In C are used in the `printf` and `scanf` functions to define the type and format of the data that you want to display or read. They specify how data should be formatted when it's input or output. Here are some commonly used format specifiers in C:
+
+1. **Integer Types:**
+
+   - `%d`: Print or scan an `int`.
+   - `%u`: Print or scan an `unsigned int`.
+   - `%ld`: Print or scan a `long`.
+   - `%lu`: Print or scan an `unsigned long`.
+   - `%lld`: Print or scan a `long long`.
+   - `%llu`: Print or scan an `unsigned long long`.
+   - `%x` or `%X`: Print or scan an integer in hexadecimal.
+   - `%o`: Print or scan an integer in octal.
+
+2. **Floating-Point Types:**
+
+   - `%f`: Print or scan a `float`.
+   - `%lf`: Print or scan a `double`.
+   - `%Lf`: Print or scan a `long double`.
+   - `%e` or `%E`: Print or scan in scientific notation.
+   - `%g` or `%G`: Print or scan in either `%f` or `%e`, depending on the value.
+
+3. **Characters:**
+
+   - `%c`: Print or scan a character.
+   - `%s`: Print or scan a string.
+
+4. **Pointers:**
+
+   - `%p`: Print an address from a pointer.
+
+5. **Size Specifiers:**
+
+   - `%zd`: Print or scan a `size_t`.
+   - `%td`: Print or scan a `ptrdiff_t`.
+
+6. **Special Characters:**
+
+   - `%%`: Print a percent sign.
+
+7. **Width and Precision:**
+
+   - `%[width]d`: Print an integer with a minimum field width of `[width]`.
+   - `%.[precision]f`: Print a floating-point number with `[precision]` decimal places.
+
+8. **Other Format Specifiers:**
+
+   - `%n`: Used with `printf` to count the number of characters printed.
+   - `%*`: Used to specify the width or precision as a variable argument.
+
+Here's an example demonstrating the use of format specifiers in `printf`:
+
+   ```c
+   #include <stdio.h>
+
+   int main() {
+      int number = 42;
+      float floatValue = 3.14159;
+      char letter = 'A';
+
+      printf("Integer: %d\n", number);
+      printf("Float: %.2f\n", floatValue);
+      printf("Character: %c\n", letter);
+
+      return 0;
+   }
+   ```
+
+   This code prints an integer with `%d`, a floating-point number with two decimal places using `%.2f`, and a character with `%c`. These format specifiers are placeholders that `printf` will replace with the actual values you provide as arguments.
+
+### 1.7 Input and output functions
+
+We can use printf(), puts(), putchar() for output and scanf(), gets(), getchar() for input.
+
+#### printf and scanf()
+
+In C, you can get user input from the standard input, typically the keyboard, using the `scanf` function. Here's how you can use `scanf` to read user input:
+
+   ```c
+   #include <stdio.h>
+
+   int main() {
+      int number;
+      char name[50];
+
+      // Prompt the user for input
+      printf("Enter an integer: ");
+      scanf("%d", &number);
+
+      printf("Enter your name: ");
+      scanf("%s", name); // Reads a single word (stops at whitespace)
+
+      // Display the input
+      printf("You entered: %d\n", number);
+      printf("Your name is: %s\n", name);
+
+      return 0;
+   }
+   ```
+
+   In this example:
+
+   1. We declare two variables, `number` to store an integer and `name` as a character array to store a name.
+
+   2. We use `printf` to prompt the user for input.
+
+   3. We use `scanf` to read the input. The format specifier `%d` is used to read an integer, and `%s` is used to read a string (which stops at whitespace). The `&` symbol is used before the variable name to provide the address of the variable where the input should be stored.
+
+   4. After reading the input, we use `printf` to display the values entered by the user.
+
+   When you run the program, the user will be prompted to enter an integer and their name. The values entered by the user are then displayed.
+
+   Keep in mind that `scanf` can be sensitive to the input format, and it's a good practice to perform error checking on the return value of `scanf` to ensure that the input was successfully read.
+
+#### gets and puts
+
+- The `gets` function is used to read a line of text from the user.
+- The `puts` function is used to display a string.
+
+   ```c
+   #include <stdio.h>
+
+   int main() {
+      char name[50];
+
+      printf("Enter your name: ");
+      gets(name); // Read a line of text (be cautious, gets is unsafe)
+
+      printf("Hello, ");
+      puts(name); // Display the name using puts
+
+      return 0;
+   }
+   ```
+
+Please note that `gets` is considered unsafe because it doesn't limit the number of characters read, potentially causing a buffer overflow. It's recommended to use `fgets` instead for safe input.
+
+The `fgets` function is commonly used for reading lines of text from the user while ensuring safety by specifying the maximum number of characters to read. Here's an example using `fgets`:
+
+   ```c
+   #include <stdio.h>
+
+   int main() {
+      char name[50]; // Buffer to store the input
+
+      printf("Enter your name: ");
+      fgets(name, sizeof(name), stdin); // Read a line of text safely
+
+      // Remove the newline character if present
+      size_t len = strlen(name); // size_t is commonly used when dealing with memory allocation, dynamic arrays, and buffer sizes because it ensures that sizes are non-negative and can accommodate the largest possible size on a given system.
+
+      if (name[len - 1] == '\n') {
+         name[len - 1] = '\0';
+      }
+
+      printf("Hello, %s!\n", name); // Display the name
+
+      return 0;
+   }
+   ```
+
+   In this example:
+
+   1. We declare a character array `name` to store the input.
+
+   2. We use `printf` to prompt the user for input.
+
+   3. We use `fgets` to read a line of text. The `sizeof(name)` specifies the maximum number of characters to read to avoid buffer overflow. `stdin` indicates that input should come from the standard input (keyboard).
+
+   4. After reading the input, we check if a newline character is present at the end of the string and remove it if necessary to ensure proper formatting.
+
+   5. Finally, we use `printf` to display the name.
+
+   The use of `fgets` is recommended over `gets` for reading lines of text because it is safer and allows you to specify the maximum number of characters to read, preventing buffer overflow issues.
+
+#### getchar() and putchar()
+
+- The `getchar` function is used to read a single character from the user.
+- The `putchar` function is used to display a character.
+
+   ```c
+   #include <stdio.h>
+
+   int main() {
+      char character;
+
+      printf("Enter a character: ");
+      character = getchar(); // Read a single character
+
+      printf("You entered: ");
+      putchar(character); // Display the character using putchar
+      putchar('\n'); // Add a newline character
+
+      return 0;
+   }
+   ```
