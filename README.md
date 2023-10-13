@@ -1,6 +1,6 @@
 # C programming
 
-![course outline](images/course_outline.excalidraw)
+![course outline](images/course_outline.png)
 
 ## Table of Contents
 
