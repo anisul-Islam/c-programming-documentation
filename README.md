@@ -2,24 +2,21 @@
 
 ## Table of Contents
 
-1. [1. Basic C](#1-basic-c)
-
+1. [1. Basic C Programming Topics](#1-basic-c-programming-topics)
    - [1.1 What is C and Why C?](#11-what-is-c-and-why-c)
-   - [1.2 Translator Program](#12-translator-program)
-   
+   - [1.2 Translator Program](#12-program-translator-program)  
+   - [1.3 Algorithm and Flowchart](#13-algorithm-and-flowchart)  
+   - [1.2 Translator Program](#12-translator-program)  
 2. [2. Intermediate C](#basic-c)
-
    - []()
-
 3. [3. Advanced C](#basic-c)
-
    - []()
 
-## 1. Basic C
+## 1. Basic C Programming Topics
 
 ### 1.1 What is C and why C?
 
-- C is a general-purpose mid-level programming language, a widely-used and influential programming language that was developed in the early 1970s at Bell Labs by Dennis Ritchie. 
+- C is a general-purpose mid-level programming language, a widely-used and influential programming language that was developed in the early 1970s at Bell Labs by Dennis Ritchie.
 
 Here are some key aspects of C programming and reasons why C has been important:
 
@@ -33,10 +30,11 @@ Here are some key aspects of C programming and reasons why C has been important:
 
 - C is case sensitive programming language.
 
+### 1.2 Program? Translator Program?
 
-### 1.2 Translator Program
+A program is a set of instructions to perfrom a task.
 
-A translator program is a software tool that translates code or instructions from one programming language into another. It plays a crucial role in the software development process, enabling developers to write code in high-level languages that are easier to understand and maintain, while the translator converts it into machine code that a computer can execute. There are several types of translator programs, each serving a specific purpose in this process:
+A translator program is a software tool that translates source code to object code (machine code / binary code). It ranslates code or instructions from one programming language into another. It plays a crucial role in the software development process, enabling developers to write code in high-level languages that are easier to understand and maintain, while the translator converts it into machine code that a computer can execute. There are several types of translator programs, each serving a specific purpose in this process:
 
 1. **Compiler:**
    - **Purpose:** A compiler translates the entire source code of a program written in a high-level language into machine code or another lower-level language in one go. It generates an executable file that can run independently.
@@ -75,7 +73,56 @@ A translator program is a software tool that translates code or instructions fro
    - **Examples:** IDA Pro, Hex-Rays (for reverse engineering).
 
 Each type of translator program serves a specific role in the software development process, from converting human-readable code into machine code to managing dependencies and loading the program into memory for execution. The choice of which type of translator to use depends on the programming language, target platform, and development requirements.
-### 1.3 First C program
+
+### 1.3 Algorithm and Flowchart
+
+- [Visit this page to check examples of Algorithm and flowchart](https://engineerstutor.com/2018/08/27/examples-of-algorithms-and-flow-charts-with-c-code/)
+
+An algorithm is a set of well-defined, step-by-step instructions for solving a specific problem or accomplishing a particular task. It serves as a blueprint for a computer program, and it can be implemented in various programming languages. Algorithms are essential in computer science, as they help solve problems efficiently and predictably.
+
+A flowchart is a visual representation of an algorithm that uses various shapes and symbols to represent different elements of the algorithm, such as inputs, processes, decisions, and outputs. Flowcharts make it easier to understand and communicate how an algorithm works, both for programmers and non-programmers. They are commonly used for documenting, planning, and designing algorithms before writing actual code.
+
+Here are some key concepts related to algorithms and flowcharts:
+
+**Algorithms:**
+
+1. **Problem Definition:** Begin by clearly defining the problem or task you want to solve.
+
+2. **Input and Output:** Identify the inputs (data or information required) and the expected outputs (results).
+
+3. **Steps:** Break down the solution into a sequence of steps, each of which performs a specific operation.
+
+4. **Decisions:** Include conditional statements (if-else) for making choices or decisions within the algorithm.
+
+5. **Loops:** Use loops (for, while) for repeating a set of steps when necessary.
+
+6. **Pseudocode:** Before creating a flowchart or writing code, often, it's helpful to describe the algorithm in a high-level, human-readable language called pseudocode.
+
+7. **Efficiency:** Consider the efficiency and performance of the algorithm, aiming for the most efficient solution.
+
+**Flowcharts:**
+
+1. **Start and End:** Every flowchart begins with a "Start" symbol and ends with an "End" symbol.
+
+2. **Processes:** Use rectangular boxes to represent the processing steps or operations in the algorithm.
+
+3. **Decision Points:** Represent decision points (e.g., if-else statements) with diamond-shaped symbols.
+
+4. **Input/Output:** Use parallelograms to denote input and output operations.
+
+5. **Arrows:** Connect the symbols with arrows to indicate the flow of control or data from one step to another.
+
+6. **Flow Control:** Use arrows with labels (e.g., "Yes" or "No") to indicate the direction of flow based on decisions.
+
+7. **Connectors:** Sometimes, you may need to use connectors (small circles) to link different parts of the flowchart.
+
+8. **Annotations:** Add comments and explanations to clarify the purpose of specific steps or decisions.
+
+To create a flowchart for an algorithm, you can use specialized software or even pen and paper. Flowcharts help in visualizing the logic of an algorithm and are valuable tools for designing, documenting, and communicating the solution to others.
+
+While flowcharts are useful for illustrating algorithms, the actual implementation of the algorithm is done through programming languages like C, Java, Python, etc. The flowchart serves as a visual guide to help translate the algorithm into code.
+
+### 1.4 First C program ans its various parts
 
 ```c
 #include <stdio.h>
