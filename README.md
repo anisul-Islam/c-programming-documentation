@@ -12,6 +12,7 @@
    - [1.5 Comments and Escape sequences](#15-comments-and-escape-sequences)  
    - [1.6 Keywords, Variables, Data types](#16-keywords-variables-data-types)  
    - [1.7 Input and output functions](#17-input-and-output-functions)  
+   - [1.8 Input-Output programs](#18-input-output-related-programs)  
 2. [2. Intermediate C]()
    - []()
 3. [3. Advanced C](#basic-c)
@@ -671,3 +672,34 @@ The `fgets` function is commonly used for reading lines of text from the user wh
       return 0;
    }
    ```
+
+### 1.8 Input-output related programs
+
+- Conversion between ASCII characters and ASCII Value
+
+```c
+// Convert ASCII characters to ASCII Value
+#include <stdio.h>
+int main(){
+  char asciiCharacter;
+  printf("Enter any character: ");
+  scanf("%c",&asciiCharacter);
+//   asciiCharacter = getchar();
+  printf("The equivalent ascii value: %d\n", asciiCharacter);
+}
+
+// Convert ASCII Value to ASCII characters
+#include <stdio.h>
+int main(){
+  int asciiValue;
+  printf("Enter any ASCII value: ");
+  scanf("%d", &asciiValue);
+  printf("The equivalent ascii character: %c\n", asciiValue);
+}
+```
+
+- Conversion between ASCII characters and ASCII Value
+
+```c
+
+```

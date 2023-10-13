@@ -1,5 +1,7 @@
 #include <stdio.h>
 int main(){
-  printf("hello world\n");
-  getchar();
+  int asciiValue;
+  printf("Enter any ASCII value: ");
+  scanf("%d", &asciiValue);
+  printf("The equivalent ascii character: %c\n", asciiValue);
 }
