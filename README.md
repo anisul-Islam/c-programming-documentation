@@ -1,12 +1,14 @@
 # C programming
 
+![course outline](images/course_outline.excalidraw)
+
 ## Table of Contents
 
 1. [1. Basic C Programming Topics](#1-basic-c-programming-topics)
-   - [1.1 What is C and Why C?](#11-what-is-c-and-why-c)
-   - [1.2 Translator Program](#12-program-translator-program)  
-   - [1.3 Algorithm and Flowchart](#13-algorithm-and-flowchart)  
-   - [1.2 Translator Program](#12-translator-program)  
+   - [1.1 Translator Program](#11-program-translator-program)  
+   - [1.2 Algorithm and Flowchart](#12-algorithm-and-flowchart)  
+   - [1.3 Introduction to C program](#13-introduction-to-c-programming)
+   - [1.4 First C program and its parts](#14-first-c-program-ans-its-various-parts)  
 2. [2. Intermediate C](#basic-c)
    - []()
 3. [3. Advanced C](#basic-c)
@@ -14,23 +16,7 @@
 
 ## 1. Basic C Programming Topics
 
-### 1.1 What is C and why C?
-
-- C is a general-purpose mid-level programming language, a widely-used and influential programming language that was developed in the early 1970s at Bell Labs by Dennis Ritchie.
-
-Here are some key aspects of C programming and reasons why C has been important:
-
-- Efficiency: C is known for its efficiency and low-level control over hardware, making it an ideal choice for system programming, embedded systems, and developing software that requires high performance.
-
-- Standard Library: C provides a rich standard library that includes functions for tasks like file I/O, memory management, string manipulation, and more. This standard library simplifies common programming tasks and allows developers to create efficient programs without reinventing the wheel.
-
-- Learning and Teaching: Mother of Programming language. C is often recommended as a first programming language for beginners because it teaches fundamental programming concepts, such as variables, loops, and functions, in a clear and concise manner. Learning C provides a solid foundation for understanding other programming languages.
-
-- C has been used to write everything from operating systems (including Windows and many others) to complex programs like the Python interpreter, Git, Oracle database, and more.
-
-- C is case sensitive programming language.
-
-### 1.2 Program? Translator Program?
+### 1.1 Program? Translator Program?
 
 A program is a set of instructions to perfrom a task.
 
@@ -74,7 +60,7 @@ A translator program is a software tool that translates source code to object co
 
 Each type of translator program serves a specific role in the software development process, from converting human-readable code into machine code to managing dependencies and loading the program into memory for execution. The choice of which type of translator to use depends on the programming language, target platform, and development requirements.
 
-### 1.3 Algorithm and Flowchart
+### 1.2 Algorithm and Flowchart
 
 - [Visit this page to check examples of Algorithm and flowchart](https://engineerstutor.com/2018/08/27/examples-of-algorithms-and-flow-charts-with-c-code/)
 
@@ -121,6 +107,24 @@ Here are some key concepts related to algorithms and flowcharts:
 To create a flowchart for an algorithm, you can use specialized software or even pen and paper. Flowcharts help in visualizing the logic of an algorithm and are valuable tools for designing, documenting, and communicating the solution to others.
 
 While flowcharts are useful for illustrating algorithms, the actual implementation of the algorithm is done through programming languages like C, Java, Python, etc. The flowchart serves as a visual guide to help translate the algorithm into code.
+
+### 1.3 Introduction to C programming
+
+- C is a general-purpose mid-level programming language, a widely-used and influential programming language that was developed in the early 1970s at Bell Labs by Dennis Ritchie.
+
+Here are some key aspects of C programming and reasons why C has been important:
+
+- Efficiency: C is known for its efficiency and low-level control over hardware, making it an ideal choice for system programming, embedded systems, and developing software that requires high performance.
+
+- Standard Library: C provides a rich standard library that includes functions for tasks like file I/O, memory management, string manipulation, and more. This standard library simplifies common programming tasks and allows developers to create efficient programs without reinventing the wheel.
+
+- Learning and Teaching: Mother of Programming language. C is often recommended as a first programming language for beginners because it teaches fundamental programming concepts, such as variables, loops, and functions, in a clear and concise manner. Learning C provides a solid foundation for understanding other programming languages.
+
+- C has been used to write everything from operating systems (including Windows and many others) to complex programs like the Python interpreter, Git, Oracle database, and more.
+
+#### Environment Setup
+
+- code editor (VSCode/Codeblock) and compiler (gcc)
 
 ### 1.4 First C program ans its various parts
 
