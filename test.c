@@ -1,7 +1,5 @@
 #include <stdio.h>
 int main(){
-  int asciiValue;
-  printf("Enter any ASCII value: ");
-  scanf("%d", &asciiValue);
-  printf("The equivalent ascii character: %c\n", asciiValue);
+  signed int number = -32;
+  printf("%d\n",number);
 }

@@ -358,8 +358,20 @@ C provides several built-in data types, allowing you to store different types of
          - These qualifiers can be used with integer data types to specify whether the values are signed (can be positive or negative) or unsigned (only non-negative).
 
       ```c
-      signed int mySignedInt;       // A signed integer
-      unsigned long long myUnsignedLongLong; // An unsigned long long integer
+      signed int mySignedInt;       // A signed integer can store positive and negative
+      unsigned int myUnsignedLongLong; // An unsigned can store only positive values
+
+      #include <stdio.h>
+
+      int main() {
+         signed int positiveNumber = 42;
+         signed int negativeNumber = -10;
+
+         printf("Positive Number: %d\n", positiveNumber);
+         printf("Negative Number: %d\n", negativeNumber);
+
+         return 0;
+      }
       ```
 
       Please note that the actual memory sizes and ranges can vary depending on the specific compiler and system architecture (32-bit vs. 64-bit). You can use the `sizeof` operator in C to determine the size of data types on your system:
@@ -416,7 +428,26 @@ C provides several built-in data types, allowing you to store different types of
       printf("Size of long double: %lu bytes\n", sizeof(long double));
       ```
 
-      This code will output the sizes of these floating-point data types on your specific system.
+      In C, data type modifiers are used to alter the storage size and sign of the data type. These modifiers can help control memory allocation and the range of values that a variable can hold. Here are some commonly used data type modifiers in C and how they affect memory allocation:
+
+      1. **`short` and `long` Modifiers**:
+         - `short`: This modifier is used to reduce the storage size of an integer data type. For example, `short int` is typically 2 bytes, which is smaller than a standard `int`.
+         - `long`: This modifier is used to increase the storage size of an integer data type. For example, `long int` is typically 4 or 8 bytes, providing a larger range of values.
+
+      2. **`signed` and `unsigned` Modifiers**:
+         - `signed`: This modifier is the default for integer data types. It allows variables to store both positive and negative values. For example, `int` is implicitly signed.
+         - `unsigned`: This modifier is used to make an integer data type capable of storing only non-negative values, effectively doubling the positive range. For example, `unsigned int` can store values from 0 to 65,535 instead of -32,768 to 32,767 for a standard `int`.
+
+      3. **`const` Modifier**:
+         - The `const` modifier is used to declare a constant, meaning the value of the variable cannot be changed once it's assigned. While this modifier doesn't directly affect memory allocation, it can help the compiler optimize code by placing constants in read-only memory segments.
+
+      4. **`volatile` Modifier**:
+         - The `volatile` modifier is used to indicate that a variable's value can be changed by external factors not under the program's control. This modifier prevents the compiler from optimizing away accesses to the variable and can affect memory allocation in the sense that it may lead to actual memory accesses.
+
+      5. **`register` Modifier**:
+         - The `register` modifier is used to suggest that a variable should be stored in a processor register for faster access. While it doesn't explicitly control memory allocation, it can improve performance by reducing memory accesses.
+
+      These modifiers provide flexibility and control over memory allocation and variable behavior in C. When choosing which modifier to use, consider the specific requirements of your program, the range of values needed, and any optimization considerations.
 
 3. **Character Data Type:**
    - `char`: Used to store a single character.
@@ -698,8 +729,321 @@ int main(){
 }
 ```
 
-- Conversion between ASCII characters and ASCII Value
+- Conversion between lowercase and uppercase letter
 
 ```c
 
 ```
+
+- Conversion between binary, decimal, octal and hexa-decimal numbers
+
+```c
+
+```
+
+### 1.9 Operators
+
+- There are 3 important types in C. Unary Operators, Binary Operators, ternary operator.
+
+#### 1.9.1 Unary Operators
+
+Unary operators in C are operators that perform operations on a single operand (a single variable or value). Here are some common unary operators with examples:
+
+**1. Unary Plus `+`:** This operator doesn't change the sign of a value. It's often not explicitly used because positive values are the default.
+
+```c
+int x = 5;
+int y = +x; // y is 5, the same as x
+```
+
+**2. Unary Minus `-`:** This operator changes the sign of a value to its negative.
+
+```c
+int x = 7;
+int y = -x; // y is -7, the negative of x
+```
+
+**3. Increment `++`:** This operator increases the value of a variable by 1.
+
+```c
+int x = 10;
+x++; // Increment x by 1, now x is 11
+```
+
+**4. Decrement `--`:** This operator decreases the value of a variable by 1.
+
+```c
+int x = 8;
+x--; // Decrement x by 1, now x is 7
+```
+
+**5. Logical NOT `!`:** This operator negates a logical (boolean) value. It converts a true value to false and vice versa.
+
+```c
+int condition = 0;
+int negatedCondition = !condition; // negatedCondition is 1 (true)
+```
+
+**6. Bitwise NOT `~`:** This operator performs a bitwise NOT operation, inverting all bits of an integer value.
+
+```c
+int x = 5; // Binary: 00000101
+int y = ~x; // Binary: 11111010, y is -6 in decimal
+```
+
+**7. Sizeof `sizeof`:** This operator returns the size in bytes of a data type or an expression.
+
+```c
+int size = sizeof(int); // size is the size of an int (typically 4 bytes)
+```
+
+These unary operators are essential in C programming for tasks like incrementing or decrementing variables, changing signs, and performing logical or bitwise operations on data.
+
+#### 1.9.2 Binary Operators
+
+**1. Arithmetic Operators:**
+
+- Addition `+`: Adds two values.
+
+     ```c
+     int sum = 5 + 3; // sum is 8
+     ```
+
+- Subtraction `-`: Subtracts one value from another.
+
+     ```c
+     int difference = 10 - 3; // difference is 7
+     ```
+
+- Multiplication `*`: Multiplies two values.
+
+     ```c
+     int product = 4 * 5; // product is 20
+     ```
+
+- Division `/`: Divides one value by another.
+
+     ```c
+     float quotient = 15.0 / 4.0; // quotient is 3.75
+     ```
+
+- Modulus `%`: Returns the remainder of a division operation.
+
+     ```c
+     int remainder = 15 % 4; // remainder is 3
+     ```
+
+**2. Relational Operators:**
+
+- Equal `==`: Tests if two values are equal.
+
+     ```c
+     int isEqual = (5 == 5); // isEqual is 1 (true)
+     ```
+
+- Not Equal `!=`: Tests if two values are not equal.
+
+     ```c
+     int isNotEqual = (3 != 5); // isNotEqual is 1 (true)
+     ```
+
+- Greater Than `>`: Tests if one value is greater than another.
+
+     ```c
+     int isGreater = (8 > 3); // isGreater is 1 (true)
+     ```
+
+- Less Than `<`: Tests if one value is less than another.
+
+     ```c
+     int isLess = (2 < 5); // isLess is 1 (true)
+     ```
+
+**3. Logical Operators:**
+
+- Logical AND `&&`: Returns true if both conditions are true.
+
+     ```c
+     int bothTrue = (1 && 1); // bothTrue is 1 (true)
+     ```
+
+- Logical OR `||`: Returns true if at least one condition is true.
+
+     ```c
+     int eitherTrue = (0 || 1); // eitherTrue is 1 (true)
+     ```
+
+- Logical NOT `!`: Returns the opposite of a condition.
+
+     ```c
+     int notTrue = !1; // notTrue is 0 (false)
+     ```
+
+**4. Assignment Operator:**
+
+Assignment operators in C are used to assign values to variables. They also allow you to perform operations while assigning values to variables. Here are some common assignment operators with more detailed examples:
+
+- Simple Assignment (`=`):** Assigns the value on the right side to the variable on the left side.
+
+```c
+int x = 5; // Assigns the value 5 to variable x
+```
+
+- Addition Assignment (`+=`):** Adds the value on the right to the variable on the left and assigns the result to the variable on the left.
+
+```c
+int x = 5;
+x += 3; // Equivalent to x = x + 3; x is now 8
+```
+
+**3. Subtraction Assignment (`-=`):** Subtracts the value on the right from the variable on the left and assigns the result to the variable on the left.
+
+```c
+int x = 10;
+x -= 4; // Equivalent to x = x - 4; x is now 6
+```
+
+- Multiplication Assignment (`*=`):** Multiplies the variable on the left by the value on the right and assigns the result to the variable on the left.
+
+```c
+int x = 3;
+x *= 2; // Equivalent to x = x * 2; x is now 6
+```
+
+- Division Assignment (`/=`):** Divides the variable on the left by the value on the right and assigns the result to the variable on the left.
+
+```c
+int x = 12;
+x /= 4; // Equivalent to x = x / 4; x is now 3
+```
+
+- Modulus Assignment (`%=`):** Calculates the remainder of the division of the variable on the left by the value on the right and assigns the result to the variable on the left.
+
+```c
+int x = 15;
+x %= 7; // Equivalent to x = x % 7; x is now 1
+```
+
+- Bitwise Assignment Operators (e.g., `&=`, `|=`, `^=`):** Perform bitwise operations on the variable on the left and the value on the right, then assign the result to the variable on the left.
+
+These assignment operators provide a concise way to update variables by performing arithmetic and bitwise operations simultaneously. They are commonly used to update variables in loops and other situations where values need to be incremented, decremented, or modified in place.
+
+**5. Bitwise Operators (e.g., `&`, `|`, `^`, `<<`, `>>`):**
+
+Bitwise operators in C are used to manipulate individual bits of integer values. They perform bit-level operations, which are especially useful for tasks like setting or clearing specific bits in flags or working with binary data. Here are some common bitwise operators with examples:
+
+**1. Bitwise AND `&`:** Performs a bitwise AND operation, which returns 1 for each bit position where both operands have a 1.
+
+```c
+int a = 5;    // Binary: 00000101
+int b = 3;    // Binary: 00000011
+int result = a & b; // Binary: 00000001, result is 1
+```
+
+**2. Bitwise OR `|`:** Performs a bitwise OR operation, which returns 1 for each bit position where at least one operand has a 1.
+
+```c
+int a = 5;    // Binary: 00000101
+int b = 3;    // Binary: 00000011
+int result = a | b; // Binary: 00000111, result is 7
+```
+
+**3. Bitwise XOR `^`:** Performs a bitwise XOR (exclusive OR) operation, which returns 1 for each bit position where only one operand has a 1.
+
+```c
+int a = 5;    // Binary: 00000101
+int b = 3;    // Binary: 00000011
+int result = a ^ b; // Binary: 00000110, result is 6
+```
+
+**4. Bitwise NOT `~`:** Performs a bitwise NOT operation, which inverts each bit (0 to 1 and 1 to 0) in a value.
+
+```c
+int a = 5;    // Binary: 00000101
+int result = ~a;  // Binary: 11111010, result is -6 in decimal
+```
+
+**5. Left Shift `<<`:** Shifts the bits of a value to the left by a specified number of positions.
+
+```c
+int a = 5;    // Binary: 00000101
+int result = a << 2; // Binary: 00010100, result is 20
+```
+
+**6. Right Shift `>>`:** Shifts the bits of a value to the right by a specified number of positions. For signed numbers, it fills with the sign bit (arithmetic right shift).
+
+```c
+int a = 16;   // Binary: 00010000
+int result = a >> 2; // Binary: 00000100, result is 4
+```
+
+Bitwise operators are commonly used for low-level operations, such as setting or clearing flags in registers, packing and unpacking data in binary formats, or implementing algorithms that require bit manipulation.
+
+#### 1.9.3 Ternary Operator
+
+Ternary operators in C are a shorthand way of writing simple conditional statements. They allow you to evaluate an expression and return a value based on whether the expression is true or false. The ternary operator is also known as the conditional operator and has the following syntax:
+
+```c
+condition ? value_if_true : value_if_false
+```
+
+The `condition` is evaluated first. If it's true, the `value_if_true` is returned; otherwise, the `value_if_false` is returned. Here's an example:
+
+```c
+int x = 10;
+int y = (x > 5) ? 20 : 5; // If x is greater than 5, y is assigned 20; otherwise, y is assigned 5.
+```
+
+In this example, `x > 5` is the condition. If `x` is greater than 5 (which it is in this case), the value `20` is assigned to `y`. If the condition were false, the value `5` would be assigned to `y`.
+
+Ternary operators are useful when you want to assign a value to a variable based on a simple condition. They can make your code more concise, especially for short conditional assignments, and are often used within larger expressions or when initializing variables.
+
+### 1.10 Operators related program
+
+1. Write a program that add 2 integers/floating point number.
+2. Write a program that add, subtract, multiply, divide 2 integers/floating point number.
+3. Write algorithm, flowchart and c program that calculate the area of a triangle.
+4. Write algorithm, flowchart and c program that calculate the area of a triangle, 3 sides length are given.
+5. Write A,F,C program that calculate the area of a rectangle.
+6. Write A,F,C program that calculate the area of a circle.
+7. Write A,F,C program that convert the Celsius temperature to Fahrenheit.
+8. Write A,F,C program that convert the Fahrenheit temperature to Celsius.
+9. Write A,F,C program that swaps 2 numbers.
+10. Write A,F,C program that calculate (a+b)^2 formula; take the values for a and b from user.
+
+### 1.11 <math.h> library
+
+In C, you can use the math library, which provides a wide range of mathematical functions for various calculations. To use functions from the math library, you need to include the `<math.h>` header. Here's an example that demonstrates how to use some common math library functions:
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    // Calculating square root
+    double number = 25.0;
+    double squareRoot = sqrt(number);
+    printf("Square root of %lf is %lf\n", number, squareRoot);
+
+    // Calculating power
+    double base = 2.0;
+    double exponent = 3.0;
+    double result = pow(base, exponent);
+    printf("%lf raised to the power of %lf is %lf\n", base, exponent, result);
+
+    // Calculating absolute value
+    int value = -10;
+    int absoluteValue = abs(value);
+    printf("The absolute value of %d is %d\n", value, absoluteValue);
+
+    // Rounding functions
+    double floatingNumber = 3.456;
+    double roundedDown = floor(floatingNumber);
+    double roundedUp = ceil(floatingNumber);
+    printf("Original: %lf, Rounded Down: %lf, Rounded Up: %lf\n", floatingNumber, roundedDown, roundedUp);
+
+    return 0;
+}
+```
+
+In this example, we include `<math.h>` and use functions like `sqrt()`, `pow()`, `abs()`, `floor()`, and `ceil()` to perform various mathematical calculations. These functions are just a subset of what the math library provides. You can explore more functions for advanced mathematical operations, such as trigonometry, logarithms, and exponential functions.
