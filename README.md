@@ -13,6 +13,9 @@
    - [1.6 Keywords, Variables, Data types](#16-keywords-variables-data-types)  
    - [1.7 Input and output functions](#17-input-and-output-functions)  
    - [1.8 Input-Output programs](#18-input-output-related-programs)  
+   - [1.9 Operators](#19-operators)  
+   - [1.10 Operators related program](#110-operators-related-program)  
+   - [1.11 <math.h> library](#111-mathh-library)  
 2. [2. Intermediate C]()
    - []()
 3. [3. Advanced C](#basic-c)
@@ -1015,35 +1018,299 @@ Ternary operators are useful when you want to assign a value to a variable based
 
 In C, you can use the math library, which provides a wide range of mathematical functions for various calculations. To use functions from the math library, you need to include the `<math.h>` header. Here's an example that demonstrates how to use some common math library functions:
 
-```c
+   ```c
+   #include <stdio.h>
+   #include <math.h>
+
+   int main() {
+      // Calculating square root
+      double number = 25.0;
+      double squareRoot = sqrt(number);
+      printf("Square root of %lf is %lf\n", number, squareRoot);
+
+      // Calculating power
+      double base = 2.0;
+      double exponent = 3.0;
+      double result = pow(base, exponent);
+      printf("%lf raised to the power of %lf is %lf\n", base, exponent, result);
+
+      // Calculating absolute value
+      int value = -10;
+      int absoluteValue = abs(value);
+      printf("The absolute value of %d is %d\n", value, absoluteValue);
+
+      // Rounding functions
+      double floatingNumber = 3.456;
+      double roundedDown = floor(floatingNumber);
+      double roundedUp = ceil(floatingNumber);
+      printf("Original: %lf, Rounded Down: %lf, Rounded Up: %lf\n", floatingNumber, roundedDown, roundedUp);
+
+      return 0;
+   }
+   ```
+
+In this example, we include `<math.h>` and use functions like `sqrt()`, `pow()`, `abs()`, `floor()`, and `ceil()` to perform various mathematical calculations. These functions are just a subset of what the math library provides. You can explore more functions for advanced mathematical operations, such as trigonometry, logarithms, and exponential functions.
+
+### 1.12 Control Statement
+
+#### 1.12.1 Conditional control Statement
+
+Conditional control statements in C are used to control the flow of a program based on conditions. They allow you to execute different code blocks based on whether a condition is true or false. There are primarily two types of conditional control statements in C: `if` and `switch`. Here are examples for both:
+
+##### `if` Statement:**
+
+The `if` statement is used to execute a block of code if a specified condition is true. If the condition is false, the code block is skipped.
+
+   ```c
+   #include <stdio.h>
+
+   int main() {
+      int x = 10;
+
+      if (x > 5) {
+         printf("x is greater than 5.\n");
+      } else {
+         printf("x is not greater than 5.\n");
+      }
+
+      return 0;
+   }
+   ```
+
+In this example, the `if` statement checks if `x` is greater than 5. If it is, the first block of code is executed. Otherwise, the `else` block is executed.
+
+   ```c
 #include <stdio.h>
-#include <math.h>
 
 int main() {
-    // Calculating square root
-    double number = 25.0;
-    double squareRoot = sqrt(number);
-    printf("Square root of %lf is %lf\n", number, squareRoot);
+    int num = 10;
 
-    // Calculating power
-    double base = 2.0;
-    double exponent = 3.0;
-    double result = pow(base, exponent);
-    printf("%lf raised to the power of %lf is %lf\n", base, exponent, result);
+    if (num < 0) {
+        printf("Number is negative.\n");
+    } else if (num > 0) {
+        printf("Number is positive.\n");
+    } else {
+        printf("Number is zero.\n");
+    }
 
-    // Calculating absolute value
-    int value = -10;
-    int absoluteValue = abs(value);
-    printf("The absolute value of %d is %d\n", value, absoluteValue);
+    return 0;
+}
 
-    // Rounding functions
-    double floatingNumber = 3.456;
-    double roundedDown = floor(floatingNumber);
-    double roundedUp = ceil(floatingNumber);
-    printf("Original: %lf, Rounded Down: %lf, Rounded Up: %lf\n", floatingNumber, roundedDown, roundedUp);
+```
+
+###### if-else if-else related programs
+
+   1. Write a program that read mark and display pass or fail.
+   2. Write a program that read mark and display result in grade.
+   3. Write a program to check a number even or odd.
+   4. Write a program that read mark and display pass or fail.
+   5. Write a program that read mark and display result in grade.
+   6. Write a program to check a number even or odd.
+   7. Write a program to check a number positive or negative.
+   8. Write a program that read two numbers and display maximum.
+   9. Write a program that read two numbers and display minimum.
+   10. Write a program that read three numbers and display maximum.
+   11. Write a program that read three numbers and display minimum.
+   12. Write a program that read three numbers and display medium.
+   13. Write a program that read three numbers (a, b, c) and determine the roots of the quadratic equation.
+   14. Write a program that read any year and display leap or not.
+   15. Write a program that read any letter and display vowel or consonant.
+   16. Write a program that read any letter and display its uppercase or lowercase.
+
+##### `switch` Statement:**
+
+The `switch` statement allows you to select one of many code blocks to be executed. It's typically used when you have multiple conditions to test.
+
+   ```c
+#include <stdio.h>
+
+int main() {
+    int day = 3;
+
+    switch (day) {
+        case 1:
+            printf("Monday\n");
+            break;
+        case 2:
+            printf("Tuesday\n");
+            break;
+        case 3:
+            printf("Wednesday\n");
+            break;
+        default:
+            printf("Other day\n");
+    }
 
     return 0;
 }
 ```
 
-In this example, we include `<math.h>` and use functions like `sqrt()`, `pow()`, `abs()`, `floor()`, and `ceil()` to perform various mathematical calculations. These functions are just a subset of what the math library provides. You can explore more functions for advanced mathematical operations, such as trigonometry, logarithms, and exponential functions.
+In this example, the `switch` statement checks the value of the `day` variable and executes the code block associated with the matching `case`. If there's no match, the `default` block is executed.
+
+###### switch programs
+
+   1. Four import keywords in switch.
+   2. Write a program that read a digit and display by its spelling.
+   3. Write a program that read a year and display leap year or not.
+   4. Write a program that read any letter and display vowel or consonant.
+   5. Write a program that read any number and display its Roman number.
+
+###### Conditional operator related example
+
+   1. Write a program that read mark and display pass or fail.
+   2. Write a program to check a number even or odd.
+   3. Write a program that read two numbers and display maximum.
+   4. Write a program that read two numbers and display minimum.
+   5. Write a program that read three numbers and display maximum.
+   6. Write a program that read three numbers and display minimum.
+   7. Write a program that read three numbers and display medium.
+
+#### 1.12.2 Loop control Statement
+
+In C, there are several types of loops, each designed for different use cases. The common types of loops are:
+
+1. **for Loop:** The `for` loop is used when you know in advance how many times you want to execute a block of code. It has a loop control variable, initialization, condition, and an increment (or decrement) statement.
+
+   ```c
+   for (int i = 0; i < 5; i++) {
+       // Code to be executed
+   }
+   ```
+
+2. **while Loop:** The `while` loop is used when you want to execute a block of code as long as a condition is true. The condition is checked before each iteration.
+
+   ```c
+   int i = 0;
+   while (i < 5) {
+       // Code to be executed
+       i++;
+   }
+   ```
+
+3. **do...while Loop:** The `do...while` loop is used when you want to execute a block of code at least once and then continue as long as a condition is true. The condition is checked after each iteration.
+
+   ```c
+   int i = 0;
+   do {
+       // Code to be executed
+       i++;
+   } while (i < 5);
+   ```
+
+4. **Nested Loops:** You can have loops inside other loops, creating nested loops. This is often used for tasks that involve two or more levels of iteration.
+
+   ```c
+   for (int i = 0; i < 3; i++) {
+       for (int j = 0; j < 3; j++) {
+           // Code to be executed
+       }
+   }
+   ```
+
+5. **Infinite Loop:** You can create a loop that runs indefinitely using constructs like `while (1)` or `for (;;)` for tasks that need continuous execution.
+
+   ```c
+   while (1) {
+       // Code to be executed indefinitely
+   }
+   ```
+
+##### Loop related programs
+
+   1. Write a program to print 1 to 10 by using for, while & do-while loop.
+   2. Find the total sum from 1 to n numbers.
+   3. Write a program to add m to n numbers and display average.
+   4. Check sum outputs from the hand note.
+   5. Write a program to print the numbers from 1 to 100, skip those numbers which are divisible by 3 or 5 but not both.
+   6. Write a while loop to print all the multiples of 5 from 13 to 121 in descending order,
+   7. Write a program to print all odd numbers from 1 to 1000 which are divisible by 3.
+   8. Write a program using while loop that will print all even numbers between 2 to 20.
+   9. Write a program that read any integer and display prime or not.
+   10. Write a program that prints all the prime numbers from m to n.
+   11. Write a program that prints all the prime numbers from m to n and count total prime numbers.
+   12. Write a program that read any positive integer and display sum of its digit.
+   13. Write a program that reads any positive integer and displays its reverse.
+   14. Write a program to check a number is palindrome or not.
+   15. How to check a number is palindrome using for loop.
+   16. Write a program to check given number is Armstrong number.
+   17. Write a program that read two numbers and display LCM and GCD.
+   18. Write a program to print time table of any number.
+   19. Write a program to print the entire time table from m to n.
+   20. Write a program that generates Fibonacci series.
+   21. Write a program that prints all Fibonacci numbers from 1 to n.
+   22. Write a program that can check a number is Fibonacci or not.
+   23. Write a program that read a positive integer and display its factorial.
+   24. Write a program that read any decimal number and display equivalent binary number.
+   25. Write a program that read any decimal number and display equivalent octal number.
+   26. Write a program that read any decimal number and display equivalent hexadecimal number.
+   27. Write a program that read two numbers (x, y) and display xy .
+   28. Write a program that read two numbers (n, r) and display nPr (Permutation).
+   29. Write a program that read two numbers (n, r) and display nCr (Combination).
+
+#### 1.12.3 Jump control Statement
+
+Jump control Statement include `break`, `continue`, and `goto`. Here are examples for each:
+
+**1. `break` Statement:**
+
+The `break` statement is used to exit a loop prematurely, either a `for`, `while`, or `do...while` loop. It is typically used to terminate a loop based on a certain condition.
+
+```c
+#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 10; i++) {
+        if (i == 5) {
+            break; // Exit the loop when i is 5
+        }
+        printf("%d ", i);
+    }
+    return 0;
+}
+```
+
+In this example, the loop is terminated when `i` equals 5, and the program exits the loop early.
+
+**2. `continue` Statement:**
+
+The `continue` statement is used to skip the current iteration of a loop and continue with the next iteration. It is often used to avoid certain iterations based on a condition.
+
+```c
+#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 10; i++) {
+        if (i % 2 == 0) {
+            continue; // Skip even numbers
+        }
+        printf("%d ", i);
+    }
+    return 0;
+}
+```
+
+In this example, even numbers are skipped, and only odd numbers are printed.
+
+**3. `goto` Statement:**
+
+The `goto` statement is used to transfer control to a labeled statement within the same function. It's generally considered bad practice and should be used sparingly, if at all.
+
+```c
+#include <stdio.h>
+
+int main() {
+    int i = 1;
+    
+    start: // Label
+    if (i <= 10) {
+        printf("%d ", i);
+        i++;
+        goto start; // Jump to the "start" label
+    }
+    return 0;
+}
+```
+
+In this example, the program jumps back to the "start" label using `goto` to repeat the loop until `i` becomes greater than 10.
+
+The `break` and `continue` statements are commonly used in loops to control the flow of iterations, while the `goto` statement is used much less frequently and should be used with caution.
