@@ -16,6 +16,7 @@
    - [1.9 Operators](#19-operators)  
    - [1.10 Operators related program](#110-operators-related-program)  
    - [1.11 <math.h> library](#111-mathh-library)  
+   - [1.12 Control Statement](#112-control-statement)  
 2. [2. Intermediate C]()
    - []()
 3. [3. Advanced C](#basic-c)
@@ -566,13 +567,21 @@ Here's an example demonstrating the use of format specifiers in `printf`:
    #include <stdio.h>
 
    int main() {
-      int number = 42;
+      int number = 4234;
       float floatValue = 3.14159;
       char letter = 'A';
+      char name[20];
 
-      printf("Integer: %d\n", number);
-      printf("Float: %.2f\n", floatValue);
+      printf("Integer: %d\n", number); // 4234
+      printf("Integer: %2d\n", number); // 42
+      printf("Float: %*f\n", floatValue); // 3.1
+      printf("Float: %.2f\n", floatValue); // 3.14
+      printf("Float: %3.2f\n", floatValue); // 3.14
       printf("Character: %c\n", letter);
+
+
+      scanf("%3d %d %*f %5s", &number, &number, &floatValue, text); /* input: 4234  3.7  anisul */
+      printf("%d  %d  %s", number, number, text); /* output: 423  4234  anisu */ 
 
       return 0;
    }
@@ -735,7 +744,60 @@ int main(){
 - Conversion between lowercase and uppercase letter
 
 ```c
+#include <stdio.h>
+int main(){
+  char lowercaseLetter;
 
+  printf("Enter a lowercase letter: ");
+  scanf("%c", &lowercaseLetter);
+
+  printf("Equivalent uppercase letter: %c\n", lowercaseLetter-32);
+
+  getchar();
+}
+
+#include <stdio.h>
+int main(){
+  char uppercaseLetter;
+
+  printf("Enter a uppercase letter: ");
+  scanf("%c", &uppercaseLetter);
+
+  printf("Equivalent lowercase letter: %c\n", uppercaseLetter+32);
+
+  getchar();
+}
+
+// using library function
+#include <stdio.h>
+#include <ctype.h>
+int main(){
+  char uppercaseLetter, lowercaseLetter;
+
+  printf("Enter a uppercase letter: ");
+  scanf("%c", &uppercaseLetter);
+
+  lowercaseLetter = tolower(uppercaseLetter);
+
+  printf("Equivalent lowercase letter: %c\n", lowercaseLetter);
+
+  getchar();
+}
+
+#include <stdio.h>
+#include <ctype.h>
+int main(){
+  char uppercaseLetter, lowercaseLetter;
+
+  printf("Enter a lowercase letter: ");
+  scanf("%c", &lowercaseLetter);
+
+  uppercaseLetter = toupper(lowercaseLetter);
+
+  printf("Equivalent uppercase letter: %c\n", uppercaseLetter);
+
+  getchar();
+}
 ```
 
 - Conversion between binary, decimal, octal and hexa-decimal numbers
@@ -803,6 +865,8 @@ int size = sizeof(int); // size is the size of an int (typically 4 bytes)
 These unary operators are essential in C programming for tasks like incrementing or decrementing variables, changing signs, and performing logical or bitwise operations on data.
 
 #### 1.9.2 Binary Operators
+
+- operators precedence: *, / , % then +, -
 
 **1. Arithmetic Operators:**
 

@@ -1,5 +1,14 @@
 #include <stdio.h>
+#include <ctype.h>
 int main(){
-  signed int number = -32;
-  printf("%d\n",number);
+  char uppercaseLetter, lowercaseLetter;
+
+  printf("Enter a lowercase letter: ");
+  scanf("%c", &lowercaseLetter);
+
+  uppercaseLetter = toupper(lowercaseLetter);
+
+  printf("Equivalent uppercase letter: %c\n", uppercaseLetter);
+
+  getchar();
 }
