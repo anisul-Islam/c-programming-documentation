@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <ctype.h>
-#include <math.h>
 int main(){
-  float radius, areaOfCircle;
+  float centigrade, fahrenheit;
   
-  printf("Enter radius = ");
-  scanf("%f", &radius);
+  printf("Enter fahrenheit = ");
+  scanf("%f", &fahrenheit);
 
-  // areaOfCircle = 3.1416 * radius * radius;
-  areaOfCircle = M_PI * radius * radius;
+  centigrade = (fahrenheit - 32) / 1.8;
 
-  printf("Area of Circle = %.2f\n",areaOfCircle);
+  printf("Equivalent centigrade = %.2f\n",centigrade);
 
   getchar();
 }

@@ -900,7 +900,7 @@ These unary operators are essential in C programming for tasks like incrementing
      int remainder = 15 % 4; // remainder is 3
      ```
 
-##### create a basic calculator
+##### C Program: create a basic calculator
 
 ```c
 // create a basic calculator
@@ -936,7 +936,7 @@ int main(){
 
 ```
 
-##### sum and average of 3 numbers
+##### C Program: sum and average of 3 numbers
 
 ```c
 #include <stdio.h>
@@ -964,7 +964,7 @@ int main(){
 }
 ```
 
-##### Area of triangle
+##### C Program: Area of triangle
 
 ```c
 #include <stdio.h>
@@ -985,7 +985,7 @@ int main(){
 }
 ```
 
-##### Area of triangle given 3 sides
+##### C Program: Area of triangle given 3 sides
 
 ```c
 // Let ABC be a triangle such that the length of the 3 sides of the triangle is AB = c, BC = a and CA = b.
@@ -1018,27 +1018,43 @@ int main(){
 }
 ```
 
-##### Area of Circle
+##### C Program: Area of Circle
+
+##### C Program: Temperature converter
 
 ```c
+// Centigrade to Farhrenheit
 #include <stdio.h>
 #include <ctype.h>
-#include <math.h>
 int main(){
-  float radius, areaOfCircle;
+  float centigrade, fahrenheit;
   
-  printf("Enter radius = ");
-  scanf("%f", &radius);
+  printf("Enter centigrade = ");
+  scanf("%f", &centigrade);
 
-  // areaOfCircle = 3.1416 * radius * radius;
-  areaOfCircle = M_PI * radius * radius;
+  fahrenheit = (centigrade * 1.8) + 32;
 
-  printf("Area of Circle = %.2f\n",areaOfCircle);
+  printf("Equivalent Fahrenheit = %.2f\n",fahrenheit);
+
+  getchar();
+}
+
+// Farhrenheit to Centigrade
+#include <stdio.h>
+#include <ctype.h>
+int main(){
+  float centigrade, fahrenheit;
+  
+  printf("Enter fahrenheit = ");
+  scanf("%f", &fahrenheit);
+
+  centigrade = (fahrenheit - 32) / 1.8;
+
+  printf("Equivalent centigrade = %.2f\n",centigrade);
 
   getchar();
 }
 ```
-
 
 **2. Relational Operators:**
 
