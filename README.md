@@ -900,6 +900,146 @@ These unary operators are essential in C programming for tasks like incrementing
      int remainder = 15 % 4; // remainder is 3
      ```
 
+##### create a basic calculator
+
+```c
+// create a basic calculator
+#include <stdio.h>
+#include <ctype.h>
+int main(){
+  int num1, num2, result;
+  float div;
+
+  printf("Enter num1 = ");
+  scanf("%d", &num1);
+
+  printf("Enter num2 = ");
+  scanf("%d", &num2);
+
+  result = num1 + num2;
+  printf("%d + %d = %d\n",num1,num2,result);
+
+  result = num1 - num2;
+  printf("%d - %d = %d\n",num1,num2,result);
+
+  result = num1 * num2;
+  printf("%d * %d = %d\n",num1,num2,result);
+
+  div = (float)num1 / num2; // data type casting here
+  printf("%d / %d = %.2f\n",num1,num2,div);
+
+  result = num1 % num2;
+  printf("%d %% %d = %d\n",num1,num2,result);
+
+  getchar();
+}
+
+```
+
+##### sum and average of 3 numbers
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+int main(){
+  int num1, num2, num3, sum;
+  float average;
+
+  printf("Enter num1 = ");
+  scanf("%d", &num1);
+
+  printf("Enter num2 = ");
+  scanf("%d", &num2);
+
+  printf("Enter num3 = ");
+  scanf("%d", &num3);
+
+  sum = num1 + num2 + num3;
+  printf("%d + %d + %d = %d\n",num1,num2,num3,sum);
+
+  average = (float)sum/3;
+  printf("Average = %.2f\n",average);  
+
+  getchar();
+}
+```
+
+##### Area of triangle
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+int main(){
+  float base, height, area;
+  
+  printf("Enter base = ");
+  scanf("%f", &base);
+
+  printf("Enter height = ");
+  scanf("%f", &height);
+
+  area = 0.5*base*height;
+  printf("Area of triangle = %.2f\n",area);
+
+  getchar();
+}
+```
+
+##### Area of triangle given 3 sides
+
+```c
+// Let ABC be a triangle such that the length of the 3 sides of the triangle is AB = c, BC = a and CA = b.
+
+// The semi-perimeter of triangle ABC = s = (a + b + c)/2
+
+// Then, the area of triangle ABC = √[s × (s – a) × (s – b) × (s – c)].
+#include <stdio.h>
+#include <ctype.h>
+#include <math.h>
+int main(){
+  float side1, side2, side3, semiPerimeter, areaWith3Sides;
+  
+  printf("Enter side1 = ");
+  scanf("%f", &side1);
+
+  printf("Enter side2 = ");
+  scanf("%f", &side2);
+
+  printf("Enter side3 = ");
+  scanf("%f", &side3);
+
+  semiPerimeter = (side1 + side2 + side3) / 2;
+
+  areaWith3Sides = sqrt(semiPerimeter * (semiPerimeter-side1) * (semiPerimeter-side2) * (semiPerimeter-side3) );
+
+  printf("Area of triangle with 3 sides = %.2f\n",areaWith3Sides);
+
+  getchar();
+}
+```
+
+##### Area of Circle
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+#include <math.h>
+int main(){
+  float radius, areaOfCircle;
+  
+  printf("Enter radius = ");
+  scanf("%f", &radius);
+
+  // areaOfCircle = 3.1416 * radius * radius;
+  areaOfCircle = M_PI * radius * radius;
+
+  printf("Area of Circle = %.2f\n",areaOfCircle);
+
+  getchar();
+}
+```
+
+
 **2. Relational Operators:**
 
 - Equal `==`: Tests if two values are equal.
@@ -1065,7 +1205,7 @@ In this example, `x > 5` is the condition. If `x` is greater than 5 (which it is
 
 Ternary operators are useful when you want to assign a value to a variable based on a simple condition. They can make your code more concise, especially for short conditional assignments, and are often used within larger expressions or when initializing variables.
 
-### 1.10 Operators related program
+### 1.10 Operators related programs
 
 1. Write a program that add 2 integers/floating point number.
 2. Write a program that add, subtract, multiply, divide 2 integers/floating point number.

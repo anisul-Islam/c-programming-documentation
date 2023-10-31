@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <math.h>
 int main(){
-  char uppercaseLetter, lowercaseLetter;
+  float radius, areaOfCircle;
+  
+  printf("Enter radius = ");
+  scanf("%f", &radius);
 
-  printf("Enter a lowercase letter: ");
-  scanf("%c", &lowercaseLetter);
+  // areaOfCircle = 3.1416 * radius * radius;
+  areaOfCircle = M_PI * radius * radius;
 
-  uppercaseLetter = toupper(lowercaseLetter);
-
-  printf("Equivalent uppercase letter: %c\n", uppercaseLetter);
+  printf("Area of Circle = %.2f\n",areaOfCircle);
 
   getchar();
 }
