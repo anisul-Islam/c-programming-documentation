@@ -1,14 +1,28 @@
+// home work 1: series, pattern
+// home work 2: starting, ending points -> armstrong, plaindrom number
+// home work 3: starting, ending points -> prime number
+// Function, Array, String, Pointer, Structure
 #include <stdio.h>
 #include <ctype.h>
 int main(){
-  float centigrade, fahrenheit;
-  
-  printf("Enter fahrenheit = ");
-  scanf("%f", &fahrenheit);
+  int number, sum=0, temp, remainder;
 
-  centigrade = (fahrenheit - 32) / 1.8;
+  printf("Enter any number: ");
+  scanf("%d", &number); 
 
-  printf("Equivalent centigrade = %.2f\n",centigrade);
+  temp = number; 
+
+  while(temp!=0){
+    remainder = temp%10;
+    sum = sum + remainder*remainder*remainder;
+    temp = temp / 10;
+  }
+
+  if(number == sum){
+    printf("Armstrong number");
+  }else{
+    printf("Not Armstrong number");
+  }  
 
   getchar();
 }

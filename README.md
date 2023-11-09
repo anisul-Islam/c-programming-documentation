@@ -1236,11 +1236,12 @@ Ternary operators are useful when you want to assign a value to a variable based
 
 ### 1.11 <math.h> library
 
-In C, you can use the math library, which provides a wide range of mathematical functions for various calculations. To use functions from the math library, you need to include the `<math.h>` header. Here's an example that demonstrates how to use some common math library functions:
+In C, you can use the math library, which provides a wide range of mathematical functions for various calculations. To use functions from the math library, you need to include the `<math.h> or <stdlib.h>` header. Here's an example that demonstrates how to use some common math library functions:
 
    ```c
    #include <stdio.h>
    #include <math.h>
+   #include <stdlib.h>
 
    int main() {
       // Calculating square root
@@ -1270,6 +1271,24 @@ In C, you can use the math library, which provides a wide range of mathematical 
    ```
 
 In this example, we include `<math.h>` and use functions like `sqrt()`, `pow()`, `abs()`, `floor()`, and `ceil()` to perform various mathematical calculations. These functions are just a subset of what the math library provides. You can explore more functions for advanced mathematical operations, such as trigonometry, logarithms, and exponential functions.
+
+   ```c
+      #include <stdio.h>
+      #include <ctype.h>
+      #include <stdlib.h>
+      int main(){
+      int number, absoluteNumber;
+      
+      printf("Enter any negative number = ");
+      scanf("%d", &number);
+
+      absoluteNumber = abs(number);
+
+      printf("abs(%d) = %d\n",number, absoluteNumber);
+
+      getchar();
+      }
+   ```
 
 ### 1.12 Control Statement
 
@@ -1430,12 +1449,88 @@ In C, there are several types of loops, each designed for different use cases. T
 5. **Infinite Loop:** You can create a loop that runs indefinitely using constructs like `while (1)` or `for (;;)` for tasks that need continuous execution.
 
    ```c
-   while (1) {
+   #include <stdio.h>  
+
+   int main()  
+   {  
+      // indefinite for loop
+      for(;;)  
+      {  
+       printf("Hello javatpoint");  
+      }
+
+      // indefinite while loop
+      while (1) {
        // Code to be executed indefinitely
+      }
+
+      // indefinite do while loop
+      do{  
+         // body of the loop..  
+      } while(1);  
+      return 0;  
+   }  
+   ```
+
+#### Prime Number Program
+
+   ```c
+   #include <stdio.h>
+   #include <ctype.h>
+   int main(){
+   int number, sum=0, temp, remainder;
+
+   printf("Enter any number: ");
+   scanf("%d", &number); 
+
+   temp = number; 
+
+   while(temp!=0){
+      remainder = temp%10;
+      sum = sum + remainder*remainder*remainder;
+      temp = temp / 10;
+   }
+
+   if(number == sum){
+      printf("Armstrong number");
+   }else{
+      printf("Not Armstrong number");
+   }  
+
+   getchar();
    }
    ```
 
-##### Loop related programs
+#### Armstrong Number Program
+
+   ```c
+   #include <stdio.h>
+   #include <ctype.h>
+   int main(){
+   int number, sum=0, temp, remainder;
+
+   printf("Enter any number: ");
+   scanf("%d", &number); 
+
+   temp = number; 
+
+   while(temp!=0){
+      remainder = temp%10;
+      sum = sum + remainder*remainder*remainder;
+      temp = temp / 10;
+   }
+
+   if(number == sum){
+      printf("Armstrong number");
+   }else{
+      printf("Not Armstrong number");
+   }  
+
+   getchar();
+   }
+   ```
+
+##### Loop related Assignments
 
    1. Write a program to print 1 to 10 by using for, while & do-while loop.
    2. Find the total sum from 1 to n numbers.
