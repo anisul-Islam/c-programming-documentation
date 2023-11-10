@@ -12,11 +12,10 @@
    - [1.5 Comments and Escape sequences](#15-comments-and-escape-sequences)  
    - [1.6 Keywords, Variables, Data types](#16-keywords-variables-data-types)  
    - [1.7 Input and output functions](#17-input-and-output-functions)  
-   - [1.8 Input-Output programs](#18-input-output-related-programs)  
-   - [1.9 Operators](#19-operators)  
-   - [1.10 Operators related program](#110-operators-related-program)  
-   - [1.11 <math.h> library](#111-mathh-library)  
-   - [1.12 Control Statement](#112-control-statement)  
+   - [1.8 Operators](#18-operators)  
+   - [1.9 <math.h> library](#19-mathh-library)  
+   - [1.10 Control Statement](#110-control-statement)  
+   - [1.11 Arrays](#111-arrays)  
 2. [2. Intermediate C]()
    - []()
 3. [3. Advanced C](#basic-c)
@@ -716,7 +715,7 @@ The `fgets` function is commonly used for reading lines of text from the user wh
    }
    ```
 
-### 1.8 Input-output related programs
+#### Input-output related programs
 
 - Conversion between ASCII characters and ASCII Value
 
@@ -806,7 +805,7 @@ int main(){
 
 ```
 
-### 1.9 Operators
+### 1.8 Operators
 
 - There are 3 important types in C. Unary Operators, Binary Operators, ternary operator.
 
@@ -1221,7 +1220,7 @@ In this example, `x > 5` is the condition. If `x` is greater than 5 (which it is
 
 Ternary operators are useful when you want to assign a value to a variable based on a simple condition. They can make your code more concise, especially for short conditional assignments, and are often used within larger expressions or when initializing variables.
 
-### 1.10 Operators related programs
+#### Operators related program
 
 1. Write a program that add 2 integers/floating point number.
 2. Write a program that add, subtract, multiply, divide 2 integers/floating point number.
@@ -1234,7 +1233,7 @@ Ternary operators are useful when you want to assign a value to a variable based
 9. Write A,F,C program that swaps 2 numbers.
 10. Write A,F,C program that calculate (a+b)^2 formula; take the values for a and b from user.
 
-### 1.11 <math.h> library
+### 1.9 <math.h> library
 
 In C, you can use the math library, which provides a wide range of mathematical functions for various calculations. To use functions from the math library, you need to include the `<math.h> or <stdlib.h>` header. Here's an example that demonstrates how to use some common math library functions:
 
@@ -1290,9 +1289,9 @@ In this example, we include `<math.h>` and use functions like `sqrt()`, `pow()`,
       }
    ```
 
-### 1.12 Control Statement
+### 1.10 Control Statement
 
-#### 1.12.1 Conditional control Statement
+#### 1.10.1 Conditional control Statement
 
 Conditional control statements in C are used to control the flow of a program based on conditions. They allow you to execute different code blocks based on whether a condition is true or false. There are primarily two types of conditional control statements in C: `if` and `switch`. Here are examples for both:
 
@@ -1404,7 +1403,7 @@ In this example, the `switch` statement checks the value of the `day` variable a
    6. Write a program that read three numbers and display minimum.
    7. Write a program that read three numbers and display medium.
 
-#### 1.12.2 Loop control Statement
+#### 1.10.2 Loop control Statement
 
 In C, there are several types of loops, each designed for different use cases. The common types of loops are:
 
@@ -1472,97 +1471,7 @@ In C, there are several types of loops, each designed for different use cases. T
    }  
    ```
 
-#### Prime Number Program
-
-   ```c
-   #include <stdio.h>
-   #include <ctype.h>
-   int main(){
-   int number, sum=0, temp, remainder;
-
-   printf("Enter any number: ");
-   scanf("%d", &number); 
-
-   temp = number; 
-
-   while(temp!=0){
-      remainder = temp%10;
-      sum = sum + remainder*remainder*remainder;
-      temp = temp / 10;
-   }
-
-   if(number == sum){
-      printf("Armstrong number");
-   }else{
-      printf("Not Armstrong number");
-   }  
-
-   getchar();
-   }
-   ```
-
-#### Armstrong Number Program
-
-   ```c
-   #include <stdio.h>
-   #include <ctype.h>
-   int main(){
-   int number, sum=0, temp, remainder;
-
-   printf("Enter any number: ");
-   scanf("%d", &number); 
-
-   temp = number; 
-
-   while(temp!=0){
-      remainder = temp%10;
-      sum = sum + remainder*remainder*remainder;
-      temp = temp / 10;
-   }
-
-   if(number == sum){
-      printf("Armstrong number");
-   }else{
-      printf("Not Armstrong number");
-   }  
-
-   getchar();
-   }
-   ```
-
-##### Loop related Assignments
-
-   1. Write a program to print 1 to 10 by using for, while & do-while loop.
-   2. Find the total sum from 1 to n numbers.
-   3. Write a program to add m to n numbers and display average.
-   4. Check sum outputs from the hand note.
-   5. Write a program to print the numbers from 1 to 100, skip those numbers which are divisible by 3 or 5 but not both.
-   6. Write a while loop to print all the multiples of 5 from 13 to 121 in descending order,
-   7. Write a program to print all odd numbers from 1 to 1000 which are divisible by 3.
-   8. Write a program using while loop that will print all even numbers between 2 to 20.
-   9. Write a program that read any integer and display prime or not.
-   10. Write a program that prints all the prime numbers from m to n.
-   11. Write a program that prints all the prime numbers from m to n and count total prime numbers.
-   12. Write a program that read any positive integer and display sum of its digit.
-   13. Write a program that reads any positive integer and displays its reverse.
-   14. Write a program to check a number is palindrome or not.
-   15. How to check a number is palindrome using for loop.
-   16. Write a program to check given number is Armstrong number.
-   17. Write a program that read two numbers and display LCM and GCD.
-   18. Write a program to print time table of any number.
-   19. Write a program to print the entire time table from m to n.
-   20. Write a program that generates Fibonacci series.
-   21. Write a program that prints all Fibonacci numbers from 1 to n.
-   22. Write a program that can check a number is Fibonacci or not.
-   23. Write a program that read a positive integer and display its factorial.
-   24. Write a program that read any decimal number and display equivalent binary number.
-   25. Write a program that read any decimal number and display equivalent octal number.
-   26. Write a program that read any decimal number and display equivalent hexadecimal number.
-   27. Write a program that read two numbers (x, y) and display xy .
-   28. Write a program that read two numbers (n, r) and display nPr (Permutation).
-   29. Write a program that read two numbers (n, r) and display nCr (Combination).
-
-#### 1.12.3 Jump control Statement
+#### 1.10.3 Jump control Statement
 
 Jump control Statement include `break`, `continue`, and `goto`. Here are examples for each:
 
@@ -1629,3 +1538,272 @@ int main() {
 In this example, the program jumps back to the "start" label using `goto` to repeat the loop until `i` becomes greater than 10.
 
 The `break` and `continue` statements are commonly used in loops to control the flow of iterations, while the `goto` statement is used much less frequently and should be used with caution.
+
+#### 1.10.4 Loop related programs
+
+##### Loop related Assignments
+
+   1. Write a program to print 1 to 10 by using for, while & do-while loop.
+   2. Find the total sum from 1 to n numbers.
+   3. Write a program to add m to n numbers and display average.
+   4. Check sum outputs from the hand note.
+   5. Write a program to print the numbers from 1 to 100, skip those numbers which are divisible by 3 or 5 but not both.
+   6. Write a while loop to print all the multiples of 5 from 13 to 121 in descending order,
+   7. Write a program to print all odd numbers from 1 to 1000 which are divisible by 3.
+   8. Write a program using while loop that will print all even numbers between 2 to 20.
+   9. Write a program that read any integer and display prime or not.
+   10. Write a program that prints all the prime numbers from m to n.
+   11. Write a program that prints all the prime numbers from m to n and count total prime numbers.
+   12. Write a program that read any positive integer and display sum of its digit.
+   13. Write a program that reads any positive integer and displays its reverse.
+   14. Write a program to check a number is palindrome or not.
+   15. How to check a number is palindrome using for loop.
+   16. Write a program to check given number is Armstrong number.
+   17. Write a program that read two numbers and display LCM and GCD.
+   18. Write a program to print time table of any number.
+   19. Write a program to print the entire time table from m to n.
+   20. Write a program that generates Fibonacci series.
+   21. Write a program that prints all Fibonacci numbers from 1 to n.
+   22. Write a program that can check a number is Fibonacci or not.
+   23. Write a program that read a positive integer and display its factorial.
+   24. Write a program that read any decimal number and display equivalent binary number.
+   25. Write a program that read any decimal number and display equivalent octal number.
+   26. Write a program that read any decimal number and display equivalent hexadecimal number.
+   27. Write a program that read two numbers (x, y) and display xy .
+   28. Write a program that read two numbers (n, r) and display nPr (Permutation).
+   29. Write a program that read two numbers (n, r) and display nCr (Combination).
+
+##### Prime Number Program
+
+   ```c
+   // first version - check a number is prime or not
+   #include <stdio.h>
+   #include <ctype.h>
+   int main(){
+      int number, count=0;
+
+      printf("Enter a number: ");
+      scanf("%d", &number);
+
+      for(int i=2; i<number; i++){
+         count++;
+         break;
+      }
+      if(count==0){
+         printf("%d is a prime number", number);
+      }else{
+         printf("%d is not a prime number", number);
+      }
+
+      getchar();
+   }
+
+   // second version - check a number is prime or not
+   #include <stdio.h>
+   #include <ctype.h>
+   int main(){
+      int number, count=0;
+
+      printf("Enter a number: ");
+      scanf("%d", &number);
+
+      if(number<=1){
+         printf("%d is not a prime number", number);
+      }
+
+      for(int i=2; i<number/2; i++){
+         count++;
+         break;
+      }
+      if(count==0){
+         printf("%d is a prime number", number);
+      }else{
+         printf("%d is not a prime number", number);
+      }
+
+      getchar();
+   }
+
+   // third version - check a number is prime or not
+   #include <stdio.h>
+   #include <ctype.h>
+   #include <math.h>
+   int main(){
+      int number, count=0;
+
+      printf("Enter a number: ");
+      scanf("%d", &number);
+
+      if(number<=1){
+         printf("%d is not a prime number", number);
+      }
+
+      for(int i=2; i<=sqrt(number); i++){
+         count++;
+         break;
+      }
+      if(count==0){
+         printf("%d is a prime number", number);
+      }else{
+         printf("%d is not a prime number", number);
+      }
+
+      getchar();
+   }
+   ```
+
+##### Armstrong Number Program
+
+   ```c
+   #include <stdio.h>
+   #include <ctype.h>
+   int main(){
+   int number, sum=0, temp, remainder;
+
+   printf("Enter any number: ");
+   scanf("%d", &number); 
+
+   temp = number; 
+
+   while(temp!=0){
+      remainder = temp%10;
+      sum = sum + remainder*remainder*remainder;
+      temp = temp / 10;
+   }
+
+   if(number == sum){
+      printf("Armstrong number");
+   }else{
+      printf("Not Armstrong number");
+   }  
+
+   getchar();
+   }
+   ```
+
+### 1.11 Arrays
+
+#### what is an array? why do we need an array?
+
+- an array is a collection of variables of the same type
+
+#### Aarray declaration and initialization
+
+   ```c
+
+   int numbers1[5]; // Array of 5 integers, uninitialized
+
+   int numbers2[] = {85, 90, 78, 92, 88}; // Array initialized with values
+   ```
+
+#### Accessing array elements
+
+   ```c
+   int numbers[5] = {10, 20, 30, 40, 50};
+   printf("%d\n", numbers[0]); // prints 10
+
+   // version 1
+   #include <stdio.h>
+   int main() {
+      int numbers[] = {1, 2, 3, 4, 5};
+
+      printf("%d\n", numbers[0]);
+      printf("%d\n", numbers[1]);
+      printf("%d\n", numbers[2]);
+      printf("%d\n", numbers[3]);
+      printf("%d\n", numbers[4]);
+
+      return 0;
+   }
+
+   // version 2: print array with loop
+   #include <stdio.h>
+   int main() {
+      int numbers[] = {1, 2, 3, 4, 5};
+
+      for(int index=0; index<5; index++){
+         printf("%d\n", numbers[index]);
+      } 
+
+      return 0;
+   }
+
+   // version 3: take user input for an array
+   #include <stdio.h>
+   int main() {
+      int numbers[5];
+
+      for(int index=0; index<5; index++){
+         scanf("%d", &numbers[index]);
+      }
+
+      for(int index=0; index<5; index++){
+         printf("%d\n", numbers[index]);
+      } 
+
+      return 0;
+   }
+
+   // version 4: give instrcution for inputs
+   ```
+
+#### Types of Array
+
+#### Array related program
+
+##### searching algorithms
+
+1. linear searching algorithm: Sequentially checks each element of a list until a match is found.
+
+   ```c
+
+      #include <stdio.h>
+      int linearSearch(int arr[], int n, int target) {
+         for (int i = 0; i < n; i++) {
+            if (arr[i] == target) {
+                  return i; // Return the index if the target is found
+            }
+         }
+         return -1; // Return -1 if the target is not found
+      }
+
+      int main() {
+         int numbers[] = {2, 4, 6, 8, 10, 12, 14, 16};
+         int n = sizeof(numbers) / sizeof(numbers[0]);
+
+         int target = 10;
+         int result = linearSearch(numbers, n, target);
+
+         if (result != -1) {
+            printf("Element %d found at index %d\n", target, result);
+         } else {
+            printf("Element %d not found in the array\n", target);
+         }
+
+         return 0;
+      }      
+   ```
+
+   ```c
+      #include <stdio.h>
+      int main(){
+         int numbers[] = {20,40,1,100,98,-4};
+         int searchNumber = 40;
+         int found = -1;
+
+         for(int index=0; index<sizeof(numbers)/sizeof(numbers[0]); index++){
+            if(numbers[index]== searchNumber){
+               found = index;
+               break;
+            }
+         }
+         if(found == -1){
+            printf("%d is not found in the array", searchNumber);
+         } else{
+            printf("%d is found in position %d", searchNumber, found);
+         }
+         return 0;
+      }
+   ```
+
+2. bubble searching algorithm
