@@ -1,30 +1,20 @@
-#include <stdio.h>
-int main(){
-  int numbers[] = {20,40,1,100,98,-4};
-  int searchNumber = 40;
-  int found = -1;
+ #include <stdio.h>
+   #include <ctype.h>
+   int main(){
+      int number, count=0;
 
-  for(int index=0; index<sizeof(numbers)/sizeof(numbers[0]); index++){
-    if(numbers[index]== searchNumber){
-      found = index;
-      break;
-    }
-  }
-  if(found == -1){
-    printf("%d is not found in the array", searchNumber);
-  } else{
-    printf("%d is found in position %d", searchNumber, found);
-  }
-  return 0;
-}
+      printf("Enter a number: ");
+      scanf("%d", &number);
 
+      for(int i=2; i<number; i++){
+         count++;
+         break;
+      }
+      if(count==0){
+         printf("%d is a prime number", number);
+      }else{
+         printf("%d is not a prime number", number);
+      }
 
-// Array Declare, Intialize
-// Array access
-// loop in Array
-// How to find sum and average from an array
-// How to find maximum and minimum numbers from an array
-// searching algorithm: linear search, binary search 
-// sorting algorithm: bubble sort, merge sort, quick sort
-// first and second maximum sorted and unsorted
-// multidimensional array - matrix : addition, subtraction, multiplication, transpose, diagonal elements addition
+      getchar();
+   }

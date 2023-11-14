@@ -1586,8 +1586,10 @@ The `break` and `continue` statements are commonly used in loops to control the 
       scanf("%d", &number);
 
       for(int i=2; i<number; i++){
-         count++;
-         break;
+          if(number%i==0){
+            count=1;
+            break;
+         }
       }
       if(count==0){
          printf("%d is a prime number", number);
@@ -1609,12 +1611,15 @@ The `break` and `continue` statements are commonly used in loops to control the 
 
       if(number<=1){
          printf("%d is not a prime number", number);
+      }else{
+         for(int i=2; i<number/2; i++){
+          if(number%i==0){
+              count=1;
+              break;
+            }
+         }
       }
-
-      for(int i=2; i<number/2; i++){
-         count++;
-         break;
-      }
+      
       if(count==0){
          printf("%d is a prime number", number);
       }else{
@@ -1626,8 +1631,8 @@ The `break` and `continue` statements are commonly used in loops to control the 
 
    // third version - check a number is prime or not
    #include <stdio.h>
-   #include <ctype.h>
    #include <math.h>
+   #include <ctype.h>
    int main(){
       int number, count=0;
 
@@ -1636,12 +1641,14 @@ The `break` and `continue` statements are commonly used in loops to control the 
 
       if(number<=1){
          printf("%d is not a prime number", number);
-      }
-
-      for(int i=2; i<=sqrt(number); i++){
-         count++;
-         break;
-      }
+      }else{
+         for(int i=2; i<sqrt(number); i++){
+          if(number%i==0){
+              count=1;
+              break;
+            }
+         }
+      }      
       if(count==0){
          printf("%d is a prime number", number);
       }else{
@@ -1769,7 +1776,9 @@ The `break` and `continue` statements are commonly used in loops to control the 
 
       int main() {
          int numbers[] = {2, 4, 6, 8, 10, 12, 14, 16};
-         int n = sizeof(numbers) / sizeof(numbers[0]);
+
+          // Calculate the number of elements in the array; size of returns the size of entire array in bytes
+         int n = sizeof(numbers) / sizeof(numbers[0]); 
 
          int target = 10;
          int result = linearSearch(numbers, n, target);
@@ -1806,4 +1815,154 @@ The `break` and `continue` statements are commonly used in loops to control the 
       }
    ```
 
-2. bubble searching algorithm
+2. find the largest and second largest from an unsorted array
+
+   ```c
+   #include <stdio.h>
+
+   void findLargestAndSecondLargest(int arr[], int n) {
+      if (n < 2) {
+         printf("Array should have at least two elements.\n");
+         return;
+      }
+
+      int first, second;
+
+      if (arr[0] > arr[1]) {
+         first = arr[0];
+         second = arr[1];
+      } else {
+         first = arr[1];
+         second = arr[0];
+      }
+
+      for (int i = 2; i < n; i++) {
+         if (arr[i] > first) {
+               second = first;
+               first = arr[i];
+         } else if (arr[i] > second && arr[i] != first) {
+               second = arr[i];
+         }
+      }
+
+      printf("Largest Element: %d\n", first);
+      printf("Second Largest Element: %d\n", second);
+   }
+
+   int main() {
+      int arr[] = {12, 35, 1, 10, 34, 1};
+      int n = sizeof(arr) / sizeof(arr[0]);
+
+      findLargestAndSecondLargest(arr, n);
+
+      return 0;
+   }
+   ```
+
+   This program initializes first and second based on the first two elements of the array. Then, it iterates through the array starting from the third element, updating first and second accordingly. The final values of first and second are the largest and second-largest elements in the array.
+
+- find the larget and second largest for an sorted array
+
+   If the array is sorted in ascending order, finding the largest and second-largest elements becomes simpler. In this case, the largest element will be the last element of the array, and the second-largest element will be the second-to-last element. Here's the modified code:
+
+   ```c
+   #include <stdio.h>
+
+   void findLargestAndSecondLargest(int arr[], int n) {
+      if (n < 2) {
+         printf("Array should have at least two elements.\n");
+         return;
+      }
+
+      int first = arr[n - 1];
+      int second = arr[n - 2];
+
+      printf("Largest Element: %d\n", first);
+      printf("Second Largest Element: %d\n", second);
+   }
+
+   int main() {
+      int arr[] = {1, 10, 12, 34, 35};
+      int n = sizeof(arr) / sizeof(arr[0]);
+
+      findLargestAndSecondLargest(arr, n);
+
+      return 0;
+   }
+   ```
+
+   In this version, `first` is assigned `arr[n - 1]` (the last element), and `second` is assigned `arr[n - 2]` (the second-to-last element). There is no need for an additional loop since the array is already sorted.
+
+3. bubble searching algorithm: Requires a sorted array. Divides the array in half at each step.
+
+   ```c
+   int binarySearch(int arr[], int low, int high, int target) {
+      while (low <= high) {
+         int mid = low + (high - low) / 2;
+         if (arr[mid] == target) {
+               return mid;
+         } else if (arr[mid] < target) {
+               low = mid + 1;
+         } else {
+               high = mid - 1;
+         }
+      }
+      return -1;
+   }
+   ```
+
+##### sorting algorithms
+
+1. Bubble sort: Repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+
+   ```c
+      void bubbleSort(int arr[], int n) {
+         for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                  if (arr[j] > arr[j + 1]) {
+                     // Swap arr[j] and arr[j+1]
+                     int temp = arr[j];
+                     arr[j] = arr[j + 1];
+                     arr[j + 1] = temp;
+                  }
+            }
+         }
+
+      }   
+   ```
+
+2. Merge sort: Divides the array into two halves, recursively sorts them, and then merges the two sorted halves.
+
+   ```c
+      void merge(int arr[], int l, int m, int r) {
+         // Merge two subarrays of arr[]
+         // ...
+
+      }
+
+      void mergeSort(int arr[], int l, int r) {
+         if (l < r) {
+            int m = l + (r - l) / 2;
+            mergeSort(arr, l, m);
+            mergeSort(arr, m + 1, r);
+            merge(arr, l, m, r);
+         }
+      }  
+   ```
+
+3. Quick sort: Picks a 'pivot' element and partitions the array into two subarrays according to whether elements are less than or greater than the pivot.
+
+   ```c
+      int partition(int arr[], int low, int high) {
+         // ...
+
+      }
+
+      void quickSort(int arr[], int low, int high) {
+         if (low < high) {
+            int pi = partition(arr, low, high);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+         }
+      }
+   ```
