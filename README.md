@@ -2701,3 +2701,339 @@ The `break` and `continue` statements are commonly used in loops to control the 
          }
       }
    ```
+
+### 1.13 String
+
+#### basics
+
+- C does not have a built-in string data type like some other programming languages; rather, strings are represented as arrays of characters. The array is terminated by a null character ('\0'), which indicates the end of the string.
+
+- How to decalre, initialize and print a string?
+
+```c
+// method 1
+#include <stdio.h>
+#include <ctype.h>
+int main()
+{
+    char name[5];
+
+    name[0] = 'a';
+    name[1] = 'n';
+    name[2] = 'i';
+    name[3] = 's';
+    name[4] = '\0'; // null character
+
+    printf("Name = %s\n", name);
+
+    return 0;
+}
+
+// method 2
+#include <stdio.h>
+#include <ctype.h>
+int main()
+{
+    char name[5] = {'A', 'n', 'i', 's', '\0'};
+    printf("Name = %s\n", name);
+
+    return 0;
+}
+
+// method 3
+#include <stdio.h>
+#include <ctype.h>
+int main()
+{
+    char name[5] = "Anis";
+    printf("Name = %s\n", name);
+
+    return 0;
+}
+
+// method 4 - multiple line
+#include <stdio.h>
+#include <ctype.h>
+int main()
+{
+    char name[5] = "Anis \
+        Islam"; // line break
+    printf("Name = %s\n", name);
+
+    return 0;
+}
+```
+
+- how to take string as user input
+
+```c
+// method 1
+#include <stdio.h>
+#include <ctype.h>
+int main()
+{
+    char name[20];
+
+    printf("Enter your Full name: ");
+    gets(name);
+
+    printf("Full Name: %s\n", name);
+    return 0;
+}
+
+// method 2
+#include <stdio.h>
+#include <ctype.h>
+int main()
+{
+    char name[20];
+
+    printf("Enter your Full name: ");
+    fgets(name, sizeof(name), stdin);
+
+    printf("Full Name: %s\n", name);
+    return 0;
+}
+```
+
+#### string related program
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char str[100];
+    int vowelsCount = 0;
+    int consonantsCount = 0;
+    int digitsCount = 0;
+    int wordsCount = 0;
+    int specialCharsCount = 0;
+    int spacesCount = 0;
+    int uppercaseCount = 0;
+    int lowercaseCount = 0;
+
+    // Input a string from the user
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Iterate through each character in the string
+    for (int i = 0; str[i] != '\0'; ++i) {
+        char currentChar = str[i];
+
+        // Check for vowels (case-insensitive)
+        char lowerChar = tolower(currentChar);
+        if (lowerChar == 'a' || lowerChar == 'e' || lowerChar == 'i' ||
+            lowerChar == 'o' || lowerChar == 'u') {
+            ++vowelsCount;
+        }
+
+        // Check for consonants (alphabets excluding vowels)
+        if (isalpha(currentChar) && !isvowel(lowerChar)) {
+            ++consonantsCount;
+        }
+
+        // Check for digits
+        if (isdigit(currentChar)) {
+            ++digitsCount;
+        }
+
+        // Check for spaces
+        if (isspace(currentChar)) {
+            ++spacesCount;
+        }
+
+        // Check for words
+        if (isalpha(currentChar) && (i == 0 || !isalpha(str[i - 1]))) {
+            ++wordsCount;
+        }
+
+        // Check for special characters -> isalnum means isalphanumeric or not
+        // An alphanumeric character is either a letter (uppercase or lowercase) or a digit (0-9).
+        if (!isalnum(currentChar) && !isspace(currentChar)) {
+            ++specialCharsCount;
+        }
+
+        // Check for uppercase and lowercase letters
+        if (isalpha(currentChar)) {
+            if (isupper(currentChar)) {
+                ++uppercaseCount;
+            } else {
+                ++lowercaseCount;
+            }
+        }
+    }
+
+    // Output the results
+    printf("Number of vowels: %d\n", vowelsCount);
+    printf("Number of consonants: %d\n", consonantsCount);
+    printf("Number of digits: %d\n", digitsCount);
+    printf("Number of words: %d\n", wordsCount);
+    printf("Number of special characters: %d\n", specialCharsCount);
+    printf("Number of spaces: %d\n", spacesCount);
+    printf("Number of uppercase letters: %d\n", uppercaseCount);
+    printf("Number of lowercase letters: %d\n", lowercaseCount);
+
+    return 0;
+}
+
+int isvowel(char c) {
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
+```
+
+#### String library functions
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    // Example 1: strlen
+    char str1[] = "Hello, World!";
+    printf("Length of '%s': %zu\n", str1, strlen(str1));
+
+    // Example 2: strcpy
+    char str2[20];
+    strcpy(str2, "Copy me!");
+    printf("Copied string: %s\n", str2);
+
+    // Example 3: strcat
+    char str3[30] = "Hello";
+    strcat(str3, ", World!");
+    printf("Concatenated string: %s\n", str3);
+
+    // Example 4: strcmp
+    char str4[] = "apple";
+    char str5[] = "orange";
+    int result = strcmp(str4, str5);
+    printf("Comparison result: %d\n", result);
+
+    // Example 5: strchr
+    char str6[] = "Hello, World!";
+    char *found = strchr(str6, 'W');
+    if (found != NULL) {
+        printf("Found 'W' at position: %ld\n", found - str6);
+    } else {
+        printf("Character not found.\n");
+    }
+
+    // Example 6: strstr
+    char str7[] = "This is a sample string.";
+    char *substring = strstr(str7, "sample");
+    if (substring != NULL) {
+        printf("Substring found: %s\n", substring);
+    } else {
+        printf("Substring not found.\n");
+    }
+
+    // Example 7: strtok
+    char str8[] = "apple,orange,banana";
+    char *token = strtok(str8, ",");
+    while (token != NULL) {
+        printf("Token: %s\n", token);
+        token = strtok(NULL, ",");
+    }
+
+    return 0;
+}
+```
+
+- my program that I have created during the live session
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int isVowel(char letter)
+{
+    return (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u');
+}
+
+int isLetter(char ch)
+{
+    return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
+}
+
+int isDigit(char ch)
+{
+    return ch >= '0' && ch <= '9';
+}
+int isSpace(char ch)
+{
+    return ch == ' ';
+}
+
+int main()
+{
+    char text[] = "I love";
+
+    printf("Length of text : %d\n", strlen(text));
+
+    char text2[30];
+    printf("text2 =  %s\n", strcpy(text2, text));
+
+    char password[] = "A123456";
+    char confirmedPassword[] = "A123456";
+
+    int result = strcmp(password, confirmedPassword);
+    printf("comparision result = %d\n", result);
+
+    int numberOfLetters = 0;
+    int numberOfDigits = 0;
+    int numberOfSpaces = 0;
+    int numberOfWords = 0;
+    int numberOfVowels = 0;
+    int numberOfConsonants = 0;
+    int numberOfSpecialCharacters = 0;
+
+    for (int index = 0; text[index] != '\0'; index++)
+    {
+        char currentCharacter = text[index];
+        // is letter or not
+        if (isLetter(currentCharacter))
+        {
+            numberOfLetters++;
+        }
+        if (isdigit(currentCharacter))
+        {
+            numberOfDigits++;
+        }
+        if (isspace(currentCharacter))
+        {
+            numberOfSpaces++;
+        }
+
+        // convert lowercase
+        currentCharacter = tolower(currentCharacter);
+        if (isVowel(currentCharacter))
+        {
+            numberOfVowels++;
+        }
+        if (isLetter(currentCharacter) && !isVowel(currentCharacter))
+        {
+            numberOfConsonants++;
+        }
+
+        // not alphanumeric -> letter and digit and not space
+        if (!(isalnum(currentCharacter) || isspace(currentCharacter)))
+        {
+            numberOfSpecialCharacters++;
+        }
+    }
+
+    printf("Number of letters : %d\n", numberOfLetters);
+    printf("Number of Digits : %d\n", numberOfDigits);
+    printf("Number of Spaces : %d\n", numberOfSpaces);
+    printf("Number of Words : %d\n", numberOfSpaces + 1);
+    printf("Number of Vowels : %d\n", numberOfVowels);
+    printf("Number of Consonants : %d\n", numberOfConsonants);
+    printf("Number of special characters : %d\n", numberOfSpecialCharacters);
+
+    return 0;
+}
+
+// number of letters
+
+```
