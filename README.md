@@ -1839,7 +1839,7 @@ int main()
 }
 ```
 
-###### switch: temperature converter
+###### project : small temperature converter project using switch
 
 ```c
 // switch: temperature converter
@@ -1879,7 +1879,7 @@ int main()
 
 ```
 
-###### switch: calculator
+###### project : small calculator project using switch
 
 ```c
 // switch: basic calculator
@@ -3035,5 +3035,887 @@ int main()
 }
 
 // number of letters
+
+```
+
+### 1.14 Functions
+
+A function is a block of code that performs a specific task or set of tasks. Functions provide a way to modularize code, making it more organized, reusable, and easier to understand. Here are the key components and concepts related to functions in C:
+
+#### Function Declaration and Definition
+
+```c
+// Function Declaration
+int add(int a, int b);
+
+// Function Definition
+int add(int a, int b) {
+    return a + b;
+}
+```
+
+In the above example, `add` is a function that takes two integer parameters (`a` and `b`) and returns an integer result.
+
+#### Function Call
+
+```c
+int result = add(5, 3);
+```
+
+This line calls the `add` function with arguments `5` and `3` and assigns the result (`8`) to the variable `result`.
+
+#### Function Parameters and Return Types
+
+```c
+// Function with no parameters and no return value
+void greet() {
+    printf("Hello, World!\n");
+}
+
+// Function with parameters and a return value
+int multiply(int x, int y) {
+    return x * y;
+}
+```
+
+#### Function Prototypes
+
+```c
+// Function Prototype
+int divide(int x, int y);
+
+// Function Definition
+int divide(int x, int y) {
+    return x / y;
+}
+```
+
+Function prototypes declare the existence of a function before its actual definition. This is useful when functions are defined later in the code.
+
+#### Passing character to a function
+
+```c
+#include <stdio.h>
+
+// Function to check if a character is a vowel or consonant
+void checkVowelOrConsonant(char ch) {
+    // Convert the character to lowercase for case-insensitive comparison
+    ch = tolower(ch);
+
+    // Check if the character is a vowel or consonant
+    if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+            printf("%c is a vowel.\n", ch);
+        } else {
+            printf("%c is a consonant.\n", ch);
+        }
+    } else {
+        printf("Invalid input. Please enter an alphabetic character.\n");
+    }
+}
+
+int main() {
+    char userInput;
+
+    // Get a character from the user
+    printf("Enter a character: ");
+    scanf(" %c", &userInput);
+
+    // Call the function and pass the character
+    checkVowelOrConsonant(userInput);
+
+    return 0;
+}
+```
+
+#### Passing array to a function
+
+```c
+#include <stdio.h>
+
+// Function to print the elements of an integer array
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    // Declare and initialize an array
+    int numbers[] = {1, 2, 3, 4, 5};
+
+    // Calculate the size of the array
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+
+    // Call the function and pass the array
+    printArray(numbers, size);
+
+    return 0;
+}
+```
+
+#### Passing 2D array to a function
+
+```c
+#include <stdio.h>
+
+// Function to print the elements of a 2D array
+void print2DArray(int arr[][3], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    // Declare and initialize a 2D array
+    int matrix[][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+
+    // Call the function and pass the 2D array along with its dimensions
+    print2DArray(matrix, 3, 3);
+
+    return 0;
+}
+
+```
+
+#### Recursion
+
+```c
+// Recursive Function to calculate factorial
+int factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+```
+
+A recursive function is a function that calls itself. The `factorial` function calculates the factorial of a number using recursion.
+
+#### Scope of Variables
+
+```c
+int globalVariable = 10; // Global variable
+
+void exampleFunction() {
+    int localVariable = 5; // Local variable
+    printf("%d\n", globalVariable + localVariable);
+}
+
+int main() {
+    exampleFunction();
+    return 0;
+}
+```
+
+Variables can have local scope (inside a function) or global scope (accessible throughout the program).
+
+These are some fundamental aspects of functions in C programming. Let me know if you'd like more specific examples or details on any particular aspect!
+
+### 1.15 Structure
+
+- structure is a collection of variables of different types under a single name.
+- structure is a user defined data (your own data type) type in C/C++.
+
+```c
+// global structure basic syntax
+#include <stdio.h>
+#include <ctype.h>
+
+struct Person
+{
+    int age;
+    float salary;
+};
+
+int main()
+{
+    struct Person anis, nusrat;
+
+    anis.age = 33;
+    anis.salary = 3300;
+
+    nusrat.age = 33;
+    nusrat.salary = 3300;
+
+    printf("Age: %d\n", anis.age);
+    printf("Salary: %.2f\n", anis.salary);
+
+    return 0;
+}
+
+// number of letters
+
+```
+
+- how to get input for structure
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+
+struct Person
+{
+    char name[50];
+    int age;
+    float salary;
+};
+
+int main()
+{
+    struct Person anis, nusrat;
+
+    strcpy(anis.name, "anis");
+    printf("Enter age for anis: ");
+    scanf("%d", &anis.age);
+
+    printf("Enter salary for anis: ");
+    scanf("%f", &anis.salary);
+
+    printf("Age: %d\n", anis.age);
+    printf("Salary: %.2f\n", anis.salary);
+
+    return 0;
+}
+
+// number of letters
+
+```
+
+- how to initialize structure directly
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+
+struct Person
+{
+    char name[50];
+    int age;
+    float salary;
+};
+
+int main()
+{
+    struct Person p1 = {"anis", 33, 3100};
+    struct Person p2 = p1;
+    printf("Age: %d\n", p1.age);
+    printf("Salary: %.2f\n", p1.salary);
+
+    return 0;
+}
+```
+
+- struct comparison
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+
+struct Person
+{
+    char name[50];
+    int age;
+    float salary;
+};
+
+int main()
+{
+    struct Person p1 = {"anis", 33, 3100};
+    struct Person p2 = p1;
+
+    if (p1.age == p2.age && p1.name == p2.name)
+    {
+        printf("Equal");
+    }
+    else
+    {
+        printf("Not Equal");
+    }
+
+    return 0;
+}
+
+// number of letters
+
+```
+
+- Array of structure & structure passing to a function
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+
+struct Person
+{
+    char name[50];
+    int age;
+    float salary;
+};
+
+void display(struct Person person)
+{
+
+    printf("Name = %s\n", person.name);
+    printf("Age = %d\n", person.age);
+    printf("Salary = %.2f\n", person.salary);
+}
+
+int main()
+{
+    struct Person person[4];
+    int i;
+
+    for (i = 1; i <= 4; i++)
+    {
+        printf("Enter information for person %d\n", i + 1);
+        printf("Enter name: ");
+        fflush(stdin);
+        gets(person[i].name);
+        printf("Enter age: ");
+        scanf("%d", &person[i].age);
+        printf("Enter salary: ");
+        scanf("%f", &person[i].salary);
+    }
+    for (i = 1; i <= 4; i++)
+    {
+        printf("information for person %d\n", i + 1);
+        display(person[i])
+    }
+
+    return 0;
+}
+
+// number of letters
+
+```
+
+- Example of a structure 
+
+```c
+#include <stdio.h>
+#include <ctype.h>
+
+struct Student
+{
+   char name[50];
+   int age;
+   float cgpa;
+};
+
+void printStudentInfo(struct Student student)
+{
+   // printing student info
+   printf("Name = %s\n", student.name);
+   printf("Age = %d\n", student.age);
+   printf("CGPA = %.2f\n", student.cgpa);
+}
+
+int main()
+{
+
+   struct Student students[4];
+
+   for (int index = 0; index < 4; index++)
+   {
+      printf("Enter Name: ");
+      fflush(stdin);
+      gets(students[index].name);
+
+      printf("Enter age: ");
+      scanf("%d", &students[index].age);
+
+      printf("Enter cgpa: ");
+      scanf("%f", &students[index].cgpa);
+   }
+
+   for (int index = 0; index < 4; index++)
+   {
+      printf("information for student %d\n", index + 1);
+      printStudentInfo(students[index]);
+   }
+
+   getchar();
+}
+
+// why do we need structure?
+// how to create a structre?
+// how to access a structure?
+// how to take user input for a structure?
+// how to pass structure as a paramter into a function
+// array of structure
+
+
+```
+
+### 1.16 Union, Enumeration
+
+### 1.17 Pointers
+
+### 1.18 File
+
+- not storing data
+
+   ```c
+      # include <stdio.h>
+      int main()
+      {
+         char name[50];
+         char phone[50];
+         char email[50];
+
+         printf("Enter Name: ");
+         fgets(name, sizeof name, stdin);
+
+         printf("Enter Phone: ");
+         fgets(phone, sizeof phone, stdin);
+
+         printf("Enter Email: ");
+         fgets(email, sizeof email, stdin);
+
+         printf("Contacts.\n ");
+         printf("Name:  %s\nPhone:  %s\nEmail: %s\n", name, phone, email);
+         return 0;
+      }
+      ```
+
+- File is a place for storing data. In C programming, file system operations are facilitated through the Standard I/O Library (stdio.h). This library provides functions to perform various operations on files, such as creating, opening, reading, writing, and closing files.
+- functions which help us to do write operations: fputc, fputw, fprintf, fputs, fwrite
+- functions which help us to do read operations: fgetc, fgetw, fscanf, fgetss, fread
+
+- how to declare a file: `FILE *nameOfTheFile` file pointer variable
+- how to create and close a file in c
+   
+   ```c
+      #include <stdio.h>
+
+      int main()
+      {
+
+         FILE *file;                // `FILE *nameOfTheFile` file pointer variable
+         file = fopen("contact.txt", "a"); // fopen(name of the file, mode of file- r, w, a, r+, w+, a+);
+
+         if (file == NULL)
+         {
+            printf("The contact file is created.\n");
+            return;
+         }
+         else
+         {
+            printf("The contact file is not created.\n");
+            fclose(file);
+         }
+
+         // char name[50];
+         // char phone[50];
+         // char email[50];
+
+         // printf("Enter Name: ");
+         // fgets(name, sizeof name, stdin);
+
+         // printf("Enter Phone: ");
+         // fgets(phone, sizeof phone, stdin);
+
+         // printf("Enter Email: ");
+         // fgets(email, sizeof email, stdin);
+
+         // printf("Contacts.\n ");
+         // printf("Name:  %s\nPhone:  %s\nEmail: %s\n", name, phone, email);
+         // return 0;
+      }
+   ```
+- how to write strings in a file using fprintf()
+
+   ```c
+      #include <stdio.h>
+
+      int main()
+      {
+
+         char name[50];
+         char phone[50];
+         char email[50];
+
+         FILE *file;
+         file = fopen("contact.txt", "a");
+
+         if (file == NULL)
+         {
+            printf("Unable to open the contact file.\n");
+            return 0;
+         }
+         else
+         {
+
+            // writing to a file
+            printf("The contact file is open.\n");
+
+            fflush(stdin);
+            printf("Enter Name: ");
+            fgets(name, sizeof name, stdin);
+
+            printf("Enter Phone: ");
+            fgets(phone, sizeof phone, stdin);
+
+            printf("Enter Email: ");
+            fgets(email, sizeof email, stdin);
+
+            // Write contact details to file
+            fprintf(file, "%s%s%s\n", name, phone, email);
+
+            fclose(file);
+            printf("Contact added successfully.\n");
+         }
+      }
+   ```
+
+- how to read a file using fscanf
+
+   ```c
+   #include <stdio.h>
+   int main()
+   {
+
+      char name[50];
+      char phone[50];
+      char email[50];
+
+      FILE *file;
+      file = fopen("contact.txt", "r");
+
+      if (file == NULL)
+      {
+         printf("Unable to open the contact file.\n");
+         return 0;
+      }
+      else
+      {
+
+         // read from a file
+
+         printf("Contacts:\n");
+         //  It tells fscanf to read strings until it encounters a newline character \n, but it skips leading whitespace characters. This allows it to read strings containing spaces.
+         while (fscanf(file, " %[^\n] %[^\n] %[^\n]", name, phone, email) != EOF)
+         {
+            printf("Name: %s\nPhone: %s\nEmail: %s\n\n", name, phone, email);
+         }
+
+         fclose(file);
+
+         // write a contact to a file
+         // printf("The contact file is open.\n");
+
+         // fflush(stdin);
+         // printf("Enter Name: ");
+         // fgets(name, sizeof name, stdin);
+
+         // printf("Enter Phone: ");
+         // fgets(phone, sizeof phone, stdin);
+
+         // printf("Enter Email: ");
+         // fgets(email, sizeof email, stdin);
+
+         //    // Write contact details to file
+         // fprintf(file, "%s %s %s\n", name, phone, email);
+
+         // fclose(file);
+         // printf("Contact added successfully.\n");
+      }
+   }
+
+   ```
+
+- create functions to separate read and write
+   
+   ```c
+      #include <stdio.h>
+
+      void addContact()
+      {
+         char name[50];
+         char phone[50];
+         char email[50];
+
+         FILE *file;
+         file = fopen("contact.txt", "a");
+
+         if (file == NULL)
+         {
+            printf("Unable to open the contact file.\n");
+            return;
+         }
+         else
+         {
+            // write a contact to a file
+            fflush(stdin);
+            printf("Enter Name: ");
+            fgets(name, sizeof name, stdin);
+
+            printf("Enter Phone: ");
+            fgets(phone, sizeof phone, stdin);
+
+            printf("Enter Email: ");
+            fgets(email, sizeof email, stdin);
+
+            // Write contact details to file
+            fprintf(file, "%s%s%s\n", name, phone, email);
+
+            fclose(file);
+            printf("Contact added successfully.\n");
+         }
+      }
+
+      void displayContacts()
+      {
+         char name[50];
+         char phone[50];
+         char email[50];
+
+         FILE *file;
+         file = fopen("contact.txt", "r");
+
+         if (file == NULL)
+         {
+            printf("Unable to open the contact file.\n");
+            return;
+         }
+         else
+         {
+            printf("Contacts:\n");
+            while (fscanf(file, " %[^\n] %[^\n] %[^\n]", name, phone, email) != EOF)
+            {
+               printf("Name: %s\nPhone: %s\nEmail: %s\n\n", name, phone, email);
+            }
+
+            fclose(file);
+         }
+      }
+
+      int main()
+      {
+
+         addContact();
+         displayContacts();
+      }
+
+   ```
+
+- create a structure to make this more easier
+
+```c
+#include <stdio.h>
+
+// Structure to represent a contact
+typedef struct
+{
+   char name[50];
+   char phone[20];
+   char email[50];
+} Contact;
+
+
+void addContact()
+{
+   Contact newContact;
+
+   FILE *file;
+   file = fopen("contact.txt", "a");
+
+   if (file == NULL)
+   {
+      printf("Unable to open the contact file.\n");
+      return;
+   }
+   else
+   {
+      // write a contact to a file
+      fflush(stdin);
+      printf("Enter Name: ");
+      fgets(newContact.name, sizeof newContact.name, stdin);
+
+      printf("Enter Phone: ");
+      fgets(newContact.phone, sizeof newContact.phone, stdin);
+
+      printf("Enter Email: ");
+      fgets(newContact.email, sizeof newContact.email, stdin);
+
+      // Write contact details to file
+      fprintf(file, "%s%s%s\n", newContact.name, newContact.phone, newContact.email);
+
+      fclose(file);
+      printf("Contact added successfully.\n");
+   }
+}
+
+void displayContacts()
+{
+   Contact contact;
+
+   FILE *file;
+   file = fopen("contact.txt", "r");
+
+   if (file == NULL)
+   {
+      printf("Unable to open the contact file.\n");
+      return;
+   }
+   else
+   {
+      printf("Contacts:\n");
+      while (fscanf(file, " %[^\n] %[^\n] %[^\n]", contact.name, contact.phone, contact.email) != EOF)
+      {
+         printf("Name: %s\nPhone: %s\nEmail: %s\n\n", contact.name, contact.phone, contact.email);
+      }
+
+      fclose(file);
+   }
+}
+
+int main()
+{
+
+   addContact();
+   displayContacts();
+}
+```
+
+- Finally lets add some choices here 
+
+```c
+int main()
+{
+  int choice;
+
+  do
+  {
+    printf("\nContact Management System\n");
+    printf("1. Add Contact\n");
+    printf("2. Display Contacts\n");
+    printf("3. Exit\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice)
+    {
+    case 1:
+      addContact();
+      break;
+    case 2:
+      displayContacts();
+      break;
+    case 3:
+      printf("Exiting...\n");
+      break;
+    default:
+      printf("Invalid choice. Please try again.\n");
+    }
+  } while (choice != 3);
+
+  return 0;
+}
+```
+
+- Final version of Contact Management System
+
+```c
+#include <stdio.h>
+
+struct Contact
+{
+   char name[50];
+   char phone[50];
+   char email[50];
+};
+
+void addContact()
+{
+   FILE *file;
+   file = fopen("contact.txt", "a");
+   if (file == NULL)
+   {
+      printf("File does not exist or could not be created");
+   }
+   else
+   {
+
+      struct Contact contact;
+      fflush(stdin);
+      printf("Enter Name: ");
+      fgets(contact.name, sizeof contact.name, stdin);
+
+      printf("Enter Phone: ");
+      fgets(contact.phone, sizeof contact.phone, stdin);
+
+      printf("Enter Email: ");
+      fgets(contact.email, sizeof contact.email, stdin);
+
+      // write to the file
+      fprintf(file, "%s%s%s\n", contact.name, contact.phone, contact.email);
+
+      fclose(file);
+
+      printf("Added to Contact Management System\n");
+   }
+}
+
+void displayContacts()
+{
+   struct Contact contact;
+
+   FILE *file;
+   file = fopen("contact.txt", "r");
+   if (file == NULL)
+   {
+      printf("File does not exist or could not be created");
+   }
+   else
+   {
+
+      printf("Contacts.\n");
+
+      while (fscanf(file, " %[^\n] %[^\n] %[^\n]", contact.name, contact.phone, contact.email) != EOF)
+      {
+         printf("Name: %s\nPhone: %s\nEmial: %s\n\n", contact.name, contact.phone, contact.email);
+      }
+
+      fclose(file);
+   }
+}
+
+int main()
+{
+   int choice;
+   do
+   {
+      printf("\nContact Management System\n");
+      printf("1. Add Contact\n");
+      printf("2. Display Contacts\n");
+      printf("3. Exit\n");
+
+      printf("Enter your choice: ");
+      scanf("%d", &choice);
+
+      switch (choice)
+      {
+      case 1:
+         addContact();
+         break;
+      case 2:
+         displayContacts();
+         break;
+      case 3:
+         printf("Exiting...\n");
+         break;
+      default:
+         printf("Invalid Choice. Please try again.\n");
+      }
+
+   } while (choice != 3);
+}
 
 ```
