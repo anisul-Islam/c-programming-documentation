@@ -3457,6 +3457,247 @@ int main()
 
 ### 1.17 Pointers
 
+- A pointer is a variable that stores the memory address (unsigned or postive integer) of another variable. Pointers are powerful features of the C/C++ language, this feature differentiates C/C++ from other languages such as Java/Python.
+- allowing you to directly manipulate memory and work with data structures efficiently.
+- but excessive usage may make the program less undesratable.
+
+```c
+int *ptr; // Declares a pointer to an integer
+
+int x = 10;
+int *ptr = &x; // Intitializing a pointer. Pointer ptr now holds the address of variable x
+
+int x = 10;
+int *ptr = &x; // Accessing values through a pointer
+printf("Value of x: %d\n", *ptr); // Prints the value of x, which is 10
+```
+
+- swapping 2 numbers using pointer
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+
+  int number1 = 10, number2 = 20, temp;
+  int *ptr1, *ptr2;
+
+  ptr1 = &number1;
+  ptr2 = &number2;
+
+  temp = *ptr1;
+  *ptr1 = *ptr2;
+  *ptr2 = temp;
+
+  printf("number1 = %d\n", number1);
+  printf("number2 = %d\n", number2);
+}
+```
+
+- swapping two numbers using pointers + function
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+void swap(int *ptr1, int *ptr2)
+{
+  int temp = *ptr1;
+  *ptr1 = *ptr2;
+  *ptr2 = temp;
+}
+
+int main()
+{
+
+  int number1 = 10, number2 = 20, temp;
+  printf("before swapping: \n");
+  printf("number1 = %d\n", number1);
+  printf("number2 = %d\n", number2);
+  int *ptr1, *ptr2;
+
+  swap(&number1, &number2);
+  printf("After swapping: \n");
+  printf("number1 = %d\n", number1);
+  printf("number2 = %d\n", number2);
+}
+```
+
+- sum of 2 numbers using pointers
+
+```c
+#include <stdio.h>
+int main()
+{
+  int number1 = 10;
+  int number2 = 20;
+
+  int *ptr1 = &number1;
+  int *ptr2 = &number2;
+
+  int sum = *ptr1 + *ptr2;
+
+  printf("Sum of numbers = %d\n", sum);
+}
+
+// Another version
+#include <stdio.h>
+
+// Function to calculate the sum of two numbers using pointers
+int sum(int *ptr1, int *ptr2) {
+    return (*ptr1) + (*ptr2);
+}
+
+int main() {
+    int number1 = 10;
+    int number2 = 20;
+
+    int *ptr1 = &number1; // Pointer to number1
+    int *ptr2 = &number2; // Pointer to number2
+
+    // Call the sum function with pointers as arguments
+    int result = sum(ptr1, ptr2);
+
+    printf("Sum of numbers = %d\n", result);
+    
+    return 0;
+}
+
+```
+
+- accessing arrays using pointer and arithmetic operation
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+  int numbers[5] = {10, 20, 30, 40, 50};
+  int *ptr = &numbers[0];
+  printf("%d\n", *ptr);
+  printf("%d\n", *ptr + 1);
+  printf("%d\n", *(ptr + 1));
+  printf("%d\n", *(ptr + 2));
+  printf("%d\n", *(ptr + 3));
+  printf("%d\n", *(ptr + 4));
+}
+```
+
+- dynamic memory allocation: Pointers are commonly used with functions like malloc() and free() for dynamic memory allocation:
+
+```c
+int *ptr = (int *)malloc(sizeof(int)); // Allocates memory for an integer
+*ptr = 10; // Assigns a value to the allocated memory
+free(ptr); // Deallocates the memory
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+
+  int *ptr1 = (int *)malloc(sizeof(int)); // Allocates memory for an integer
+  int *ptr2 = (int *)malloc(sizeof(int));
+
+  *ptr1 = 10; // Assigns a value to the allocated memory
+  *ptr2 = 20;
+
+  int sum = *ptr1 + *ptr2;
+
+  printf("Sum of numbers = %d\n", sum);
+  free(ptr1); // Deallocates the memory
+  free(ptr2); // Deallocates the memory
+
+
+  // Another complex example of dynamic memory allocation for an array increasing size during run time
+   #include <stdio.h>
+   #include <stdlib.h>
+
+   int main() {
+      int *dynamicArray = NULL; // Pointer to dynamically allocated memory
+      int size = 0; // Current size of the dynamic array
+      int capacity = 2; // Initial capacity of the dynamic array
+
+      // Allocate memory for the dynamic array
+      dynamicArray = (int *)malloc(capacity * sizeof(int));
+
+      // Check if memory allocation was successful
+      if (dynamicArray == NULL) {
+         printf("Memory allocation failed\n");
+         return 1;
+      }
+
+      // Prompt the user to enter numbers until they input -1
+      int num;
+      printf("Enter numbers (-1 to stop):\n");
+      while (1) {
+         scanf("%d", &num);
+         if (num == -1) {
+               break;
+         }
+
+         // Resize the dynamic array if necessary
+         if (size == capacity) {
+               capacity *= 2;
+               dynamicArray = (int *)realloc(dynamicArray, capacity * sizeof(int));
+               if (dynamicArray == NULL) {
+                  printf("Memory reallocation failed\n");
+                  return 1;
+               }
+         }
+
+         // Add the new number to the dynamic array
+         dynamicArray[size++] = num;
+      }
+
+      // Print the elements of the dynamic array
+      printf("Dynamic array elements:\n");
+      for (int i = 0; i < size; i++) {
+         printf("%d ", dynamicArray[i]);
+      }
+      printf("\n");
+
+      // Free dynamically allocated memory
+      free(dynamicArray);
+
+      return 0;
+   }
+
+}
+```
+
+- static vs dynamic memory allocation
+      - Key Differences:
+         - Static memory allocation occurs at compile time, while dynamic memory allocation occurs at runtime.
+         - Static memory allocation is done on the stack, while dynamic memory allocation is done on the heap.
+         - The size of statically allocated memory must be known at compile time, whereas the size of dynamically allocated memory can be determined at runtime.
+         - Static memory allocation is more straightforward but less flexible, while dynamic memory allocation allows for more flexibility but requires manual memory management.
+
+**Dynamic Memory Allocation (malloc/free):**
+- **Advantages:**
+  - Allows you to allocate memory at runtime, which can be useful when the size of data is not known at compile time.
+  - Helps manage memory efficiently by allocating only what is needed, reducing memory wastage.
+- **Disadvantages:**
+  - Requires explicit memory management (using `malloc` and `free`), which can lead to memory leaks or segmentation faults if not done properly.
+  - Can be slower than static memory allocation due to the overhead of managing memory at runtime.
+
+**Static Memory Allocation (stack allocation):**
+- **Advantages:**
+  - Memory is allocated and deallocated automatically by the compiler, simplifying memory management.
+  - Generally faster than dynamic memory allocation as allocation and deallocation are done at compile time.
+- **Disadvantages:**
+  - Limited flexibility since the size of data must be known at compile time.
+  - Stack memory is typically smaller than the heap, so it might not be suitable for large data structures.
+
+**Which One Is Better:**
+- For simple programs or when the size of data is known at compile time, static memory allocation can be preferred due to its simplicity and efficiency.
+- For more complex programs where the size of data is not known in advance or when memory needs to be dynamically allocated and deallocated during program execution, dynamic memory allocation is necessary.
+
+In summary, there's no definitive answer to which approach is better. It depends on the specific requirements, constraints, and performance considerations of your program. Both dynamic and static memory allocation have their place in software development, and the choice between them should be made based on the particular needs of your application.
+
+
 ### 1.18 File
 
 - not storing data
@@ -3490,7 +3731,7 @@ int main()
 
 - how to declare a file: `FILE *nameOfTheFile` file pointer variable
 - how to create and close a file in c
-   
+ 
    ```c
       #include <stdio.h>
 
@@ -3529,6 +3770,7 @@ int main()
          // return 0;
       }
    ```
+
 - how to write strings in a file using fprintf()
 
    ```c
@@ -3631,7 +3873,7 @@ int main()
    ```
 
 - create functions to separate read and write
-   
+
    ```c
       #include <stdio.h>
 
@@ -3784,7 +4026,7 @@ int main()
 }
 ```
 
-- Finally lets add some choices here 
+- Finally lets add some choices here
 
 ```c
 int main()
