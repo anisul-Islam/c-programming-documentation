@@ -5,18 +5,18 @@
 ## Table of Contents
 
 1. [1. Basic C Programming Topics](#1-basic-c-programming-topics)
-   - [1.1 Translator Program](#11-program-translator-program)  
-   - [1.2 Algorithm and Flowchart](#12-algorithm-and-flowchart)  
+   - [1.1 Translator Program](#11-program-translator-program)
+   - [1.2 Algorithm and Flowchart](#12-algorithm-and-flowchart)
    - [1.3 Introduction to C program](#13-introduction-to-c-programming)
-   - [1.4 First C program and its parts](#14-first-c-program-ans-its-various-parts)  
-   - [1.5 Comments and Escape sequences](#15-comments-and-escape-sequences)  
-   - [1.6 Keywords, Variables, Data types](#16-keywords-variables-data-types)  
-   - [1.7 Input and output functions](#17-input-and-output-functions)  
-   - [1.8 Operators](#18-operators)  
-   - [1.9 <math.h> library](#19-mathh-library)  
-   - [1.10 Control Statement](#110-control-statement)  
-   - [1.11 Functions](#111-functions)  
-   - [1.12 Arrays](#112-arrays)  
+   - [1.4 First C program and its parts](#14-first-c-program-ans-its-various-parts)
+   - [1.5 Comments and Escape sequences](#15-comments-and-escape-sequences)
+   - [1.6 Keywords, Variables, Data types](#16-keywords-variables-data-types)
+   - [1.7 Input and output functions](#17-input-and-output-functions)
+   - [1.8 Operators](#18-operators)
+   - [1.9 <math.h> library](#19-mathh-library)
+   - [1.10 Control Statement](#110-control-statement)
+   - [1.11 Functions](#111-functions)
+   - [1.12 Arrays](#112-arrays)
 2. [2. Intermediate C]()
    - []()
 3. [3. Advanced C](#basic-c)
@@ -28,7 +28,7 @@
 
 A program is a set of instructions to perfrom a task.
 
-A translator program is a software tool that translates source code to object code (machine code / binary code). It ranslates code or instructions from one programming language into another. It plays a crucial role in the software development process, enabling developers to write code in high-level languages that are easier to understand and maintain, while the translator converts it into machine code that a computer can execute. There are several types of translator programs, each serving a specific purpose in this process:
+A translator program is a software tool that translates source code to object code (machine code / binary code). It ranslates code or instructions from one programming language into another. There are several types of translator programs, each serving a specific purpose in this process:
 
 1. **Compiler:**
    - **Purpose:** A compiler translates the entire source code of a program written in a high-level language into machine code or another lower-level language in one go. It generates an executable file that can run independently.
@@ -65,8 +65,6 @@ A translator program is a software tool that translates source code to object co
 9. **Decompiler:**
    - **Purpose:** A decompiler attempts to reverse the process of compilation by translating machine code or executable files back into a higher-level programming language or assembly language. This is often used for reverse engineering and analysis of binaries.
    - **Examples:** IDA Pro, Hex-Rays (for reverse engineering).
-
-Each type of translator program serves a specific role in the software development process, from converting human-readable code into machine code to managing dependencies and loading the program into memory for execution. The choice of which type of translator to use depends on the programming language, target platform, and development requirements.
 
 ### 1.2 Algorithm and Flowchart
 
@@ -146,7 +144,6 @@ int main()
 ```
 
 - Let's break down the code to understand each line:
-
   - #include <stdio.h> The function used for generating output is defined in stdio.h. In order to use the printf function, we need to first include the required file, also called a header file. The <stdio.h> library provides a range of functions for handling input and output operations in C. Some examples: printf(), scanf(), gets(), puts(), putchar(), getchar()
 
   - int main() The main() function is the entry point to a program. Curly brackets { } indicate the beginning and end of a function (also called a code block). The statements inside the brackets determine what the function does when executed.
@@ -154,6 +151,17 @@ int main()
   - return 0 Success Indicator: The return 0; statement is a way for a C program to signal to the operating system that it has executed successfully and is terminating without any errors. Error Indicator: If a program encounters an error or unexpected condition during execution, it can use a non-zero value (e.g., return 1;, return -1;) to indicate that something went wrong.
 
 #### Challenge 1: print your name, email and address
+
+```c
+#include <stdio.h>
+int main()
+{
+  printf("Anisul Islam");
+  printf("anisul2010s@yahoo.co.uk");
+  printf("11 mornington avenue");
+  return 0;
+}
+```
 
 ### 1.5 Comments and Escape sequences
 
@@ -178,19 +186,19 @@ Comments in C are used to provide explanations or descriptions within the code. 
 
 Example of comments in C code:
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   int main() {
-      // This is a single-line comment
-      printf("Hello, World!\n"); // This comment is at the end of the line
+int main() {
+   // This is a single-line comment
+   printf("Hello, World!\n"); // This comment is at the end of the line
 
-      /* This is a
-         multi-line comment */
-      
-      return 0;
-   }
-   ```
+   /* This is a
+      multi-line comment */
+
+   return 0;
+}
+```
 
 **Escape Sequences:**
 
@@ -206,19 +214,19 @@ Escape sequences are often used when you need to insert special characters into 
 
 Example of escape sequences in C code:
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   int main() {
-      printf("This is a newline: \n");
-      printf("This is a tab: \t");
-      printf("This is a double quote: \"\n");
-      printf("This is a single quote: \'\n");
-      printf("This is a backslash: \\\n");
+int main() {
+   printf("This is a newline: \n");
+   printf("This is a tab: \t");
+   printf("This is a double quote: \"\n");
+   printf("This is a single quote: \'\n");
+   printf("This is a backslash: \\\n");
 
-      return 0;
-   }
-   ```
+   return 0;
+}
+```
 
 When you run the code, you will see that the escape sequences are interpreted and displayed as the corresponding special characters.
 
@@ -232,14 +240,14 @@ In C programming, you'll work with keywords, variables, and various data types t
 
 Keywords are reserved words in C that have special meanings and are used to define the structure and logic of the program. You cannot use keywords as identifiers (variable or function names). Some common C keywords include:
 
-auto       double     int        struct
-break      else       long       switch
-case       enum       register   typedef
-char       extern     return     union
-const      float      short      unsigned
-continue   for        signed     void
-default    goto       sizeof     volatile
-do         if         static     while
+auto double int struct
+break else long switch
+case enum register typedef
+char extern return union
+const float short unsigned
+continue for signed void
+default goto sizeof volatile
+do if static while
 
 - `int`: Defines an integer data type.
 - `char`: Defines a character data type.
@@ -259,18 +267,18 @@ do         if         static     while
 
 - without variable
 
-   ```c
-   // without variable
-   #include <stdio.h>
-   int main()
-   {
-      printf("Math Marks: 80\n");
-      printf("Computer Marks: 60\n");
-      printf("English Marks: 70\n");
+  ```c
+  // without variable
+  #include <stdio.h>
+  int main()
+  {
+     printf("Math Marks: 80\n");
+     printf("Computer Marks: 60\n");
+     printf("English Marks: 70\n");
 
-      return 0;
-   }
-   ```
+     return 0;
+  }
+  ```
 
 Variables are used to store and manipulate data within a C program. When declaring a variable, you specify its data type, a name, and an optional initial value. Variable names must be unique within a scope (a block of code). Examples of variable declarations:
 
@@ -278,19 +286,19 @@ Variables are used to store and manipulate data within a C program. When declari
 - `float salary = 5000.50;` (Declares a floating-point variable named `salary` and assigns it an initial value.)
 - `char initial = 'A';` (Declares a character variable named `initial` and assigns it the character 'A'.)
 
-   ```c
-   // declaring variables
-   #include <stdio.h>
-   int main()
-   {
-      int math = 80;
-      int bangla = 60;
-      int english = 70;
+  ```c
+  // declaring variables
+  #include <stdio.h>
+  int main()
+  {
+     int math = 80;
+     int bangla = 60;
+     int english = 70;
 
 
-      return 0;
-   }
-   ```
+     return 0;
+  }
+  ```
 
 Naming conventions and rules for variables in C are essential for writing readable and maintainable code. They help developers understand the purpose of variables and ensure consistency across projects. Here are some common naming conventions and rules for variables in C:
 
@@ -324,47 +332,47 @@ Naming conventions and rules for variables in C are essential for writing readab
 
 **Examples:**
 
-   ```c
-   // Good variable naming examples
-   int numberOfStudents;
-   char studentName[50];
-   const int MAX_ATTEMPTS = 3;
+```c
+// Good variable naming examples
+int numberOfStudents;
+char studentName[50];
+const int MAX_ATTEMPTS = 3;
 
-   // Avoid using single letters and cryptic names
-   int n; // Avoid using single letters like 'n'
-   int x; // Avoid cryptic variable names
+// Avoid using single letters and cryptic names
+int n; // Avoid using single letters like 'n'
+int x; // Avoid cryptic variable names
 
-   // Meaningful names and clear intent
-   double temperatureCelsius;
-   char customerAddress[100];
+// Meaningful names and clear intent
+double temperatureCelsius;
+char customerAddress[100];
 
-   // Consistent style and camel case
-   int totalSalesCount;
-   ```
+// Consistent style and camel case
+int totalSalesCount;
+```
 
 Adhering to these naming conventions and rules will improve the readability and maintainability of your C code and make it easier for you and other developers to understand and work with your programs.
 
 #### challenge 2: declare and initialize variables
 
-   ```c
-  // variable declarations
-  // variable initializations
-  // variable dynamic initializations
-  // variable naming conventions
-  // basic data types
-  // format specifiers
+```c
+// variable declarations
+// variable initializations
+// variable dynamic initializations
+// variable naming conventions
+// basic data types
+// format specifiers
 
-   Date of birth - 12/03/1990
+Date of birth - 12/03/1990
 
-   1. define 3 variables to store
-   2. output 1
-      
-      day = 12,  
-      month = 3,  
-      year = 1990
+1. define 3 variables to store
+2. output 1
 
-      day = 12,  month = 3,  year = 1990
-   ```
+   day = 12,
+   month = 3,
+   year = 1990
+
+   day = 12,  month = 3,  year = 1990
+```
 
 #### **Data Types:**
 
@@ -379,134 +387,118 @@ C provides several built-in data types, allowing you to store different types of
 
    In C, the memory allocated for integer data types like `int`, `short`, `long`, and `long long` can vary depending on the specific implementation (compiler and system). However, there are general guidelines and common memory sizes associated with these data types on most systems.
 
-      Here's an example of integer data types and their common memory sizes:
+   Here's an example of integer data types and their common memory sizes:
 
-      **`int`:**
-         - Common memory size: 4 bytes (32 bits)
-         - Typical range: -2,147,483,648 to 2,147,483,647
+   **`int`:** - Common memory size: 4 bytes (32 bits) - Typical range: -2,147,483,648 to 2,147,483,647
 
-      ```c
-      int myInt; // Declaration of an integer variable
-      ```
+   ```c
+   int myInt; // Declaration of an integer variable
+   ```
 
-      **`short` (or `short int`):**
-         - Common memory size: 2 bytes (16 bits)
-         - Typical range: -32,768 to 32,767
+   **`short` (or `short int`):** - Common memory size: 2 bytes (16 bits) - Typical range: -32,768 to 32,767
 
-      ```c
-      short myShort; // Declaration of a short integer variable
-      ```
+   ```c
+   short myShort; // Declaration of a short integer variable
+   ```
 
-      **`long`:**
-         - Common memory size: 4 bytes (32 bits) or 8 bytes (64 bits, on 64-bit systems)
-         - Typical range: -2,147,483,648 to 2,147,483,647 (32-bit), or -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (64-bit)
+   **`long`:** - Common memory size: 4 bytes (32 bits) or 8 bytes (64 bits, on 64-bit systems) - Typical range: -2,147,483,648 to 2,147,483,647 (32-bit), or -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (64-bit)
 
-      ```c
-      long myLong; // Declaration of a long integer variable
-      ```
+   ```c
+   long myLong; // Declaration of a long integer variable
+   ```
 
-      **`long long` (or `long long int`):**
-         - Common memory size: 8 bytes (64 bits)
-         - Typical range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+   **`long long` (or `long long int`):** - Common memory size: 8 bytes (64 bits) - Typical range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
 
-      ```c
-      long long myLongLong; // Declaration of a long long integer variable
-      ```
+   ```c
+   long long myLongLong; // Declaration of a long long integer variable
+   ```
 
-      **`signed` and `unsigned`:**
-         - These qualifiers can be used with integer data types to specify whether the values are signed (can be positive or negative) or unsigned (only non-negative).
+   **`signed` and `unsigned`:** - These qualifiers can be used with integer data types to specify whether the values are signed (can be positive or negative) or unsigned (only non-negative).
 
-      ```c
-      signed int mySignedInt;       // A signed integer can store positive and negative
-      unsigned int myUnsignedLongLong; // An unsigned can store only positive values
+   ```c
+   signed int mySignedInt;       // A signed integer can store positive and negative
+   unsigned int myUnsignedLongLong; // An unsigned can store only positive values
 
-      #include <stdio.h>
+   #include <stdio.h>
 
-      int main() {
-         signed int positiveNumber = 42;
-         signed int negativeNumber = -10;
+   int main() {
+      signed int positiveNumber = 42;
+      signed int negativeNumber = -10;
 
-         printf("Positive Number: %d\n", positiveNumber);
-         printf("Negative Number: %d\n", negativeNumber);
+      printf("Positive Number: %d\n", positiveNumber);
+      printf("Negative Number: %d\n", negativeNumber);
 
-         return 0;
-      }
-      ```
+      return 0;
+   }
+   ```
 
-      Please note that the actual memory sizes and ranges can vary depending on the specific compiler and system architecture (32-bit vs. 64-bit). You can use the `sizeof` operator in C to determine the size of data types on your system:
+   Please note that the actual memory sizes and ranges can vary depending on the specific compiler and system architecture (32-bit vs. 64-bit). You can use the `sizeof` operator in C to determine the size of data types on your system:
 
-      ```c
-      printf("Size of int: %lu bytes\n", sizeof(int));
-      printf("Size of short: %lu bytes\n", sizeof(short));
-      printf("Size of long: %lu bytes\n", sizeof(long));
-      printf("Size of long long: %lu bytes\n", sizeof(long long));
-      ```
+   ```c
+   printf("Size of int: %lu bytes\n", sizeof(int));
+   printf("Size of short: %lu bytes\n", sizeof(short));
+   printf("Size of long: %lu bytes\n", sizeof(long));
+   printf("Size of long long: %lu bytes\n", sizeof(long long));
+   ```
 
-      This code will output the sizes of these data types on your specific system.
+   This code will output the sizes of these data types on your specific system.
 
 2. **Floating-Point Data Types:**
    - `float`: Used for single-precision floating-point numbers.
    - `double`: Used for double-precision floating-point numbers.
    - `long double`: Used for extended precision floating-point numbers.
 
-      In C, the memory allocated for floating-point data types like `float`, `double`, and `long double` can also vary depending on the specific implementation (compiler and system). However, there are general guidelines and common memory sizes associated with these data types on most systems.
+     In C, the memory allocated for floating-point data types like `float`, `double`, and `long double` can also vary depending on the specific implementation (compiler and system). However, there are general guidelines and common memory sizes associated with these data types on most systems.
 
-      Here's an example of floating-point data types and their common memory sizes:
+     Here's an example of floating-point data types and their common memory sizes:
 
-      **`float`:**
-         - Common memory size: 4 bytes (32 bits)
-         - Typical range: Approximately 3.4e-38 to 3.4e38
+     **`float`:** - Common memory size: 4 bytes (32 bits) - Typical range: Approximately 3.4e-38 to 3.4e38
 
-      ```c
-      float myFloat; // Declaration of a floating-point variable
-      ```
+     ```c
+     float myFloat; // Declaration of a floating-point variable
+     ```
 
-      **`double`:**
-         - Common memory size: 8 bytes (64 bits)
-         - Typical range: Approximately 1.7e-308 to 1.7e308
+     **`double`:** - Common memory size: 8 bytes (64 bits) - Typical range: Approximately 1.7e-308 to 1.7e308
 
-      ```c
-      double myDouble; // Declaration of a double-precision floating-point variable
-      ```
+     ```c
+     double myDouble; // Declaration of a double-precision floating-point variable
+     ```
 
-      **`long double`:**
-         - Common memory size: 8 bytes (64 bits) or 16 bytes (128 bits, on some systems)
-         - Typical range: Similar to `double` but with greater precision
+     **`long double`:** - Common memory size: 8 bytes (64 bits) or 16 bytes (128 bits, on some systems) - Typical range: Similar to `double` but with greater precision
 
-      ```c
-      long double myLongDouble; // Declaration of a long double floating-point variable
-      ```
+     ```c
+     long double myLongDouble; // Declaration of a long double floating-point variable
+     ```
 
-      Please note that the actual memory sizes and ranges can vary depending on the specific compiler and system architecture (32-bit vs. 64-bit). You can use the `sizeof` operator in C to determine the size of data types on your system, as shown in the previous answer.
+     Please note that the actual memory sizes and ranges can vary depending on the specific compiler and system architecture (32-bit vs. 64-bit). You can use the `sizeof` operator in C to determine the size of data types on your system, as shown in the previous answer.
 
-      Here's how you can determine the size of `float`, `double`, and `long double` on your system:
+     Here's how you can determine the size of `float`, `double`, and `long double` on your system:
 
-      ```c
-      printf("Size of float: %lu bytes\n", sizeof(float));
-      printf("Size of double: %lu bytes\n", sizeof(double));
-      printf("Size of long double: %lu bytes\n", sizeof(long double));
-      ```
+     ```c
+     printf("Size of float: %lu bytes\n", sizeof(float));
+     printf("Size of double: %lu bytes\n", sizeof(double));
+     printf("Size of long double: %lu bytes\n", sizeof(long double));
+     ```
 
-      In C, data type modifiers are used to alter the storage size and sign of the data type. These modifiers can help control memory allocation and the range of values that a variable can hold. Here are some commonly used data type modifiers in C and how they affect memory allocation:
+     In C, data type modifiers are used to alter the storage size and sign of the data type. These modifiers can help control memory allocation and the range of values that a variable can hold. Here are some commonly used data type modifiers in C and how they affect memory allocation:
+     1. **`short` and `long` Modifiers**:
+        - `short`: This modifier is used to reduce the storage size of an integer data type. For example, `short int` is typically 2 bytes, which is smaller than a standard `int`.
+        - `long`: This modifier is used to increase the storage size of an integer data type. For example, `long int` is typically 4 or 8 bytes, providing a larger range of values.
 
-      1. **`short` and `long` Modifiers**:
-         - `short`: This modifier is used to reduce the storage size of an integer data type. For example, `short int` is typically 2 bytes, which is smaller than a standard `int`.
-         - `long`: This modifier is used to increase the storage size of an integer data type. For example, `long int` is typically 4 or 8 bytes, providing a larger range of values.
+     2. **`signed` and `unsigned` Modifiers**:
+        - `signed`: This modifier is the default for integer data types. It allows variables to store both positive and negative values. For example, `int` is implicitly signed.
+        - `unsigned`: This modifier is used to make an integer data type capable of storing only non-negative values, effectively doubling the positive range. For example, `unsigned int` can store values from 0 to 65,535 instead of -32,768 to 32,767 for a standard `int`.
 
-      2. **`signed` and `unsigned` Modifiers**:
-         - `signed`: This modifier is the default for integer data types. It allows variables to store both positive and negative values. For example, `int` is implicitly signed.
-         - `unsigned`: This modifier is used to make an integer data type capable of storing only non-negative values, effectively doubling the positive range. For example, `unsigned int` can store values from 0 to 65,535 instead of -32,768 to 32,767 for a standard `int`.
+     3. **`const` Modifier**:
+        - The `const` modifier is used to declare a constant, meaning the value of the variable cannot be changed once it's assigned. While this modifier doesn't directly affect memory allocation, it can help the compiler optimize code by placing constants in read-only memory segments.
 
-      3. **`const` Modifier**:
-         - The `const` modifier is used to declare a constant, meaning the value of the variable cannot be changed once it's assigned. While this modifier doesn't directly affect memory allocation, it can help the compiler optimize code by placing constants in read-only memory segments.
+     4. **`volatile` Modifier**:
+        - The `volatile` modifier is used to indicate that a variable's value can be changed by external factors not under the program's control. This modifier prevents the compiler from optimizing away accesses to the variable and can affect memory allocation in the sense that it may lead to actual memory accesses.
 
-      4. **`volatile` Modifier**:
-         - The `volatile` modifier is used to indicate that a variable's value can be changed by external factors not under the program's control. This modifier prevents the compiler from optimizing away accesses to the variable and can affect memory allocation in the sense that it may lead to actual memory accesses.
+     5. **`register` Modifier**:
+        - The `register` modifier is used to suggest that a variable should be stored in a processor register for faster access. While it doesn't explicitly control memory allocation, it can improve performance by reducing memory accesses.
 
-      5. **`register` Modifier**:
-         - The `register` modifier is used to suggest that a variable should be stored in a processor register for faster access. While it doesn't explicitly control memory allocation, it can improve performance by reducing memory accesses.
-
-      These modifiers provide flexibility and control over memory allocation and variable behavior in C. When choosing which modifier to use, consider the specific requirements of your program, the range of values needed, and any optimization considerations.
+     These modifiers provide flexibility and control over memory allocation and variable behavior in C. When choosing which modifier to use, consider the specific requirements of your program, the range of values needed, and any optimization considerations.
 
 3. **Character Data Type:**
    - `char`: Used to store a single character.
@@ -551,17 +543,17 @@ C provides several built-in data types, allowing you to store different types of
 
 Example of variable declarations with data types:
 
-   ```c
+```c
+int age;
+double salary = 5000.50;
+char initial = 'A';
+int numbers[5]; // Array of integers
+struct Person {
+   char name[50];
    int age;
-   double salary = 5000.50;
-   char initial = 'A';
-   int numbers[5]; // Array of integers
-   struct Person {
-      char name[50];
-      int age;
-   };
-   typedef enum { RED, GREEN, BLUE } Color;
-   ```
+};
+typedef enum { RED, GREEN, BLUE } Color;
+```
 
 These fundamental concepts are essential for understanding and writing C programs, as they govern how data is stored, processed, and manipulated within the language.
 
@@ -570,7 +562,6 @@ These fundamental concepts are essential for understanding and writing C program
 In C are used in the `printf` and `scanf` functions to define the type and format of the data that you want to display or read. They specify how data should be formatted when it's input or output. Here are some commonly used format specifiers in C:
 
 1. **Integer Types:**
-
    - `%d`: Print or scan an `int`.
    - `%u`: Print or scan an `unsigned int`.
    - `%ld`: Print or scan a `long`.
@@ -581,7 +572,6 @@ In C are used in the `printf` and `scanf` functions to define the type and forma
    - `%o`: Print or scan an integer in octal.
 
 2. **Floating-Point Types:**
-
    - `%f`: Print or scan a `float`.
    - `%lf`: Print or scan a `double`.
    - `%Lf`: Print or scan a `long double`.
@@ -589,60 +579,54 @@ In C are used in the `printf` and `scanf` functions to define the type and forma
    - `%g` or `%G`: Print or scan in either `%f` or `%e`, depending on the value.
 
 3. **Characters:**
-
    - `%c`: Print or scan a character.
    - `%s`: Print or scan a string.
 
 4. **Pointers:**
-
    - `%p`: Print an address from a pointer.
 
 5. **Size Specifiers:**
-
    - `%zd`: Print or scan a `size_t`.
    - `%td`: Print or scan a `ptrdiff_t`.
 
 6. **Special Characters:**
-
    - `%%`: Print a percent sign.
 
 7. **Width and Precision:**
-
    - `%[width]d`: Print an integer with a minimum field width of `[width]`.
    - `%.[precision]f`: Print a floating-point number with `[precision]` decimal places.
 
 8. **Other Format Specifiers:**
-
    - `%n`: Used with `printf` to count the number of characters printed.
    - `%*`: Used to specify the width or precision as a variable argument.
 
 Here's an example demonstrating the use of format specifiers in `printf`:
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   int main() {
-      int number = 4234;
-      float floatValue = 3.14159;
-      char letter = 'A';
-      char name[20];
+int main() {
+   int number = 4234;
+   float floatValue = 3.14159;
+   char letter = 'A';
+   char name[20];
 
-      printf("Integer: %d\n", number); // 4234
-      printf("Integer: %2d\n", number); // 42
-      printf("Float: %*f\n", floatValue); // 3.1
-      printf("Float: %.2f\n", floatValue); // 3.14
-      printf("Float: %3.2f\n", floatValue); // 3.14
-      printf("Character: %c\n", letter);
+   printf("Integer: %d\n", number); // 4234
+   printf("Integer: %2d\n", number); // 42
+   printf("Float: %*f\n", floatValue); // 3.1
+   printf("Float: %.2f\n", floatValue); // 3.14
+   printf("Float: %3.2f\n", floatValue); // 3.14
+   printf("Character: %c\n", letter);
 
 
-      scanf("%3d %d %*f %5s", &number, &number, &floatValue, text); /* input: 4234  3.7  anisul */
-      printf("%d  %d  %s", number, number, text); /* output: 423  4234  anisu */ 
+   scanf("%3d %d %*f %5s", &number, &number, &floatValue, text); /* input: 4234  3.7  anisul */
+   printf("%d  %d  %s", number, number, text); /* output: 423  4234  anisu */
 
-      return 0;
-   }
-   ```
+   return 0;
+}
+```
 
-   This code prints an integer with `%d`, a floating-point number with two decimal places using `%.2f`, and a character with `%c`. These format specifiers are placeholders that `printf` will replace with the actual values you provide as arguments.
+This code prints an integer with `%d`, a floating-point number with two decimal places using `%.2f`, and a character with `%c`. These format specifiers are placeholders that `printf` will replace with the actual values you provide as arguments.
 
 ### 1.7 Input and output functions
 
@@ -652,41 +636,41 @@ We can use printf(), puts(), putchar() for output and scanf(), gets(), getchar()
 
 In C, you can get user input from the standard input, typically the keyboard, using the `scanf` function. Here's how you can use `scanf` to read user input:
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   int main() {
-      int number;
-      char name[50];
+int main() {
+   int number;
+   char name[50];
 
-      // Prompt the user for input
-      printf("Enter an integer: ");
-      scanf("%d", &number);
+   // Prompt the user for input
+   printf("Enter an integer: ");
+   scanf("%d", &number);
 
-      printf("Enter your name: ");
-      scanf("%s", name); // Reads a single word (stops at whitespace)
+   printf("Enter your name: ");
+   scanf("%s", name); // Reads a single word (stops at whitespace)
 
-      // Display the input
-      printf("You entered: %d\n", number);
-      printf("Your name is: %s\n", name);
+   // Display the input
+   printf("You entered: %d\n", number);
+   printf("Your name is: %s\n", name);
 
-      return 0;
-   }
-   ```
+   return 0;
+}
+```
 
-   In this example:
+In this example:
 
-   1. We declare two variables, `number` to store an integer and `name` as a character array to store a name.
+1. We declare two variables, `number` to store an integer and `name` as a character array to store a name.
 
-   2. We use `printf` to prompt the user for input.
+2. We use `printf` to prompt the user for input.
 
-   3. We use `scanf` to read the input. The format specifier `%d` is used to read an integer, and `%s` is used to read a string (which stops at whitespace). The `&` symbol is used before the variable name to provide the address of the variable where the input should be stored.
+3. We use `scanf` to read the input. The format specifier `%d` is used to read an integer, and `%s` is used to read a string (which stops at whitespace). The `&` symbol is used before the variable name to provide the address of the variable where the input should be stored.
 
-   4. After reading the input, we use `printf` to display the values entered by the user.
+4. After reading the input, we use `printf` to display the values entered by the user.
 
-   When you run the program, the user will be prompted to enter an integer and their name. The values entered by the user are then displayed.
+When you run the program, the user will be prompted to enter an integer and their name. The values entered by the user are then displayed.
 
-   Keep in mind that `scanf` can be sensitive to the input format, and it's a good practice to perform error checking on the return value of `scanf` to ensure that the input was successfully read.
+Keep in mind that `scanf` can be sensitive to the input format, and it's a good practice to perform error checking on the return value of `scanf` to ensure that the input was successfully read.
 
 ##### challenge 3: get 2 numbers as input and print them
 
@@ -695,162 +679,163 @@ In C, you can get user input from the standard input, typically the keyboard, us
 - The `gets` function is used to read a line of text from the user.
 - The `puts` function is used to display a string.
 
-   ```c
-   #include <stdio.h>
+  ```c
+  #include <stdio.h>
 
-   int main() {
-      char name[50];
+  int main() {
+     char name[50];
 
-      printf("Enter your name: ");
-      gets(name); // Read a line of text (be cautious, gets is unsafe)
+     printf("Enter your name: ");
+     gets(name); // Read a line of text (be cautious, gets is unsafe)
 
-      printf("Hello, ");
-      puts(name); // Display the name using puts
+     printf("Hello, ");
+     puts(name); // Display the name using puts
 
-      return 0;
-   }
-   ```
+     return 0;
+  }
+  ```
 
 Please note that `gets` is considered unsafe because it doesn't limit the number of characters read, potentially causing a buffer overflow. It's recommended to use `fgets` instead for safe input.
 
 The `fgets` function is commonly used for reading lines of text from the user while ensuring safety by specifying the maximum number of characters to read. Here's an example using `fgets`:
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   int main() {
-      char name[50]; // Buffer to store the input
+int main() {
+   char name[50]; // Buffer to store the input
 
-      printf("Enter your name: ");
-      fgets(name, sizeof(name), stdin); // Read a line of text safely
+   printf("Enter your name: ");
+   fgets(name, sizeof(name), stdin); // Read a line of text safely
 
-      // Remove the newline character if present
-      size_t len = strlen(name); // size_t is commonly used when dealing with memory allocation, dynamic arrays, and buffer sizes because it ensures that sizes are non-negative and can accommodate the largest possible size on a given system.
+   // Remove the newline character if present
+   size_t len = strlen(name); // size_t is commonly used when dealing with memory allocation, dynamic arrays, and buffer sizes because it ensures that sizes are non-negative and can accommodate the largest possible size on a given system.
 
-      if (name[len - 1] == '\n') {
-         name[len - 1] = '\0';
-      }
-
-      printf("Hello, %s!\n", name); // Display the name
-
-      return 0;
+   if (name[len - 1] == '\n') {
+      name[len - 1] = '\0';
    }
-   ```
 
-   In this example:
+   printf("Hello, %s!\n", name); // Display the name
 
-   1. We declare a character array `name` to store the input.
+   return 0;
+}
+```
 
-   2. We use `printf` to prompt the user for input.
+In this example:
 
-   3. We use `fgets` to read a line of text. The `sizeof(name)` specifies the maximum number of characters to read to avoid buffer overflow. `stdin` indicates that input should come from the standard input (keyboard).
+1. We declare a character array `name` to store the input.
 
-   4. After reading the input, we check if a newline character is present at the end of the string and remove it if necessary to ensure proper formatting.
+2. We use `printf` to prompt the user for input.
 
-   5. Finally, we use `printf` to display the name.
+3. We use `fgets` to read a line of text. The `sizeof(name)` specifies the maximum number of characters to read to avoid buffer overflow. `stdin` indicates that input should come from the standard input (keyboard).
 
-   The use of `fgets` is recommended over `gets` for reading lines of text because it is safer and allows you to specify the maximum number of characters to read, preventing buffer overflow issues.
+4. After reading the input, we check if a newline character is present at the end of the string and remove it if necessary to ensure proper formatting.
+
+5. Finally, we use `printf` to display the name.
+
+The use of `fgets` is recommended over `gets` for reading lines of text because it is safer and allows you to specify the maximum number of characters to read, preventing buffer overflow issues.
 
 #### getchar() and putchar()
 
 - The `getchar` function is used to read a single character from the user.
 - The `putchar` function is used to display a character.
 
-   ```c
-   #include <stdio.h>
+  ```c
+  #include <stdio.h>
 
-   int main() {
-      char character;
+  int main() {
+     char character;
 
-      printf("Enter a character: ");
-      character = getchar(); // Read a single character
+     printf("Enter a character: ");
+     character = getchar(); // Read a single character
 
-      printf("You entered: ");
-      putchar(character); // Display the character using putchar
-      putchar('\n'); // Add a newline character
+     printf("You entered: ");
+     putchar(character); // Display the character using putchar
+     putchar('\n'); // Add a newline character
 
-      return 0;
-   }
-   ```
+     return 0;
+  }
+  ```
 
 #### Input-output related programs
 
 - Conversion between ASCII characters and ASCII Value
 
-   ASCII (American Standard Code for Information Interchange) is a character encoding standard that uses numeric codes to represent characters. Each character is assigned a unique numeric code, known as its ASCII value. ASCII values are integers ranging from 0 to 127, and they represent standard characters like letters, digits, punctuation, and control characters.
+  ASCII (American Standard Code for Information Interchange) is a character encoding standard that uses numeric codes to represent characters. Each character is assigned a unique numeric code, known as its ASCII value. ASCII values are integers ranging from 0 to 127, and they represent standard characters like letters, digits, punctuation, and control characters.
 
-   Decimal ASCII Value    Character
+  Decimal ASCII Value Character
 
-   -------------------    ---------
-   0                      Null
-   1                      Start of Header
-   2                      Start of Text
-   3                      End of Text
-   4                      End of Transmission
-   5                      Enquiry
-   6                      Acknowledge
-   7                      Bell
-   8                      Backspace
-   9                      Horizontal Tab
-   10                     Line Feed
-   11                     Vertical Tab
-   12                     Form Feed
-   13                     Carriage Return
-   14                     Shift Out
-   15                     Shift In
-   16                     Data Link Escape
-   17                     Device Control 1
-   18                     Device Control 2
-   19                     Device Control 3
-   20                     Device Control 4
-   21                     Negative Acknowledge
-   22                     Synchronous Idle
-   23                     End of Transmission Block
-   24                     Cancel
-   25                     End of Medium
-   26                     Substitute
-   27                     Escape
-   28                     File Separator
-   29                     Group Separator
-   30                     Record Separator
-   31                     Unit Separator
-   32                     Space
-   33                     !
-   34                     "
-   35                     #
-   36                     $
-   37                     %
-   38                     &
-   39                     '
-   40                     (
-   41                     )
-   42                     *
-   43                     +
-   44                     ,
-   45                     -
-   46                     .
-   47                     /
-   48-57                  0-9 (Digits)
-   58                     :
-   59                     ;
-   60                     <
-   61                     =
-   62                     >
-   63                     ?
-   64                     @
-   65-90                  A-Z (Uppercase Letters)
-   91                     [
-   92                     \
-   93                     ]
-   94                     ^
-   95                     _
-   96                     `
-   97-122                 a-z (Lowercase Letters)
-   123                    {
-   124                    |
-   125                    }
-   126                    ~
-   127                    Delete
+  ***
+
+  0 Null
+  1 Start of Header
+  2 Start of Text
+  3 End of Text
+  4 End of Transmission
+  5 Enquiry
+  6 Acknowledge
+  7 Bell
+  8 Backspace
+  9 Horizontal Tab
+  10 Line Feed
+  11 Vertical Tab
+  12 Form Feed
+  13 Carriage Return
+  14 Shift Out
+  15 Shift In
+  16 Data Link Escape
+  17 Device Control 1
+  18 Device Control 2
+  19 Device Control 3
+  20 Device Control 4
+  21 Negative Acknowledge
+  22 Synchronous Idle
+  23 End of Transmission Block
+  24 Cancel
+  25 End of Medium
+  26 Substitute
+  27 Escape
+  28 File Separator
+  29 Group Separator
+  30 Record Separator
+  31 Unit Separator
+  32 Space
+  33 !
+  34 "
+  35 #
+  36 $
+  37 %
+  38 &
+  39 '
+  40 (
+  41 )
+  42 \*
+  43 +
+  44 ,
+  45 -
+  46 .
+  47 /
+  48-57 0-9 (Digits)
+  58 :
+  59 ;
+  60 <
+  61 =
+  62 >
+  63 ?
+  64 @
+  65-90 A-Z (Uppercase Letters)
+  91 [
+  92 \
+   93 ]
+  94 ^
+  95 \_
+  96 `
+  97-122 a-z (Lowercase Letters)
+  123 {
+  124 |
+  125 }
+  126 ~
+  127 Delete
 
 ```c
 // Convert ASCII characters to ASCII Value
@@ -1016,63 +1001,460 @@ These unary operators are essential in C programming for tasks like incrementing
 
 #### 1.9.2 Binary Operators
 
-- operators precedence: *, / , % then +, -
+##### Operator Precedence in C
+
+- What is Operator Precedence?
+
+Operator precedence determines **which operator is evaluated first** when an expression contains multiple operators.
+
+For example:
+
+```c
+5 + 3 * 2
+```
+
+The multiplication (`*`) is performed before the addition (`+`), so the result is:
+
+```text
+5 + (3 × 2)
+= 5 + 6
+= 11
+```
+
+- Why is Operator Precedence Important?
+
+Without understanding operator precedence, your program may produce unexpected results.
+
+Example:
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int result = 5 + 3 * 2;
+
+    printf("%d", result);
+
+    return 0;
+}
+```
+
+- Output
+
+```
+11
+```
+
+Many beginners expect the answer to be **16**, but multiplication has higher precedence than addition.
+
+---
+
+- Using Parentheses
+
+Parentheses always have the highest precedence.
+
+Example:
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int result = (5 + 3) * 2;
+
+    printf("%d", result);
+
+    return 0;
+}
+```
+
+Output
+
+```
+16
+```
+
+Calculation:
+
+```
+(5 + 3) = 8
+
+8 × 2 = 16
+```
+
+---
+
+- Example 1
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int result = 20 / 5 + 2 * 3 - 1;
+
+    printf("%d", result);
+
+    return 0;
+}
+```
+
+- Step-by-step
+
+```
+20 / 5 = 4
+
+2 * 3 = 6
+
+4 + 6 - 1
+
+10 - 1
+
+9
+```
+
+- Output
+
+```
+9
+```
+
+---
+
+- Example 2
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int result = 10 + 7 % 4;
+
+    printf("%d", result);
+
+    return 0;
+}
+```
+
+- Calculation
+
+```
+7 % 4 = 3
+
+10 + 3 = 13
+```
+
+Output
+
+```
+13
+```
+
+---
+
+- Example 3
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int result = 8 + 12 / 4 * 2;
+
+    printf("%d", result);
+
+    return 0;
+}
+```
+
+- Calculation
+
+```
+12 / 4 = 3
+
+3 * 2 = 6
+
+8 + 6 = 14
+```
+
+Output
+
+```
+14
+```
+
+---
+
+- Example 4
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int result = (8 + 12) / 4 * 2;
+
+    printf("%d", result);
+
+    return 0;
+}
+```
+
+- Calculation
+
+```
+8 + 12 = 20
+
+20 / 4 = 5
+
+5 * 2 = 10
+```
+
+Output
+
+```
+10
+```
+
+---
+
+###### Operator Precedence Table
+
+| Precedence  | Operators                   | Description                       |
+| ----------- | --------------------------- | --------------------------------- | --- | ---------- |
+| 1 (Highest) | `()`                        | Parentheses                       |
+| 2           | `++`, `--`                  | Increment / Decrement             |
+| 3           | `*`, `/`, `%`               | Multiplication, Division, Modulus |
+| 4           | `+`, `-`                    | Addition, Subtraction             |
+| 5           | `<`, `<=`, `>`, `>=`        | Relational Operators              |
+| 6           | `==`, `!=`                  | Equality Operators                |
+| 7           | `&&`                        | Logical AND                       |
+| 8           | `                           |                                   | `   | Logical OR |
+| 9           | `=`, `+=`, `-=`, `*=`, `/=` | Assignment                        |
+
+---
+
+###### Associativity
+
+When two operators have the same precedence, **associativity** determines the order of evaluation.
+
+###### Left to Right
+
+```c
+20 / 5 * 2
+```
+
+Calculation:
+
+```
+20 / 5 = 4
+
+4 * 2 = 8
+```
+
+Output:
+
+```
+8
+```
+
+---
+
+###### Right to Left (Assignment)
+
+```c
+a = b = c = 10;
+```
+
+This is evaluated as:
+
+```c
+c = 10;
+b = c;
+a = b;
+```
+
+Final values:
+
+```
+a = 10
+b = 10
+c = 10
+```
+
+---
+
+###### Tips
+
+✅ Use parentheses to make expressions easier to read.
+
+Instead of:
+
+```c
+result = a + b * c - d / e;
+```
+
+Write:
+
+```c
+result = a + (b * c) - (d / e);
+```
+
+It improves readability and reduces mistakes.
+
+---
+
+##### Common Mistakes
+
+###### Mistake 1
+
+```c
+5 + 3 * 2
+```
+
+Wrong expectation:
+
+```
+16
+```
+
+Correct answer:
+
+```
+11
+```
+
+---
+
+###### Mistake 2
+
+```c
+10 / 2 + 3 * 4
+```
+
+Calculation:
+
+```
+10 / 2 = 5
+
+3 * 4 = 12
+
+5 + 12 = 17
+```
+
+Output:
+
+```
+17
+```
+
+---
+
+###### Mistake 3
+
+```c
+10 - 4 + 2
+```
+
+Since `+` and `-` have the same precedence, evaluate from left to right:
+
+```
+10 - 4 = 6
+
+6 + 2 = 8
+```
+
+Output:
+
+```
+8
+```
+
+---
+
+###### Key Takeaways
+
+- Operator precedence determines which operation happens first.
+- Parentheses `()` have the highest precedence.
+- Multiplication (`*`), division (`/`), and modulus (`%`) are evaluated before addition (`+`) and subtraction (`-`).
+- Operators with the same precedence are evaluated according to their associativity.
+- Use parentheses whenever an expression might be confusing.
+
+---
+
+###### Quick Memory Trick
+
+```
+1. ()
+2. *, /, %
+3. +, -
+4. <, <=, >, >=
+5. ==, !=
+6. &&
+7. ||
+8. =
+```
+
+Remember:
+
+> **Parentheses → Multiply/Divide/Modulus → Add/Subtract → Comparison → Logical → Assignment**
 
 **1. Arithmetic Operators:**
 
 - Addition `+`: Adds two values.
 
-     ```c
-     int sum = 5 + 3; // sum is 8
-     ```
+  ```c
+  int sum = 5 + 3; // sum is 8
+  ```
 
 - Subtraction `-`: Subtracts one value from another.
 
-     ```c
-     int difference = 10 - 3; // difference is 7
-     ```
+  ```c
+  int difference = 10 - 3; // difference is 7
+  ```
 
 - Multiplication `*`: Multiplies two values.
 
-     ```c
-     int product = 4 * 5; // product is 20
-     ```
+  ```c
+  int product = 4 * 5; // product is 20
+  ```
 
 - Division `/`: Divides one value by another.
 
-     ```c
-     float quotient = 15.0 / 4.0; // quotient is 3.75
-     ```
+  ```c
+  float quotient = 15.0 / 4.0; // quotient is 3.75
+  ```
 
 - Modulus `%`: Returns the remainder of a division operation.
 
-     ```c
-     int remainder = 15 % 4; // remainder is 3
-     ```
+  ```c
+  int remainder = 15 % 4; // remainder is 3
+  ```
 
 - Challenge Exercise: Create a Simple Calculator
 
-   ```c
-      Write a C program to perform basic arithmetic operations. The program should:
+  ```c
+     Write a C program to perform basic arithmetic operations. The program should:
 
-      Declare variables num1 and num2 to store two input numbers.
-      Declare a variable result to store the result of the operations.
-      Ask the user to input two numbers.
-      Perform the following operations:
-      Addition
-      Subtraction
-      Multiplication
-      Division
-      Print the results of each operation.
+     Declare variables num1 and num2 to store two input numbers.
+     Declare a variable result to store the result of the operations.
+     Ask the user to input two numbers.
+     Perform the following operations:
+     Addition
+     Subtraction
+     Multiplication
+     Division
+     Print the results of each operation.
 
-      Enter the first number: 10
-      Enter the second number: 5
+     Enter the first number: 10
+     Enter the second number: 5
 
-      Addition: 10 + 5 = 15
-      Subtraction: 10 - 5 = 5
-      Multiplication: 10 * 5 = 50
-      Division: 10 / 5 = 2   
-   ```
+     Addition: 10 + 5 = 15
+     Subtraction: 10 - 5 = 5
+     Multiplication: 10 * 5 = 50
+     Division: 10 / 5 = 2
+  ```
 
 ##### C Program: create a basic calculator
 
@@ -1132,7 +1514,7 @@ int main(){
   printf("%d + %d + %d = %d\n",num1,num2,num3,sum);
 
   average = (float)sum/3;
-  printf("Average = %.2f\n",average);  
+  printf("Average = %.2f\n",average);
 
   getchar();
 }
@@ -1145,7 +1527,7 @@ int main(){
 #include <ctype.h>
 int main(){
   float base, height, area;
-  
+
   printf("Enter base = ");
   scanf("%f", &base);
 
@@ -1172,7 +1554,7 @@ int main(){
 #include <math.h>
 int main(){
   float side1, side2, side3, semiPerimeter, areaWith3Sides;
-  
+
   printf("Enter side1 = ");
   scanf("%f", &side1);
 
@@ -1194,6 +1576,30 @@ int main(){
 
 ##### C Program: Area of Circle
 
+```c
+// area calculator - rectangle, triange, circle
+// + - * / %
+// area of rectangle = length * width
+// area of triangle = 1/2 * base * height
+// area of circle =M_PI*radius*radius
+
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+  float radius, areaofCircle;
+
+  printf("Enter radius: ");
+  scanf("%f", &radius);
+
+  areaofCircle = M_PI * radius * radius;
+
+  printf("Area of circle: %.2f\n", areaofCircle);
+
+  return 0;
+}
+```
+
 ##### C Program: Temperature converter
 
 ```c
@@ -1202,7 +1608,7 @@ int main(){
 #include <ctype.h>
 int main(){
   float centigrade, fahrenheit;
-  
+
   printf("Enter centigrade = ");
   scanf("%f", &centigrade);
 
@@ -1218,7 +1624,7 @@ int main(){
 #include <ctype.h>
 int main(){
   float centigrade, fahrenheit;
-  
+
   printf("Enter fahrenheit = ");
   scanf("%f", &fahrenheit);
 
@@ -1230,63 +1636,165 @@ int main(){
 }
 ```
 
+##### C Program: Swapping numbers
+
+```c
+// Swapping means exchanging the values of two variables.
+#include <stdio.h>
+int main()
+{
+  int a, b, temp;
+
+  // before swap
+  a = 10;
+  b = 20;
+
+  printf("Before swapping.\n");
+  printf("a = %d, b = %d\n\n", a, b);
+
+  // Method 1: With Using a Temporary Variable
+  temp = a;
+  a = b;
+  b = temp;
+
+  printf("After swapping.\n");
+  printf("a = %d, b = %d\n\n", a, b);
+
+
+  // Method 2: Without Using a Temporary Variable
+   a = a+b;
+   b = a-b;
+   a = a-b;
+
+  printf("After swapping.\n");
+  printf("a = %d, b = %d\n\n", a, b);
+
+  return 0;
+}
+```
+
+##### C Program: Calculate Age
+
+```c
+/*
+Alogirthm - age calculator
+1. start
+2. Input the birth year
+3. Input the current year
+4. Calculate the age
+5. Display the age
+6. End
+*/
+
+#include <stdio.h>
+int main()
+{
+  int birthYear, currentYear, age;
+  printf("Enter your birth year: ");
+  scanf("%d", &birthYear);
+
+  printf("Enter your current year: ");
+  scanf("%d", &currentYear);
+
+  age = currentYear - birthYear;
+
+  printf("Your age is %d years.\n", age);
+
+  return 0;
+}
+
+```
+
+##### C Program: Calculate Electricity bill
+
+```c
+/*
+Electricity bill calculator
+
+1. Start
+2. Input the number of units consumed
+3. Input the rate per unit
+4. Calculate the total bill
+5. Display the bill amount
+6. End
+*/
+
+#include <stdio.h>
+int main()
+{
+  float units, rate, bill;
+
+  printf("Enter electricity units consumed: ");
+  scanf("%f", &units);
+
+  printf("Enter rate per unit: ");
+  scanf("%f", &rate);
+
+  bill = units * rate;
+
+  printf("\nElectricity Bill = %.2f\n", bill);
+
+  return 0;
+}
+```
+
 **2. Relational Operators:**
 
 - Equal `==`: Tests if two values are equal.
 
-     ```c
-     int isEqual = (5 == 5); // isEqual is 1 (true)
-     ```
+  ```c
+  int isEqual = (5 == 5); // isEqual is 1 (true)
+  ```
 
 - Not Equal `!=`: Tests if two values are not equal.
 
-     ```c
-     int isNotEqual = (3 != 5); // isNotEqual is 1 (true)
-     ```
+  ```c
+  int isNotEqual = (3 != 5); // isNotEqual is 1 (true)
+  ```
 
 - Greater Than `>`: Tests if one value is greater than another.
 
-     ```c
-     int isGreater = (8 > 3); // isGreater is 1 (true)
-     ```
+  ```c
+  int isGreater = (8 > 3); // isGreater is 1 (true)
+  ```
 
 - Less Than `<`: Tests if one value is less than another.
 
-     ```c
-     int isLess = (2 < 5); // isLess is 1 (true)
-     ```
+  ```c
+  int isLess = (2 < 5); // isLess is 1 (true)
+  ```
 
 **3. Logical Operators:**
 
 - Logical AND `&&`: Returns true if both conditions are true.
 
-     ```c
-     int bothTrue = (1 && 1); // bothTrue is 1 (true)
-     ```
+  ```c
+  int bothTrue = (1 && 1); // bothTrue is 1 (true)
+  ```
 
 - Logical OR `||`: Returns true if at least one condition is true.
 
-     ```c
-     int eitherTrue = (0 || 1); // eitherTrue is 1 (true)
-     ```
+  ```c
+  int eitherTrue = (0 || 1); // eitherTrue is 1 (true)
+  ```
 
 - Logical NOT `!`: Returns the opposite of a condition.
 
-     ```c
-     int notTrue = !1; // notTrue is 0 (false)
-     ```
+  ```c
+  int notTrue = !1; // notTrue is 0 (false)
+  ```
 
 **4. Assignment Operator:**
 
 Assignment operators in C are used to assign values to variables. They also allow you to perform operations while assigning values to variables. Here are some common assignment operators with more detailed examples:
 
-- Simple Assignment (`=`):** Assigns the value on the right side to the variable on the left side.
+- Simple Assignment (`=`):\*\* Assigns the value on the right side to the variable on the left side.
 
 ```c
 int x = 5; // Assigns the value 5 to variable x
 ```
 
-- Addition Assignment (`+=`):** Adds the value on the right to the variable on the left and assigns the result to the variable on the left.
+- Addition Assignment (`+=`):\*\* Adds the value on the right to the variable on the left and assigns the result to the variable on the left.
 
 ```c
 int x = 5;
@@ -1300,28 +1808,28 @@ int x = 10;
 x -= 4; // Equivalent to x = x - 4; x is now 6
 ```
 
-- Multiplication Assignment (`*=`):** Multiplies the variable on the left by the value on the right and assigns the result to the variable on the left.
+- Multiplication Assignment (`*=`):\*\* Multiplies the variable on the left by the value on the right and assigns the result to the variable on the left.
 
 ```c
 int x = 3;
 x *= 2; // Equivalent to x = x * 2; x is now 6
 ```
 
-- Division Assignment (`/=`):** Divides the variable on the left by the value on the right and assigns the result to the variable on the left.
+- Division Assignment (`/=`):\*\* Divides the variable on the left by the value on the right and assigns the result to the variable on the left.
 
 ```c
 int x = 12;
 x /= 4; // Equivalent to x = x / 4; x is now 3
 ```
 
-- Modulus Assignment (`%=`):** Calculates the remainder of the division of the variable on the left by the value on the right and assigns the result to the variable on the left.
+- Modulus Assignment (`%=`):\*\* Calculates the remainder of the division of the variable on the left by the value on the right and assigns the result to the variable on the left.
 
 ```c
 int x = 15;
 x %= 7; // Equivalent to x = x % 7; x is now 1
 ```
 
-- Bitwise Assignment Operators (e.g., `&=`, `|=`, `^=`):** Perform bitwise operations on the variable on the left and the value on the right, then assign the result to the variable on the left.
+- Bitwise Assignment Operators (e.g., `&=`, `|=`, `^=`):\*\* Perform bitwise operations on the variable on the left and the value on the right, then assign the result to the variable on the left.
 
 These assignment operators provide a concise way to update variables by performing arithmetic and bitwise operations simultaneously. They are commonly used to update variables in loops and other situations where values need to be incremented, decremented, or modified in place.
 
@@ -1412,57 +1920,57 @@ Ternary operators are useful when you want to assign a value to a variable based
 
 In C, you can use the math library, which provides a wide range of mathematical functions for various calculations. To use functions from the math library, you need to include the `<math.h> or <stdlib.h>` header. Here's an example that demonstrates how to use some common math library functions:
 
-   ```c
-   #include <stdio.h>
-   #include <math.h>
-   #include <stdlib.h>
+```c
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
 
-   int main() {
-      // Calculating square root
-      double number = 25.0;
-      double squareRoot = sqrt(number);
-      printf("Square root of %lf is %lf\n", number, squareRoot);
+int main() {
+   // Calculating square root
+   double number = 25.0;
+   double squareRoot = sqrt(number);
+   printf("Square root of %lf is %lf\n", number, squareRoot);
 
-      // Calculating power
-      double base = 2.0;
-      double exponent = 3.0;
-      double result = pow(base, exponent);
-      printf("%lf raised to the power of %lf is %lf\n", base, exponent, result);
+   // Calculating power
+   double base = 2.0;
+   double exponent = 3.0;
+   double result = pow(base, exponent);
+   printf("%lf raised to the power of %lf is %lf\n", base, exponent, result);
 
-      // Calculating absolute value
-      int value = -10;
-      int absoluteValue = abs(value);
-      printf("The absolute value of %d is %d\n", value, absoluteValue);
+   // Calculating absolute value
+   int value = -10;
+   int absoluteValue = abs(value);
+   printf("The absolute value of %d is %d\n", value, absoluteValue);
 
-      // Rounding functions
-      double floatingNumber = 3.456;
-      double roundedDown = floor(floatingNumber);
-      double roundedUp = ceil(floatingNumber);
-      printf("Original: %lf, Rounded Down: %lf, Rounded Up: %lf\n", floatingNumber, roundedDown, roundedUp);
+   // Rounding functions
+   double floatingNumber = 3.456;
+   double roundedDown = floor(floatingNumber);
+   double roundedUp = ceil(floatingNumber);
+   printf("Original: %lf, Rounded Down: %lf, Rounded Up: %lf\n", floatingNumber, roundedDown, roundedUp);
 
-      return 0;
-   }
-   ```
+   return 0;
+}
+```
 
 In this example, we include `<math.h>` and use functions like `sqrt()`, `pow()`, `abs()`, `floor()`, and `ceil()` to perform various mathematical calculations. These functions are just a subset of what the math library provides. You can explore more functions for advanced mathematical operations, such as trigonometry, logarithms, and exponential functions.
 
-   ```c
-      #include <stdio.h>
-      #include <ctype.h>
-      #include <stdlib.h>
-      int main(){
-      int number, absoluteNumber;
-      
-      printf("Enter any negative number = ");
-      scanf("%d", &number);
+```c
+   #include <stdio.h>
+   #include <ctype.h>
+   #include <stdlib.h>
+   int main(){
+   int number, absoluteNumber;
 
-      absoluteNumber = abs(number);
+   printf("Enter any negative number = ");
+   scanf("%d", &number);
 
-      printf("abs(%d) = %d\n",number, absoluteNumber);
+   absoluteNumber = abs(number);
 
-      getchar();
-      }
-   ```
+   printf("abs(%d) = %d\n",number, absoluteNumber);
+
+   getchar();
+   }
+```
 
 ### 1.10 Control Statement
 
@@ -1470,46 +1978,46 @@ In this example, we include `<math.h>` and use functions like `sqrt()`, `pow()`,
 
 Conditional control statements in C are used to control the flow of a program based on conditions. They allow you to execute different code blocks based on whether a condition is true or false. There are primarily two types of conditional control statements in C: `if` and `switch`. Here are examples for both:
 
-##### `if, else if and else` Statement:**
+##### `if, else if and else` Statement:\*\*
 
 The `if` statement is used to execute a block of code if a specified condition is true. If the condition is false, the code block is skipped.
 
-   ```c
+```c
+#include <stdio.h>
+
+int main() {
+   int x = 10;
+
+   if (x > 5) {
+      printf("x is greater than 5.\n");
+   } else {
+      printf("x is not greater than 5.\n");
+   }
+
+   return 0;
+}
+```
+
+In this example, the `if` statement checks if `x` is greater than 5. If it is, the first block of code is executed. Otherwise, the `else` block is executed.
+
+```c
    #include <stdio.h>
 
    int main() {
-      int x = 10;
+      int num = 10;
 
-      if (x > 5) {
-         printf("x is greater than 5.\n");
+      if (num < 0) {
+         printf("Number is negative.\n");
+      } else if (num > 0) {
+         printf("Number is positive.\n");
       } else {
-         printf("x is not greater than 5.\n");
+         printf("Number is zero.\n");
       }
 
       return 0;
    }
-   ```
 
-In this example, the `if` statement checks if `x` is greater than 5. If it is, the first block of code is executed. Otherwise, the `else` block is executed.
-
-   ```c
-      #include <stdio.h>
-
-      int main() {
-         int num = 10;
-
-         if (num < 0) {
-            printf("Number is negative.\n");
-         } else if (num > 0) {
-            printf("Number is positive.\n");
-         } else {
-            printf("Number is zero.\n");
-         }
-
-         return 0;
-      }
-
-   ```
+```
 
 - Flowchart of if, else if and else statement
 
@@ -1517,22 +2025,22 @@ In this example, the `if` statement checks if `x` is greater than 5. If it is, t
 
 ###### if-else if-else related assignments
 
-   1. Write a program that read mark and display pass or fail.
-   2. Write a program that read mark and display result in grade.
-   3. Write a program to check a number even or odd.
-   4. Write a program that read mark and display pass or fail.
-   5. Write a program that read mark and display result in grade.
-   6. Write a program to check a number even or odd.
-   7. Write a program to check a number positive or negative.
-   8. Write a program that read two numbers and display maximum.
-   9. Write a program that read two numbers and display minimum.
-   10. Write a program that read three numbers and display maximum.
-   11. Write a program that read three numbers and display minimum.
-   12. Write a program that read three numbers and display medium.
-   13. Write a program that read three numbers (a, b, c) and determine the roots of the quadratic equation.
-   14. Write a program that read any year and display leap or not.
-   15. Write a program that read any letter and display vowel or consonant.
-   16. Write a program that read any letter and display its uppercase or lowercase.
+1.  Write a program that read mark and display pass or fail.
+2.  Write a program that read mark and display result in grade.
+3.  Write a program to check a number even or odd.
+4.  Write a program that read mark and display pass or fail.
+5.  Write a program that read mark and display result in grade.
+6.  Write a program to check a number even or odd.
+7.  Write a program to check a number positive or negative.
+8.  Write a program that read two numbers and display maximum.
+9.  Write a program that read two numbers and display minimum.
+10. Write a program that read three numbers and display maximum.
+11. Write a program that read three numbers and display minimum.
+12. Write a program that read three numbers and display medium.
+13. Write a program that read three numbers (a, b, c) and determine the roots of the quadratic equation.
+14. Write a program that read any year and display leap or not.
+15. Write a program that read any letter and display vowel or consonant.
+16. Write a program that read any letter and display its uppercase or lowercase.
 
 ###### Even-odd program
 
@@ -1778,31 +2286,31 @@ int main()
 
 ```
 
-##### `switch` Statement:**
+##### `switch` Statement:\*\*
 
 The `switch` statement allows you to select one of many code blocks to be executed. It's typically used when you have multiple conditions to test.
 
-   ```c
+```c
 #include <stdio.h>
 
 int main() {
-    int day = 3;
+ int day = 3;
 
-    switch (day) {
-        case 1:
-            printf("Monday\n");
-            break;
-        case 2:
-            printf("Tuesday\n");
-            break;
-        case 3:
-            printf("Wednesday\n");
-            break;
-        default:
-            printf("Other day\n");
-    }
+ switch (day) {
+     case 1:
+         printf("Monday\n");
+         break;
+     case 2:
+         printf("Tuesday\n");
+         break;
+     case 3:
+         printf("Wednesday\n");
+         break;
+     default:
+         printf("Other day\n");
+ }
 
-    return 0;
+ return 0;
 }
 ```
 
@@ -1920,21 +2428,21 @@ int main()
 
 ###### switch programs
 
-   1. Four import keywords in switch.
-   2. Write a program that read a digit and display by its spelling.
-   3. Write a program that read a year and display leap year or not.
-   4. Write a program that read any letter and display vowel or consonant.
-   5. Write a program that read any number and display its Roman number.
+1.  Four import keywords in switch.
+2.  Write a program that read a digit and display by its spelling.
+3.  Write a program that read a year and display leap year or not.
+4.  Write a program that read any letter and display vowel or consonant.
+5.  Write a program that read any number and display its Roman number.
 
 ###### Conditional operator related example
 
-   1. Write a program that read mark and display pass or fail.
-   2. Write a program to check a number even or odd.
-   3. Write a program that read two numbers and display maximum.
-   4. Write a program that read two numbers and display minimum.
-   5. Write a program that read three numbers and display maximum.
-   6. Write a program that read three numbers and display minimum.
-   7. Write a program that read three numbers and display medium.
+1.  Write a program that read mark and display pass or fail.
+2.  Write a program to check a number even or odd.
+3.  Write a program that read two numbers and display maximum.
+4.  Write a program that read two numbers and display minimum.
+5.  Write a program that read three numbers and display maximum.
+6.  Write a program that read three numbers and display minimum.
+7.  Write a program that read three numbers and display medium.
 
 #### 1.10.2 Loop control Statement
 
@@ -1981,14 +2489,14 @@ In C, there are several types of loops, each designed for different use cases. T
 5. **Infinite Loop:** You can create a loop that runs indefinitely using constructs like `while (1)` or `for (;;)` for tasks that need continuous execution.
 
    ```c
-   #include <stdio.h>  
+   #include <stdio.h>
 
-   int main()  
-   {  
+   int main()
+   {
       // indefinite for loop
-      for(;;)  
-      {  
-       printf("Hello javatpoint");  
+      for(;;)
+      {
+       printf("Hello javatpoint");
       }
 
       // indefinite while loop
@@ -1997,11 +2505,11 @@ In C, there are several types of loops, each designed for different use cases. T
       }
 
       // indefinite do while loop
-      do{  
-         // body of the loop..  
-      } while(1);  
-      return 0;  
-   }  
+      do{
+         // body of the loop..
+      } while(1);
+      return 0;
+   }
    ```
 
 #### 1.10.3 Jump control Statement
@@ -2057,7 +2565,7 @@ The `goto` statement is used to transfer control to a labeled statement within t
 
 int main() {
     int i = 1;
-    
+
     start: // Label
     if (i <= 10) {
         printf("%d ", i);
@@ -2076,191 +2584,191 @@ The `break` and `continue` statements are commonly used in loops to control the 
 
 ##### Loop related Assignments
 
-   1. Write a program to print 1 to 10 by using for, while & do-while loop.
-   2. Find the total sum from 1 to n numbers.
-   3. Write a program to add m to n numbers and display average.
-   4. Check sum outputs from the hand note.
-   5. Write a program to print the numbers from 1 to 100, skip those numbers which are divisible by 3 or 5 but not both.
-   6. Write a while loop to print all the multiples of 5 from 13 to 121 in descending order,
-   7. Write a program to print all odd numbers from 1 to 1000 which are divisible by 3.
-   8. Write a program using while loop that will print all even numbers between 2 to 20.
-   9. Write a program that read any integer and display prime or not.
-   10. Write a program that prints all the prime numbers from m to n.
-   11. Write a program that prints all the prime numbers from m to n and count total prime numbers.
-   12. Write a program that read any positive integer and display sum of its digit.
-   13. Write a program that reads any positive integer and displays its reverse.
-   14. Write a program to check a number is palindrome or not.
-   15. How to check a number is palindrome using for loop.
-   16. Write a program to check given number is Armstrong number.
-   17. Write a program that read two numbers and display LCM and GCD.
-   18. Write a program to print time table of any number.
-   19. Write a program to print the entire time table from m to n.
-   20. Write a program that generates Fibonacci series.
-   21. Write a program that prints all Fibonacci numbers from 1 to n.
-   22. Write a program that can check a number is Fibonacci or not.
-   23. Write a program that read a positive integer and display its factorial.
-   24. Write a program that read any decimal number and display equivalent binary number.
-   25. Write a program that read any decimal number and display equivalent octal number.
-   26. Write a program that read any decimal number and display equivalent hexadecimal number.
-   27. Write a program that read two numbers (x, y) and display xy .
-   28. Write a program that read two numbers (n, r) and display nPr (Permutation).
-   29. Write a program that read two numbers (n, r) and display nCr (Combination).
+1.  Write a program to print 1 to 10 by using for, while & do-while loop.
+2.  Find the total sum from 1 to n numbers.
+3.  Write a program to add m to n numbers and display average.
+4.  Check sum outputs from the hand note.
+5.  Write a program to print the numbers from 1 to 100, skip those numbers which are divisible by 3 or 5 but not both.
+6.  Write a while loop to print all the multiples of 5 from 13 to 121 in descending order,
+7.  Write a program to print all odd numbers from 1 to 1000 which are divisible by 3.
+8.  Write a program using while loop that will print all even numbers between 2 to 20.
+9.  Write a program that read any integer and display prime or not.
+10. Write a program that prints all the prime numbers from m to n.
+11. Write a program that prints all the prime numbers from m to n and count total prime numbers.
+12. Write a program that read any positive integer and display sum of its digit.
+13. Write a program that reads any positive integer and displays its reverse.
+14. Write a program to check a number is palindrome or not.
+15. How to check a number is palindrome using for loop.
+16. Write a program to check given number is Armstrong number.
+17. Write a program that read two numbers and display LCM and GCD.
+18. Write a program to print time table of any number.
+19. Write a program to print the entire time table from m to n.
+20. Write a program that generates Fibonacci series.
+21. Write a program that prints all Fibonacci numbers from 1 to n.
+22. Write a program that can check a number is Fibonacci or not.
+23. Write a program that read a positive integer and display its factorial.
+24. Write a program that read any decimal number and display equivalent binary number.
+25. Write a program that read any decimal number and display equivalent octal number.
+26. Write a program that read any decimal number and display equivalent hexadecimal number.
+27. Write a program that read two numbers (x, y) and display xy .
+28. Write a program that read two numbers (n, r) and display nPr (Permutation).
+29. Write a program that read two numbers (n, r) and display nCr (Combination).
 
 ##### Prime Number Programs: Everything you need to know
 
-   ```c
-   // check a number is prime or not: first version
-   #include <stdio.h>
-   #include <ctype.h>
-   int main(){
-      int number, count=0;
+```c
+// check a number is prime or not: first version
+#include <stdio.h>
+#include <ctype.h>
+int main(){
+   int number, count=0;
 
-      printf("Enter a number: ");
-      scanf("%d", &number);
+   printf("Enter a number: ");
+   scanf("%d", &number);
 
-      for(int i=2; i<number; i++){
-          if(number%i==0){
-            count=1;
-            break;
-         }
+   for(int i=2; i<number; i++){
+       if(number%i==0){
+         count=1;
+         break;
       }
-      if(count==0){
-         printf("%d is a prime number", number);
-      }else{
-         printf("%d is not a prime number", number);
-      }
-
-      getchar();
+   }
+   if(count==0){
+      printf("%d is a prime number", number);
+   }else{
+      printf("%d is not a prime number", number);
    }
 
-   // check a number is prime or not: second version
-   #include <stdio.h>
-   #include <ctype.h>
-   int main(){
-      int number, count=0;
+   getchar();
+}
 
-      printf("Enter a number: ");
-      scanf("%d", &number);
+// check a number is prime or not: second version
+#include <stdio.h>
+#include <ctype.h>
+int main(){
+   int number, count=0;
 
-      if(number<=1){
-         printf("%d is not a prime number", number);
+   printf("Enter a number: ");
+   scanf("%d", &number);
+
+   if(number<=1){
+      printf("%d is not a prime number", number);
+   }else{
+      for(int i=2; i<number/2; i++){
+       if(number%i==0){
+           count=1;
+           break;
+         }
+      }
+   }
+
+   if(count==0){
+      printf("%d is a prime number", number);
+   }else{
+      printf("%d is not a prime number", number);
+   }
+
+   getchar();
+}
+
+// check a number is prime or not: third version
+#include <stdio.h>
+#include <math.h>
+#include <ctype.h>
+int main(){
+   int number, count=0;
+
+   printf("Enter a number: ");
+   scanf("%d", &number);
+
+   if(number<=1){
+      printf("%d is not a prime number", number);
+   }else{
+      for(int i=2; i<sqrt(number); i++){
+       if(number%i==0){
+           count=1;
+           break;
+         }
+      }
+   }
+   if(count==0){
+      printf("%d is a prime number", number);
+   }else{
+      printf("%d is not a prime number", number);
+   }
+
+   getchar();
+}
+
+// print prime, find total prime numbers, find sum of prime numbers from m to n
+#include <stdio.h>
+#include <math.h>
+#include <ctype.h>
+int main(){
+
+   int number,count=0, totalPrimeNumbers=0, sumOfPrimeNumbers=0, startingNumber, endingNumber;
+
+   printf("Enter starting number: ");
+   scanf("%d", &startingNumber);
+
+   printf("Enter ending number: ");
+   scanf("%d", &endingNumber);
+
+   for(number=startingNumber; number<=endingNumber; number++){
+      count=0;
+      if(number <=1){
+         count=1;
       }else{
-         for(int i=2; i<number/2; i++){
-          if(number%i==0){
-              count=1;
-              break;
+         for(int i=2; i<= sqrt(number); i++){
+            if(number%i==0){
+               count=1;
+               break;
             }
          }
       }
-      
+
       if(count==0){
-         printf("%d is a prime number", number);
-      }else{
-         printf("%d is not a prime number", number);
+         printf("%d ", number);
+         totalPrimeNumbers++;
+         sumOfPrimeNumbers = sumOfPrimeNumbers + number;
       }
-
-      getchar();
    }
+   printf("\nTotal prime numbers: %d\n", totalPrimeNumbers);
+   printf("Sum of prime numbers: %d\n", sumOfPrimeNumbers);
 
-   // check a number is prime or not: third version
-   #include <stdio.h>
-   #include <math.h>
-   #include <ctype.h>
-   int main(){
-      int number, count=0;
+   getchar();
+}
 
-      printf("Enter a number: ");
-      scanf("%d", &number);
-
-      if(number<=1){
-         printf("%d is not a prime number", number);
-      }else{
-         for(int i=2; i<sqrt(number); i++){
-          if(number%i==0){
-              count=1;
-              break;
-            }
-         }
-      }      
-      if(count==0){
-         printf("%d is a prime number", number);
-      }else{
-         printf("%d is not a prime number", number);
-      }
-
-      getchar();
-   }
-
-   // print prime, find total prime numbers, find sum of prime numbers from m to n
-   #include <stdio.h>
-   #include <math.h>
-   #include <ctype.h>
-   int main(){
-      
-      int number,count=0, totalPrimeNumbers=0, sumOfPrimeNumbers=0, startingNumber, endingNumber;
-
-      printf("Enter starting number: ");
-      scanf("%d", &startingNumber);
-
-      printf("Enter ending number: ");
-      scanf("%d", &endingNumber);
-
-      for(number=startingNumber; number<=endingNumber; number++){
-         count=0;
-         if(number <=1){
-            count=1;
-         }else{
-            for(int i=2; i<= sqrt(number); i++){
-               if(number%i==0){
-                  count=1;
-                  break;
-               }
-            }
-         }
-
-         if(count==0){
-            printf("%d ", number);
-            totalPrimeNumbers++;
-            sumOfPrimeNumbers = sumOfPrimeNumbers + number;
-         }
-      }
-      printf("\nTotal prime numbers: %d\n", totalPrimeNumbers);
-      printf("Sum of prime numbers: %d\n", sumOfPrimeNumbers);
-      
-      getchar();
-   }
-
-   // using function to separate prime number logic
-   ```
+// using function to separate prime number logic
+```
 
 ##### Armstrong Number Program
 
-   ```c
-   #include <stdio.h>
-   #include <ctype.h>
-   int main(){
-   int number, sum=0, temp, remainder;
+```c
+#include <stdio.h>
+#include <ctype.h>
+int main(){
+int number, sum=0, temp, remainder;
 
-   printf("Enter any number: ");
-   scanf("%d", &number); 
+printf("Enter any number: ");
+scanf("%d", &number);
 
-   temp = number; 
+temp = number;
 
-   while(temp!=0){
-      remainder = temp%10;
-      sum = sum + remainder*remainder*remainder;
-      temp = temp / 10;
-   }
+while(temp!=0){
+   remainder = temp%10;
+   sum = sum + remainder*remainder*remainder;
+   temp = temp / 10;
+}
 
-   if(number == sum){
-      printf("Armstrong number");
-   }else{
-      printf("Not Armstrong number");
-   }  
+if(number == sum){
+   printf("Armstrong number");
+}else{
+   printf("Not Armstrong number");
+}
 
-   getchar();
-   }
-   ```
+getchar();
+}
+```
 
 ### 1.11 Functions
 
@@ -2272,71 +2780,71 @@ The `break` and `continue` statements are commonly used in loops to control the 
 
 #### Aarray declaration and initialization
 
-   ```c
+```c
 
-   int numbers1[5]; // Array of 5 integers, uninitialized
+int numbers1[5]; // Array of 5 integers, uninitialized
 
-   int numbers2[] = {85, 90, 78, 92, 88}; // Array initialized with values
-   ```
+int numbers2[] = {85, 90, 78, 92, 88}; // Array initialized with values
+```
 
 #### Accessing array elements
 
-   ```c
-   int numbers[5] = {10, 20, 30, 40, 50};
-   printf("%d\n", numbers[0]); // prints 10
+```c
+int numbers[5] = {10, 20, 30, 40, 50};
+printf("%d\n", numbers[0]); // prints 10
 
-   // version 1
-   #include <stdio.h>
-   int main() {
-      int numbers[] = {1, 2, 3, 4, 5};
+// version 1
+#include <stdio.h>
+int main() {
+   int numbers[] = {1, 2, 3, 4, 5};
 
-      printf("%d\n", numbers[0]);
-      printf("%d\n", numbers[1]);
-      printf("%d\n", numbers[2]);
-      printf("%d\n", numbers[3]);
-      printf("%d\n", numbers[4]);
+   printf("%d\n", numbers[0]);
+   printf("%d\n", numbers[1]);
+   printf("%d\n", numbers[2]);
+   printf("%d\n", numbers[3]);
+   printf("%d\n", numbers[4]);
 
-      return 0;
+   return 0;
+}
+
+// version 2: print array with loop
+#include <stdio.h>
+int main() {
+   int numbers[] = {1, 2, 3, 4, 5};
+
+   for(int index=0; index<5; index++){
+      printf("%d\n", numbers[index]);
    }
 
-   // version 2: print array with loop
-   #include <stdio.h>
-   int main() {
-      int numbers[] = {1, 2, 3, 4, 5};
+   return 0;
+}
 
-      for(int index=0; index<5; index++){
-         printf("%d\n", numbers[index]);
-      } 
+// version 3: take user input for an array
+#include <stdio.h>
+int main() {
+   int numbers[5];
 
-      return 0;
+   for(int index=0; index<5; index++){
+      scanf("%d", &numbers[index]);
    }
 
-   // version 3: take user input for an array
-   #include <stdio.h>
-   int main() {
-      int numbers[5];
-
-      for(int index=0; index<5; index++){
-         scanf("%d", &numbers[index]);
-      }
-
-      for(int index=0; index<5; index++){
-         printf("%d\n", numbers[index]);
-      } 
-
-      return 0;
+   for(int index=0; index<5; index++){
+      printf("%d\n", numbers[index]);
    }
 
-   // version 4: give instrcution for inputs
-   ```
+   return 0;
+}
+
+// version 4: give instrcution for inputs
+```
 
 #### Types of Array
 
 ##### One dimensional array (1D)
 
-   The simplest form of an array.
-   Elements are stored in a linear sequence.
-   Accessing elements is done using a single index.
+The simplest form of an array.
+Elements are stored in a linear sequence.
+Accessing elements is done using a single index.
 
 ###### searching algorithms
 
@@ -2358,7 +2866,7 @@ The `break` and `continue` statements are commonly used in loops to control the 
          int numbers[] = {2, 4, 6, 8, 10, 12, 14, 16};
 
           // Calculate the number of elements in the array; sizeof() here returns the size of entire array in bytes
-         int n = sizeof(numbers) / sizeof(numbers[0]); 
+         int n = sizeof(numbers) / sizeof(numbers[0]);
 
          int target = 10;
          int result = linearSearch(numbers, n, target);
@@ -2370,7 +2878,7 @@ The `break` and `continue` statements are commonly used in loops to control the 
          }
 
          return 0;
-      }      
+      }
    ```
 
    ```c
@@ -2440,38 +2948,37 @@ The `break` and `continue` statements are commonly used in loops to control the 
    ```
 
    This program initializes first and second based on the first two elements of the array. Then, it iterates through the array starting from the third element, updating first and second accordingly. The final values of first and second are the largest and second-largest elements in the array.
-
    - find the larget and second largest for an sorted array
 
-      If the array is sorted in ascending order, finding the largest and second-largest elements becomes simpler. In this case, the largest element will be the last element of the array, and the second-largest element will be the second-to-last element. Here's the modified code:
+     If the array is sorted in ascending order, finding the largest and second-largest elements becomes simpler. In this case, the largest element will be the last element of the array, and the second-largest element will be the second-to-last element. Here's the modified code:
 
-      ```c
-      #include <stdio.h>
+     ```c
+     #include <stdio.h>
 
-      void findLargestAndSecondLargest(int arr[], int n) {
-         if (n < 2) {
-            printf("Array should have at least two elements.\n");
-            return;
-         }
+     void findLargestAndSecondLargest(int arr[], int n) {
+        if (n < 2) {
+           printf("Array should have at least two elements.\n");
+           return;
+        }
 
-         int first = arr[n - 1];
-         int second = arr[n - 2];
+        int first = arr[n - 1];
+        int second = arr[n - 2];
 
-         printf("Largest Element: %d\n", first);
-         printf("Second Largest Element: %d\n", second);
-      }
+        printf("Largest Element: %d\n", first);
+        printf("Second Largest Element: %d\n", second);
+     }
 
-      int main() {
-         int arr[] = {1, 10, 12, 34, 35};
-         int n = sizeof(arr) / sizeof(arr[0]);
+     int main() {
+        int arr[] = {1, 10, 12, 34, 35};
+        int n = sizeof(arr) / sizeof(arr[0]);
 
-         findLargestAndSecondLargest(arr, n);
+        findLargestAndSecondLargest(arr, n);
 
-         return 0;
-      }
-      ```
+        return 0;
+     }
+     ```
 
-      In this version, `first` is assigned `arr[n - 1]` (the last element), and `second` is assigned `arr[n - 2]` (the second-to-last element). There is no need for an additional loop since the array is already sorted.
+     In this version, `first` is assigned `arr[n - 1]` (the last element), and `second` is assigned `arr[n - 2]` (the second-to-last element). There is no need for an additional loop since the array is already sorted.
 
 3. bubble searching algorithm: Requires a sorted array. Divides the array in half at each step.
 
@@ -2508,7 +3015,7 @@ The `break` and `continue` statements are commonly used in loops to control the 
             }
          }
 
-      }   
+      }
    ```
 
 2. Merge sort: Divides the array into two halves, recursively sorts them, and then merges the two sorted halves.
@@ -2527,180 +3034,178 @@ The `break` and `continue` statements are commonly used in loops to control the 
             mergeSort(arr, m + 1, r);
             merge(arr, l, m, r);
          }
-      }  
+      }
    ```
 
 3. Quick sort: Picks a 'pivot' element and partitions the array into two subarrays according to whether elements are less than or greater than the pivot.
 
 ##### Two dimensional array (2D) Matrix
 
-   Represents a table of elements arranged in rows and columns.
-   Accessing elements requires two indices.
+Represents a table of elements arranged in rows and columns.
+Accessing elements requires two indices.
 
 ###### Matrix Programs 1 : A simple matrix
 
-   ```c
-      // program: a simple matrix
-      #include <stdio.h>
-      int main() {
-         int matrix[3][3] = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
-         };
+```c
+   // program: a simple matrix
+   #include <stdio.h>
+   int main() {
+      int matrix[3][3] = {
+         {1, 2, 3},
+         {4, 5, 6},
+         {7, 8, 9}
+      };
 
-         // Accessing and printing elements
-         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                  printf("%d ", matrix[i][j]);
-            }
-            printf("\n");
+      // Accessing and printing elements
+      for (int i = 0; i < 3; i++) {
+         for (int j = 0; j < 3; j++) {
+               printf("%d ", matrix[i][j]);
          }
+         printf("\n");
+      }
 
-         return 0;
-      }  
-   ```
+      return 0;
+   }
+```
 
 ###### Matrix Programs 2 : add two matrices
 
-   ```c
-      // program: add two matrices and store the result in a third matrix
-      #include <stdio.h>
+```c
+   // program: add two matrices and store the result in a third matrix
+   #include <stdio.h>
 
-      // Function to add two matrices and store the result in a third matrix
-      void addMatrices(int first[10][10], int second[10][10], int result[10][10], int rows, int cols) {
-         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                  result[i][j] = first[i][j] + second[i][j];
-            }
+   // Function to add two matrices and store the result in a third matrix
+   void addMatrices(int first[10][10], int second[10][10], int result[10][10], int rows, int cols) {
+      for (int i = 0; i < rows; i++) {
+         for (int j = 0; j < cols; j++) {
+               result[i][j] = first[i][j] + second[i][j];
+         }
+      }
+   }
+
+   // Function to display a matrix
+   void displayMatrix(int matrix[10][10], int rows, int cols) {
+      for (int i = 0; i < rows; i++) {
+         for (int j = 0; j < cols; j++) {
+               printf("%d ", matrix[i][j]);
+         }
+         printf("\n");
+      }
+   }
+
+   int main() {
+      int firstMatrix[10][10], secondMatrix[10][10], resultMatrix[10][10];
+      int rows, cols;
+
+      printf("Enter the number of rows: ");
+      scanf("%d", &rows);
+
+      printf("Enter the number of columns: ");
+      scanf("%d", &cols);
+
+      // Input for the first matrix
+      printf("Enter elements of the first matrix:\n");
+      for (int i = 0; i < rows; i++) {
+         for (int j = 0; j < cols; j++) {
+               scanf("%d", &firstMatrix[i][j]);
          }
       }
 
-      // Function to display a matrix
-      void displayMatrix(int matrix[10][10], int rows, int cols) {
-         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                  printf("%d ", matrix[i][j]);
-            }
-            printf("\n");
+      // Input for the second matrix
+      printf("Enter elements of the second matrix:\n");
+      for (int i = 0; i < rows; i++) {
+         for (int j = 0; j < cols; j++) {
+               scanf("%d", &secondMatrix[i][j]);
          }
       }
 
-      int main() {
-         int firstMatrix[10][10], secondMatrix[10][10], resultMatrix[10][10];
-         int rows, cols;
+      // Call the function to add matrices
+      addMatrices(firstMatrix, secondMatrix, resultMatrix, rows, cols);
 
-         printf("Enter the number of rows: ");
-         scanf("%d", &rows);
+      // Display the matrices and their sum
+      printf("\nFirst Matrix:\n");
+      displayMatrix(firstMatrix, rows, cols);
 
-         printf("Enter the number of columns: ");
-         scanf("%d", &cols);
+      printf("\nSecond Matrix:\n");
+      displayMatrix(secondMatrix, rows, cols);
 
-         // Input for the first matrix
-         printf("Enter elements of the first matrix:\n");
-         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                  scanf("%d", &firstMatrix[i][j]);
-            }
-         }
+      printf("\nSum of Matrices:\n");
+      displayMatrix(resultMatrix, rows, cols);
 
-         // Input for the second matrix
-         printf("Enter elements of the second matrix:\n");
-         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                  scanf("%d", &secondMatrix[i][j]);
-            }
-         }
-
-         // Call the function to add matrices
-         addMatrices(firstMatrix, secondMatrix, resultMatrix, rows, cols);
-
-         // Display the matrices and their sum
-         printf("\nFirst Matrix:\n");
-         displayMatrix(firstMatrix, rows, cols);
-
-         printf("\nSecond Matrix:\n");
-         displayMatrix(secondMatrix, rows, cols);
-
-         printf("\nSum of Matrices:\n");
-         displayMatrix(resultMatrix, rows, cols);
-
-         return 0;
-      }
-   ```
+      return 0;
+   }
+```
 
 ###### Matrix Programs 3 : sum/multiply of each row of a matrix
 
-   ```c
-    
-   ```
+```c
+
+```
 
 ###### Matrix Programs 4 : multiply two matrices
 
 ###### Matrix Programs 5 : identity matrix
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   #define MAX 10
+#define MAX 10
 
-   int isIdentityMatrix(int matrix[MAX][MAX], int n) {
-      // Check for square matrix
-      if (n != n)
-         return 0;
-
-      // Check for identity matrix
-      for (int i = 0; i < n; i++)
-         for (int j = 0; j < n; j++)
-               if ((i == j && matrix[i][j] != 1) || (i != j && matrix[i][j] != 0))
-                  return 0;
-
-      return 1;
-   }
-
-   int main() {
-      int matrix[MAX][MAX];
-      int n;
-
-      printf("Enter the size of the square matrix: ");
-      scanf("%d", &n);
-
-      printf("Enter the elements of the matrix:\n");
-
-      for (int i = 0; i < n; i++)
-         for (int j = 0; j < n; j++)
-               scanf("%d", &matrix[i][j]);
-
-      if (isIdentityMatrix(matrix, n))
-         printf("The matrix is an identity matrix.\n");
-      else
-         printf("The matrix is not an identity matrix.\n");
-
+int isIdentityMatrix(int matrix[MAX][MAX], int n) {
+   // Check for square matrix
+   if (n != n)
       return 0;
-   }
 
-   ```
+   // Check for identity matrix
+   for (int i = 0; i < n; i++)
+      for (int j = 0; j < n; j++)
+            if ((i == j && matrix[i][j] != 1) || (i != j && matrix[i][j] != 0))
+               return 0;
+
+   return 1;
+}
+
+int main() {
+   int matrix[MAX][MAX];
+   int n;
+
+   printf("Enter the size of the square matrix: ");
+   scanf("%d", &n);
+
+   printf("Enter the elements of the matrix:\n");
+
+   for (int i = 0; i < n; i++)
+      for (int j = 0; j < n; j++)
+            scanf("%d", &matrix[i][j]);
+
+   if (isIdentityMatrix(matrix, n))
+      printf("The matrix is an identity matrix.\n");
+   else
+      printf("The matrix is not an identity matrix.\n");
+
+   return 0;
+}
+
+```
 
 - Multi dimensional array (>2D)
-   Arrays with more than two dimensions.
-   Used for complex data structures.
+  Arrays with more than two dimensions.
+  Used for complex data structures.
 
+  ```c
+     int partition(int arr[], int low, int high) {
+        // ...
 
+     }
 
-   ```c
-      int partition(int arr[], int low, int high) {
-         // ...
-
-      }
-
-      void quickSort(int arr[], int low, int high) {
-         if (low < high) {
-            int pi = partition(arr, low, high);
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
-         }
-      }
-   ```
+     void quickSort(int arr[], int low, int high) {
+        if (low < high) {
+           int pi = partition(arr, low, high);
+           quickSort(arr, low, pi - 1);
+           quickSort(arr, pi + 1, high);
+        }
+     }
+  ```
 
 ### 1.13 String
 
@@ -3395,7 +3900,7 @@ int main()
 
 ```
 
-- Example of a structure 
+- Example of a structure
 
 ```c
 #include <stdio.h>
@@ -3560,7 +4065,7 @@ int main() {
     int result = sum(ptr1, ptr2);
 
     printf("Sum of numbers = %d\n", result);
-    
+
     return 0;
 }
 
@@ -3668,14 +4173,10 @@ int main()
 }
 ```
 
-- static vs dynamic memory allocation
-      - Key Differences:
-         - Static memory allocation occurs at compile time, while dynamic memory allocation occurs at runtime.
-         - Static memory allocation is done on the stack, while dynamic memory allocation is done on the heap.
-         - The size of statically allocated memory must be known at compile time, whereas the size of dynamically allocated memory can be determined at runtime.
-         - Static memory allocation is more straightforward but less flexible, while dynamic memory allocation allows for more flexibility but requires manual memory management.
+- static vs dynamic memory allocation - Key Differences: - Static memory allocation occurs at compile time, while dynamic memory allocation occurs at runtime. - Static memory allocation is done on the stack, while dynamic memory allocation is done on the heap. - The size of statically allocated memory must be known at compile time, whereas the size of dynamically allocated memory can be determined at runtime. - Static memory allocation is more straightforward but less flexible, while dynamic memory allocation allows for more flexibility but requires manual memory management.
 
 **Dynamic Memory Allocation (malloc/free):**
+
 - **Advantages:**
   - Allows you to allocate memory at runtime, which can be useful when the size of data is not known at compile time.
   - Helps manage memory efficiently by allocating only what is needed, reducing memory wastage.
@@ -3684,6 +4185,7 @@ int main()
   - Can be slower than static memory allocation due to the overhead of managing memory at runtime.
 
 **Static Memory Allocation (stack allocation):**
+
 - **Advantages:**
   - Memory is allocated and deallocated automatically by the compiler, simplifying memory management.
   - Generally faster than dynamic memory allocation as allocation and deallocation are done at compile time.
@@ -3692,38 +4194,41 @@ int main()
   - Stack memory is typically smaller than the heap, so it might not be suitable for large data structures.
 
 **Which One Is Better:**
+
 - For simple programs or when the size of data is known at compile time, static memory allocation can be preferred due to its simplicity and efficiency.
 - For more complex programs where the size of data is not known in advance or when memory needs to be dynamically allocated and deallocated during program execution, dynamic memory allocation is necessary.
 
 In summary, there's no definitive answer to which approach is better. It depends on the specific requirements, constraints, and performance considerations of your program. Both dynamic and static memory allocation have their place in software development, and the choice between them should be made based on the particular needs of your application.
 
-
 ### 1.18 File
 
 - not storing data
 
-   ```c
-      # include <stdio.h>
-      int main()
-      {
-         char name[50];
-         char phone[50];
-         char email[50];
+  ````c
+     # include <stdio.h>
+     int main()
+     {
+        char name[50];
+        char phone[50];
+        char email[50];
 
-         printf("Enter Name: ");
-         fgets(name, sizeof name, stdin);
+        printf("Enter Name: ");
+        fgets(name, sizeof name, stdin);
 
-         printf("Enter Phone: ");
-         fgets(phone, sizeof phone, stdin);
+        printf("Enter Phone: ");
+        fgets(phone, sizeof phone, stdin);
 
-         printf("Enter Email: ");
-         fgets(email, sizeof email, stdin);
+        printf("Enter Email: ");
+        fgets(email, sizeof email, stdin);
 
-         printf("Contacts.\n ");
-         printf("Name:  %s\nPhone:  %s\nEmail: %s\n", name, phone, email);
-         return 0;
-      }
-      ```
+        printf("Contacts.\n ");
+        printf("Name:  %s\nPhone:  %s\nEmail: %s\n", name, phone, email);
+        return 0;
+     }
+     ```
+  ````
+
+````
 
 - File is a place for storing data. In C programming, file system operations are facilitated through the Standard I/O Library (stdio.h). This library provides functions to perform various operations on files, such as creating, opening, reading, writing, and closing files.
 - functions which help us to do write operations: fputc, fputw, fprintf, fputs, fwrite
@@ -3731,221 +4236,221 @@ In summary, there's no definitive answer to which approach is better. It depends
 
 - how to declare a file: `FILE *nameOfTheFile` file pointer variable
 - how to create and close a file in c
- 
-   ```c
-      #include <stdio.h>
 
-      int main()
-      {
+  ```c
+     #include <stdio.h>
 
-         FILE *file;                // `FILE *nameOfTheFile` file pointer variable
-         file = fopen("contact.txt", "a"); // fopen(name of the file, mode of file- r, w, a, r+, w+, a+);
+     int main()
+     {
 
-         if (file == NULL)
-         {
-            printf("The contact file is created.\n");
-            return;
-         }
-         else
-         {
-            printf("The contact file is not created.\n");
-            fclose(file);
-         }
+        FILE *file;                // `FILE *nameOfTheFile` file pointer variable
+        file = fopen("contact.txt", "a"); // fopen(name of the file, mode of file- r, w, a, r+, w+, a+);
 
-         // char name[50];
-         // char phone[50];
-         // char email[50];
+        if (file == NULL)
+        {
+           printf("The contact file is created.\n");
+           return;
+        }
+        else
+        {
+           printf("The contact file is not created.\n");
+           fclose(file);
+        }
 
-         // printf("Enter Name: ");
-         // fgets(name, sizeof name, stdin);
+        // char name[50];
+        // char phone[50];
+        // char email[50];
 
-         // printf("Enter Phone: ");
-         // fgets(phone, sizeof phone, stdin);
+        // printf("Enter Name: ");
+        // fgets(name, sizeof name, stdin);
 
-         // printf("Enter Email: ");
-         // fgets(email, sizeof email, stdin);
+        // printf("Enter Phone: ");
+        // fgets(phone, sizeof phone, stdin);
 
-         // printf("Contacts.\n ");
-         // printf("Name:  %s\nPhone:  %s\nEmail: %s\n", name, phone, email);
-         // return 0;
-      }
-   ```
+        // printf("Enter Email: ");
+        // fgets(email, sizeof email, stdin);
+
+        // printf("Contacts.\n ");
+        // printf("Name:  %s\nPhone:  %s\nEmail: %s\n", name, phone, email);
+        // return 0;
+     }
+  ```
 
 - how to write strings in a file using fprintf()
 
-   ```c
-      #include <stdio.h>
+  ```c
+     #include <stdio.h>
 
-      int main()
-      {
+     int main()
+     {
 
-         char name[50];
-         char phone[50];
-         char email[50];
+        char name[50];
+        char phone[50];
+        char email[50];
 
-         FILE *file;
-         file = fopen("contact.txt", "a");
+        FILE *file;
+        file = fopen("contact.txt", "a");
 
-         if (file == NULL)
-         {
-            printf("Unable to open the contact file.\n");
-            return 0;
-         }
-         else
-         {
+        if (file == NULL)
+        {
+           printf("Unable to open the contact file.\n");
+           return 0;
+        }
+        else
+        {
 
-            // writing to a file
-            printf("The contact file is open.\n");
+           // writing to a file
+           printf("The contact file is open.\n");
 
-            fflush(stdin);
-            printf("Enter Name: ");
-            fgets(name, sizeof name, stdin);
+           fflush(stdin);
+           printf("Enter Name: ");
+           fgets(name, sizeof name, stdin);
 
-            printf("Enter Phone: ");
-            fgets(phone, sizeof phone, stdin);
+           printf("Enter Phone: ");
+           fgets(phone, sizeof phone, stdin);
 
-            printf("Enter Email: ");
-            fgets(email, sizeof email, stdin);
+           printf("Enter Email: ");
+           fgets(email, sizeof email, stdin);
 
-            // Write contact details to file
-            fprintf(file, "%s%s%s\n", name, phone, email);
+           // Write contact details to file
+           fprintf(file, "%s%s%s\n", name, phone, email);
 
-            fclose(file);
-            printf("Contact added successfully.\n");
-         }
-      }
-   ```
+           fclose(file);
+           printf("Contact added successfully.\n");
+        }
+     }
+  ```
 
 - how to read a file using fscanf
 
-   ```c
-   #include <stdio.h>
-   int main()
-   {
+  ```c
+  #include <stdio.h>
+  int main()
+  {
 
-      char name[50];
-      char phone[50];
-      char email[50];
+     char name[50];
+     char phone[50];
+     char email[50];
 
-      FILE *file;
-      file = fopen("contact.txt", "r");
+     FILE *file;
+     file = fopen("contact.txt", "r");
 
-      if (file == NULL)
-      {
-         printf("Unable to open the contact file.\n");
-         return 0;
-      }
-      else
-      {
+     if (file == NULL)
+     {
+        printf("Unable to open the contact file.\n");
+        return 0;
+     }
+     else
+     {
 
-         // read from a file
+        // read from a file
 
-         printf("Contacts:\n");
-         //  It tells fscanf to read strings until it encounters a newline character \n, but it skips leading whitespace characters. This allows it to read strings containing spaces.
-         while (fscanf(file, " %[^\n] %[^\n] %[^\n]", name, phone, email) != EOF)
-         {
-            printf("Name: %s\nPhone: %s\nEmail: %s\n\n", name, phone, email);
-         }
+        printf("Contacts:\n");
+        //  It tells fscanf to read strings until it encounters a newline character \n, but it skips leading whitespace characters. This allows it to read strings containing spaces.
+        while (fscanf(file, " %[^\n] %[^\n] %[^\n]", name, phone, email) != EOF)
+        {
+           printf("Name: %s\nPhone: %s\nEmail: %s\n\n", name, phone, email);
+        }
 
-         fclose(file);
+        fclose(file);
 
-         // write a contact to a file
-         // printf("The contact file is open.\n");
+        // write a contact to a file
+        // printf("The contact file is open.\n");
 
-         // fflush(stdin);
-         // printf("Enter Name: ");
-         // fgets(name, sizeof name, stdin);
+        // fflush(stdin);
+        // printf("Enter Name: ");
+        // fgets(name, sizeof name, stdin);
 
-         // printf("Enter Phone: ");
-         // fgets(phone, sizeof phone, stdin);
+        // printf("Enter Phone: ");
+        // fgets(phone, sizeof phone, stdin);
 
-         // printf("Enter Email: ");
-         // fgets(email, sizeof email, stdin);
+        // printf("Enter Email: ");
+        // fgets(email, sizeof email, stdin);
 
-         //    // Write contact details to file
-         // fprintf(file, "%s %s %s\n", name, phone, email);
+        //    // Write contact details to file
+        // fprintf(file, "%s %s %s\n", name, phone, email);
 
-         // fclose(file);
-         // printf("Contact added successfully.\n");
-      }
-   }
+        // fclose(file);
+        // printf("Contact added successfully.\n");
+     }
+  }
 
-   ```
+  ```
 
 - create functions to separate read and write
 
-   ```c
-      #include <stdio.h>
+  ```c
+     #include <stdio.h>
 
-      void addContact()
-      {
-         char name[50];
-         char phone[50];
-         char email[50];
+     void addContact()
+     {
+        char name[50];
+        char phone[50];
+        char email[50];
 
-         FILE *file;
-         file = fopen("contact.txt", "a");
+        FILE *file;
+        file = fopen("contact.txt", "a");
 
-         if (file == NULL)
-         {
-            printf("Unable to open the contact file.\n");
-            return;
-         }
-         else
-         {
-            // write a contact to a file
-            fflush(stdin);
-            printf("Enter Name: ");
-            fgets(name, sizeof name, stdin);
+        if (file == NULL)
+        {
+           printf("Unable to open the contact file.\n");
+           return;
+        }
+        else
+        {
+           // write a contact to a file
+           fflush(stdin);
+           printf("Enter Name: ");
+           fgets(name, sizeof name, stdin);
 
-            printf("Enter Phone: ");
-            fgets(phone, sizeof phone, stdin);
+           printf("Enter Phone: ");
+           fgets(phone, sizeof phone, stdin);
 
-            printf("Enter Email: ");
-            fgets(email, sizeof email, stdin);
+           printf("Enter Email: ");
+           fgets(email, sizeof email, stdin);
 
-            // Write contact details to file
-            fprintf(file, "%s%s%s\n", name, phone, email);
+           // Write contact details to file
+           fprintf(file, "%s%s%s\n", name, phone, email);
 
-            fclose(file);
-            printf("Contact added successfully.\n");
-         }
-      }
+           fclose(file);
+           printf("Contact added successfully.\n");
+        }
+     }
 
-      void displayContacts()
-      {
-         char name[50];
-         char phone[50];
-         char email[50];
+     void displayContacts()
+     {
+        char name[50];
+        char phone[50];
+        char email[50];
 
-         FILE *file;
-         file = fopen("contact.txt", "r");
+        FILE *file;
+        file = fopen("contact.txt", "r");
 
-         if (file == NULL)
-         {
-            printf("Unable to open the contact file.\n");
-            return;
-         }
-         else
-         {
-            printf("Contacts:\n");
-            while (fscanf(file, " %[^\n] %[^\n] %[^\n]", name, phone, email) != EOF)
-            {
-               printf("Name: %s\nPhone: %s\nEmail: %s\n\n", name, phone, email);
-            }
+        if (file == NULL)
+        {
+           printf("Unable to open the contact file.\n");
+           return;
+        }
+        else
+        {
+           printf("Contacts:\n");
+           while (fscanf(file, " %[^\n] %[^\n] %[^\n]", name, phone, email) != EOF)
+           {
+              printf("Name: %s\nPhone: %s\nEmail: %s\n\n", name, phone, email);
+           }
 
-            fclose(file);
-         }
-      }
+           fclose(file);
+        }
+     }
 
-      int main()
-      {
+     int main()
+     {
 
-         addContact();
-         displayContacts();
-      }
+        addContact();
+        displayContacts();
+     }
 
-   ```
+  ```
 
 - create a structure to make this more easier
 
@@ -4161,3 +4666,4 @@ int main()
 }
 
 ```
+````
