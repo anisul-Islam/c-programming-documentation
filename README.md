@@ -997,6 +997,42 @@ int y = ~x; // Binary: 11111010, y is -6 in decimal
 int size = sizeof(int); // size is the size of an int (typically 4 bytes)
 ```
 
+##### C Program: Unary Operators demonstration
+
+```c
+#include <stdio.h>
+int main()
+{
+  int x = 5, result;
+  // result = +x;
+  // printf("x = %d\n", result);
+
+  // result = -x;
+  // printf("x = %d\n", result);
+
+  // x++; // post increment
+  // ++x; // pre increment
+
+  printf("x = %d\n", ++x); // x = 6
+  printf("x = %d\n", --x); // x = 5
+  printf("x = %d\n", x);   // x = 5
+  printf("x = %d\n", x++); // x = 5
+  printf("x = %d\n", x);   // x = 6
+  printf("x = %d\n", x--); // x = 6
+  printf("x = %d\n", x);   // x = 5
+  printf("x = %d\n", --x); // x = 4
+  printf("x = %d\n", x++); // x = 4
+  printf("x = %d\n", ++x); // x = 6
+
+  printf("sizeof(int) = %d\n", sizeof(int));
+  printf("sizeof(float) = %d\n", sizeof(float));
+  printf("sizeof(double) = %d\n", sizeof(double));
+  printf("sizeof(char) = %d\n", sizeof(char));
+  return 0;
+}
+
+```
+
 These unary operators are essential in C programming for tasks like incrementing or decrementing variables, changing signs, and performing logical or bitwise operations on data.
 
 #### 1.9.2 Binary Operators
