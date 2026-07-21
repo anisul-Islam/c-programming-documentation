@@ -1219,22 +1219,6 @@ Output
 
 ---
 
-###### Operator Precedence Table
-
-| Precedence  | Operators                   | Description                       |
-| ----------- | --------------------------- | --------------------------------- | --- | ---------- |
-| 1 (Highest) | `()`                        | Parentheses                       |
-| 2           | `++`, `--`                  | Increment / Decrement             |
-| 3           | `*`, `/`, `%`               | Multiplication, Division, Modulus |
-| 4           | `+`, `-`                    | Addition, Subtraction             |
-| 5           | `<`, `<=`, `>`, `>=`        | Relational Operators              |
-| 6           | `==`, `!=`                  | Equality Operators                |
-| 7           | `&&`                        | Logical AND                       |
-| 8           | `                           |                                   | `   | Logical OR |
-| 9           | `=`, `+=`, `-=`, `*=`, `/=` | Assignment                        |
-
----
-
 ###### Associativity
 
 When two operators have the same precedence, **associativity** determines the order of evaluation.
@@ -1827,6 +1811,34 @@ x /= 4; // Equivalent to x = x / 4; x is now 3
 ```c
 int x = 15;
 x %= 7; // Equivalent to x = x % 7; x is now 1
+```
+
+##### C Program: Assignment operators demonstration
+
+```c
+#include <stdio.h>
+int main()
+{
+  int a = 3, b = 2, result;
+  // += -= *= /= %=
+
+  a += 3; // a = a + 3 = 6
+  printf("%d\n", a); // 6
+
+  a -= 3; // a = a - 3 = 3
+  printf("%d\n", a); // 3
+
+  a *= 3; // a = a * 3 = 9
+  printf("%d\n", a); // 9
+
+  a /= b; // a = a / b = 4
+  printf("%d\n", a); // 4
+
+  a %= b; // a = a % b = 4 % 2 = 0
+  printf("%d\n", a); //0
+
+  return 0;
+}
 ```
 
 - Bitwise Assignment Operators (e.g., `&=`, `|=`, `^=`):\*\* Perform bitwise operations on the variable on the left and the value on the right, then assign the result to the variable on the left.
