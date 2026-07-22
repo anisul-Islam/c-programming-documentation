@@ -2024,6 +2024,8 @@ In this example, we include `<math.h>` and use functions like `sqrt()`, `pow()`,
 
 #### 1.10.1 Conditional control Statement
 
+![types of control statement image](images/control-statement.png)
+
 Conditional control statements in C are used to control the flow of a program based on conditions. They allow you to execute different code blocks based on whether a condition is true or false. There are primarily two types of conditional control statements in C: `if` and `switch`. Here are examples for both:
 
 ##### `if, else if and else` Statement:\*\*
