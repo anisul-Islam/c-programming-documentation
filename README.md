@@ -2022,9 +2022,9 @@ In this example, we include `<math.h>` and use functions like `sqrt()`, `pow()`,
 
 ### 1.10 Control Statement
 
-#### 1.10.1 Conditional control Statement
-
 ![types of control statement image](images/control-statement.png)
+
+#### 1.10.1 Conditional control Statement
 
 Conditional control statements in C are used to control the flow of a program based on conditions. They allow you to execute different code blocks based on whether a condition is true or false. There are primarily two types of conditional control statements in C: `if` and `switch`. Here are examples for both:
 
@@ -2169,31 +2169,104 @@ int main()
 ###### Find out Large Number program from 3 numbers
 
 ```c
-// find largest numer of 3 numbers
+// Method 1 -  A program to find the largest, smallest and middle number among 3 numbers
 #include <stdio.h>
 int main()
 {
+  int number1, number2, number3, smallest, largest, middle;
 
-    int number1, number2, number3;
-    printf("Enter three numbers: ");
-    scanf("%d %d %d", &number1, &number2, &number3);
-    if (number1 > number2 && number1 > number3)
-    {
-        printf("%d is the largest number\n", number1);
-    }
-    else if (number2 > number1 && number2 > number3)
-    {
-        printf("%d is the largest number\n", number2);
-    }
-    else if (number3 > number1 && number3 > number2)
-    {
-        printf("%d is the largest number\n", number3);
-    }
-    else
-    {
-        printf("Both numbers are equal\n");
-    }
-    return 0;
+  printf("Enter number1 : ");
+  scanf("%d", &number1);
+
+  printf("Enter number2 : ");
+  scanf("%d", &number2);
+
+  printf("Enter number3 : ");
+  scanf("%d", &number3);
+
+  // Find smallest
+  smallest = number1;
+
+  if (number2 < smallest)
+  {
+    smallest = number2;
+  }
+  if (number3 < smallest)
+  {
+    smallest = number3;
+  }
+
+  // Find largest
+  largest = number1;
+
+  if (number2 > largest)
+  {
+    largest = number2;
+  }
+  if (number3 > largest)
+  {
+    largest = number3;
+  }
+
+  // middle number => (num1+num2+num3) - largest - smallest
+  middle = (number1 + number2 + number3) - largest - smallest;
+
+  printf("smallest number : %d\n", smallest);
+  printf("Middle number : %d\n", middle);
+  printf("Largest number : %d\n", largest);
+
+  return 0;
+}
+
+
+// Method 2 -  A program to find the largest, smallest and middle number among 3 numbers
+// A program to find the largest number among 3 numbers
+#include <stdio.h>
+int main()
+{
+  int number1, number2, number3, smallest, largest, middle;
+
+  printf("Enter number1 : ");
+  scanf("%d", &number1);
+
+  printf("Enter number2 : ");
+  scanf("%d", &number2);
+
+  printf("Enter number3 : ");
+  scanf("%d", &number3);
+
+  // find the middle number
+
+  if ((number1 > number2 && number1 < number3) || (number1 < number2 && number1 > number3))
+  {
+    printf("Middle number = %d\n", number1);
+  }
+  else if ((number2 > number1 && number2 < number3) || (number2 < number1 && number2 > number3))
+  {
+    printf("Middle number = %d\n", number2);
+  }else{
+    printf("Middle number = %d\n", number3);
+  }
+
+  // finding the smallest number
+  // if (number1 < number2 && number1 < number3)
+  // {
+  //   smallest = number1;
+  // }
+  // else if (number2 < number1 && number2 < number3)
+  // {
+  //   smallest = number2;
+  // }
+  // else if (number3 < number1 && number3 < number2)
+  // {
+  //   smallest = number3;
+  // }
+
+  // printf("smallest number : %d\n", smallest);
+  // printf("Middle number : %d\n", middle);
+  // printf("Largest number : %d\n", largest);
+
+  return 0;
 }
 ```
 
