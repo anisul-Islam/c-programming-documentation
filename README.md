@@ -2270,28 +2270,145 @@ int main()
 }
 ```
 
-###### Check a year is leap year or not
+###### Write a C program to check whether a person is eligible to vote based on their age
 
 ```c
-// check a year is a leap year or not
+// Write a C program to check whether a person is eligible (18 or above) to vote based on their age.
+/*
+Algorithm
+1. start
+2. Input the person's age
+3. check if age is greater than or equal to 18
+4. if true, display Eligible to Vote
+5. if false, display Not Eligible to Vote
+6. End
+*/
 #include <stdio.h>
 int main()
 {
+  int age;
 
-    int year;
-    printf("Enter a year: ");
-    scanf("%d", &year);
+  printf("Enter your age : ");
+  scanf("%d", &age);
 
-    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
-    {
-        printf("%d is a leap year\n", year);
-    }
-    else
-    {
-        printf("%d is not a leap year\n", year);
-    }
+  if (age < 0)
+  {
+    printf("Invalid age! Please enter a valid age.\n");
+  }
+  else if (age >= 18)
+  {
+    printf("Eligible to Vote.\n");
+  }
+  else
+  {
+    printf("Not Eligible to Vote.\n");
+  }
 
-    return 0;
+  return 0;
+}
+```
+
+###### Write a program to display different messages for: - Child (0–12) - Teenager (13–17) - Adult (18–59) - Senior Citizen (60+)
+
+```c
+// Write a program to display different messages for: - Child (0–12) - Teenager (13–17) - Adult (18–59) - Senior Citizen (60+)
+#include <stdio.h>
+int main()
+{
+  int age;
+
+  printf("Enter your age : ");
+  scanf("%d", &age);
+
+  if (age < 0)
+  {
+    printf("Invalid age! Please enter a valid age.\n");
+  }
+  else if (age >= 0 && age <= 12)
+  {
+    printf("Child.\n");
+  }
+  else if (age >= 13 && age <= 17)
+  {
+    printf("Teenager.\n");
+  }
+  else if (age >= 18 && age <= 59)
+  {
+    printf("Adult.\n");
+  }
+  else
+  {
+    printf("Senior Citizen.\n");
+  }
+  return 0;
+}
+```
+
+###### Check a year is leap year or not
+
+```c
+/*
+Leap year conditions
+1) year % 400 == 0 , year is a leap year
+2) year % 4 == 0 && year%100 != 0 , year is a leap year
+3) Not a leap year
+*/
+#include <stdio.h>
+int main()
+{
+  int year;
+
+  printf("Enter a year: ");
+  scanf("%d", &year);
+
+  if (year < 0)
+  {
+    printf("Not a valid year. Please enter a valid year.\n");
+  }
+  else if (year % 400 == 0)
+  {
+    printf("Leap year\n");
+  }
+  else if (year % 4 == 0 && year % 100 != 0)
+  {
+    printf("Leap year\n");
+  }
+  else
+  {
+    printf("Not a Leap year\n");
+  }
+  return 0;
+}
+
+// Method 2
+/*
+Leap year conditions
+1) year % 400 == 0 , year is a leap year
+2) year % 4 == 0 && year%100 != 0 , year is a leap year
+3) Not a leap year
+*/
+#include <stdio.h>
+int main()
+{
+  int year;
+
+  printf("Enter a year: ");
+  scanf("%d", &year);
+
+  if (year < 0)
+  {
+    printf("Not a valid year. Please enter a valid year.\n");
+  }
+  else if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))
+  {
+    printf("Leap year\n");
+  }
+
+  else
+  {
+    printf("Not a Leap year\n");
+  }
+  return 0;
 }
 ```
 
@@ -2328,32 +2445,33 @@ int main()
 ###### Check a letter is vowel or consonant or not a letter
 
 ```c
-// Check a letter is vowel or consonant or not a letter
+// check a letter is vowel or consonant
 #include <stdio.h>
 #include <ctype.h>
 int main()
 {
+  char letter, tempLetter;
 
-    char letter;
-    printf("Enter a letter: ");
-    scanf("%c", &letter);
+  printf("Enter a letter: ");
+  scanf("%c", &letter); // 0
 
-    letter = tolower(letter);
+  tempLetter = tolower(letter); // o
 
-    if (!(letter >= 'a' && letter <= 'z'))
-    {
-        printf("%c is not a letter\n", letter);
-    }
-    else if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u')
-    {
-        printf("%c is a vowel\n", letter);
-    }
-    else
-    {
-        printf("%c is a consonant\n", letter);
-    }
+  // not from the range a-z
+  if (!(tempLetter >= 'a' && tempLetter <= 'z'))
+  {
+    printf("%c is not a letter\n", letter);
+  }
+  else if (tempLetter == 'a' || tempLetter == 'e' || tempLetter == 'i' || tempLetter == 'o' || tempLetter == 'u')
+  {
+    printf("%c is a vowel\n", letter);
+  }
+  else
+  {
+    printf("%c is a consonant\n", letter);
+  }
 
-    return 0;
+  return 0;
 }
 ```
 
