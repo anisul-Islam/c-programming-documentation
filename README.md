@@ -2527,7 +2527,94 @@ int main()
 
 ```
 
-##### `switch` Statement:\*\*
+##### `Ternary` Operator
+
+```c
+
+// Check Pass or Fail
+#include <stdio.h>
+
+int main()
+{
+    int marks;
+
+    printf("Enter your marks: ");
+    scanf("%d", &marks);
+
+    (marks >= 40) ? printf("Pass\n") : printf("Fail\n");
+
+    return 0;
+}
+
+
+
+// check even or odd
+#include <stdio.h>
+
+int main()
+{
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    (number % 2 == 0) ? printf("Even\n") : printf("Odd\n");
+
+    return 0;
+}
+
+// Find Maximum Between Two Numbers
+#include <stdio.h>
+
+int main()
+{
+    int a, b;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    printf("Maximum = %d\n", (a > b) ? a : b);
+
+    return 0;
+}
+
+// Find Maximum Among Three Numbers
+#include <stdio.h>
+
+int main()
+{
+    int a, b, c, max;
+
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+
+    max = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);
+
+    printf("Maximum = %d\n", max);
+
+    return 0;
+}
+
+// find the middle number amoong 3 numbers
+#include <stdio.h>
+
+int main()
+{
+    int a, b, c, middle;
+
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+
+    middle = ((a > b && a < c) || (a < b && a > c)) ? a :
+             ((b > a && b < c) || (b < a && b > c)) ? b : c;
+
+    printf("Middle Number = %d\n", middle);
+
+    return 0;
+}
+```
+
+##### `switch` Statement
 
 The `switch` statement allows you to select one of many code blocks to be executed. It's typically used when you have multiple conditions to test.
 
