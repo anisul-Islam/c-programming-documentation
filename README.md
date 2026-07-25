@@ -2565,17 +2565,48 @@ int main()
 
 // Find Maximum Between Two Numbers
 #include <stdio.h>
-
 int main()
 {
-    int a, b;
+  int num1, num2, num3, max;
 
-    printf("Enter two numbers: ");
-    scanf("%d %d", &a, &b);
+  printf("enter num1 = ");
+  scanf("%d", &num1);
 
-    printf("Maximum = %d\n", (a > b) ? a : b);
+  printf("enter num2 = ");
+  scanf("%d", &num2);
 
-    return 0;
+  printf("enter num3 = ");
+  scanf("%d", &num3);
+
+  // find largest number using ternary
+  max = num1 > num2 ? ((num1 > num3) ? num1 : num3) : ((num2 > num3) ? num2 : num3);
+
+  // if (num1 > num2)
+  // {
+  //   if (num1 > num3)
+  //   {
+  //     max = num1;
+  //   }
+  //   else
+  //   {
+  //     max = num3;
+  //   }
+  // }
+  // else
+  // {
+  //   if (num2 > num3)
+  //   {
+  //     max = num2;
+  //   }
+  //   else
+  //   {
+  //     max = num3;
+  //   }
+  // }
+
+  printf("Maximum number is : %d\n", max);
+
+  return 0;
 }
 
 // Find Maximum Among Three Numbers
@@ -2614,11 +2645,121 @@ int main()
 }
 ```
 
+###### Conditional operator related example
+
+1. Write a program that read mark and display pass or fail.
+2. Write a program to check a number even or odd.
+3. Write a program that read two numbers and display maximum.
+4. Write a program that read two numbers and display minimum.
+5. Write a program that read three numbers and display maximum.
+6. Write a program that read three numbers and display minimum.
+7. Write a program that read three numbers and display medium.
+
 ##### `switch` Statement
 
 The `switch` statement allows you to select one of many code blocks to be executed. It's typically used when you have multiple conditions to test.
 
 ```c
+
+// Digit spelling program
+#include <stdio.h>
+int main()
+{
+  // switch, case, break, default
+  // digit spelling with if statment -> 0 Zero, 1 -> One
+
+  int digit;
+  printf("Enter a digit between 0-9: ");
+  scanf("%d", &digit);
+
+  switch (digit)
+  {
+  case 0:
+    printf("Zero\n");
+    break;
+  case 1:
+    printf("One\n");
+    break;
+  case 2:
+    printf("Two\n");
+    break;
+  case 3:
+    printf("Three\n");
+    break;
+  case 4:
+    printf("Four\n");
+    break;
+  case 5:
+    printf("Five\n");
+    break;
+  case 6:
+    printf("Six\n");
+    break;
+  case 7:
+    printf("Seven\n");
+    break;
+  case 8:
+    printf("Eight\n");
+    break;
+  case 9:
+    printf("Nine\n");
+    break;
+  default:
+    printf("Not a digit.\n");
+  }
+
+  /*
+  if (digit == 0)
+  {
+    printf("Zero\n");
+  }
+  else if (digit == 1)
+  {
+    printf("One\n");
+  }
+  else if (digit == 2)
+  {
+    printf("Two\n");
+  }
+  else if (digit == 3)
+  {
+    printf("Three\n");
+  }
+  else if (digit == 4)
+  {
+    printf("Four\n");
+  }
+  else if (digit == 5)
+  {
+    printf("Five\n");
+  }
+  else if (digit == 6)
+  {
+    printf("Six\n");
+  }
+  else if (digit == 7)
+  {
+    printf("Seven\n");
+  }
+  else if (digit == 8)
+  {
+    printf("Eight\n");
+  }
+  else if (digit == 9)
+  {
+    printf("Nine\n");
+  }
+  else
+  {
+    printf("Not a digit\n");
+  }
+
+   */
+
+  return 0;
+}
+
+
 #include <stdio.h>
 
 int main() {
@@ -2761,16 +2902,6 @@ int main()
 3.  Write a program that read a year and display leap year or not.
 4.  Write a program that read any letter and display vowel or consonant.
 5.  Write a program that read any number and display its Roman number.
-
-###### Conditional operator related example
-
-1.  Write a program that read mark and display pass or fail.
-2.  Write a program to check a number even or odd.
-3.  Write a program that read two numbers and display maximum.
-4.  Write a program that read two numbers and display minimum.
-5.  Write a program that read three numbers and display maximum.
-6.  Write a program that read three numbers and display minimum.
-7.  Write a program that read three numbers and display medium.
 
 #### 1.10.2 Loop control Statement
 
@@ -2941,6 +3072,184 @@ The `break` and `continue` statements are commonly used in loops to control the 
 27. Write a program that read two numbers (x, y) and display xy .
 28. Write a program that read two numbers (n, r) and display nPr (Permutation).
 29. Write a program that read two numbers (n, r) and display nCr (Combination).
+
+##### Find and count the even/odd numbers from m-n
+
+```c
+#include <stdio.h>
+int main()
+{
+  // Find and count the even/odd numbers from m-n
+  // m = 10
+  // n = 20
+  // 10 12 14 16 18 20
+
+  int m, n, i, totalEvenNumbers = 0, totalOddNumbers = 0;
+
+  printf("start value : ");
+  scanf("%d", &m);
+
+  printf("end value : ");
+  scanf("%d", &n);
+
+  for (i = m; i <= n; i++)
+  {
+    if (i % 2 == 0)
+    {
+      totalEvenNumbers++;
+      printf("%d ", i);
+    }
+    else
+    {
+      totalOddNumbers++;
+    }
+  }
+
+  printf("\nTotal even numbers from %d to %d is : %d\n", m, n, totalEvenNumbers);
+  printf("\nTotal odd numbers from %d to %d is : %d\n", m, n, totalOddNumbers);
+
+  return 0;
+}
+
+```
+
+##### Print numbers which are divisible by 5 or 3 but not both
+
+```c
+#include <stdio.h>
+int main()
+{
+  // Print numbers which are divisible by 3
+  // Print numbers which are divisible by 5
+  // Print numbers which are divisible by 5 and 3
+  // Print numbers which are divisible by 5 or 3 but not both
+  // 3 5 6 10 12
+
+  for (int i = 1; i <= 100; i++)
+  {
+    int divisibleBy3 = (i % 3 == 0);
+    int divisibleBy5 = (i % 5 == 0);
+    int divisibleBy15 = (i % 15 == 0);
+
+    if ((divisibleBy3 || divisibleBy5) && !divisibleBy15)
+    {
+      printf("%d ", i);
+    }
+  }
+  printf("\n");
+
+  return 0;
+}
+
+```
+
+##### Print all odd numbers from 1 to 1000 which are divisible by 3
+
+```c
+#include <stdio.h>
+int main()
+{
+  // Write a program to print all odd numbers from 1 to 1000 which are divisible by 3.
+
+  for (int i = 1; i <= 1000; i++)
+  {
+    if (i % 2 != 0 && i % 3 == 0)
+    {
+      printf("%d ", i);
+    }
+  }
+
+  printf("\n");
+
+  return 0;
+}
+
+```
+
+##### Multiplication Table from m to n
+
+```c
+/*
+Enter any number : 3
+
+3 X 1 = 3
+3 X 2 = 6
+3 X 3 = 9
+
+........
+........
+
+3 X 10 = 30
+
+
+*/
+
+#include <stdio.h>
+int main()
+{
+  int start, end;
+
+  printf("Enter strating point: ");
+  scanf("%d", &start);
+
+  printf("Enter ending point: ");
+  scanf("%d", &end);
+
+  for (int number = start; number <= end; number++)
+  {
+    for (int i = 1; i <= 10; i++)
+    {
+      printf("%d X %d = %d\n", number, i, number * i);
+    }
+    printf("---------------\n");
+  }
+
+  return 0;
+}
+```
+
+##### Sum of 1 to N numbers
+
+```c
+#include <stdio.h>
+int main()
+{
+  // Write a Program to find the Sum of numbers from 1 to N
+  // 1+2+3+...N
+
+  int n, sum = 0;
+  printf("Enter the nth term: ");
+  scanf("%d", &n);
+
+  for (int i = 1; i <= n; i++)
+  {
+    if (i > 1)
+    {
+      printf(" + ");
+    }
+
+    printf("%d", i);
+    sum = sum + i;
+  }
+
+  printf(" = %d\n", sum);
+
+  return 0;
+}
+// 1 + 2 + 3 + 4 + 5 = 15
+```
+
+##### Multiplication of 1 to N numbers
+
+```c
+
+```
+
+##### Factorial of N
+
+```c
+
+```
 
 ##### Prime Number Programs: Everything you need to know
 
