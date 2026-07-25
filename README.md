@@ -3208,46 +3208,126 @@ int main()
 }
 ```
 
-##### Sum of 1 to N numbers
+##### Series - Sum of 1 to N numbers
 
 ```c
 #include <stdio.h>
 int main()
 {
   // Write a Program to find the Sum of numbers from 1 to N
-  // 1+2+3+...N
+  // N=5 1+2+3+4+5 = 15
+  // N= 2+4+6+8+10 + ... N
+  // N= 1+4+7+10+ ... N
 
-  int n, sum = 0;
-  printf("Enter the nth term: ");
+  int n, sum = 0, first = 1;
+  printf("Enter the nth number: ");
   scanf("%d", &n);
 
-  for (int i = 1; i <= n; i++)
+  for (int i = 1; i <= n; i = i + 3)
   {
-    if (i > 1)
+    if (!first)
     {
       printf(" + ");
     }
-
-    printf("%d", i);
     sum = sum + i;
+    printf("%d", i);
+    first = 0;
   }
-
   printf(" = %d\n", sum);
 
   return 0;
 }
-// 1 + 2 + 3 + 4 + 5 = 15
+
 ```
 
-##### Multiplication of 1 to N numbers
+##### Series - Multiplication of 1 to N numbers
 
 ```c
+#include <stdio.h>
+int main()
+{
+  // Write a Program to find the multiplication of numbers from 1 to N
+  // N=5 1*2*3*...*n = ?
+  // N=5 1*2*3*...*n = ?
 
+
+  int n, sum = 1, first = 1;
+  printf("Enter the nth number: ");
+  scanf("%d", &n);
+
+  for (int i = 1; i <= n; i = i + 1)
+  {
+    if (!first)
+    {
+      printf(" * ");
+    }
+    sum = sum * i;
+    printf("%d", i);
+    first = 0;
+  }
+  printf(" = %d\n", sum);
+
+  return 0;
+}
+
+
+// another example
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+  // Write a Program to find the multiplication of numbers from 1 to N
+  // N=10 1*2*3*...*n = ?
+  // N=10 2*4*6*...*n = ?
+  // N=10 1^1 * 2^2 * 3^2 *...*n^n = ?
+  // N=10 2^1 * 4^2 * 6^2 *...*n^n = ?
+
+  int n, sum = 1, first = 1;
+  printf("Enter the nth number: ");
+  scanf("%d", &n);
+
+  for (int i = 1; i <= n; i = i + 1)
+  {
+    if (!first)
+    {
+      printf(" * ");
+    }
+    sum = sum * pow(i, 2);
+    printf("%d^2", i);
+    first = 0;
+  }
+  printf(" = %d\n", sum);
+
+  return 0;
+}
 ```
 
 ##### Factorial of N
 
 ```c
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+  // Write a Program to find the factorial of N
+  // N=5 1*2*3*4*5=
+  // N=5 5*4*3*2*1=
+
+  int N, fact = 1;
+
+  printf("Enter N = ");
+  scanf("%d", &N);
+
+  for (int i = 1; i <= N; i++)
+  {
+    fact = fact * i;
+  }
+
+  printf("Factorial of %d = %d\n", N, fact);
+
+  return 0;
+}
+
 
 ```
 
