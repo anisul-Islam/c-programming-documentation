@@ -3334,87 +3334,48 @@ int main()
 ##### Prime Number Programs: Everything you need to know
 
 ```c
-// check a number is prime or not: first version
-#include <stdio.h>
-#include <ctype.h>
-int main(){
-   int number, count=0;
-
-   printf("Enter a number: ");
-   scanf("%d", &number);
-
-   for(int i=2; i<number; i++){
-       if(number%i==0){
-         count=1;
-         break;
-      }
-   }
-   if(count==0){
-      printf("%d is a prime number", number);
-   }else{
-      printf("%d is not a prime number", number);
-   }
-
-   getchar();
-}
-
-// check a number is prime or not: second version
-#include <stdio.h>
-#include <ctype.h>
-int main(){
-   int number, count=0;
-
-   printf("Enter a number: ");
-   scanf("%d", &number);
-
-   if(number<=1){
-      printf("%d is not a prime number", number);
-   }else{
-      for(int i=2; i<number/2; i++){
-       if(number%i==0){
-           count=1;
-           break;
-         }
-      }
-   }
-
-   if(count==0){
-      printf("%d is a prime number", number);
-   }else{
-      printf("%d is not a prime number", number);
-   }
-
-   getchar();
-}
-
-// check a number is prime or not: third version
 #include <stdio.h>
 #include <math.h>
-#include <ctype.h>
-int main(){
-   int number, count=0;
+int main()
+{
+  // Write a Program to check a number is Prime or not
 
-   printf("Enter a number: ");
-   scanf("%d", &number);
+  int number, count = 0;
 
-   if(number<=1){
-      printf("%d is not a prime number", number);
-   }else{
-      for(int i=2; i<sqrt(number); i++){
-       if(number%i==0){
-           count=1;
-           break;
-         }
+  printf("Enter any number = ");
+  scanf("%d", &number);
+
+  if (number <= 1)
+  {
+    count = 1;
+    return;
+  }
+  else
+  {
+    // for (int i = 2; i < number; i++)
+    // for (int i = 2; i <= number / 2; i++)
+    for (int i = 2; i <= sqrt(number); i++)
+    {
+      if (number % i == 0)
+      {
+        count++;
+        break;
       }
-   }
-   if(count==0){
-      printf("%d is a prime number", number);
-   }else{
-      printf("%d is not a prime number", number);
-   }
+    }
+  }
 
-   getchar();
+  if (count == 0)
+  {
+    printf("%d is a prime number\n", number);
+  }
+  else
+  {
+    printf("%d is not a prime number\n", number);
+  }
+
+  return 0;
 }
+
 
 // print prime, find total prime numbers, find sum of prime numbers from m to n
 #include <stdio.h>
@@ -3456,6 +3417,62 @@ int main(){
 }
 
 // using function to separate prime number logic
+```
+
+##### Greatest Common Divisor (GCD) and Least Common Multiple (LCM)
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int num1, num2;
+    int first, second;
+    int remainder;
+    int gcd, lcm;
+
+    printf("Enter first number: ");
+    if (scanf("%d", &num1) != 1)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    printf("Enter second number: ");
+    if (scanf("%d", &num2) != 1)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    if (num1 == 0 && num2 == 0)
+    {
+        printf("GCD and LCM are undefined for 0 and 0.\n");
+        return 0;
+    }
+
+    num1 = abs(num1);
+    num2 = abs(num2);
+
+    first = num1;
+    second = num2;
+
+    while (second != 0)
+    {
+        remainder = first % second;
+        first = second;
+        second = remainder;
+    }
+
+    gcd = first;
+    lcm = (num1 / gcd) * num2;
+
+    printf("\nGreatest Common Divisor (GCD) = %d\n", gcd);
+    printf("Least Common Multiple (LCM) = %d\n", lcm);
+
+    return 0;
+}
 ```
 
 ##### Armstrong Number Program
