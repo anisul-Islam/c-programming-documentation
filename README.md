@@ -3475,32 +3475,179 @@ int main()
 }
 ```
 
+##### Sum of a digits Program
+
+```c
+#include <stdio.h>
+int main()
+{
+  // Write a Program to find sum of digits
+  // user input => number = 123
+  // 1+2+3=6
+
+  int number, remainder, temp, sum = 0;
+
+  if (scanf("%d", &number) != 1)
+  {
+    printf("Please enter a valid integer.\n");
+    return 1;
+  }
+
+  if (number <= 0)
+  {
+    printf("Please enter a positive integer.\n");
+    return 1;
+  }
+
+  temp = number;
+
+  while (temp != 0)
+  {
+    remainder = temp % 10;
+    printf("Digit = %d\n", remainder);
+    sum += remainder;
+    temp /= 10;
+  }
+
+  printf("Sum of digits of %d = %d\n", number, sum);
+
+  return 0;
+}
+
+```
+
+##### Reverse a number Program
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    // Write a Program to Reverse a Number
+    // Input: 123
+    // Output: 321
+
+    int number, temp, remainder, reverse = 0;
+
+    if (scanf("%d", &number) != 1)
+    {
+        printf("Please enter a valid integer.\n");
+        return 1;
+    }
+
+    if (number <= 0)
+    {
+        printf("Please enter a positive integer.\n");
+        return 1;
+    }
+
+    temp = number;
+
+    while (temp != 0)
+    {
+        remainder = temp % 10;
+        printf("Digit = %d\n", remainder);
+
+        reverse = reverse * 10 + remainder;
+        temp /= 10;
+    }
+
+    printf("Reverse of %d = %d\n", number, reverse);
+
+    return 0;
+}
+```
+
+##### check a number is palindrome Program
+
+```c
+#include <stdio.h>
+int main()
+{
+
+  int originalNumber, remainder, workingNumber, reverse = 0;
+
+  printf("Enter any positive integer: ");
+  if (scanf("%d", &originalNumber) != 1)
+  {
+    printf("Please enter a valid integer.\n");
+    return 1;
+  }
+
+  if (originalNumber <= 0)
+  {
+    printf("Please enter a positive integer.\n");
+    return 1;
+  }
+
+  // Save the originalNumber
+  workingNumber = originalNumber;
+
+  // Reverse the number
+  while (workingNumber != 0)
+  {
+    remainder = workingNumber % 10;
+    reverse = reverse * 10 + remainder;
+    workingNumber /= 10;
+  }
+
+  if (originalNumber == reverse)
+  {
+    printf("%d is a palindrome number.\n", originalNumber);
+  }
+  else
+  {
+    printf("%d is not a palindrome number.\n", originalNumber);
+  }
+
+  return 0;
+}
+
+```
+
 ##### Armstrong Number Program
 
 ```c
 #include <stdio.h>
-#include <ctype.h>
-int main(){
-int number, sum=0, temp, remainder;
 
-printf("Enter any number: ");
-scanf("%d", &number);
+int main()
+{
+  int originalNumber, workingNumber, remainder;
+  int armstrongSum = 0;
 
-temp = number;
+  printf("Enter a positive integer: ");
 
-while(temp!=0){
-   remainder = temp%10;
-   sum = sum + remainder*remainder*remainder;
-   temp = temp / 10;
-}
+  if (scanf("%d", &originalNumber) != 1)
+  {
+    printf("Please enter a valid integer.\n");
+    return 1;
+  }
 
-if(number == sum){
-   printf("Armstrong number");
-}else{
-   printf("Not Armstrong number");
-}
+  if (originalNumber <= 0)
+  {
+    printf("Please enter a positive integer.\n");
+    return 1;
+  }
 
-getchar();
+  workingNumber = originalNumber;
+
+  while (workingNumber != 0)
+  {
+    remainder = workingNumber % 10;
+    armstrongSum += remainder * remainder * remainder;
+    workingNumber /= 10;
+  }
+
+  if (originalNumber == armstrongSum)
+  {
+    printf("%d is an Armstrong number.\n", originalNumber);
+  }
+  else
+  {
+    printf("%d is not an Armstrong number.\n", originalNumber);
+  }
+
+  return 0;
 }
 ```
 
