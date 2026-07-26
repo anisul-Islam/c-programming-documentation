@@ -3377,46 +3377,67 @@ int main()
 }
 
 
-// print prime, find total prime numbers, find sum of prime numbers from m to n
 #include <stdio.h>
-#include <math.h>
-#include <ctype.h>
-int main(){
+// #include <math.h>
+int main()
+{
+  // Write a Program to check a number is Prime or not
+  // Write a Program to print and count prime numbers from m to n
+  int startingNumber, endingNumber, totalPrimeNumbers = 0;
 
-   int number,count=0, totalPrimeNumbers=0, sumOfPrimeNumbers=0, startingNumber, endingNumber;
+  printf("Enter the starting number: ");
+  if (scanf("%d", &startingNumber) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer.\n");
+    return 1;
+  }
 
-   printf("Enter starting number: ");
-   scanf("%d", &startingNumber);
+  printf("Enter the ending number: ");
+  if (scanf("%d", &endingNumber) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer.\n");
+    return 1;
+  }
 
-   printf("Enter ending number: ");
-   scanf("%d", &endingNumber);
+  if (startingNumber > endingNumber)
+  {
+    printf("Starting number must be less than or equal to ending number.\n");
+    return 1;
+  }
 
-   for(number=startingNumber; number<=endingNumber; number++){
-      count=0;
-      if(number <=1){
-         count=1;
-      }else{
-         for(int i=2; i<= sqrt(number); i++){
-            if(number%i==0){
-               count=1;
-               break;
-            }
-         }
+  printf("\nPrime numbers between %d and %d:\n", startingNumber, endingNumber);
+
+  for (int number = startingNumber; number <= endingNumber; number++)
+  {
+    int count = 0;
+    if (number <= 1)
+    {
+      continue;
+    }
+
+    // for (int i = 2; i <= sqrt(number); i++)
+    for (int i = 2; i*i <= number; i++)
+    {
+      if (number % i == 0)
+      {
+        count = 1;
+        break;
       }
+    }
 
-      if(count==0){
-         printf("%d ", number);
-         totalPrimeNumbers++;
-         sumOfPrimeNumbers = sumOfPrimeNumbers + number;
-      }
-   }
-   printf("\nTotal prime numbers: %d\n", totalPrimeNumbers);
-   printf("Sum of prime numbers: %d\n", sumOfPrimeNumbers);
+    if (count == 0)
+    {
+      printf("%d ", number);
+      totalPrimeNumbers++;
+    }
+  }
 
-   getchar();
+  printf("\nTotal prime numbers: %d\n", totalPrimeNumbers);
+
+  return 0;
 }
 
-// using function to separate prime number logic
+
 ```
 
 ##### Greatest Common Divisor (GCD) and Least Common Multiple (LCM)
@@ -3482,35 +3503,32 @@ int main()
 int main()
 {
   // Write a Program to find sum of digits
-  // user input => number = 123
+  // number = 123
   // 1+2+3=6
 
-  int number, remainder, temp, sum = 0;
+  int originalNumber, workingNumber, remainder, sum = 0;
+  printf("Enter a positive integer: ");
 
-  if (scanf("%d", &number) != 1)
+  if (scanf("%d", &originalNumber) != 1)
   {
-    printf("Please enter a valid integer.\n");
+    printf("Invalid Input! Please enter a valid integer.\n");
+    return 1;
+  }
+  if (originalNumber <= 0)
+  {
+    printf("Invalid Input! Please enter a positive integer.\n");
     return 1;
   }
 
-  if (number <= 0)
+  workingNumber = originalNumber;
+
+  while (workingNumber != 0)
   {
-    printf("Please enter a positive integer.\n");
-    return 1;
+    remainder = workingNumber % 10;
+    sum = sum + remainder;
+    workingNumber = workingNumber / 10;
   }
-
-  temp = number;
-
-  while (temp != 0)
-  {
-    remainder = temp % 10;
-    printf("Digit = %d\n", remainder);
-    sum += remainder;
-    temp /= 10;
-  }
-
-  printf("Sum of digits of %d = %d\n", number, sum);
-
+  printf("sum of digits %d = %d\n", originalNumber, sum);
   return 0;
 }
 
@@ -3561,6 +3579,9 @@ int main()
 ##### check a number is palindrome Program
 
 ```c
+/*
+Examples by Digit Length1-digit: 0, 1, 5, 92-digit: 11, 22, 55, 883-digit: 101, 121, 232, 484, 9094-digit: 1001, 3443, 7887, 99995-digit: 12321, 45854, 90709
+*/
 #include <stdio.h>
 int main()
 {
@@ -3608,6 +3629,12 @@ int main()
 ##### Armstrong Number Program
 
 ```c
+/*
+3-digit numbers: 153, 370, 371, and 407 Example for 153: \(1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153\)Example for 370: \(3^3 + 7^3 + 0^3 = 27 + 343 + 0 = 370\)
+4-digit numbers: 1634, 8208, and 9474Example for 1634: \(1^4 + 6^4 + 3^4 + 4^4 = 1 + 1296 + 81 + 256 = 1634\)
+*/
+
+// works only for 3 digits
 #include <stdio.h>
 
 int main()
@@ -3648,6 +3675,175 @@ int main()
   }
 
   return 0;
+}
+
+// works for all digits
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    int originalNumber, workingNumber;
+    int remainder;
+    int digitCount = 0;
+    int sum = 0;
+
+    printf("Enter a positive integer: ");
+
+    if (scanf("%d", &originalNumber) != 1)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    if (originalNumber < 0)
+    {
+        printf("Please enter a positive integer.\n");
+        return 1;
+    }
+
+    // Count digits
+    workingNumber = originalNumber;
+
+    if (workingNumber == 0)
+    {
+        digitCount = 1;
+    }
+    else
+    {
+        while (workingNumber != 0)
+        {
+            digitCount++;
+            workingNumber /= 10;
+        }
+    }
+
+    // Calculate Armstrong sum
+    workingNumber = originalNumber;
+
+    while (workingNumber != 0)
+    {
+        remainder = workingNumber % 10;
+        sum += (int)pow(remainder, digitCount);
+        workingNumber /= 10;
+    }
+
+    // Special case for 0
+    if (originalNumber == 0)
+    {
+        sum = 0;
+    }
+
+    if (originalNumber == sum)
+    {
+        printf("%d is an Armstrong number.\n", originalNumber);
+    }
+    else
+    {
+        printf("%d is not an Armstrong number.\n", originalNumber);
+    }
+
+    return 0;
+}
+```
+
+##### Count digits of a number
+
+```c
+count=0;
+while(num!=0){
+num/=10;
+count++;
+}
+```
+
+##### Check a number is a strong number program
+
+```c
+/*
+1! + 4! + 5!
+= 1 + 24 + 120
+= 145
+
+
+1      → Strong Number
+2      → Strong Number
+145    → Strong Number
+40585  → Strong Number
+
+
+Algorithm
+--------
+Read the number.
+Save a copy of the number.
+Extract the last digit.
+Find the factorial of that digit.
+Add the factorial to the sum.
+Remove the last digit.
+Repeat until all digits are processed.
+Compare the sum with the original number.
+
+
+
+
+*/
+
+#include <stdio.h>
+
+int main()
+{
+    int originalNumber, workingNumber;
+    int remainder;
+    int factorial;
+    int sum = 0;
+
+    printf("Enter a positive integer: ");
+
+    if (scanf("%d", &originalNumber) != 1)
+    {
+        printf("Invalid input! Please enter a valid integer.\n");
+        return 1;
+    }
+
+    if (originalNumber < 0)
+    {
+        printf("Please enter a positive integer.\n");
+        return 1;
+    }
+
+    workingNumber = originalNumber;
+
+    while (workingNumber != 0)
+    {
+        remainder = workingNumber % 10;
+
+        factorial = 1;
+
+        for (int i = 1; i <= remainder; i++)
+        {
+            factorial *= i;
+        }
+
+        sum += factorial;
+        workingNumber /= 10;
+    }
+
+    // Handle 0 separately because 0! = 1
+    if (originalNumber == 0)
+    {
+        sum = 1;
+    }
+
+    if (originalNumber == sum)
+    {
+        printf("%d is a Strong Number.\n", originalNumber);
+    }
+    else
+    {
+        printf("%d is not a Strong Number.\n", originalNumber);
+    }
+
+    return 0;
 }
 ```
 
