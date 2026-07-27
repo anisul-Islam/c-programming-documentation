@@ -3847,6 +3847,85 @@ int main()
 }
 ```
 
+##### Count digits of a number
+
+```c
+count=0;
+while(num!=0){
+num/=10;
+count++;
+}
+```
+
+##### permutation, combination
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int n, r;
+    long long nFactorial = 1;
+    long long rFactorial = 1;
+    long long nMinusRFactorial = 1;
+    long long permutation, combination;
+
+    printf("Enter the value of n: ");
+
+    if (scanf("%d", &n) != 1)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    printf("Enter the value of r: ");
+
+    if (scanf("%d", &r) != 1)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    if (n < 0 || r < 0)
+    {
+        printf("n and r must be non-negative.\n");
+        return 1;
+    }
+
+    if (r > n)
+    {
+        printf("r cannot be greater than n.\n");
+        return 1;
+    }
+
+    // n!
+    for (int i = 1; i <= n; i++)
+    {
+        nFactorial *= i;
+    }
+
+    // r!
+    for (int i = 1; i <= r; i++)
+    {
+        rFactorial *= i;
+    }
+
+    // (n-r)!
+    for (int i = 1; i <= (n - r); i++)
+    {
+        nMinusRFactorial *= i;
+    }
+
+    permutation = nFactorial / nMinusRFactorial;
+    combination = nFactorial / (rFactorial * nMinusRFactorial);
+
+    printf("\nPermutation (nPr) = %lld\n", permutation);
+    printf("Combination (nCr) = %lld\n", combination);
+
+    return 0;
+}
+```
+
 ### 1.11 Functions
 
 ### 1.12 Arrays
@@ -4115,6 +4194,180 @@ Accessing elements is done using a single index.
    ```
 
 3. Quick sort: Picks a 'pivot' element and partitions the array into two subarrays according to whether elements are less than or greater than the pivot.
+
+##### Decimal To Binary, Octal, Hexadecimal
+
+```c
+// Method 1
+#include <stdio.h>
+
+int main()
+{
+    int decimalNumber;
+
+    printf("Enter a decimal number: ");
+
+    if (scanf("%d", &decimalNumber) != 1)
+    {
+        printf("Invalid input! Please enter a valid integer.\n");
+        return 1;
+    }
+
+    if (decimalNumber < 0)
+    {
+        printf("Please enter a non-negative integer.\n");
+        return 1;
+    }
+
+    printf("\nDecimal      : %d\n", decimalNumber);
+    printf("Binary       : ");
+
+    // Binary Conversion
+    if (decimalNumber == 0)
+    {
+        printf("0");
+    }
+    else
+    {
+        int binary[32];
+        int i = 0;
+        int temp = decimalNumber;
+
+        while (temp > 0)
+        {
+            binary[i] = temp % 2;
+            temp /= 2;
+            i++;
+        }
+
+        while (i > 0)
+        {
+            printf("%d", binary[--i]);
+        }
+    }
+
+    printf("\nOctal        : %o\n", decimalNumber);
+    printf("Hexadecimal  : %X\n", decimalNumber);
+
+    return 0;
+}
+
+// Method 2
+#include <stdio.h>
+
+int main()
+{
+    int decimalNumber;
+
+    printf("Enter a decimal number: ");
+
+    if (scanf("%d", &decimalNumber) != 1)
+    {
+        printf("Invalid input! Please enter a valid integer.\n");
+        return 1;
+    }
+
+    if (decimalNumber < 0)
+    {
+        printf("Please enter a non-negative integer.\n");
+        return 1;
+    }
+
+    // Special case for 0
+    if (decimalNumber == 0)
+    {
+        printf("\nDecimal     : 0\n");
+        printf("Binary      : 0\n");
+        printf("Octal       : 0\n");
+        printf("Hexadecimal : 0\n");
+        return 0;
+    }
+
+    int temp, remainder, i;
+
+    // =========================
+    // Decimal to Binary
+    // =========================
+    int binary[32];
+    temp = decimalNumber;
+    i = 0;
+
+    while (temp != 0)
+    {
+        remainder = temp % 2;
+        binary[i] = remainder;
+        temp /= 2;
+        i++;
+    }
+
+    printf("\nDecimal     : %d\n", decimalNumber);
+
+    printf("Binary      : ");
+    for (int j = i - 1; j >= 0; j--)
+    {
+        printf("%d", binary[j]);
+    }
+
+    printf("\n");
+
+    // =========================
+    // Decimal to Octal
+    // =========================
+    int octal[32];
+    temp = decimalNumber;
+    i = 0;
+
+    while (temp != 0)
+    {
+        remainder = temp % 8;
+        octal[i] = remainder;
+        temp /= 8;
+        i++;
+    }
+
+    printf("Octal       : ");
+    for (int j = i - 1; j >= 0; j--)
+    {
+        printf("%d", octal[j]);
+    }
+
+    printf("\n");
+
+    // =========================
+    // Decimal to Hexadecimal
+    // =========================
+    char hexadecimal[32];
+    temp = decimalNumber;
+    i = 0;
+
+    while (temp != 0)
+    {
+        remainder = temp % 16;
+
+        if (remainder < 10)
+        {
+            hexadecimal[i] = remainder + '0';
+        }
+        else
+        {
+            hexadecimal[i] = remainder - 10 + 'A';
+        }
+
+        temp /= 16;
+        i++;
+    }
+
+    printf("Hexadecimal : ");
+    for (int j = i - 1; j >= 0; j--)
+    {
+        printf("%c", hexadecimal[j]);
+    }
+
+    printf("\n");
+
+    return 0;
+}
+```
 
 ##### Two dimensional array (2D) Matrix
 
