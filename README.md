@@ -3305,6 +3305,78 @@ int main()
 ##### Factorial of N
 
 ```c
+
+/*
+N! = 1 × 2 × 3 × ... × N
+5! = 1 × 2 × 3 × 4 × 5 = 120
+
+4! = 1 × 2 × 3 × 4 = 24
+
+1! = 1
+
+0! = 1
+
+
+
+Step 1: Start.
+
+Step 2: Read the value of N.
+
+Step 3: If N is less than 0,
+        display "Invalid Input" and stop.
+
+Step 4: Initialize:
+        factorial = 1
+
+Step 5: Repeat from i = 1 to N:
+        factorial = factorial × i
+
+Step 6: Display the factorial.
+
+Step 7: Stop.
+
+
+                Start
+                  │
+                  ▼
+               Read N
+                  │
+                  ▼
+             Is N < 0 ?
+            ┌────┴────┐
+            │         │
+          Yes         No
+            │         │
+            ▼         ▼
+      Print "Invalid" factorial = 1
+            │              │
+            │              ▼
+            │           i = 1
+            │              │
+            │              ▼
+            │        Is i <= N ?
+            │         ┌────┴────┐
+            │         │         │
+            │        Yes        No
+            │         │         │
+            │         ▼         ▼
+            │ factorial = factorial × i
+            │         │
+            │         ▼
+            │       i++
+            │         │
+            │         └───────────┐
+            │                     │
+            └─────────────────────┘
+                  │
+                  ▼
+         Print Factorial
+                  │
+                  ▼
+                 Stop
+
+*/
+
 #include <stdio.h>
 #include <math.h>
 int main()
@@ -3331,9 +3403,37 @@ int main()
 
 ```
 
-##### Prime Number Programs: Everything you need to know
+##### Prime Number Algorithm, Flowchart, Program
 
 ```c
+
+/*
+Step 1: Start.
+
+Step 2: Read the number.
+
+Step 3: If the number is less than or equal to 1,
+        display "Not Prime" and stop.
+
+Step 4: Assume the number is prime:
+        isPrime = 1
+
+Step 5: Repeat from i = 2 while i × i <= number:
+
+        a. If number % i == 0
+              isPrime = 0
+              Exit the loop
+
+Step 6: Check the value of isPrime.
+
+        If isPrime == 1
+            Display "Prime Number"
+        Else
+            Display "Not Prime Number"
+
+Step 7: Stop.
+*/
+
 #include <stdio.h>
 #include <math.h>
 int main()
@@ -3443,6 +3543,70 @@ int main()
 ##### Greatest Common Divisor (GCD) and Least Common Multiple (LCM)
 
 ```c
+
+/*
+Step 1: Start.
+
+Step 2: Read two numbers (num1 and num2).
+
+Step 3: Store them in temporary variables:
+        n1 = num1
+        n2 = num2
+
+Step 4: Repeat while n2 is not equal to 0:
+
+        a. Find the remainder:
+           remainder = n1 % n2
+
+        b. Replace n1 with n2:
+           n1 = n2
+
+        c. Replace n2 with remainder:
+           n2 = remainder
+
+Step 5: When the loop ends,
+        GCD = n1
+
+Step 6: Find the LCM:
+        LCM = (num1 × num2) / GCD
+
+Step 7: Display GCD and LCM.
+
+Step 8: Stop.
+
+
+
+// Flowchart
+              Start
+                │
+                ▼
+      Read num1 and num2
+                │
+                ▼
+          n1 = num1
+          n2 = num2
+                │
+                ▼
+         Is n2 != 0 ?
+           ┌────┴────┐
+           │         │
+         Yes         No
+           │         │
+           ▼         ▼
+ remainder = n1 % n2  GCD = n1
+           │             │
+           ▼             ▼
+       n1 = n2      LCM = (num1 × num2)
+/ GCD
+           │             │
+           ▼             ▼
+   n2 = remainder   Print GCD & LCM
+           │             │
+           └──────┬──────┘
+                  │
+                  ▼
+                Stop
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -3496,15 +3660,75 @@ int main()
 }
 ```
 
-##### Sum of a digits Program
+##### Sum of a digits Algorithm, Flowchart, Program
 
 ```c
+// Write a Program to find sum of digits
+// number = 123
+// 1+2+3=6
+/*
+
+Algorithm
+-------------
+Step 1: Start
+
+Step 2: Read the number.
+
+Step 3: Initialize sum = 0.
+
+Step 4: Repeat while the number is not equal to 0:
+        a. Find the last digit using:
+           remainder = number % 10
+
+        b. Add the digit to sum:
+           sum = sum + remainder
+
+        c. Remove the last digit:
+           number = number / 10
+
+Step 5: Display the value of sum.
+
+Step 6: Stop.
+
+
+Flowchart
+Start
+   │
+   ▼
+Read Number
+   │
+   ▼
+sum = 0
+   │
+   ▼
+Is number != 0?
+   │
+ ┌─┴──────────┐
+ │            │
+Yes          No
+ │            │
+ ▼            ▼
+remainder = number % 10
+ │
+ ▼
+sum = sum + remainder
+ │
+ ▼
+number = number / 10
+ │
+ └────────────┘
+      │
+      ▼
+Print sum
+      │
+      ▼
+     Stop
+*/
+
+
 #include <stdio.h>
 int main()
 {
-  // Write a Program to find sum of digits
-  // number = 123
-  // 1+2+3=6
 
   int originalNumber, workingNumber, remainder, sum = 0;
   printf("Enter a positive integer: ");
@@ -3534,9 +3758,74 @@ int main()
 
 ```
 
-##### Reverse a number Program
+##### Reverse a number Algorithm, Flowchart, Program
 
 ```c
+/*
+Step-by-Step Algorithm
+----------------------
+Step 1: Start
+
+Step 2: Read the number.
+
+Step 3: Initialize reverse = 0.
+
+Step 4: Repeat while the number is not equal to 0:
+        a. Find the last digit:
+           remainder = number % 10
+
+        b. Add the digit to reverse:
+           reverse = reverse * 10 + remainder
+
+        c. Remove the last digit:
+           number = number / 10
+
+Step 5: Display the reversed number.
+
+Step 6: Stop.
+
+
+FlowChart
+------------
+Start
+   │
+   ▼
+Read Number
+   │
+   ▼
+reverse = 0
+   │
+   ▼
+Is number != 0?
+   │
+ ┌─┴──────────┐
+ │            │
+Yes          No
+ │            │
+ ▼            ▼
+remainder = number % 10
+ │
+ ▼
+reverse = reverse × 10 + remainder
+ │
+ ▼
+number = number / 10
+ │
+ └────────────┘
+      │
+      ▼
+Print reverse
+      │
+      ▼
+     Stop
+
+
+Formula Used
+--------------
+Last Digit      = number % 10
+Remove Digit    = number / 10
+Build Reverse   = reverse * 10 + remainder
+*/
 #include <stdio.h>
 
 int main()
@@ -3576,11 +3865,96 @@ int main()
 }
 ```
 
-##### check a number is palindrome Program
+##### Palindrome Algorithm, Flowchart, Program
 
 ```c
 /*
 Examples by Digit Length1-digit: 0, 1, 5, 92-digit: 11, 22, 55, 883-digit: 101, 121, 232, 484, 9094-digit: 1001, 3443, 7887, 99995-digit: 12321, 45854, 90709
+
+
+Step-by-Step Algorithm
+Step 1: Start
+
+Step 2: Read the number.
+
+Step 3: Store the original number in another variable:
+        originalNumber = number
+
+Step 4: Initialize reverse = 0.
+
+Step 5: Repeat while the number is not equal to 0:
+        a. Find the last digit:
+           remainder = number % 10
+
+        b. Build the reverse number:
+           reverse = reverse * 10 + remainder
+
+        c. Remove the last digit:
+           number = number / 10
+
+Step 6: Compare the original number with the reversed number.
+
+Step 7:
+        If originalNumber == reverse
+            Display "Palindrome"
+        Else
+            Display "Not Palindrome"
+
+Step 8: Stop.
+
+
+Flow
+Start
+   │
+   ▼
+Read Number
+   │
+   ▼
+originalNumber = number
+reverse = 0
+   │
+   ▼
+Is number != 0?
+   │
+ ┌─┴──────────┐
+ │            │
+Yes          No
+ │            │
+ ▼            ▼
+remainder = number % 10
+ │
+ ▼
+reverse = reverse × 10 + remainder
+ │
+ ▼
+number = number / 10
+ │
+ └────────────┘
+      │
+      ▼
+Is originalNumber == reverse?
+      │
+ ┌────┴────┐
+ │         │
+Yes       No
+ │         │
+ ▼         ▼
+Print     Print
+Palindrome Not Palindrome
+      │
+      ▼
+     Stop
+
+
+
+Dry Run
+Input
+Number = 121
+Number	Remainder	Reverse
+121	   1	         1
+12	      2	         12
+1	      1	         121
+0	      -	         Stop
 */
 #include <stdio.h>
 int main()
@@ -3626,12 +4000,97 @@ int main()
 
 ```
 
-##### Armstrong Number Program
+##### Armstrong Number Algorithm, Flowchart, Program
 
 ```c
 /*
+1-digit number: 1-9
+2 digit number -
 3-digit numbers: 153, 370, 371, and 407 Example for 153: \(1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153\)Example for 370: \(3^3 + 7^3 + 0^3 = 27 + 343 + 0 = 370\)
 4-digit numbers: 1634, 8208, and 9474Example for 1634: \(1^4 + 6^4 + 3^4 + 4^4 = 1 + 1296 + 81 + 256 = 1634\)
+
+// Algorithm
+1. Read the number.
+2. Save a copy in workingNumber.
+3. Extract the last digit.
+4. Cube the digit.
+5. Add it to sum.
+6. Remove the last digit.
+7. Repeat until no digits remain.
+8. Compare sum with the original number.
+
+
+Step-by-Step Algorithm
+Step 1: Start
+
+Step 2: Read the number.
+
+Step 3: Store the original number in another variable:
+        originalNumber = number
+
+Step 4: Initialize reverse = 0.
+
+Step 5: Repeat while the number is not equal to 0:
+        a. Find the last digit:
+           remainder = number % 10
+
+        b. Build the reverse number:
+           reverse = reverse * 10 + remainder
+
+        c. Remove the last digit:
+           number = number / 10
+
+Step 6: Compare the original number with the reversed number.
+
+Step 7:
+        If originalNumber == reverse
+            Display "Palindrome"
+        Else
+            Display "Not Palindrome"
+
+Step 8: Stop.
+
+
+// FlowchartStart
+   │
+   ▼
+Read Number
+   │
+   ▼
+originalNumber = number
+reverse = 0
+   │
+   ▼
+Is number != 0?
+   │
+ ┌─┴──────────┐
+ │            │
+Yes          No
+ │            │
+ ▼            ▼
+remainder = number % 10
+ │
+ ▼
+reverse = reverse × 10 + remainder
+ │
+ ▼
+number = number / 10
+ │
+ └────────────┘
+      │
+      ▼
+Is originalNumber == reverse?
+      │
+ ┌────┴────┐
+ │         │
+Yes       No
+ │         │
+ ▼         ▼
+Print     Print
+Palindrome Not Palindrome
+      │
+      ▼
+     Stop
 */
 
 // works only for 3 digits
@@ -3757,7 +4216,9 @@ count++;
 }
 ```
 
-##### Check a number is a strong number program
+##### Strong number Algorithm, Flowchrt, Program
+
+- A Strong Number is a number whose value is equal to the sum of the factorials of its digits.
 
 ```c
 /*
@@ -3783,9 +4244,85 @@ Remove the last digit.
 Repeat until all digits are processed.
 Compare the sum with the original number.
 
+Step-by-Step Algorithm
+Step 1: Start
+
+Step 2: Read the number.
+
+Step 3: Store the original number:
+        originalNumber = number
+
+Step 4: Initialize sum = 0.
+
+Step 5: Repeat while the number is not equal to 0:
+
+        a. Find the last digit:
+           remainder = number % 10
+
+        b. Find the factorial of the digit.
+
+        c. Add the factorial to sum:
+           sum = sum + factorial
+
+        d. Remove the last digit:
+           number = number / 10
+
+Step 6: Compare the original number with sum.
+
+Step 7:
+        If originalNumber == sum
+            Display "Strong Number"
+        Else
+            Display "Not a Strong Number"
+
+Step 8: Stop.
 
 
-
+// Flowchart
+Start
+   │
+   ▼
+Read Number
+   │
+   ▼
+originalNumber = number
+sum = 0
+   │
+   ▼
+Is number != 0?
+   │
+ ┌─┴──────────┐
+ │            │
+Yes          No
+ │            │
+ ▼            ▼
+remainder = number % 10
+ │
+ ▼
+Find factorial of remainder
+ │
+ ▼
+sum = sum + factorial
+ │
+ ▼
+number = number / 10
+ │
+ └────────────┘
+      │
+      ▼
+Is originalNumber == sum?
+      │
+ ┌────┴────┐
+ │         │
+Yes       No
+ │         │
+ ▼         ▼
+Print     Print
+Strong    Not Strong
+Number    Number
+      │
+      ▼
+     Stop
 */
 
 #include <stdio.h>
@@ -3844,16 +4381,6 @@ int main()
     }
 
     return 0;
-}
-```
-
-##### Count digits of a number
-
-```c
-count=0;
-while(num!=0){
-num/=10;
-count++;
 }
 ```
 
