@@ -3542,7 +3542,7 @@ int main()
 
 ##### Greatest Common Divisor (GCD) and Least Common Multiple (LCM)
 
-[!gcd and lcm image](images/gcd-lcm.png)
+![gcd and lcm image](images/gcd-lcm.png)
 
 ```c
 
@@ -4457,7 +4457,7 @@ int main()
 
 ##### Series related Programs
 
-[!series pattern](images/series-pattern.png)
+![series pattern](images/series-pattern.png)
 
 ###### Group 1: Basic Addition Series
 
