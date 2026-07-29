@@ -3542,6 +3542,8 @@ int main()
 
 ##### Greatest Common Divisor (GCD) and Least Common Multiple (LCM)
 
+[!gcd and lcm image](images/gcd-lcm.png)
+
 ```c
 
 /*
@@ -4453,7 +4455,806 @@ int main()
 }
 ```
 
+##### Series related Programs
+
+[!series pattern](images/series-pattern.png)
+
+###### Group 1: Basic Addition Series
+
+```c
+/*
+
+// Basic Addition, Even, Odd series
+1 + 2 + 3 + ... + N
+1 + 2 + 3 + ... + 100
+1 + 3 + 5 + ... + N (Sum of all odd numbers between M and N)
+2 + 4 + 6 + ... + N (Sum of all even numbers between M and N)
+
+M + (M+1) + (M+2) + ... + N
+N + (N-1) + (N-2) + ... + 1
+N + (N-1) + (N-2) + ... + M
+N + (N-2) + (N-4) + ... + 2
+N + (N-2) + (N-4) + ... + 1
+
+5 + 10 + 15 + ... + N
+N + (N-5) + (N-10) + ... + 5
+4 + 8 + 12 + ... + N
+
+*/
+
+// 1 + 2 + 3 + ... + n
+// 1 + 3 + 5 + ... + n (sum of odd numbers)
+// 1 + 3 + 5 + ... + 100 (sum of odd numbers)
+// 2 + 4 + 6 + ... + n (sum of even numbers)
+// 2 + 4 + 6 + ... + 100 (sum of even numbers)
+// 5 + 10 + 15 + ... + N
+// M + (M+1) + (M+2) + ... + N
+
+// n + (n-1) + (n-2) + ... + 1
+// n + (n-1) + (n-2) + ... + m
+
+#include <stdio.h>
+int main()
+{
+  int m, n, sum = 0, firstTime = 1;
+
+  printf("Enter the first number of the series: ");
+  if (scanf("%d", &m) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  printf("Enter the last number of the series: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  if (m <= 0 && n <= 0)
+  {
+    printf("Please enter a positive integer. \n");
+    return 1;
+  }
+
+  for (int i = n; i >= m; i = i - 1)
+  {
+    if (!firstTime)
+    {
+      printf(" + ");
+    }
+    printf("%d", i);
+    sum = sum + i;
+    firstTime = 0;
+  }
+
+  printf(" = %d\n", sum);
+
+  return 0;
+}
+
+```
+
+###### Group 2: Basic Multiplication Series
+
+```c
+/*
+
+// Basic Multiplication, Even, Odd series
+1 X 2 X 3 X ... X N
+1 X 2 X 3 X ... X 100
+1 X 3 X 5 X ... X N (Multiplication of all odd numbers between M and N)
+2 X 4 X 6 X ... X N (Multiplication of all even numbers between M and N)
+
+M X (M+1) X (M+2) X ... X N
+N X (N-1) X (N-2) X ... X 1
+N X (N-1) X (N-2) X ... X M
+N X (N-2) X (N-4) X ... X 2
+N X (N-2) X (N-4) X ... X 1
+
+5 X 10 X 15 X ... X N
+N X (N-5) X (N-10) X ... X 5
+4 X 8 X 12 X ... X N
+
+*/
+
+
+/*
+1 X 2 X 3 X ... X N
+1 X 2 X 3 X ... X 100
+1 X 3 X 5 X ... X N (Multiplication of all odd numbers between M and N)
+2 X 4 X 6 X ... X N (Multiplication of all even numbers between M and N)
+
+M X (M+1) X (M+2) X ... X N
+N X (N-1) X (N-2) X ... X 1
+N X (N-1) X (N-2) X ... X M
+N X (N-2) X (N-4) X ... X 2
+N X (N-2) X (N-4) X ... X 1
+
+5 X 10 X 15 X ... X N
+N X (N-5) X (N-10) X ... X 5
+4 X 8 X 12 X ... X N
+
+*/
+
+#include <stdio.h>
+int main()
+{
+  int m, n, product = 1, firstTime = 1;
+
+  printf("Enter the first number of the series: ");
+  if (scanf("%d", &m) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  printf("Enter the last number of the series: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  if (m <= 0 && n <= 0)
+  {
+    printf("Please enter a positive integer. \n");
+    return 1;
+  }
+
+
+  for (int i = n; i >= m; i = i - 1)
+  {
+    if (!firstTime)
+    {
+      printf(" X ");
+    }
+    printf("%d", i);
+    product *= i; // product = product * i
+    firstTime = 0;
+  }
+
+  printf(" = %d\n", product);
+
+  return 0;
+}
+
+```
+
+###### Group 3: Decimal Series
+
+```c
+/*
+Decimal series
+1.5 + 2.5 + 3.5 + ... + N
+0.5 + 1.0 + 1.5 + ... + N
+2.5 + 5.0 + 7.5 + ... + N
+1.2 + 2.2 + 3.2 + ... + N
+
+1.5 X 2.5 X 3.5 X ... X N
+0.5 X 1.0 X 1.5 X ... X N
+2.5 X 5.0 X 7.5 X ... X N
+1.2 X 2.2 X 3.2 X ... X N
+*/
+
+#include <stdio.h>
+int main()
+{
+  double m, n, product = 1, diff;
+  int firstTime = 1;
+
+  // Change these values for different series
+  m = 1.2; // start number
+  diff = 1;
+
+  // printf("Enter the first number of the series: ");
+  // if (scanf("%d", &m) != 1)
+  // {
+  //   printf("Invalid Input! Please enter a valid integer. \n");
+  //   return 1;
+  // }
+
+  printf("Enter the last number of the series: ");
+  if (scanf("%lf", &n) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  if (n <= m)
+  {
+    printf("Ending value must be greater than or equal to %.1lf \n", m);
+    return 1;
+  }
+  // if (m <= 0 && n <= 0)
+  // {
+  //   printf("Please enter a positive integer. \n");
+  //   return 1;
+  // }
+
+  for (double i = m; i <= n; i += diff)
+  {
+    if (!firstTime)
+    {
+      printf(" X ");
+    }
+    printf("%.1lf", i);
+    product *= i;
+    firstTime = 0;
+  }
+
+  printf(" = %.2lf\n", product);
+
+  return 0;
+}
+
+```
+
+###### Group 4: Power Series
+
+```c
+/*
+
+// Power series for Addition
+1² + 2² + 3² + ... + N²
+
+1³ + 2³ + 3³ + ... + N³
+
+2² + 4² + 6² + ... + N²
+
+1² + 3² + 5² + ... + N²
+
+1⁴ + 2⁴ + 3⁴ + ... + N⁴
+
+
+// Power series for Multiplication
+1² × 2² × 3² × ... × N²
+
+1³ × 2³ × 3³ × ... × N³
+
+2² × 4² × 6² × ... × N²
+
+1² × 3² × 5² × ... × N²
+
+*/
+
+
+#include <stdio.h>
+int main()
+{
+  int m, n, product = 1, diff;
+  int firstTime = 1;
+
+  // Change these values for different series
+  m = 1; // start number
+  diff = 1;
+
+  // printf("Enter the first number of the series: ");
+  // if (scanf("%d", &m) != 1)
+  // {
+  //   printf("Invalid Input! Please enter a valid integer. \n");
+  //   return 1;
+  // }
+
+  printf("Enter the last number of the series: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  // if (n <= m)
+  // {
+  //   printf("Ending value must be greater than or equal to %.d \n", m);
+  //   return 1;
+  // }
+
+  if (n <= 0)
+  {
+    printf("Please enter a positive integer. \n");
+    return 1;
+  }
+  // if (m <= 0 && n <= 0)
+  // {
+  //   printf("Please enter a positive integer. \n");
+  //   return 1;
+  // }
+
+  // 1² + 2² + 3² + ... + N²
+  for (int i = m; i <= n; i += diff)
+  {
+    if (!firstTime)
+    {
+      printf(" X ");
+    }
+    printf("%d^2", i);
+    product *= (i * i * i);
+    firstTime = 0;
+  }
+
+  printf(" = %d\n", product);
+
+  return 0;
+}
+
+```
+
+###### Group 5: Fraction Series
+
+```c
+/*
+// floating-point division
+1 + 1/2 + 1/3 + ... + 1/N
+
+1/2 + 1/4 + 1/6 + ... + 1/N
+
+1/1 + 1/3 + 1/5 + ... + 1/N
+
+1/2² + 1/3² + ... + 1/N²
+
+*/
+/*
+Fraction Series
+
+1 + 1/2 + 1/3 + ... + 1/N
+1/2 + 1/4 + 1/6 + ... + 1/N
+1/1 + 1/3 + 1/5 + ... + 1/N
+1/2² + 1/3² + ... + 1/N²
+
+1 X 1/2 X 1/3 X ... X 1/N
+1/2 X 1/4 X 1/6 X ... X 1/N
+1/1 X 1/3 X 1/5 X ... X 1/N
+1/2² X 1/3² X ... X 1/N²
+*/
+
+#include <stdio.h>
+int main()
+{
+  int m, n, diff;
+  double sum = 0;
+  int firstTime = 1;
+
+  // printf("Enter the first number of the series: ");
+  // if (scanf("%d", &m) != 1)
+  // {
+  //   printf("Invalid Input! Please enter a valid integer. \n");
+  //   return 1;
+  // }
+
+  printf("Enter the last number of the series: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  if (n <= m)
+  {
+    printf("Ending value must be greater than or equal to %.d \n", m);
+    return 1;
+  }
+
+  if (n <= 0)
+  {
+    printf("Please enter a positive integer. \n");
+    return 1;
+  }
+  // if (m <= 0 && n <= 0)
+  // {
+  //   printf("Please enter a positive integer. \n");
+  //   return 1;
+  // }
+
+  // Change these values for different series
+  m = 2; // start number
+  diff = 1;
+
+  // 1/2² + 1/3² + ... + 1/N²
+  for (int i = m; i <= n; i += diff)
+  {
+    if (!firstTime)
+    {
+      printf(" + ");
+    }
+    if (i == 1)
+    {
+      printf("1");
+    }
+    else
+    {
+      printf("1/%d^2", i);
+    }
+    sum += 1.0 / i * i;
+    firstTime = 0;
+  }
+
+  printf(" = %.2lf\n", sum);
+
+  return 0;
+}
+
+```
+
+###### Group 6: Factorial-Based Series
+
+```c
+/*
+// Concepts: nested loops/functions
+1. 1!
+
+2. 1! + 2!
+
+3. 1! + 2! + 3! + ... + N!
+
+4. 1! × 2! × 3! × ... × N!
+
+5. 1!/1 + 2!/2 + ... + N!/N
+
+6. 1/1! + 1/2! + ... + 1/N!
+*/
+
+/*
+ Concepts: nested loops/factorial
+
+1! + 2! + 3! + ... + N!
+
+1! × 2! × 3! × ... × N!
+
+1!/1 + 2!/2 + ... + N!/N
+
+1/1! + 1/2! + ... + 1/N!
+*/
+
+#include <stdio.h>
+int main()
+{
+  int m, n, diff;
+  double sum = 0;
+  long long factorial = 1;
+  int firstTime = 1;
+
+  // printf("Enter the first number of the series: ");
+  // if (scanf("%d", &m) != 1)
+  // {
+  //   printf("Invalid Input! Please enter a valid integer. \n");
+  //   return 1;
+  // }
+
+  printf("Enter the last number of the series: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  // if (n <= m)
+  // {
+  //   printf("Ending value must be greater than or equal to %.d \n", m);
+  //   return 1;
+  // }
+
+  if (n <= 0)
+  {
+    printf("Please enter a positive integer. \n");
+    return 1;
+  }
+  // if (m <= 0 && n <= 0)
+  // {
+  //   printf("Please enter a positive integer. \n");
+  //   return 1;
+  // }
+
+  // Change these values for different series
+  m = 1; // start number
+  diff = 1;
+
+  // 1! + 2! + 3! + ... + N!
+  for (int i = m; i <= n; i += diff)
+  {
+    factorial = factorial * i;
+    if (!firstTime)
+    {
+      printf(" + ");
+    }
+
+    printf("%d", i);
+    sum += factorial;
+    firstTime = 0;
+  }
+
+  printf(" = %.2lf\n", sum);
+
+  return 0;
+}
+
+
+/*
+ Concepts: nested loops/factorial
+
+1! + 2! + 3! + ... + N!
+
+1! × 2! × 3! × ... × N!
+
+1!/1 + 2!/2 + ... + N!/N
+
+1/1! + 1/2! + ... + 1/N!
+*/
+
+#include <stdio.h>
+int main()
+{
+  int m, n, diff;
+  double sum = 0;
+  long long factorial = 1;
+  int firstTime = 1;
+
+  // printf("Enter the first number of the series: ");
+  // if (scanf("%d", &m) != 1)
+  // {
+  //   printf("Invalid Input! Please enter a valid integer. \n");
+  //   return 1;
+  // }
+
+  printf("Enter the last number of the series: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  // if (n <= m)
+  // {
+  //   printf("Ending value must be greater than or equal to %.d \n", m);
+  //   return 1;
+  // }
+
+  if (n <= 0)
+  {
+    printf("Please enter a positive integer. \n");
+    return 1;
+  }
+  // if (m <= 0 && n <= 0)
+  // {
+  //   printf("Please enter a positive integer. \n");
+  //   return 1;
+  // }
+
+  // Change these values for different series
+  m = 1; // start number
+  diff = 1;
+
+  // 1!/1 + 2!/2 + ... + N!/N
+  for (int i = m; i <= n; i += diff)
+  {
+    factorial = factorial * i;
+    if (!firstTime)
+    {
+      printf(" + ");
+    }
+
+    printf("%d!/%d", i, i);
+    sum = sum + (double)factorial / i;
+    firstTime = 0;
+  }
+
+  printf(" = %.2lf\n", sum);
+
+  return 0;
+}
+
+#include <stdio.h>
+int main()
+{
+  int m, n, diff;
+  double sum = 0;
+  long long factorial = 1;
+  int firstTime = 1;
+
+  // printf("Enter the first number of the series: ");
+  // if (scanf("%d", &m) != 1)
+  // {
+  //   printf("Invalid Input! Please enter a valid integer. \n");
+  //   return 1;
+  // }
+
+  printf("Enter the last number of the series: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input! Please enter a valid integer. \n");
+    return 1;
+  }
+
+  // if (n <= m)
+  // {
+  //   printf("Ending value must be greater than or equal to %.d \n", m);
+  //   return 1;
+  // }
+
+  if (n <= 0)
+  {
+    printf("Please enter a positive integer. \n");
+    return 1;
+  }
+  // if (m <= 0 && n <= 0)
+  // {
+  //   printf("Please enter a positive integer. \n");
+  //   return 1;
+  // }
+
+  // Change these values for different series
+  m = 1; // start number
+  diff = 1;
+
+  // 1/1! + 1/2! + ... + 1/N!
+  for (int i = m; i <= n; i += diff)
+  {
+    factorial = factorial * i;
+    if (!firstTime)
+    {
+      printf(" + ");
+    }
+
+    printf("%d/%d!", i, i);
+    sum = sum + (double)1 / factorial;
+    firstTime = 0;
+  }
+
+  printf(" = %.2lf\n", sum);
+
+  return 0;
+}
+```
+
+###### Group 7: Fibonacci Series
+
+```c
+/*
+// Concepts: multiple variables
+1. Print first N Fibonacci numbers.
+
+2. Find the sum of first N Fibonacci numbers.
+
+3. Print Fibonacci numbers less than N.
+
+4. Print only even Fibonacci numbers.
+
+5. Count Fibonacci numbers up to N.
+
+*/
+
+```
+
+###### Group 8: Mixed Mathematical Series
+
+```c
+/*
+// Concepts: combine previous ideas
+1 - 2 + 3 - 4 + 5 ...
+
+1² + 2³ + 3² + 4³ + ...
+
+1 + 2² + 3³ + 4⁴ + ...
+
+2 + 4² + 6³ + 8⁴ + ...
+
+1×2 + 2×3 + 3×4 + ... + N1*N2 (like series 3 in my playlist)
+1×3 + 2×6 + 3×9 + ... + N(N*3)
+
+5. 1² + 2 + 3² + 4 + 5² + ...
+
+6. 1³ + 2² + 3 + 4³ + ...
+
+*/
+
+```
+
 ### 1.11 Functions
+
+#### Greatest Common Divisor (GCD) and Least Common Multiple (LCM) for multiple numbers
+
+```c
+
+/*
+
+Find the GCD of the first two numbers.
+Use that GCD with the third number.
+Then use the result with the fourth number.
+Continue until all numbers have been processed.
+
+Algorithm
+--------------
+Read N
+
+Read the first number
+
+gcd = first number
+lcm = first number
+
+Repeat N-1 times
+
+    Read next number
+
+    gcd = GCD(gcd, nextNumber)
+
+    lcm = LCM(lcm, nextNumber)
+
+Print gcd and lcm
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int findGCD(int a, int b)
+{
+    a = abs(a);
+    b = abs(b);
+
+    while (b != 0)
+    {
+        int remainder = a % b;
+        a = b;
+        b = remainder;
+    }
+
+    return a;
+}
+
+int findLCM(int a, int b)
+{
+    if (a == 0 || b == 0)
+    {
+        return 0;
+    }
+
+    return (abs(a) / findGCD(a, b)) * abs(b);
+}
+
+int main()
+{
+    int n;
+    int number;
+    int gcd, lcm;
+
+    printf("How many numbers? ");
+
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    printf("Enter number 1: ");
+
+    if (scanf("%d", &number) != 1)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    gcd = number;
+    lcm = number;
+
+    for (int i = 2; i <= n; i++)
+    {
+        printf("Enter number %d: ", i);
+
+        if (scanf("%d", &number) != 1)
+        {
+            printf("Invalid input!\n");
+            return 1;
+        }
+
+        gcd = findGCD(gcd, number);
+        lcm = findLCM(lcm, number);
+    }
+
+    printf("\nGCD = %d\n", gcd);
+    printf("LCM = %d\n", lcm);
+
+    return 0;
+}
+```
 
 ### 1.12 Arrays
 
