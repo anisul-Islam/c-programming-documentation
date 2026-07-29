@@ -5123,6 +5123,300 @@ int main()
 
 */
 
+// 1. Print First N Fibonacci Numbers
+#include <stdio.h>
+int main()
+{
+  int n, a = 0, b = 1, fibo;
+
+  printf("Enter the value of N: "); // 1
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. N must be greater than 0.\n");
+    return 1;
+  }
+
+  printf("\nFirst %d Fibonacci numbers: \n", n);
+
+  if (n == 1)
+  {
+    printf("%d", a);
+    return 0;
+  }
+  printf("%d %d ", a, b);
+
+  for (int i = 3; i <= n; i++)
+  {
+    fibo = a + b;
+    printf("%d ", fibo);
+    a = b;
+    b = fibo;
+  }
+
+  printf("\n");
+
+  return 0;
+}
+
+
+
+// 2. Find the Sum of First N Fibonacci Numbers
+/*
+Concepts: multiple variables
+1. Print first N Fibonacci numbers.
+
+0 1 1 2 3 5 ... N
+
+2. Find the sum of first N Fibonacci numbers.
+
+3. Print Fibonacci numbers less than N.
+
+4. Print only even Fibonacci numbers.
+
+5. Count Fibonacci numbers up to N.
+
+6. Print N Fibonacci numbers
+*/
+
+#include <stdio.h>
+int main()
+{
+  int n, a = 0, b = 1, fibo, sum = 0;
+
+  printf("Enter the value of N: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. N must be greater than 0.\n");
+    return 1;
+  }
+
+  if (n == 1)
+  {
+    printf("Sum of the first %d Fibonacci number = %d\n", n, a);
+    return 0;
+  }
+
+  sum = a + b;
+
+  for (int i = 3; i <= n; i++)
+  {
+    fibo = a + b;
+    sum += fibo;
+    a = b;
+    b = fibo;
+  }
+
+  printf("Sum of the first %d Fibonacci number = %d\n", n, sum);
+
+  printf("\n");
+
+  return 0;
+}
+
+
+// 3. Print Only Even Fibonacci Numbers (Among First N Numbers)
+
+#include <stdio.h>
+int main()
+{
+  int n, a = 0, b = 1, fibo;
+
+  printf("Enter the value of N: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. N must be greater than 0.\n");
+    return 1;
+  }
+
+  printf("Even Fibonacci Numbers: \n");
+
+  if (n == 1)
+  {
+    printf("%d\n", a);
+    return 0;
+  }
+
+  if (a % 2 == 0)
+  {
+    printf("%d\n", a);
+  }
+  if (b % 2 == 0)
+  {
+    printf("%d\n", b);
+  }
+
+  for (int i = 3; i <= n; i++)
+  {
+    fibo = a + b;
+    if (fibo % 2 == 0)
+    {
+      printf("%d\n", fibo);
+    }
+
+    a = b;
+    b = fibo;
+  }
+
+  printf("\n");
+
+  return 0;
+}
+
+
+// 4. Count Fibonacci Numbers Up to N
+#include <stdio.h>
+
+int main() {
+    int n, a = 0, b = 1, c;
+    int count = 0;
+
+    printf("Enter the value of N: ");
+    scanf("%d", &n);
+
+    if (n < 0) {
+        printf("Invalid input! N cannot be negative.\n");
+        return 1;
+    }
+
+    while (a <= n) {
+        count++;
+
+        c = a + b;
+        a = b;
+        b = c;
+    }
+
+    printf("Total Fibonacci Numbers Up to %d = %d\n", n, count);
+
+    return 0;
+}
+
+// 5. Print all Fibonacci numbers until 100.
+/*
+Print all Fibonacci numbers until 100.
+
+Output:
+0 1 1 2 3 5 8 13 21 34 55 89
+*/
+
+#include <stdio.h>
+
+int main()
+{
+    int a = 0, b = 1, next;
+
+    printf("Fibonacci numbers until 100:\n");
+
+    while (a <= 100)
+    {
+        printf("%d ", a);
+
+        next = a + b;
+        a = b;
+        b = next;
+    }
+
+    printf("\n");
+
+    return 0;
+}
+
+/*
+Print all Fibonacci numbers from M to N.
+
+Example:
+Input:
+M = 10
+N = 100
+
+Output:
+13
+21
+34
+55
+89
+*/
+
+#include <stdio.h>
+
+int main()
+{
+    int m, n;
+    int a = 0, b = 1, fibo;
+
+    printf("Enter the value of M: ");
+    if (scanf("%d", &m) != 1)
+    {
+        printf("Invalid input. Please enter an integer.\n");
+        return 1;
+    }
+
+    printf("Enter the value of N: ");
+    if (scanf("%d", &n) != 1)
+    {
+        printf("Invalid input. Please enter an integer.\n");
+        return 1;
+    }
+
+    if (m < 0 || n < 0)
+    {
+        printf("Invalid input. M and N must be non-negative.\n");
+        return 1;
+    }
+
+    if (m > n)
+    {
+        printf("Invalid input. M must be less than or equal to N.\n");
+        return 1;
+    }
+
+    printf("Fibonacci Numbers from %d to %d:\n", m, n);
+
+    if (a >= m && a <= n)
+    {
+        printf("%d\n", a);
+    }
+
+    if (b >= m && b <= n)
+    {
+        printf("%d\n", b);
+    }
+
+    while (1)
+    {
+        fibo = a + b;
+
+        if (fibo > n)
+        {
+            break;
+        }
+
+        if (fibo >= m)
+        {
+            printf("%d\n", fibo);
+        }
+
+        a = b;
+        b = fibo;
+    }
+
+    return 0;
+}
 ```
 
 ###### Group 8: Mixed Mathematical Series
@@ -5146,6 +5440,72 @@ int main()
 6. 1³ + 2² + 3 + 4³ + ...
 
 */
+
+```
+
+###### Lucas series
+
+- The Lucas Series is similar to the Fibonacci series, but it starts with: 2, 1, 3, 4, 7, 11, 18, 29, 47, 76, ...
+
+```c
+/*
+Concepts: Lucas series
+2, 1, 3, 4, 7, 11, 18, 29, 47, 76, ...
+
+Print the first N Lucas numbers.
+Find the sum of the first N Lucas numbers.
+Print Lucas numbers less than N.
+Print only even Lucas numbers.
+Count Lucas numbers up to N.
+Print Lucas numbers from M to N.
+
+
+Formula:
+First term = 2
+Second term = 1
+Next term = Previous term + Current term
+
+*/
+
+#include <stdio.h>
+int main()
+{
+
+  int n, a = 2, b = 1, lucas;
+
+  printf("Enter the value of N: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+
+  if (n <= 0)
+  {
+    printf("Invalid Input. N must be greater than 0.\n");
+    return 1;
+  }
+
+  printf("First %d Lucas Numbers: \n", n);
+  if (n == 1)
+  {
+    printf("%d\n", a);
+    return 0;
+  }
+
+  printf("%d %d ", a, b);
+
+  for (int i = 3; i <= n; i++)
+  {
+    lucas = a + b;
+    printf("%d ", lucas);
+    a = b;
+    b = lucas;
+  }
+  printf("\n");
+
+  return 0;
+}
 
 ```
 
