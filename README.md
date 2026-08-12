@@ -6221,6 +6221,91 @@ int main()
 
 ```
 
+![pattern type 4](images/pattern-type-4.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    // Printing space
+    for (int col = 1; col <= n - row; col++)
+    {
+      printf("  ");
+    }
+
+    // Printing numbers
+    for (int col = 1; col <= row; col++)
+    {
+      printf("%d ", col);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 5](images/pattern-5.png)
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+
+    printf("Enter the number of rows: ");
+
+    if (scanf("%d", &n) != 1)
+    {
+        printf("Invalid input. Please enter an integer.\n");
+        return 1;
+    }
+
+    if (n <= 0)
+    {
+        printf("Invalid input. Number of rows must be greater than 0.\n");
+        return 1;
+    }
+
+    for (int row = 1; row <= n; row++)
+    {
+        // Printing spaces
+        for (int col = 1; col <= row - 1; col++)
+        {
+            printf("  ");
+        }
+
+        // Printing numbers
+        for (int col = 1; col <= n - row + 1; col++)
+        {
+            printf("%d ", col);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
 ### 1.11 Functions
 
 #### Greatest Common Divisor (GCD) and Least Common Multiple (LCM) for multiple numbers
