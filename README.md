@@ -492,6 +492,20 @@ C provides several built-in data types, allowing you to store different types of
      3. **`const` Modifier**:
         - The `const` modifier is used to declare a constant, meaning the value of the variable cannot be changed once it's assigned. While this modifier doesn't directly affect memory allocation, it can help the compiler optimize code by placing constants in read-only memory segments.
 
+        ```c
+          #include <stdio.h>
+
+          int main()
+          {
+              const int age = 25;
+              const float PI = 3.14;
+
+              age = 30;   // Error - const means the value cannot be changed after it is assigned.
+
+              return 0;
+          }
+        ```
+
      4. **`volatile` Modifier**:
         - The `volatile` modifier is used to indicate that a variable's value can be changed by external factors not under the program's control. This modifier prevents the compiler from optimizing away accesses to the variable and can affect memory allocation in the sense that it may lead to actual memory accesses.
 
@@ -5427,20 +5441,484 @@ int main()
 1 - 2 + 3 - 4 + 5 ...
 
 1² + 2³ + 3² + 4³ + ...
-
 1 + 2² + 3³ + 4⁴ + ...
-
 2 + 4² + 6³ + 8⁴ + ...
 
 1×2 + 2×3 + 3×4 + ... + N1*N2 (like series 3 in my playlist)
 1×3 + 2×6 + 3×9 + ... + N(N*3)
 
-5. 1² + 2 + 3² + 4 + 5² + ...
-
-6. 1³ + 2² + 3 + 4³ + ...
+1² + 2 + 3² + 4 + 5² + ...
+1³ + 2² + 3 + 4³ + ...
 
 */
 
+
+/*
+Key Learning Points
+
+All of these series follow the same programming structure:
+
+1. Read the input value `N`.
+2. Initialize the required variables (`sum`, `first`, etc.).
+3. Use a loop to generate each term.
+4. Determine the current term's value based on the series pattern.
+5. Print the term with the correct operator (`+` or `-`).
+6. Update the running sum.
+7. Display the final result.
+*/
+
+/*
+Problem 1: `1 - 2 + 3 - 4 + 5 - ... ± N`
+
+Pattern
+- Odd numbers → Positive
+- Even numbers → Negative
+1 - 2 + 3 - 4 + 5 = 3
+
+Algorithm
+1. Read `N`.
+2. Initialize `sum = 0`.
+3. Loop from `1` to `N`.
+4. If the number is odd, add it to the sum.
+5. If the number is even, subtract it from the sum.
+6. Display the final sum.
+
+*/
+
+#include <stdio.h>
+
+int main()
+{
+    int n, sum = 0;
+
+    printf("Enter N: ");
+
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (i > 1)
+        {
+            if (i % 2 == 0)
+                printf(" - ");
+            else
+                printf(" + ");
+        }
+
+        printf("%d", i);
+
+        if (i % 2 == 0)
+            sum -= i;
+        else
+            sum += i;
+    }
+
+    printf(" = %d\n", sum);
+
+    return 0;
+}
+
+
+
+/*
+Problem 2: `1² + 2³ + 3² + 4³ + ...`
+
+Pattern
+- Odd numbers → Square
+- Even numbers → Cube
+
+Example:
+1² + 2³ + 3² + 4³
+= 1 + 8 + 9 + 64
+= 82
+
+
+Algorithm
+1. Read `N`.
+2. Loop from `1` to `N`.
+3. If the number is odd, calculate its square.
+4. If the number is even, calculate its cube.
+5. Add the value to the sum.
+*/
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    long long sum = 0;
+    int first = 1;
+
+    printf("Enter N: ");
+
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!first)
+            printf(" + ");
+
+        if (i % 2 != 0)
+        {
+            printf("%d²", i);
+            sum += i * i;
+        }
+        else
+        {
+            printf("%d³", i);
+            sum += i * i * i;
+        }
+
+        first = 0;
+    }
+
+    printf(" = %lld\n", sum);
+
+    return 0;
+}
+
+/*
+Problem 3: `1 + 2² + 3³ + 4⁴ + ...`
+
+Pattern
+Each number is raised to its own power.
+1¹ + 2² + 3³ + 4⁴ + ...
+
+Algorithm
+1. Read `N`.
+2. For every number `i`, initialize `term = 1`.
+3. Multiply `term` by `i`, `i` times.
+4. Add `term` to the sum.
+*/
+
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    long long sum = 0;
+    int first = 1;
+
+    printf("Enter N: ");
+
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        long long term = 1;
+
+        for (int j = 1; j <= i; j++)
+            term *= i;
+
+        if (!first)
+            printf(" + ");
+
+        printf("%d^%d", i, i);
+
+        sum += term;
+
+        first = 0;
+    }
+
+    printf(" = %lld\n", sum);
+
+    return 0;
+}
+
+
+
+/*
+Problem 4: `2 + 4² + 6³ + 8⁴ + ...`
+
+Pattern
+- Even numbers only.
+- Power starts from `1` and increases every term.
+2¹ + 4² + 6³ + 8⁴ + ...
+
+Algorithm
+1. Read the number of terms.
+2. Start from `2`.
+3. Increase by `2` each iteration.
+4. Raise the current even number to the current power.
+5. Add to the sum.
+*/
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    long long sum = 0;
+    int power = 1;
+    int first = 1;
+
+    printf("Enter number of terms: ");
+
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    for (int i = 2; power <= n; i += 2)
+    {
+        long long term = 1;
+
+        for (int j = 1; j <= power; j++)
+            term *= i;
+
+        if (!first)
+            printf(" + ");
+
+        printf("%d^%d", i, power);
+
+        sum += term;
+
+        first = 0;
+        power++;
+    }
+
+    printf(" = %lld\n", sum);
+
+    return 0;
+}
+
+
+
+/*
+Problem 5: `1×2 + 2×3 + 3×4 + ... + N(N+1)`
+
+Pattern
+term = i × (i + 1)
+1×2 + 2×3 + 3×4 + 4×5
+
+Algorithm
+1. Read `N`.
+2. Loop from `1` to `N`.
+3. Calculate `i × (i + 1)`.
+4. Add to the sum.
+*/
+#include <stdio.h>
+
+int main()
+{
+    int n, sum = 0;
+    int first = 1;
+
+    printf("Enter N: ");
+
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!first)
+            printf(" + ");
+
+        printf("%d×%d", i, i + 1);
+
+        sum += i * (i + 1);
+
+        first = 0;
+    }
+
+    printf(" = %d\n", sum);
+
+    return 0;
+}
+
+
+
+/*
+Problem 6: `1×3 + 2×6 + 3×9 + ... + N(N×3)`
+
+Pattern
+term = i × (i × 3)
+Example:
+1×3 + 2×6 + 3×9 + 4×12
+
+Algorithm
+1. Read `N`.
+2. Loop from `1` to `N`.
+3. Multiply `i` by `i × 3`.
+4. Add the result to the sum.
+*/
+#include <stdio.h>
+
+int main()
+{
+    int n, sum = 0;
+    int first = 1;
+
+    printf("Enter N: ");
+
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!first)
+            printf(" + ");
+
+        printf("%d×%d", i, i * 3);
+
+        sum += i * (i * 3);
+
+        first = 0;
+    }
+
+    printf(" = %d\n", sum);
+
+    return 0;
+}
+
+
+
+/*
+Problem 7: `1² + 2 + 3² + 4 + 5² + ...`
+
+Pattern
+- Odd numbers → Square
+- Even numbers → Normal value
+
+Example:
+1² + 2 + 3² + 4 + 5²
+= 1 + 2 + 9 + 4 + 25
+
+Algorithm
+
+1. Read `N`.
+2. If the number is odd, square it.
+3. Otherwise, use the number itself.
+4. Add to the sum.
+
+*/
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    long long sum = 0;
+    int first = 1;
+
+    printf("Enter N: ");
+
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!first)
+            printf(" + ");
+
+        if (i % 2 != 0)
+        {
+            printf("%d²", i);
+            sum += i * i;
+        }
+        else
+        {
+            printf("%d", i);
+            sum += i;
+        }
+
+        first = 0;
+    }
+
+    printf(" = %lld\n", sum);
+
+    return 0;
+}
+
+
+
+
+/*
+Problem 8: `1³ + 2² + 3 + 4³ + 5² + 6 + ...`
+
+Pattern
+This series repeats every 3 terms.
+
+| Position     | Operation     |
+| ------------ | ------------- |
+| `i % 3 == 1` | Cube (`i³`)   |
+| `i % 3 == 2` | Square (`i²`) |
+| `i % 3 == 0` | Normal (`i`)  |
+
+Example:
+1³ + 2² + 3 + 4³ + 5² + 6 + 7³ + ...
+
+Algorithm
+1. Read `N`.
+2. Loop from `1` to `N`.
+3. If `i % 3 == 1`, cube the number.
+4. Else if `i % 3 == 2`, square the number.
+5. Otherwise, use the number itself.
+6. Add the result to the sum.
+*/
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    long long sum = 0;
+    int first = 1;
+
+    printf("Enter N: ");
+
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!first)
+            printf(" + ");
+
+        if (i % 3 == 1)
+        {
+            printf("%d³", i);
+            sum += i * i * i;
+        }
+        else if (i % 3 == 2)
+        {
+            printf("%d²", i);
+            sum += i * i;
+        }
+        else
+        {
+            printf("%d", i);
+            sum += i;
+        }
+
+        first = 0;
+    }
+
+    printf(" = %lld\n", sum);
+
+    return 0;
+}
 ```
 
 ###### Lucas series
@@ -5503,6 +5981,240 @@ int main()
     b = lucas;
   }
   printf("\n");
+
+  return 0;
+}
+
+```
+
+##### Pattern related Programs
+
+![pattern type 1](images/pattern-type-1.png)
+
+```c
+/*
+N = 3
+
+1
+1 2
+1 2 3
+*/
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+
+    printf("Enter the number of rows you want: ");
+
+    if (scanf("%d", &n) != 1)
+    {
+        printf("Invalid input. Please enter an integer.\n");
+        return 1;
+    }
+
+    if (n <= 0)
+    {
+        printf("Invalid input. N must be greater than 0.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            printf("%d ", j);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+![pattern type 2](images/pattern-type2.png)
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    /*
+        N = 3
+
+        1 2 3
+        1 2
+        1
+    */
+
+    int n;
+
+    printf("Enter the number of rows you want: ");
+
+    if (scanf("%d", &n) != 1)
+    {
+        printf("Invalid input. Please enter an integer.\n");
+        return 1;
+    }
+
+    if (n <= 0)
+    {
+        printf("Invalid input. N must be greater than 0.\n");
+        return 1;
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n - i + 1; j++)
+        {
+            printf("%d ", j);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+/*
+for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= n - row + 1; col++)
+    {
+      printf("%d ", n - row + 1);
+    }
+    printf("\n");
+  }
+
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= n - row + 1; col++)
+    {
+      printf("%c ", col + 64);
+    }
+    printf("\n");
+  }
+*/
+
+
+```
+
+![pattern type 3](images/pattern-type-3_1.png)
+![pattern type 3](images/pattern-type-3_2.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  /*
+  N=3
+  1
+  1 2
+  1 2 3
+
+  N=3
+  1 2 3
+  1 2
+  1
+  */
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  /*
+   N=3
+   1
+   1 2
+   1 2 3
+   */
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= row; col++)
+    {
+      printf("%d ", col);
+    }
+    printf("\n");
+  }
+
+  /*
+ N=3
+ 1 2
+ 1
+ */
+
+  for (int row = 2; row <= n; row++)
+  {
+    for (int col = 1; col <= n - row + 1; col++)
+    {
+      printf("%d ", col);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  /*
+   N=3
+   1
+   2 2
+   3 3 3
+   */
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= row; col++)
+    {
+      printf("%d ", row);
+    }
+    printf("\n");
+  }
+
+  /*
+ N=3
+ 3 3 3
+ 2 2
+ 1
+ */
+
+  for (int row = 2; row <= n; row++)
+  {
+    for (int col = 1; col <= n - row + 1; col++)
+    {
+      printf("%d ", n - row + 1);
+    }
+    printf("\n");
+  }
 
   return 0;
 }
