@@ -6304,6 +6304,79 @@ int main(void)
 
     return 0;
 }
+
+/*
+ // Printing numbers
+    for (int col = 1; col <= n - row + 1; col++)
+    {
+      printf("%d ", n - row + 1);
+      printf("%d ", (n - row + 1) % 2);
+    }
+*/
+```
+
+![pattern type 6](images/pattern6.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  /*
+    N = 3
+        1
+      1 2
+    1 2 3
+
+  */
+  for (int row = 1; row <= n; row++)
+  {
+    // Printing space
+    for (int col = 1; col <= n - row; col++)
+    {
+      printf("  ");
+    }
+
+    // Printing numbers
+    for (int col = 1; col <= row; col++)
+    {
+      printf("%d ", col);
+    }
+    printf("\n");
+  }
+
+
+  for (int row = 2; row <= n; row++)
+  {
+    // Printing space
+    for (int col = 1; col <= row - 1; col++)
+    {
+      printf("  ");
+    }
+
+    // Printing numbers
+    for (int col = 1; col <= n - row + 1; col++)
+    {
+      printf("%d ", col);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
 ```
 
 ### 1.11 Functions
