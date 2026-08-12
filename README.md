@@ -5989,7 +5989,8 @@ int main()
 
 ##### Pattern related Programs
 
-- pattern questions
+- [pattern questions and slides](https://docs.google.com/presentation/d/1ufWYafQU5brW-c5b5TT7akTOHoP-85SI/edit?usp=sharing&ouid=114138033173226558178&rtpof=true&sd=true)
+
   🟢 Beginner
   1.Increasing star triangle
   2.Increasing number triangle
