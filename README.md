@@ -5989,6 +5989,43 @@ int main()
 
 ##### Pattern related Programs
 
+- pattern questions
+  🟢 Beginner
+  1.Increasing star triangle
+  2.Increasing number triangle
+  3.Repeated number triangle
+  4.Alphabet triangle
+  5.Reverse star triangle
+  6.Reverse number triangle
+  7.Rectangle
+  8.Binary triangle
+
+  🟡 Intermediate
+  9.Right-aligned triangle
+  10.Reverse right-aligned triangle
+  11.Number pyramid
+  12.Star pyramid
+  13.Inverted pyramid
+  14.Diamond
+  15.Floyd's triangle
+  16.Multiplication triangle
+  17.Palindrome pyramid
+  18.X pattern
+
+  🔴 Advanced
+  19.Hollow rectangle
+  20.Hollow triangle
+  21.Hollow pyramid
+  22.Hollow diamond
+  23.Butterfly
+  24.Hourglass
+  25.Number checkerboard
+  26.Concentric square
+  27.Alphabet palindrome
+  28.Advanced mixed patterns
+
+- the outer loop controls rows; an inner loop controls columns / what get printed in each lines; a spaces loop controls alignment; conditions control hollow/diagonal patterns; formulas control values.
+
 ![pattern type 1](images/pattern-type-1.png)
 
 ```c
