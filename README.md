@@ -6031,11 +6031,12 @@ int main()
 
 ```c
 /*
-N = 3
-
-1
-1 2
-1 2 3
+Triangle - Increasing number
+Triangle - Repeated number
+Triangle - Binary
+Triangle - Alphabet
+Triangle - Repeated Alphabet
+Triangle - Symbol
 */
 #include <stdio.h>
 
@@ -6057,11 +6058,89 @@ int main(void)
         return 1;
     }
 
+    /*
+      Triangle - Increasing number
+      N = 3
+      1
+      1 2
+      1 2 3
+      */
     for (int i = 1; i <= n; i++)
     {
         for (int j = 1; j <= i; j++)
         {
             printf("%d ", j);
+        }
+
+        printf("\n");
+    }
+
+
+    /*
+      Triangle - Repeated number
+      N = 3
+      1
+      2 2
+      3 3 3
+      */
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            printf("%d ", i);
+        }
+
+        printf("\n");
+    }
+
+
+    /*
+      Triangle - Binary
+      N = 3
+      1
+      1 0
+      1 0 1
+      */
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            printf("%d ", j%2);
+        }
+
+        printf("\n");
+    }
+
+
+    /*
+      Triangle - Alphabet
+      N = 3
+      A
+      A B
+      A B C
+      */
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            printf("%c ", j+64);
+        }
+
+        printf("\n");
+    }
+
+    /*
+      Triangle - Symbol
+      N = 3
+      *
+      * *
+      * * *
+      */
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            printf("*");
         }
 
         printf("\n");
@@ -6074,6 +6153,9 @@ int main(void)
 ![pattern type 2](images/pattern-type2.png)
 
 ```c
+/*
+Reverse Triangle - Increasing number, Repeated number, Binary, Alphabet, Repeated Alphabet, Symbol
+*/
 #include <stdio.h>
 
 int main(void)
@@ -6205,63 +6287,12 @@ int main()
   return 0;
 }
 
-
-#include <stdio.h>
-int main()
-{
-  int n;
-
-  printf("Enter the number of rows: ");
-  if (scanf("%d", &n) != 1)
-  {
-    printf("Invalid Input. Please enter an integer.\n");
-    return 1;
-  }
-  if (n <= 0)
-  {
-    printf("Invalid Input. Number of rows must be greater than 0.\n");
-    return 1;
-  }
-
-  /*
-   N=3
-   1
-   2 2
-   3 3 3
-   */
-  for (int row = 1; row <= n; row++)
-  {
-    for (int col = 1; col <= row; col++)
-    {
-      printf("%d ", row);
-    }
-    printf("\n");
-  }
-
-  /*
- N=3
- 3 3 3
- 2 2
- 1
- */
-
-  for (int row = 2; row <= n; row++)
-  {
-    for (int col = 1; col <= n - row + 1; col++)
-    {
-      printf("%d ", n - row + 1);
-    }
-    printf("\n");
-  }
-
-  return 0;
-}
-
 ```
 
 ![pattern type 4](images/pattern-type-4.png)
 
 ```c
+// Triangle - Right Aligned
 #include <stdio.h>
 int main()
 {
@@ -6303,6 +6334,7 @@ int main()
 ![pattern type 5](images/pattern-5.png)
 
 ```c
+// Triangle - Reversed Right Aligned
 #include <stdio.h>
 
 int main(void)
@@ -6415,6 +6447,344 @@ int main()
 
   return 0;
 }
+```
+
+![pattern type 7](images/PATTERN7.png)
+
+```c
+// Solid Rectangle
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= n; col++)
+    {
+      printf("* ");
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 8](images/pattern8.png)
+
+```c
+// Triangle - Multiplication
+for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= row; col++)
+    {
+      printf("%d ", row * col);
+    }
+    printf("\n");
+  }
+```
+
+![pattern type 9](images/floyd.png)
+
+```c
+// Triangle - Floyd
+#include <stdio.h>
+int main()
+{
+  int n, count = 0;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= row; col++)
+    {
+      printf("%d ", ++count);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 10](images/pyramid.png)
+
+```c
+// Pyramid Pattern - Number, repeated number, binary, repeated binary, alphabet, repeated alphabet, symbol
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= n - row; col++)
+    {
+      printf("  ");
+    }
+
+    for (int col = 1; col <= (2 * row) - 1; col++)
+    {
+      printf("* ");
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 11](images/reversed-pyramid.png)
+
+```c
+// Inverted Pyramid Pattern - Number, repeated number, binary, repeated binary, alphabet, repeated alphabet, symbol
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= row - 1; col++)
+    {
+      printf("  ");
+    }
+
+    for (int col = 1; col <= 2 * (n - row) + 1; col++)
+    {
+      printf("* ");
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 12](images/diamond.png)
+
+```c
+// Diamond Pattern - Mixed Pyramid Pattern
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  // pyramid
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= n - row; col++)
+    {
+      printf("  ");
+    }
+
+    for (int col = 1; col <= (2 * row) - 1; col++)
+    {
+      printf("* ");
+    }
+    printf("\n");
+  }
+
+  // reversed pyramid
+  for (int row = 2; row <= n; row++)
+  {
+    for (int col = 1; col <= row - 1; col++)
+    {
+      printf("  ");
+    }
+
+    for (int col = 1; col <= 2 * (n - row) + 1; col++)
+    {
+      printf("* ");
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 13](images/hollow-rectangle.svg)
+
+```c
+// hollow rectangle
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    // column
+    for (int col = 1; col <= n; col++)
+    {
+      // printing star
+      if (row == 1 || row == n || col == 1 || col == n)
+      {
+        printf("* ");
+      }
+      // printing space
+      else
+      {
+        printf("  ");
+      }
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 14](images/hollow-triangle.png)
+
+```c
+// hollow triangle
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    // column
+    for (int col = 1; col <= n; col++)
+    {
+      // printing star
+      if (row == col || row == n || col == 1 )
+      {
+        printf("* ");
+      }
+      // printing space
+      else
+      {
+        printf("  ");
+      }
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 15]()
+
+```c
+//
+
+```
+
+![pattern type 16]()
+
+```c
+//
+
+```
+
+![pattern type 17]()
+
+```c
+//
+
+```
+
+![pattern type 18]()
+
+```c
+//
+
 ```
 
 ### 1.11 Functions
