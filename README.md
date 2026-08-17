@@ -6759,31 +6759,516 @@ int main()
 
 ```
 
-![pattern type 15]()
+![pattern type 15](images/x-shape.png)
 
 ```c
-//
+// X pattern
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+
+    for (int col = 1; col <= n; col++)
+    {
+
+      if (row == col || col == n - row + 1)
+      {
+        printf("*");
+      }
+      else
+      {
+        printf(" ");
+      }
+    }
+
+    printf("\n");
+  }
+
+  return 0;
+}
+```
+
+![pattern type 16](images/plus-shape.png)
+
+```c
+// plus pattern
+#include <stdio.h>
+
+int main()
+{
+    int n;
+
+    printf("Enter the number of rows: ");
+
+    if (scanf("%d", &n) != 1)
+    {
+        printf("Invalid input. Please enter an integer.\n");
+        return 1;
+    }
+
+    if (n <= 0)
+    {
+        printf("Number must be greater than 0.\n");
+        return 1;
+    }
+
+    int middle = (n + 1) / 2;
+
+    for (int row = 1; row <= n; row++)
+    {
+        for (int col = 1; col <= n; col++)
+        {
+            if (row == middle || col == middle)
+            {
+                printf("*");
+            }
+            else
+            {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+![pattern type 17](images/palindrome-pyramid.png)
+
+```c
+// Palindrom number pyramid, Alphabet Pyramid, Binary Pyramid
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= n - row; col++)
+    {
+      printf("  ");
+    }
+    for (int col = 1; col <= row; col++)
+    {
+      printf("%d ", col);
+    }
+    for (int col = row - 1; col >= 1; col--)
+    {
+      printf("%d ", col);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
 
 ```
 
-![pattern type 16]()
+![pattern type 18](images/reverse-pyramid-palindrome.png)
 
 ```c
-//
+// Reversed Palindrom number pyramid, Alphabet Pyramid, Binary Pyramid
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int space = 1; space <= row - 1; space++)
+    {
+      printf("  ");
+    }
+    for (int col = 1; col <= n - row + 1; col++)
+    {
+      printf("%d ", col);
+    }
+    for (int col = n - row; col >= 1; col--)
+    {
+      printf("%d ", col);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
 
 ```
 
-![pattern type 17]()
+![pattern type 19](images/hollow-pyramind.png)
 
 ```c
-//
+// Hollow Pyramid
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int space = 1; space <= n - row; space++)
+    {
+      printf("  ");
+    }
+
+    // print pyramid
+    for (int col = 1; col <= (2 * row) - 1; col++)
+    {
+      if (col == 1 || row == n || col == (2 * row) - 1)
+      {
+        printf("* ");
+      }
+      else
+      {
+        printf("  ");
+      }
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
 
 ```
 
-![pattern type 18]()
+![pattern type 20]()
 
 ```c
-//
+// Hollow Diamond
+
+```
+
+![pattern type 21](images/butterfly-shape.png)
+
+```c
+// Butterfly pattern = 2 triangles + a hollow middle
+/*
+Logic
+
+The butterfly has two parts:
+
+Top half -
+For each row:
+Left side prints row stars.
+Middle prints spaces.
+Right side prints row stars.
+
+
+Bottom half - The same pattern is reversed.
+For n = 5:
+row 1 → 4 stars
+row 2 → 3 stars
+row 3 → 2 stars
+row 4 → 1 star
+*/
+
+
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  // top half
+  for (int row = 1; row <= n; row++)
+  {
+    // left stars
+    for (int col = 1; col <= row; col++)
+    {
+      printf("*");
+    }
+
+    // middle spaces
+    for (int space = 1; space <= 2 * (n - row); space++)
+    {
+      printf(" ");
+    }
+
+    // right stars
+    for (int col = 1; col <= row; col++)
+    {
+      printf("*");
+    }
+    printf("\n");
+  }
+
+  // bottom half
+  for (int row = n - 1; row >= 1; row--)
+  {
+    // left stars
+    for (int col = 1; col <= row; col++)
+    {
+      printf("*");
+    }
+
+    // middle spaces
+    for (int space = 1; space <= 2 * (n - row); space++)
+    {
+      printf(" ");
+    }
+
+    // right stars
+    for (int col = 1; col <= row; col++)
+    {
+      printf("*");
+    }
+    printf("\n");
+  }
+  return 0;
+}
+
+```
+
+![pattern type 22](images/number-hourglass.png)
+
+```c
+// Number Hourglass
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  // top half
+  for (int row = 1; row <= n; row++)
+  {
+    // leading spaces
+    for (int space = 1; space <= row - 1; space++)
+    {
+      printf("  ");
+    }
+
+    // numbers
+    for (int col = row; col <= n; col++)
+    {
+      printf("%d ", col);
+    }
+    printf("\n");
+  }
+
+  // bottom half
+  for (int row = n - 1; row >= 1; row--)
+  {
+    // leading spaces
+    for (int space = 1; space <= row - 1; space++)
+    {
+      printf("  ");
+    }
+
+    // numbers
+    for (int col = row; col <= n; col++)
+    {
+      printf("%d ", col);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 23](images/checkerboard.png)
+
+```c
+// Checkerboard
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= n; col++)
+    {
+      if ((col + row) % 2 == 0)
+      {
+        printf("1 ");
+      }
+      else
+      {
+        printf("0 ");
+      }
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 24](images/number-checkerboard.png)
+
+```c
+// Number Checkerboard
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the number of rows: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. Number of rows must be greater than 0.\n");
+    return 1;
+  }
+
+  for (int row = 1; row <= n; row++)
+  {
+    for (int col = 1; col <= n; col++)
+    {
+      printf("%d ", (row + col - 1));
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+```
+
+![pattern type 25](images/concentric-square.png)
+
+```c
+// Concentric square
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+  int n;
+
+  printf("Enter N: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input. Please enter an integer.\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Invalid Input. N must be greater than 0.\n");
+    return 1;
+  }
+
+  int size = 2 * n - 1;
+  int center = n - 1;
+
+  for (int row = 0; row < size; row++)
+  {
+    for (int col = 0; col < size; col++)
+    {
+      int distanceRow = abs(row - center);
+      int distanceCol = abs(col - center);
+      // int distance;
+      // if (distanceRow > distanceCol)
+      // {
+      //   distance = distanceRow;
+      // }
+      // else
+      // {
+      //   distance = distanceCol;
+      // }
+      int value = (rowDistance > colDistance ? rowDistance : colDistance) + 1;
+      printf("%d ", value);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
 
 ```
 
