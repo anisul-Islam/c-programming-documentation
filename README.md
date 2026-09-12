@@ -1772,6 +1772,32 @@ int main()
 }
 ```
 
+##### C Program: Simple Interest Calculator
+
+```c
+  /*
+Simple Interest = (P × R × T) / 100
+- Principal (P) — the initial amount of money
+- Rate (R) — interest rate per year
+- Time (T) — time in years
+  */
+#include <stdio.h>
+int main()
+{
+
+  double principal, rate, time, simpleInterest;
+
+  printf("Enter Principal, rate and time: ");
+  scanf("%lf %lf %lf", &principal, &rate, &time);
+
+  simpleInterest = (principal * rate * time) / 100;
+
+  printf("Simple Interest = %.2f\n", simpleInterest);
+
+  return 0;
+}
+```
+
 **2. Relational Operators:**
 
 - Equal `==`: Tests if two values are equal.
@@ -2541,6 +2567,52 @@ int main()
 
 ```
 
+###### Simple Calculator (Add, Subtract, Multiply & Divide using if-else)
+
+![simple calculator using if-else](images/simple-cal.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  float num1, num2;
+  char op;
+
+  printf("Enter the expression (e.g. 10 + 5): ");
+  scanf("%f %c %f", &num1, &op, &num2);
+
+  if (op == '+')
+  {
+    printf("Result = %.2f\n", num1 + num2);
+  }
+  else if (op == '-')
+  {
+    printf("Result = %.2f\n", num1 - num2);
+  }
+  else if (op == '*')
+  {
+    printf("Result = %.2f\n", num1 * num2);
+  }
+  else if (op == '/')
+  {
+    if (num2 == 0)
+    {
+      printf("Cannot divide by zero.\n");
+    }
+    else
+    {
+      printf("Result = %.2f\n", num1 / num2);
+    }
+  }
+  else
+  {
+    printf("Invalid Operator!\n");
+  }
+
+  return 0;
+}
+```
+
 ##### `Ternary` Operator
 
 ```c
@@ -2870,6 +2942,67 @@ int main()
 
 ```
 
+###### project : menu based calculator
+
+![menu based calculator](images/menu-switch.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  int choice;
+  float num1, num2;
+
+  printf("====Menu====\n");
+  printf("1. Addition\n");
+  printf("2. Subtraction\n");
+  printf("3. Multiplication\n");
+  printf("4. Division\n");
+  printf("5. Exit\n");
+
+  printf("Enter your choice: ");
+  scanf("%d", &choice);
+
+  switch (choice)
+  {
+  case 1:
+    printf("Enter two numbers: ");
+    scanf("%f %f", &num1, &num2);
+    printf("Result = %.2f\n", num1 + num2);
+    break;
+  case 2:
+    printf("Enter two numbers: ");
+    scanf("%f %f", &num1, &num2);
+    printf("Result = %.2f\n", num1 - num2);
+    break;
+  case 3:
+    printf("Enter two numbers: ");
+    scanf("%f %f", &num1, &num2);
+    printf("Result = %.2f\n", num1 * num2);
+    break;
+  case 4:
+    printf("Enter two numbers: ");
+    scanf("%f %f", &num1, &num2);
+    if (num2 == 0)
+    {
+      printf("Cannot divide by zero.\n");
+    }
+    else
+    {
+      printf("Result = %.2f\n", num1 / num2);
+    }
+    break;
+  case 5:
+    printf("Exiting program...\n");
+    break;
+  default:
+    printf("Invalid Choice!\n");
+  }
+  return 0;
+}
+
+```
+
 ###### project : small calculator project using switch
 
 ```c
@@ -3053,19 +3186,25 @@ In this example, the program jumps back to the "start" label using `goto` to rep
 
 The `break` and `continue` statements are commonly used in loops to control the flow of iterations, while the `goto` statement is used much less frequently and should be used with caution.
 
+#### Dry Running
+
+![dry-run](images/dry-run.png)
+![dry-run](images/dry-run2.png)
+![dry-run](images/dry-run3.png)
+
 #### 1.10.4 Loop related programs
 
 ##### Loop related Assignments
 
-1.  Write a program to print 1 to 10 by using for, while & do-while loop.
-2.  Find the total sum from 1 to n numbers.
-3.  Write a program to add m to n numbers and display average.
-4.  Check sum outputs from the hand note.
-5.  Write a program to print the numbers from 1 to 100, skip those numbers which are divisible by 3 or 5 but not both.
-6.  Write a while loop to print all the multiples of 5 from 13 to 121 in descending order,
-7.  Write a program to print all odd numbers from 1 to 1000 which are divisible by 3.
-8.  Write a program using while loop that will print all even numbers between 2 to 20.
-9.  Write a program that read any integer and display prime or not.
+1. Write a program to print 1 to 10 by using for, while & do-while loop.
+2. Find the total sum from 1 to n numbers.
+3. Write a program to add m to n numbers and display average.
+4. Check sum outputs from the hand note.
+5. Write a program to print the numbers from 1 to 100, skip those numbers which are divisible by 3 or 5 but not both.
+6. Write a while loop to print all the multiples of 5 from 13 to 121 in descending order,
+7. Write a program to print all odd numbers from 1 to 1000 which are divisible by 3.
+8. Write a program using while loop that will print all even numbers between 2 to 20.
+9. Write a program that read any integer and display prime or not.
 10. Write a program that prints all the prime numbers from m to n.
 11. Write a program that prints all the prime numbers from m to n and count total prime numbers.
 12. Write a program that read any positive integer and display sum of its digit.
@@ -3174,6 +3313,83 @@ int main()
   }
 
   printf("\n");
+
+  return 0;
+}
+
+```
+
+##### Fizzbuzz challenge
+
+![Fizzbuzz](images/fizz.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  int n;
+
+  printf("Enter the last number: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+  if (n <= 0)
+  {
+    printf("Please enter a positive integer.\n");
+    return 1;
+  }
+
+  for (int i = 1; i <= n; i++)
+  {
+    // if (i % 3 == 0 && i % 5 == 0)
+    if (i % 15 == 0)
+    {
+      printf("FizzBuzz\n");
+    }
+    else if (i % 3 == 0)
+    {
+      printf("Fizz\n");
+    }
+    else if (i % 5 == 0)
+    {
+      printf("Buzz\n");
+    }
+    else
+    {
+      printf("%d\n", i);
+    }
+  }
+
+  return 0;
+}
+```
+
+##### Find Sum and average of N / even/ Odd / Positive / Negative numbers
+
+![sum of n numbers](images/sum.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  int n;
+  double sum = 0, number, average;
+
+  printf("How many numbers: ");
+  scanf("%d", &n); // 5
+
+  for (int i = 1; i <= n; i++)
+  {
+    printf("Enter number %d: ", i);
+    scanf("%lf", &number);
+    sum += number;
+  }
+
+  average = sum / n;
+  printf("Sum = %.2f\n", sum);
+  printf("Average = %.2f\n", average);
 
   return 0;
 }
@@ -4014,6 +4230,69 @@ int main()
   return 0;
 }
 
+```
+
+- more better / optimal solution
+  ![image1](images/revsreLeetcode_1.png)
+  ![image1](images/reversseLeetcode.png)
+
+```c
+#include <stdio.h>
+#include <limits.h>
+int main()
+{
+  int x = 0, reverse = 0, rem, temp;
+  if (x < 0 || (x % 10 == 0 && x != 0))
+  {
+    printf("Not Palindrome Number");
+    return 0;
+  }
+  temp = x;
+
+  while (temp != 0)
+  {
+    rem = temp % 10;
+    if (reverse > INT_MAX / 10)
+    {
+      return false;
+    }
+    reverse = reverse * 10 + rem;
+    temp = temp / 10;
+  }
+
+  if (x == reverse) // 123 == 321
+  {
+    printf("Palindrome Number");
+  }
+  else
+  {
+    printf("Not Palindrome Number");
+  }
+
+  return 0;
+}
+
+
+// more better apporach
+#include <stdbool.h>
+
+bool isPalindrome(int x) {
+    // Negative numbers are not palindromes.
+    // Numbers ending in 0 (except 0 itself) are also not palindromes.
+    if (x < 0 || (x % 10 == 0 && x != 0)) {
+        return false;
+    }
+
+    int reversedHalf = 0;
+    while (x > reversedHalf) {
+        reversedHalf = reversedHalf * 10 + x % 10;
+        x /= 10;
+    }
+
+    // For even length: x == reversedHalf (e.g., 1221 -> x = 12, reversedHalf = 12)
+    // For odd length: x == reversedHalf / 10 (e.g., 121 -> x = 1, reversedHalf = 12)
+    return x == reversedHalf || x == reversedHalf / 10;
+}
 ```
 
 ##### Armstrong Number Algorithm, Flowchart, Program
@@ -7261,7 +7540,7 @@ int main()
       // {
       //   distance = distanceCol;
       // }
-      int value = (rowDistance > colDistance ? rowDistance : colDistance) + 1;
+    int value = (rowDistance > colDistance ? rowDistance : colDistance) + 1;
       printf("%d ", value);
     }
     printf("\n");
