@@ -4748,6 +4748,78 @@ int main()
 }
 ```
 
+##### C Solution for largest digit in a number
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int number, largest = 0, digit;
+
+  printf("Enter an integer: ");
+  if (scanf("%d", &number) != 1)
+  {
+    printf("Invalid Input! Please give an integer value");
+    return 1;
+  }
+
+  if (number < 0)
+  {
+    number = -number;
+  }
+
+  if (number == 0)
+  {
+    printf("Largest digit = 0\n");
+    return 0;
+  }
+
+  while (number > 0)
+  {
+    digit = number % 10; // 3
+    if (digit > largest)
+    {
+      largest = digit;
+    }
+    number = number / 10;
+  }
+  printf("Largest digit: %d\n", largest);
+  return 0;
+}
+```
+
+##### Sum of divsors of a number
+
+![sum of divisors](images/sum_of_divisors.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int number, sum = 0;
+
+  printf("Enter an integer: ");
+  if (scanf("%d", &number) != 1)
+  {
+    printf("Invalid Input! Please enter an integer value\n");
+    return 1;
+  }
+
+  for (int i = 1; i <= number; i++)
+  {
+    if (number % i == 0)
+    {
+      sum = sum + i;
+    }
+  }
+  printf("Sum of divisors = %d\n", sum);
+
+  return 0;
+}
+```
+
 ##### Series related Programs
 
 ![series pattern](images/series-pattern.png)
@@ -4827,6 +4899,31 @@ int main()
   return 0;
 }
 
+```
+
+- Gauss Formula for 1+2+3+ ... + n
+
+![Gauss](images/gauss.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int n, sum;
+
+  printf("Enter last number: ");
+  if (scanf("%d", &n) != 1)
+  {
+    printf("Invalid Input! Please enter an integer value\n");
+    return 1;
+  }
+
+  sum = n * (n + 1) / 2;
+  printf("sum = %d\n", sum);
+
+  return 0;
+}
 ```
 
 ###### Group 2: Basic Multiplication Series
