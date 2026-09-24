@@ -3766,9 +3766,9 @@ int main()
 
   return 0;
 }
-
-
 ```
+
+![prime number](images/prime_sieve.png)
 
 ##### Greatest Common Divisor (GCD) and Least Common Multiple (LCM)
 
@@ -4677,6 +4677,125 @@ int main()
 
     return 0;
 }
+```
+
+##### Perfect number
+
+![perfect number](images/perfect_number.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int num, sum = 0;
+
+  printf("Enter a positive integer: ");
+  if (scanf("%d", &num) != 1)
+  {
+    printf("Invalid Input. Please enter a positive integer.\n");
+    return 1;
+  }
+
+  if (num <= 1)
+  {
+    printf("%d is not a perfect number\n", num);
+    return 0;
+  }
+
+  for (int i = 1; i <= num / 2; i++)
+  {
+    if (num % i == 0)
+    {
+      sum += i;
+    }
+  }
+
+  if (sum == num)
+  {
+    printf("%d is a perfect number\n", num);
+  }
+  else
+  {
+    printf("%d is not a perfect number\n", num);
+  }
+
+  return 0;
+}
+
+```
+
+##### Power of 2
+
+![power of 2](images/power_of_2.png)
+![power of 2_2](images/power_of_2_method2.png)
+
+```c
+// method 1 - O(log n)
+#include <stdio.h>
+
+int main()
+{
+  int n, temp;
+
+  printf("Enter any integer: ");
+  scanf("%d", &n);
+
+  if (n <= 0)
+  {
+    printf("%d is not a power of 2\n", n);
+    return 0;
+  }
+
+  temp = n;
+  while (temp % 2 == 0)
+  {
+    temp = temp / 2;
+  }
+
+  if (temp == 1)
+  {
+    printf("%d is power of 2\n", n);
+  }
+  else
+  {
+    printf("%d is not a power of 2\n", n);
+  }
+
+  return 0;
+}
+
+
+// method 2 - O(1)
+#include <stdio.h>
+
+int main()
+{
+  int n, temp;
+
+  printf("Enter any integer: ");
+  scanf("%d", &n);
+
+  if (n <= 0)
+  {
+    printf("%d is not a power of 2\n", n);
+    return 0;
+  }
+
+  int result = n & (n - 1);
+
+  if (result == 0)
+  {
+    printf("%d is power of 2\n", n);
+  }
+  else
+  {
+    printf("%d is not a power of 2\n", n);
+  }
+
+  return 0;
+}
+
 ```
 
 ##### permutation, combination
