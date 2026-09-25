@@ -4784,6 +4784,9 @@ int main()
 
   int result = n & (n - 1);
 
+ // n>0 && (n&(n-1)) == 0;
+
+
   if (result == 0)
   {
     printf("%d is power of 2\n", n);
