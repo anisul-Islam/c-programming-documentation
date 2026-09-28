@@ -7770,6 +7770,428 @@ int main()
 
 ```
 
+```c
+// diagonal pattern
+/*
+
+*
+ *
+  *
+   *
+    *
+
+*/
+#include <stdio.h>
+
+int main() {
+    int n = 5;
+
+    for (int i = 0; i < n; i++) {
+
+        for (int j = 0; j < i; j++) {
+            printf(" ");
+        }
+
+        printf("*\n");
+    }
+
+    return 0;
+}
+```
+
+```c
+// Hollow Diamond
+#include <stdio.h>
+
+int main() {
+    int n = 5;
+
+    // Upper half
+    for (int i = 1; i <= n; i++) {
+
+        // Spaces
+        for (int j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+
+        // Stars and spaces
+        for (int j = 1; j <= 2 * i - 1; j++) {
+            if (j == 1 || j == 2 * i - 1) {
+                printf("*");
+            } else {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+
+    // Lower half
+    for (int i = n - 1; i >= 1; i--) {
+
+        // Spaces
+        for (int j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+
+        // Stars and spaces
+        for (int j = 1; j <= 2 * i - 1; j++) {
+            if (j == 1 || j == 2 * i - 1) {
+                printf("*");
+            } else {
+                printf(" ");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+###### Pascal's Triangle
+
+Pascal's Triangle is a triangular arrangement of numbers where:
+
+- The first and last number of every row is `1`.
+- Every number in between is the sum of the two numbers directly above it.
+
+- Example
+
+For 5 rows:
+
+```text
+        1
+       1 1
+      1 2 1
+     1 3 3 1
+    1 4 6 4 1
+```
+
+Let's look at how the values are generated:
+
+```text
+        1
+       1 1
+      1 2 1
+     1 3 3 1
+    1 4 6 4 1
+```
+
+For example:
+
+```text
+        1
+       1 1
+      1 2 1
+```
+
+The `2` is calculated as:
+
+```text
+1 + 1 = 2
+```
+
+For the next row:
+
+```text
+       1 2 1
+        ↓ ↓
+       1 3 3 1
+```
+
+We calculate:
+
+```text
+1 + 2 = 3
+2 + 1 = 3
+```
+
+So:
+
+```text
+1 3 3 1
+```
+
+- The Main Rule
+
+For any element that is **not the first or last element**:
+
+```text
+current value = upper-left value + upper-right value
+```
+
+For example:
+
+```text
+       1   3   3   1
+        ↘ ↓ ↙
+          6
+```
+
+So:
+
+```text
+3 + 3 = 6
+```
+
+- Understanding the Rows
+
+Let's number the rows starting from `0`.
+
+```text
+Row 0        1
+Row 1       1 1
+Row 2      1 2 1
+Row 3     1 3 3 1
+Row 4    1 4 6 4 1
+```
+
+Notice that:
+
+```text
+Row 0 → 1 number
+Row 1 → 2 numbers
+Row 2 → 3 numbers
+Row 3 → 4 numbers
+Row 4 → 5 numbers
+```
+
+Therefore, for row `i`, we need:
+
+```c
+i + 1
+```
+
+numbers.
+
+- C Program
+
+```c
+#include <stdio.h>
+
+int main() {
+    int n = 5;
+
+    for (int i = 0; i < n; i++) {
+
+        // Print spaces
+        for (int j = 0; j < n - i - 1; j++) {
+            printf(" ");
+        }
+
+        int value = 1;
+
+        // Print numbers
+        for (int j = 0; j <= i; j++) {
+
+            printf("%d ", value);
+
+            // For any element that is **not the first or last element
+            // current value = upper-left value + upper-right value
+            value = value * (i - j) / (j + 1);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+- Output
+
+```text
+    1
+   1 1
+  1 2 1
+ 1 3 3 1
+1 4 6 4 1
+```
+
+- Understanding the Outer Loop for pascal triangle
+
+```c
+for (int i = 0; i < n; i++)
+```
+
+The outer loop controls the **rows**.
+
+For `n = 5`:
+
+```text
+i = 0 → Row 1
+i = 1 → Row 2
+i = 2 → Row 3
+i = 3 → Row 4
+i = 4 → Row 5
+```
+
+So the outer loop runs `5` times.
+
+- Understanding the Spaces
+
+```c
+for (int j = 0; j < n - i - 1; j++) {
+    printf(" ");
+}
+```
+
+We print spaces before the numbers to make the output look like a triangle.
+
+For `n = 5`:
+
+```text
+i = 0 → 4 spaces
+i = 1 → 3 spaces
+i = 2 → 2 spaces
+i = 3 → 1 space
+i = 4 → 0 spaces
+```
+
+So:
+
+```text
+    1
+   1 1
+  1 2 1
+ 1 3 3 1
+1 4 6 4 1
+```
+
+- Understanding the Number Loop
+
+```c
+for (int j = 0; j <= i; j++)
+```
+
+For every row, the number of elements is `i + 1`.
+
+For example:
+
+```text
+i = 0 → 1 number
+i = 1 → 2 numbers
+i = 2 → 3 numbers
+i = 3 → 4 numbers
+i = 4 → 5 numbers
+```
+
+That's why we use:
+
+```c
+j <= i
+```
+
+- Why Does Every Row Start With 1?
+
+We initialize:
+
+```c
+int value = 1;
+```
+
+So every new row starts with:
+
+```text
+1
+```
+
+For example:
+
+```text
+1
+1 ...
+1 ...
+1 ...
+1 ...
+```
+
+The formula then calculates the next value.
+
+- Understanding the Formula
+
+The most important line is:
+
+```c
+value = value * (i - j) / (j + 1);
+```
+
+This calculates the next number in the current row.
+
+For example, consider:
+
+```text
+1 4 6 4 1
+```
+
+Starting with:
+
+```text
+value = 1
+```
+
+For the next value:
+
+```text
+1 × 4 / 1 = 4
+```
+
+Then:
+
+```text
+4 × 3 / 2 = 6
+```
+
+Then:
+
+```text
+6 × 2 / 3 = 4
+```
+
+Then:
+
+```text
+4 × 1 / 4 = 1
+```
+
+Therefore:
+
+```text
+1 4 6 4 1
+```
+
+- Important Pattern Observation
+
+Pascal's Triangle has a useful relationship between neighboring rows:
+
+```text
+        1
+       1 1
+      1 2 1
+     1 3 3 1
+    1 4 6 4 1
+```
+
+The middle values come from adding values from the previous row.
+
+For example:
+
+```text
+       1   3   3   1
+        \ / \ / \ /
+         4   6   4
+```
+
+Therefore:
+
+```text
+1 + 3 = 4
+3 + 3 = 6
+3 + 1 = 4
+```
+
 ### 1.11 Functions
 
 #### Greatest Common Divisor (GCD) and Least Common Multiple (LCM) for multiple numbers
