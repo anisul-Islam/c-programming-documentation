@@ -7850,9 +7850,13 @@ int main() {
 }
 ```
 
-###### Pascal's Triangle
+###### Pascal's Triangle (2 methods - loop or array)
 
-Pascal's Triangle is a triangular arrangement of numbers where:
+![pascal triangle](images/pascal_triangle.png)
+![pascal triangle array method](images/pascal_array_method.png)
+
+we can solve this problem with only loop or using array
+Pascal's Triangle is a triangular arrangement of numbers where (Pascal's Triangle has a useful relationship between neighboring rows):
 
 - The first and last number of every row is `1`.
 - Every number in between is the sum of the two numbers directly above it.
@@ -7969,35 +7973,81 @@ numbers.
 - C Program
 
 ```c
+// Loop method
 #include <stdio.h>
 
-int main() {
-    int n = 5;
+int main()
+{
+  int n;
+  printf("How many rows: ");
+  scanf("%d", &n);
 
-    for (int i = 0; i < n; i++) {
+  // row
+  for (int row = 1; row <= n; row = row + 1)
+  {
+    // print space
+    for (int space = 1; space <= n - row; space = space + 1)
+      printf(" ");
 
-        // Print spaces
-        for (int j = 0; j < n - i - 1; j++) {
-            printf(" ");
-        }
+    int value = 1;
 
-        int value = 1;
+    for (int col = 1; col <= row; col = col + 1)
+    {
+      printf("%d ", value);
+      value = value * (row - col) / col;
+    }
+    printf("\n");
+  }
+  return 0;
+}
 
-        // Print numbers
-        for (int j = 0; j <= i; j++) {
 
-            printf("%d ", value);
+// Array method#include <stdio.h>
+#include <stdio.h>
 
-            // For any element that is **not the first or last element
-            // current value = upper-left value + upper-right value
-            value = value * (i - j) / (j + 1);
-        }
+int main()
+{
+  int n;
+  printf("How many rows: ");
+  scanf("%d", &n);
 
-        printf("\n");
+  int triangle[n][n];
+
+  for (int row = 0; row < n; row++)
+  {
+    // first element
+    triangle[row][0] = 1;
+
+    // middle elements
+    for (int col = 1; col < row; col++)
+    {
+      triangle[row][col] = triangle[row - 1][col - 1] + triangle[row - 1][col];
     }
 
-    return 0;
+    // last element
+    triangle[row][row] = 1;
+  }
+
+  // print triangel
+  for (int row = 0; row < n; row++)
+  {
+
+    // space
+    for (int space = 0; space < n - row; space++)
+    {
+      printf(" ");
+    }
+
+    for (int col = 0; col <= row; col++)
+    {
+      printf("%d ", triangle[row][col]);
+    }
+    printf("\n");
+  }
+
+  return 0;
 }
+
 ```
 
 - Output
