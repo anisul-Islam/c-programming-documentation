@@ -8353,38 +8353,539 @@ int main()
 
 #### what is an array? why do we need an array?
 
-- an array is a collection of variables of the same type
+An array is a linear data structure that stores elements of the same type in contiguous memory locations.
+
+- Data structure to represent data
+- An array is a collection of variables of the same type
+- Imagine a scenario where you need to store 100 students marks: decalare 100 variables or use array
+  Example:
+
+```c
+int numbers[] = {10, 20, 30, 40, 50};
+```
+
+#### 1.12.1 Array Operations and Time Complexity
+
+| Operation | Time Complexity | Explanation                                |
+| --------- | --------------: | ------------------------------------------ |
+| Access    |            O(1) | Access an element directly using its index |
+| Update    |            O(1) | Update an element directly using its index |
+| Search    |            O(n) | May need to check every element            |
+| Traverse  |            O(n) | Visit every element                        |
+| Insert    |            O(n) | Elements may need to be shifted            |
+| Delete    |            O(n) | Elements may need to be shifted            |
+
+##### Access - O(1)
+
+We can directly access an element using its index.
+
+```c
+printf("%d", numbers[3]);
+```
+
+The computer can directly locate index `3`.
+
+```text
+10  20  30  40  50
+             ↑
+           index 3
+```
+
+Therefore:
+
+```text
+Access = O(1)
+```
+
+##### Update - O(1)
+
+We can directly change an element using its index.
+
+```c
+numbers[3] = 100;
+```
+
+Before:
+
+```text
+10  20  30  40  50
+```
+
+After:
+
+```text
+10  20  30  100  50
+```
+
+Therefore:
+
+```text
+Update = O(1)
+```
+
+##### Search - O(n)
+
+If the array is not sorted, we may need to check every element.
+
+```text
+10 → 20 → 30 → 40 → 50
+```
+
+Searching for `50` may require checking all 5 elements.
+
+Therefore:
+
+```text
+Search = O(n)
+```
+
+> If the array is sorted, we can use Binary Search and achieve O(log n).
+
+##### Traverse - O(n)
+
+Traversal means visiting every element.
+
+```c
+for (int i = 0; i < length; i++)
+{
+    printf("%d ", numbers[i]);
+}
+```
+
+If there are `n` elements, we visit `n` elements.
+
+```text
+Traverse = O(n)
+```
+
+##### Insert - O(n)
+
+Suppose we have:
+
+```text
+10  20  30  40
+```
+
+We want to insert `25` at index `2`.
+
+Elements need to be shifted:
+
+```text
+10  20  25  30  40
+```
+
+In the worst case, many elements need to be moved.
+
+```text
+Insert = O(n)
+```
+
+> Inserting at the end of an array can be O(1) when there is already available space. For dynamic arrays, append is commonly amortized O(1).
+
+##### Delete - O(n)
+
+Suppose we have:
+
+```text
+10  20  30  40  50
+```
+
+Delete `30`:
+
+```text
+10  20  40  50
+```
+
+The elements after `30` need to shift left.
+
+```text
+Delete = O(n)
+```
+
+#### 1.12.2 Advantages of Arrays
+
+##### Fast Access
+
+Arrays provide direct access using an index.
+
+```c
+numbers[500];
+```
+
+Accessing an element by index is:
+
+```text
+O(1)
+```
+
+##### Simple to Use
+
+Arrays are simple and easy to understand.
+
+```c
+int numbers[5];
+```
+
+##### Memory Efficient
+
+Array elements are stored next to each other in memory.
+
+```text
+┌────┬────┬────┬────┬────┐
+│ 10 │ 20 │ 30 │ 40 │ 50 │
+└────┴────┴────┴────┴────┘
+```
+
+This contiguous memory layout is also useful for CPU cache performance.
+
+##### Efficient Traversal
+
+Sequential access is simple and efficient.
+
+```c
+for (int i = 0; i < length; i++)
+{
+    // process numbers[i]
+}
+```
+
+#### 1.12.3 Disadvantages of Arrays
+
+##### Fixed Size in C
+
+A normal C array has a fixed size.
+
+```c
+int numbers[5];
+```
+
+You cannot simply increase it to 10 elements.
+
+For dynamic sizing, you need dynamic memory allocation or another data structure.
+
+##### Insertion Can Be Expensive
+
+Inserting an element near the beginning or middle requires shifting elements.
+
+```text
+10  20  30  40
+
+Insert 5 at the beginning:
+
+5  10  20  30  40
+```
+
+This can take:
+
+```text
+O(n)
+```
+
+##### Deletion Can Be Expensive
+
+Deleting an element from the middle may require shifting the remaining elements.
+
+```text
+10  20  30  40  50
+
+Delete 30:
+
+10  20  40  50
+```
+
+This can take:
+
+```text
+O(n)
+```
+
+##### Searching Can Be Slow
+
+For an unsorted array, searching may require checking every element.
+
+```text
+Search = O(n)
+```
+
+#### 1.12.4 When to Use Arrays
+
+Arrays are a good choice when:
+
+- You need fast access by index.
+- You frequently traverse elements.
+- The number of elements is fixed or changes infrequently.
+- You need contiguous memory.
+- You are implementing other data structures.
+- You are using common array-based problem-solving patterns.
+
+#### 1.12.5 Arrays as Building Blocks for Other Data Structures
+
+Arrays can be used to implement other data structures.
+
+For example, a stack can be implemented using an array.
+
+```text
+    40  ← top
+    30
+    20
+    10
+```
+
+Arrays can also be used as part of:
+
+- Stacks
+- Queues
+- Hash tables
+- Heaps
+- Other data structures
+
+#### 1.12.6 Arrays and Caching
+
+Arrays can be used to store previously calculated results.
+
+For example:
+
+```c
+int cache[] = {0, 1, 1, 2, 3, 5};
+```
+
+Now:
+
+```c
+cache[5]
+```
+
+gives us the stored value directly.
+
+Accessing the value is:
+
+```text
+O(1)
+```
+
+This idea is commonly used in:
+
+- Dynamic Programming
+- Memoization
+- Lookup tables
+
+#### 1.12.7 Arrays and Graph Traversal
+
+Arrays are often used to store information about graph nodes.
+
+For example:
+
+```c
+int visited[100];
+```
+
+If node `5` has been visited:
+
+```c
+visited[5] = 1;
+```
+
+We can check it in O(1):
+
+```c
+if (visited[5])
+{
+    // Node has been visited
+}
+```
+
+Other arrays can store information such as:
+
+```text
+visited[]
+distance[]
+parent[]
+```
+
+when graph nodes have integer IDs.
+
+The graph itself does not have to be stored in an array. Arrays are often used to store information associated with the graph.
+
+#### 1.12.8 Array Problem-Solving Patterns
+
+Arrays are commonly used with several important DSA patterns.
+
+##### Sliding Window
+
+Sliding Window is useful when working with a continuous range of elements.
+
+Example:
+
+```text
+10  20  30  40  50
+└──────┘
+```
+
+Suppose we want the sum of every 3 consecutive elements.
+
+First window:
+
+```text
+10 + 20 + 30 = 60
+```
+
+Move the window:
+
+```text
+20 + 30 + 40 = 90
+```
+
+Instead of calculating the entire sum again, we can remove the element leaving the window and add the new element.
+
+```text
+60 - 10 + 40 = 90
+```
+
+Then:
+
+```text
+90 - 20 + 50 = 120
+```
+
+This is the basic idea behind the Sliding Window pattern.
+
+##### Two-Pointer Technique
+
+The Two-Pointer technique uses two indexes to process an array efficiently.
+
+For example, reversing an array:
+
+```text
+10  20  30  40  50
+↑                 ↑
+left             right
+```
+
+Swap the elements:
+
+```text
+50  20  30  40  10
+    ↑          ↑
+```
+
+Continue moving the pointers toward the middle.
+
+```text
+50  40  30  20  10
+```
+
+The array can be reversed in:
+
+```text
+Time: O(n)
+Space: O(1)
+```
+
+Another common use of two pointers is finding two elements in a sorted array whose sum equals a target.
+
+##### Other Common Array Problems
+
+Arrays are also commonly used for:
+
+- Finding the largest element
+- Finding the second largest element
+- Finding the smallest element
+- Finding the second smallest element
+- Reversing an array
+- Checking whether an array is sorted
+- Comparing two arrays
+- Finding duplicate elements
+- Removing duplicates
+- Frequency counting
+- Finding missing elements
+- Linear Search
+- Binary Search
+- Sorting
+- Prefix Sum
+- Sliding Window
+- Two Pointers
+
+#### 1.12.9 Important Takeaways
+
+The most important things to remember about arrays are:
+
+```text
+Access       → O(1)
+Update       → O(1)
+Search       → O(n)
+Traverse     → O(n)
+Insert       → O(n)
+Delete       → O(n)
+```
+
+Arrays are particularly useful when:
+
+```text
+Fast index access
+       ↓
+Sequential processing
+       ↓
+Contiguous memory
+       ↓
+Array-based data structures
+       ↓
+Problem-solving patterns
+       ↓
+Sliding Window / Two Pointers / Binary Search
+```
+
+The key idea is:
+
+> **Arrays are excellent when you need fast access by index and efficient sequential processing. They become less convenient when you frequently insert or delete elements from the middle.**
 
 #### Aarray declaration and initialization
 
 ```c
+  // version 1
+  int numbers1, numbers2, numbers100; // create 100 variables :P
 
-int numbers1[5]; // Array of 5 integers, uninitialized
+  // data_type array_name[array_size];
+  int numbers[100]; // Array of 5 integers, uninitialized
+  float numbers[100];
+  double numbers[100];
+  char numbers[100];
 
-int numbers2[] = {85, 90, 78, 92, 88}; // Array initialized with values
+  int numbers[5];
+  numbers[0] = 10;
+  numbers[1] = 20;
+  numbers[2] = 30;
+  numbers[3] = 40;
+  numbers[4] = 50;
+
+  int numbers2[] = {85, 90, 78, 92, 88}; // Array initialized with values
+  int numbers2[] = {85, 90}; // Missing values are set to 0
+
+  printf("%d\n", numbers[0]); // prints 10
+
 ```
 
-#### Accessing array elements
+#### Accessing array elements using index
 
 ```c
-int numbers[5] = {10, 20, 30, 40, 50};
-printf("%d\n", numbers[0]); // prints 10
-
-// version 1
+// version 2
+// Acess array elements using index and perform arithmetic operations
 #include <stdio.h>
 int main() {
-   int numbers[] = {1, 2, 3, 4, 5};
+  int numbers[5];
+  numbers[0] = 10;
+  numbers[1] = 20;
+  numbers[2] = 30;
+  numbers[3] = 40;
+  numbers[4] = 50;
 
-   printf("%d\n", numbers[0]);
-   printf("%d\n", numbers[1]);
-   printf("%d\n", numbers[2]);
-   printf("%d\n", numbers[3]);
-   printf("%d\n", numbers[4]);
+  // arithmetic operations => +, - , *, /, %
+  int total = numbers[0] + numbers[1] + numbers[2] + numbers[3] + numbers[4];
+  printf("Total : %d ", total);
 
    return 0;
 }
 
-// version 2: print array with loop
+// version 3: print array elements with loop
 #include <stdio.h>
 int main() {
    int numbers[] = {1, 2, 3, 4, 5};
@@ -8396,7 +8897,7 @@ int main() {
    return 0;
 }
 
-// version 3: take user input for an array
+// version 4: take user input for an array
 #include <stdio.h>
 int main() {
    int numbers[5];
@@ -8412,7 +8913,11 @@ int main() {
    return 0;
 }
 
-// version 4: give instrcution for inputs
+// version 5: find size of an array
+sizeof(numbers) / sizeof(numbers[0])
+
+// version 6: give instrcution for inputs
+
 ```
 
 #### Types of Array
@@ -8422,6 +8927,345 @@ int main() {
 The simplest form of an array.
 Elements are stored in a linear sequence.
 Accessing elements is done using a single index.
+
+###### Basic 1D Programs
+
+- Sum and average of an array
+
+```c
+#include <stdio.h>
+int main()
+{
+  int numbers[] = {10, 20, 30, 40, 50, 1};
+  int sum = 0;
+
+  size_t length = sizeof(numbers) / sizeof(numbers[0]);
+
+  for (size_t i = 0; i < length; i++)
+  {
+    sum = sum + numbers[i];
+  }
+
+  printf("Sum  = %d\n", sum);
+  printf("Average  = %.2lf\n", (double)sum / length);
+
+  return 0;
+}
+```
+
+- find max and min value in an array
+
+```c
+#include <stdio.h>
+int main()
+{
+  int numbers[] = {10, 30, 20, 12, 55, -1};
+
+  // find the maximum and minimum element of an array
+  int max = numbers[0];
+  int min = numbers[0];
+
+  for (int i = 1; i < 6; i++)
+  {
+    if (max < numbers[i])
+    {
+      max = numbers[i];
+    }
+    if (min > numbers[i])
+    {
+      min = numbers[i];
+    }
+  }
+
+  printf("Maximum = %d\n", max);
+  printf("Minimum = %d\n", min);
+
+  return 0;
+}
+```
+
+- linear search
+
+```c
+#include <stdio.h>
+int main()
+{
+  int numbers[] = {10, 30, 20, 12, 55, -1};
+  int target = 20;
+  int index = -1;
+
+  for (size_t i = 0; i < sizeof(numbers) / sizeof(numbers[0]); i++)
+  {
+    if (target == numbers[i])
+    {
+      index = i;
+      break;
+    }
+  }
+
+  if (index == -1)
+  {
+    printf("%d is not found in the array\n", target);
+  }
+  else
+  {
+    printf("%d is found in position %d\n", target, index);
+  }
+
+  return 0;
+}
+```
+
+- Copy one array to another
+
+```c
+#include <stdio.h>
+int main()
+{
+  // copy elements from one array to another
+  int originalArray[] = {10, 20, 30, 40, 50, 60, 70, 80};
+
+  size_t length = sizeof(originalArray) / sizeof(originalArray[0]);
+
+  int copyArray[length];
+
+  printf("Original Array : ");
+  for (size_t i = 0; i < length; i++)
+  {
+    printf("%d ", originalArray[i]);
+  }
+
+  // copying all the elements from originalArray to copyArray
+  for (size_t i = 0; i < length; i++)
+  {
+    copyArray[i] = originalArray[i];
+  }
+
+  printf("\nCopy Array : ");
+  for (size_t i = 0; i < length; i++)
+  {
+    printf("%d ", copyArray[i]);
+  }
+
+  return 0;
+}
+```
+
+- Check arrays are equal
+
+```c
+#include <stdio.h>
+int main()
+{
+  // check whether two arrays are equal
+
+  int arr1[] = {20, 10, 20, 30, 40, 50, 60};
+  int arr2[] = {30, 10, 20, 30, 40, 50, 60};
+  bool isEqual = true;
+
+  int length1 = sizeof(arr1) / sizeof(arr1[0]);
+  int length2 = sizeof(arr2) / sizeof(arr2[0]);
+
+  if (length1 != length2)
+  {
+    isEqual = false;
+  }
+  else
+  {
+    for (int i = 0; i < length1; i++)
+    {
+      if (arr1[i] != arr2[i])
+      {
+        isEqual = false;
+        break;
+      }
+    }
+  }
+
+  // output
+  if (isEqual)
+  {
+    printf("Arrays are equal.\n");
+  }
+  else
+  {
+    printf("Arrays are not equal.\n");
+  }
+
+  return 0;
+}
+```
+
+- Check if an array is sorted
+
+```c
+#include <stdio.h>
+int main()
+{
+  // check whether the arry is sorted or not
+  int arr[] = {10, 20, 20, 40, 50};
+  int isSorted = 1;
+  int length = 5;
+
+  for (int i = 0; i < length - 1; i++)
+  {
+    // if (arr[i] > arr[i + 1]) allowing duplicate value
+    if (arr[i] >= arr[i + 1]) // restricting duplicate value
+    {
+      isSorted = 0;
+      break;
+    }
+  }
+
+  if (isSorted)
+  {
+    printf("Array is sorted.\n");
+  }
+  else
+  {
+    printf("Array is not sorted.\n");
+  }
+
+  return 0;
+}
+```
+
+- Insertion in an array
+
+![array-insertion](images/array_insertion.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  // insert an item - brute force
+  int arr[] = {10, 20, 30, 40, 50};
+  int length = 5;
+
+  int position = 2;
+  int value = 25;
+
+  // shift elements to the right
+  for (int i = length; i > position; i--)
+  {
+    arr[i] = arr[i - 1];
+  }
+
+  // insert the new value
+  arr[position] = value;
+  length++;
+
+  for (int i = 0; i < length; i++)
+  {
+    printf("%d ", arr[i]);
+  }
+
+  return 0;
+}
+```
+
+- Deletion in an array
+
+```c
+#include <stdio.h>
+int main()
+{
+  // delete an item - brute force
+  int arr[] = {10, 20, 30, 40, 50};
+  int length = 5;
+  int position = 2;
+
+  // shift elements to the left
+  for (int i = position; i < length - 1; i++)
+  {
+    arr[i] = arr[i + 1];
+  }
+  length--;
+
+  for (int i = 0; i < length; i++)
+  {
+    printf("%d ", arr[i]);
+  }
+
+  return 0;
+}
+```
+
+- Reversing an array
+
+![Reverse an array ](images/reverse.png)
+
+```c
+// step : Create another array and copy from the end
+#include <stdio.h>
+int main()
+{
+  // Reverse an array - brute force
+  int arr[] = {10, 20, 30, 40, 50};
+  int length = 5;
+
+  int reversed[5];
+
+  for (int i = 0; i < length; i++)
+  {
+    reversed[i] = arr[length - 1 - i];
+  }
+
+  printf("Reversed Array : ");
+  for (int i = 0; i < length; i++)
+  {
+    printf("%d ", reversed[i]);
+  }
+
+  return 0;
+}
+```
+
+- 2nd largest and smallest element of an array
+
+![largest](images/largest.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  int largest, secondLargest;
+  int arr[] = {20, 90, 30, 90, 50};
+  int length = sizeof(arr) / sizeof(arr[0]);
+  if (length < 2)
+  {
+    printf("Array should have at least two elements\n");
+    return 1;
+  }
+
+  // step 1: decide who will be first and second item
+  if (arr[0] > arr[1])
+  {
+    largest = arr[0];
+  }
+  else
+  {
+    largest = arr[1];
+  }
+
+  for (int i = 2; i < length; i++)
+  {
+    if (arr[i] > largest)
+    {
+      secondLargest = largest;
+      largest = arr[i];
+    }
+    else if (arr[i] > secondLargest && largest != arr[i])
+    {
+      secondLargest = arr[i];
+    }
+  }
+
+  printf("Largest item = %d\n", largest);
+  printf("Second Largest item = %d\n", secondLargest);
+  return 0;
+}
+```
 
 ###### searching algorithms
 
@@ -8592,6 +9436,47 @@ Accessing elements is done using a single index.
             }
          }
 
+      }
+
+      // complete program
+      #include <stdio.h>
+      int main()
+      {
+        int arr[] = {8, 3, 4, 5, 6};
+        int n = 5, temp, count = 0;
+
+        // bubble sort => comparse neighbhors, swap, repeat
+
+        // outer loop => number of phases
+        for (int i = 0; i <= n - 2; i++)
+        {
+          // int swapped = 0;
+          // inner loop => number of steps inside a phase
+          for (int j = 0; j <= n - 2 - i; j++)
+          {
+            if (arr[j] > arr[j + 1])
+            {
+              temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+              // swapped = 1;
+            }
+            count++;
+          }
+          // if (swapped == 0)
+          // {
+          //   printf("swap break");
+          //   break;
+          // }
+        }
+
+        printf("Number of steps : %d\n", count);
+        for (int i = 0; i < n; i++)
+        {
+          printf("%d ", arr[i]);
+        }
+
+        return 0;
       }
    ```
 
