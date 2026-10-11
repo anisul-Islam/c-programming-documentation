@@ -8615,7 +8615,7 @@ Arrays are a good choice when:
 - You frequently traverse elements.
 - The number of elements is fixed or changes infrequently.
 - You need contiguous memory.
-- You are implementing other data structures.
+- You are implementing other data structures - stack, queue, heaps etc.
 - You are using common array-based problem-solving patterns.
 
 #### 1.12.5 Arrays as Building Blocks for Other Data Structures
@@ -8787,10 +8787,8 @@ Another common use of two pointers is finding two elements in a sorted array who
 
 Arrays are also commonly used for:
 
-- Finding the largest element
-- Finding the second largest element
-- Finding the smallest element
-- Finding the second smallest element
+- Finding the largest / smallest element
+- Finding the second largest / smallest element
 - Reversing an array
 - Checking whether an array is sorted
 - Comparing two arrays
@@ -8838,7 +8836,15 @@ The key idea is:
 
 > **Arrays are excellent when you need fast access by index and efficient sequential processing. They become less convenient when you frequently insert or delete elements from the middle.**
 
-#### Aarray declaration and initialization
+#### 1.12.10 Types of Array
+
+##### One dimensional array (1D)
+
+The simplest form of an array.
+Elements are stored in a linear sequence.
+Accessing elements is done using a single index.
+
+- Array Declaration and Initialization
 
 ```c
   // version 1
@@ -8864,7 +8870,7 @@ The key idea is:
 
 ```
 
-#### Accessing array elements using index
+- Accessing array elements using index
 
 ```c
 // version 2
@@ -8917,18 +8923,7 @@ int main() {
 sizeof(numbers) / sizeof(numbers[0])
 
 // version 6: give instrcution for inputs
-
 ```
-
-#### Types of Array
-
-##### One dimensional array (1D)
-
-The simplest form of an array.
-Elements are stored in a linear sequence.
-Accessing elements is done using a single index.
-
-###### Basic 1D Programs
 
 - Sum and average of an array
 
@@ -9324,84 +9319,7 @@ int main()
       }
    ```
 
-2. find the largest and second largest from an unsorted array
-
-   ```c
-   #include <stdio.h>
-
-   void findLargestAndSecondLargest(int arr[], int n) {
-      if (n < 2) {
-         printf("Array should have at least two elements.\n");
-         return;
-      }
-
-      int first, second;
-
-      if (arr[0] > arr[1]) {
-         first = arr[0];
-         second = arr[1];
-      } else {
-         first = arr[1];
-         second = arr[0];
-      }
-
-      for (int i = 2; i < n; i++) {
-         if (arr[i] > first) {
-               second = first;
-               first = arr[i];
-         } else if (arr[i] > second && arr[i] != first) {
-               second = arr[i];
-         }
-      }
-
-      printf("Largest Element: %d\n", first);
-      printf("Second Largest Element: %d\n", second);
-   }
-
-   int main() {
-      int arr[] = {12, 35, 1, 10, 34, 1};
-      int n = sizeof(arr) / sizeof(arr[0]);
-
-      findLargestAndSecondLargest(arr, n);
-
-      return 0;
-   }
-   ```
-
-   This program initializes first and second based on the first two elements of the array. Then, it iterates through the array starting from the third element, updating first and second accordingly. The final values of first and second are the largest and second-largest elements in the array.
-   - find the larget and second largest for an sorted array
-
-     If the array is sorted in ascending order, finding the largest and second-largest elements becomes simpler. In this case, the largest element will be the last element of the array, and the second-largest element will be the second-to-last element. Here's the modified code:
-
-     ```c
-     #include <stdio.h>
-
-     void findLargestAndSecondLargest(int arr[], int n) {
-        if (n < 2) {
-           printf("Array should have at least two elements.\n");
-           return;
-        }
-
-        int first = arr[n - 1];
-        int second = arr[n - 2];
-
-        printf("Largest Element: %d\n", first);
-        printf("Second Largest Element: %d\n", second);
-     }
-
-     int main() {
-        int arr[] = {1, 10, 12, 34, 35};
-        int n = sizeof(arr) / sizeof(arr[0]);
-
-        findLargestAndSecondLargest(arr, n);
-
-        return 0;
-     }
-     ```
-
-     In this version, `first` is assigned `arr[n - 1]` (the last element), and `second` is assigned `arr[n - 2]` (the second-to-last element). There is no need for an additional loop since the array is already sorted.
-
-3. bubble searching algorithm: Requires a sorted array. Divides the array in half at each step.
+2. bubble searching algorithm: Requires a sorted array. Divides the array in half at each step.
 
    ```c
    int binarySearch(int arr[], int low, int high, int target) {
@@ -9501,7 +9419,7 @@ int main()
 
 3. Quick sort: Picks a 'pivot' element and partitions the array into two subarrays according to whether elements are less than or greater than the pivot.
 
-##### Decimal To Binary, Octal, Hexadecimal
+- Decimal To Binary, Octal, Hexadecimal
 
 ```c
 // Method 1
@@ -9677,10 +9595,14 @@ int main()
 
 ##### Two dimensional array (2D) Matrix
 
-Represents a table of elements arranged in rows and columns.
-Accessing elements requires two indices.
+- Represents a table of elements arranged in rows and columns.
+- Accessing elements requires two indices.
 
-###### Matrix Programs 1 : A simple matrix
+[Matrix teaching guide here](https://docs.google.com/document/d/1Aa24BO_EQ-qHQBFLcEMfhsO_Per83uMD/edit?usp=drive_link&ouid=114138033173226558178&rtpof=true&sd=true)
+
+###### Matrix Part 1 : 2D Array Fundamentals
+
+- print a simple matrix
 
 ```c
    // program: a simple matrix
@@ -9704,85 +9626,566 @@ Accessing elements requires two indices.
    }
 ```
 
-###### Matrix Programs 2 : add two matrices
+- sum of all elements
+- max and min of all elements
+- search an item
+- frequcny count of an item in a matrix
+
+###### Matrix Part 2 : Basic Operations
+
+- Addition and subtraction
 
 ```c
-   // program: add two matrices and store the result in a third matrix
-   #include <stdio.h>
+// Addition, Sbntraction
+#include <stdio.h>
 
-   // Function to add two matrices and store the result in a third matrix
-   void addMatrices(int first[10][10], int second[10][10], int result[10][10], int rows, int cols) {
-      for (int i = 0; i < rows; i++) {
-         for (int j = 0; j < cols; j++) {
-               result[i][j] = first[i][j] + second[i][j];
-         }
+#define MAX 10
+
+int main()
+{
+  int rowsA, rowsB, colsA, colsB;
+
+  int A[MAX][MAX];
+  int B[MAX][MAX];
+  int C[MAX][MAX];
+
+  // Matrix A dimensions
+  printf("Enter rows and columns for Matrix A: ");
+  if (scanf("%d %d", &rowsA, &colsA) != 2)
+  {
+    printf("Invalid Input!\n");
+    return 1;
+  }
+
+  if (rowsA <= 0 || colsA <= 0 || rowsA > MAX || colsA > MAX)
+  {
+    printf("Invalid Matrix A dimensions!\n");
+    return 1;
+  }
+
+  // Matrix B dimensions
+  printf("Enter rows and columns for Matrix B: ");
+  if (scanf("%d %d", &rowsB, &colsB) != 2)
+  {
+    printf("Invalid Input!\n");
+    return 1;
+  }
+
+  if (rowsB <= 0 || colsB <= 0 || rowsB > MAX || colsB > MAX)
+  {
+    printf("Invalid Matrix A dimensions!\n");
+    return 1;
+  }
+
+  // check dimensions
+  if (rowsA != rowsB || colsA != colsB)
+  {
+    printf("\nMatrix addition is not possible!\n");
+    printf("Matrix A: %d x %d\n", rowsA, colsA);
+    printf("Matrix B: %d x %d\n", rowsB, colsB);
+    printf("Both matrices must have the same dimensions.\n");
+
+    return 1;
+  }
+
+  // Input Matrix A
+   printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowA; row++)
+  {
+    for (int col = 0; col < colA; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
       }
-   }
+    }
+  }
 
-   // Function to display a matrix
-   void displayMatrix(int matrix[10][10], int rows, int cols) {
-      for (int i = 0; i < rows; i++) {
-         for (int j = 0; j < cols; j++) {
-               printf("%d ", matrix[i][j]);
-         }
-         printf("\n");
+  // Input Matrix B
+   printf("Enter elements for B matrix: \n");
+  for (int row = 0; row < rowB; row++)
+  {
+    for (int col = 0; col < colB; col++)
+    {
+      printf("B[%d][%d] = ", row, col);
+      if (scanf("%d", &B[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
       }
-   }
+    }
+  }
 
-   int main() {
-      int firstMatrix[10][10], secondMatrix[10][10], resultMatrix[10][10];
-      int rows, cols;
+  // Addition
+   printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowA; row++)
+  {
+    for (int col = 0; col < colA; col++)
+    {
+     C[row][col] = A[row][col] + B[row][col];
+    }
+  }
 
-      printf("Enter the number of rows: ");
-      scanf("%d", &rows);
+  // Output
+  printf("A+B = \n");
+ for (int row = 0; row < rowA; row++)
+  {
+    for (int col = 0; col < colA; col++)
+    {
+      printf("%4d", C[row][col]);
+    }
+    printf("\n");
+  }
 
-      printf("Enter the number of columns: ");
-      scanf("%d", &cols);
-
-      // Input for the first matrix
-      printf("Enter elements of the first matrix:\n");
-      for (int i = 0; i < rows; i++) {
-         for (int j = 0; j < cols; j++) {
-               scanf("%d", &firstMatrix[i][j]);
-         }
-      }
-
-      // Input for the second matrix
-      printf("Enter elements of the second matrix:\n");
-      for (int i = 0; i < rows; i++) {
-         for (int j = 0; j < cols; j++) {
-               scanf("%d", &secondMatrix[i][j]);
-         }
-      }
-
-      // Call the function to add matrices
-      addMatrices(firstMatrix, secondMatrix, resultMatrix, rows, cols);
-
-      // Display the matrices and their sum
-      printf("\nFirst Matrix:\n");
-      displayMatrix(firstMatrix, rows, cols);
-
-      printf("\nSecond Matrix:\n");
-      displayMatrix(secondMatrix, rows, cols);
-
-      printf("\nSum of Matrices:\n");
-      displayMatrix(resultMatrix, rows, cols);
-
-      return 0;
-   }
+  return 0;
+}
 ```
 
-###### Matrix Programs 3 : sum/multiply of each row of a matrix
+- scalar multiplication
+- comparision of matrices
+
+```c
+#include <stdio.h>
+
+int main() {
+    int r, c, equal = 1;
+    scanf("%d %d", &r, &c);
+    int A[r][c], B[r][c];
+
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
+            scanf("%d", &A[i][j]);
+
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
+            scanf("%d", &B[i][j]);
+
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
+            if (A[i][j] != B[i][j])
+                equal = 0;
+
+    printf(equal ? "Matrices are equal.\n" : "Matrices are not equal.\n");
+    return 0;
+}
+```
+
+###### Matrix Part 3 : Check Properties
+
+- check sqaure matrix or not
+
+```c
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+    scanf("%d %d", &rows, &cols);
+
+    if (rows == cols)
+        printf("Square matrix.\n");
+    else
+        printf("Not a square matrix.\n");
+    return 0;
+}
+
+```
+
+- check zero matrix or not
+
+```c
+// zero matrix or not
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize, isZero = 1, steps = 0;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // Checking zero matrix or not
+  for (int row = 0; row < rowSize && isZero; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      steps++;
+      if (A[row][col] != 0)
+      {
+        isZero = 0;
+        break;
+      }
+    }
+    // if (isZero == 0)
+    // {
+    //   break;
+    // }
+  }
+
+  printf(isZero ? "Zero Matrix.\n" : "Not a zaro Matrix.\n");
+  printf("Steps = %d\n", steps);
+
+  return 0;
+}
+
+//
+```
+
+- diagonal and scalar matrix
+
+![scalar matrix](images/scalar_diagonal.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize, steps = 0;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  if (rowSize != colSize)
+  {
+    printf("It is not a sqaure Matrix and therfore it can not be diagonal matrix");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+  int isDiagonal = 1;
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // Checking diagonal matrix or not
+  for (int row = 0; row < rowSize && isDiagonal; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      steps++;
+      if (row != col && A[row][col] != 0)
+      {
+        isDiagonal = 0;
+        break;
+      }
+    }
+  }
+
+  printf("A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", A[row][col]);
+    }
+    printf("\n");
+  }
+
+  printf(isDiagonal ? "Diagonal Matrix.\n" : "Not a Diagonal Matrix.\n");
+  printf("Steps = %d\n", steps);
+
+  return 0;
+}
+```
+
+- scalar matrix
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize, steps = 0;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  if (rowSize != colSize)
+  {
+    printf("It is not a sqaure Matrix and therfore it can not be scalar matrix");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+  int isScalar = 1;
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // Checking scalar matrix or not
+  int value = A[0][0];
+  for (int row = 0; row < rowSize && isScalar; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      steps++;
+      if (row != col && A[row][col] != 0)
+      {
+        isScalar = 0;
+        break;
+      }
+      if (row == col && A[row][col] != value)
+      {
+        isScalar = 0;
+        break;
+      }
+    }
+  }
+
+  printf("A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", A[row][col]);
+    }
+    printf("\n");
+  }
+
+  printf(isScalar ? "Scalar Matrix.\n" : "Not a Scalar Matrix.\n");
+  printf("Steps = %d\n", steps);
+
+  return 0;
+}
+```
+
+- check upper/lower triangular matrix
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize, steps = 0;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  if (rowSize != colSize)
+  {
+    printf("It is not a sqaure Matrix and therfore it can not be upper triangular matrix");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+  int isUpper = 1;
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // Checking upper matrix or not
+  for (int row = 0; row < rowSize && isUpper; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      steps++;
+      if (row > col && A[row][col] != 0)
+      {
+        isUpper = 0;
+        break;
+      }
+    }
+  }
+
+  printf("A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", A[row][col]);
+    }
+    printf("\n");
+  }
+
+  printf(isUpper ? "Upper Triangular Matrix.\n" : "Not a Upper Triangular Matrix.\n");
+  printf("Steps = %d\n", steps);
+
+  return 0;
+}
+```
+
+###### Matrix Part 4 : Rows,columns and Diagonal
 
 ```c
 
 ```
-
-###### Matrix Programs 4 : multiply two matrices
 
 ###### Matrix Programs 5 : identity matrix
 
+![identity matrix](images/identity-matrix.png)
+
 ```c
+// method 1
+#include <stdio.h>
+
+#define MAX 10
+
+int main()
+{
+  // int matrix[2][2] = {{1, 0}, {0, 1}};
+  // int matrix[3][3] = {{1, 0, 0}, {0, 1, 0}, {1, 0, 1}};
+  int matrix[MAX][MAX];
+  int isIdentity = 1;
+  int rows, cols;
+
+  printf("Enter number of rows and columns: ");
+  if (scanf("%d %d", &rows, &cols) != 2)
+  {
+    printf("Invalid Input!\n");
+    return 1;
+  }
+
+  if (rows != cols)
+  {
+    printf("Not an Identity Matrix.\n");
+    printf("An identity matrix must be square.\n");
+    return 0;
+  }
+
+  // input Matrix
+  for (int i = 0; i < rows; i++)
+  {
+    for (int j = 0; j < cols; j++)
+    {
+      printf("Matrix[%d][%d] = ", i, j);
+      scanf("%d", &matrix[i][j]);
+    }
+  }
+
+  // check identity matrix
+  for (int i = 0; i < 2; i++)
+  {
+    for (int j = 0; j < 2; j++)
+    {
+      if (i == j)
+      {
+        // diagonal elements
+        if (matrix[i][j] != 1)
+        {
+          isIdentity = 0;
+        }
+      }
+      else
+      {
+        // diagonal elements
+        if (matrix[i][j] != 0)
+        {
+          isIdentity = 0;
+        }
+      }
+    }
+  }
+
+  if (isIdentity)
+  {
+    printf("The matrix is an Identity Matrix.\n");
+  }
+  else
+  {
+    printf("The matrix is not an Identity Matrix.\n");
+  }
+  return 0;
+}
+
+//method 2
 #include <stdio.h>
 
 #define MAX 10
@@ -9821,27 +10224,25 @@ int main() {
 
    return 0;
 }
+```
+
+###### Matrix Programs 6 : Transpose matrix
+
+```c
 
 ```
 
-- Multi dimensional array (>2D)
-  Arrays with more than two dimensions.
-  Used for complex data structures.
+###### Matrix Programs 7 : Sum of upper / lower triangle elements
 
-  ```c
-     int partition(int arr[], int low, int high) {
-        // ...
+```c
 
-     }
+```
 
-     void quickSort(int arr[], int low, int high) {
-        if (low < high) {
-           int pi = partition(arr, low, high);
-           quickSort(arr, low, pi - 1);
-           quickSort(arr, pi + 1, high);
-        }
-     }
-  ```
+###### Matrix Programs 8 : Inverse Matrix
+
+```c
+
+```
 
 ### 1.13 String
 
