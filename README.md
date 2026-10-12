@@ -10174,7 +10174,274 @@ int main()
 - Main and secondary Diagonal sum
 
 ```c
+#include <stdio.h>
 
+int main()
+{
+  int rowSize, colSize, mainSum = 0, secondarySum = 0;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // caluclate main diagonal sum and secondary diagonal sum
+  for (int row = 0; row < rowSize; row++)
+  {
+
+    for (int col = 0; col < colSize; col++)
+    {
+      if (row == col)
+      {
+        mainSum = mainSum + A[row][col];
+      }
+      if (row + col == colSize - 1)
+      {
+        secondarySum = secondarySum + A[row][col];
+      }
+    }
+  }
+
+  printf("Main diagonal sum: %d\n", mainSum);
+  printf("Secondary diagonal sum: %d\n", secondarySum);
+
+  return 0;
+}
+
+// 2nd approach
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize, mainSum = 0, secondarySum = 0;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // caluclate main diagonal sum and secondary diagonal sum
+  for (int row = 0; row < rowSize; row++)
+  {
+
+    mainSum = mainSum + A[row][row];
+    secondarySum = secondarySum + A[row][colSize - 1 - row];
+
+    // if (row + col == colSize - 1)
+    // {
+    //   secondarySum = secondarySum + A[row][col];
+    // }
+  }
+
+  printf("Main diagonal sum: %d\n", mainSum);
+  printf("Secondary diagonal sum: %d\n", secondarySum);
+
+  return 0;
+}
+```
+
+- row and column swap
+
+```c
+// row swap
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize, row1, row2;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // print matrix before swapping
+  printf("A matrix before row swapping: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", A[row][col]);
+    }
+    printf("\n");
+  }
+
+  printf("Enter two row numbers (0-based): ");
+  scanf("%d %d", &row1, &row2);
+
+  // swapping 2 rows
+  for (int col = 0; col < colSize; col++)
+  {
+    int temp = A[row1][col];
+    A[row1][col] = A[row2][col];
+    A[row2][col] = temp;
+  }
+
+  // print matrix after swapping
+  printf("A matrix after row swapping: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", A[row][col]);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
+
+// column swap
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize, col1, col2;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // print matrix before swapping
+  printf("A matrix before column swapping: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", A[row][col]);
+    }
+    printf("\n");
+  }
+
+  printf("Enter two column numbers (0-based): ");
+  scanf("%d %d", &col1, &col2);
+
+  // swapping 2 columns
+  for (int row = 0; row < rowSize; row++)
+  {
+    int temp = A[row][col1];
+    A[row][col1] = A[row][col2];
+    A[row][col2] = temp;
+  }
+
+  // print matrix after swapping
+  printf("A matrix after column swapping: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", A[row][col]);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
 ```
 
 ###### Matrix Programs 5 : identity matrix
