@@ -10104,6 +10104,75 @@ int main()
 
 ###### Matrix Part 4 : Rows,columns and Diagonal
 
+- row and column sum
+  ! [Row column sum](images/row-column-sum.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // caluclate row sum
+  for (int row = 0; row < rowSize; row++)
+  {
+    int sum = 0;
+    for (int col = 0; col < colSize; col++)
+    {
+      sum = sum + A[row][col];
+    }
+    printf("Row %d sum = %d\n", row + 1, sum);
+  }
+
+  // caluclate column sum
+  for (int col = 0; col < colSize; col++)
+  {
+    int sum = 0;
+    for (int row = 0; row < rowSize; row++)
+    {
+      sum = sum + A[row][col];
+    }
+    printf("Column %d sum = %d\n", col + 1, sum);
+  }
+
+  return 0;
+}
+```
+
+- Main and secondary Diagonal sum
+
 ```c
 
 ```
