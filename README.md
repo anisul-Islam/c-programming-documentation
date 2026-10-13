@@ -10752,6 +10752,78 @@ int main()
   }
 ```
 
+- skew-symmetric matrix
+  ![skew-symmetric](images/skew-symmetric.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize, isSkewSymmetric = 1;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  if (rowSize != colSize)
+  {
+    printf("It is not a square matrix therefore it can not be a skew-symmetric matrix.\n");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // check symmetric
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      if (A[row][col] != -A[col][row])
+      {
+        isSkewSymmetric = 0;
+      }
+    }
+  }
+
+  if (isSkewSymmetric)
+  {
+    printf("Skew-Symmetric matrix.\n");
+  }
+  else
+  {
+    printf("Not a Skew-Symmetric matrix.\n");
+  }
+
+  return 0;
+}
+```
+
 ###### Matrix Part 6 : Matrix Multiplication
 
 - Matrix Multiplication
