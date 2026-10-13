@@ -10102,6 +10102,124 @@ int main()
 }
 ```
 
+- identity matrix
+
+![identity matrix](images/identity-matrix.png)
+
+```c
+// method 1
+#include <stdio.h>
+
+#define MAX 10
+
+int main()
+{
+  // int matrix[2][2] = {{1, 0}, {0, 1}};
+  // int matrix[3][3] = {{1, 0, 0}, {0, 1, 0}, {1, 0, 1}};
+  int matrix[MAX][MAX];
+  int isIdentity = 1;
+  int rows, cols;
+
+  printf("Enter number of rows and columns: ");
+  if (scanf("%d %d", &rows, &cols) != 2)
+  {
+    printf("Invalid Input!\n");
+    return 1;
+  }
+
+  if (rows != cols)
+  {
+    printf("Not an Identity Matrix.\n");
+    printf("An identity matrix must be square.\n");
+    return 0;
+  }
+
+  // input Matrix
+  for (int i = 0; i < rows; i++)
+  {
+    for (int j = 0; j < cols; j++)
+    {
+      printf("Matrix[%d][%d] = ", i, j);
+      scanf("%d", &matrix[i][j]);
+    }
+  }
+
+  // check identity matrix
+  for (int i = 0; i < 2; i++)
+  {
+    for (int j = 0; j < 2; j++)
+    {
+      if (i == j)
+      {
+        // diagonal elements
+        if (matrix[i][j] != 1)
+        {
+          isIdentity = 0;
+        }
+      }
+      else
+      {
+        // diagonal elements
+        if (matrix[i][j] != 0)
+        {
+          isIdentity = 0;
+        }
+      }
+    }
+  }
+
+  if (isIdentity)
+  {
+    printf("The matrix is an Identity Matrix.\n");
+  }
+  else
+  {
+    printf("The matrix is not an Identity Matrix.\n");
+  }
+  return 0;
+}
+
+//method 2
+#include <stdio.h>
+
+#define MAX 10
+
+int isIdentityMatrix(int matrix[MAX][MAX], int n) {
+   // Check for square matrix
+   if (n != n)
+      return 0;
+
+   // Check for identity matrix
+   for (int i = 0; i < n; i++)
+      for (int j = 0; j < n; j++)
+            if ((i == j && matrix[i][j] != 1) || (i != j && matrix[i][j] != 0))
+               return 0;
+
+   return 1;
+}
+
+int main() {
+   int matrix[MAX][MAX];
+   int n;
+
+   printf("Enter the size of the square matrix: ");
+   scanf("%d", &n);
+
+   printf("Enter the elements of the matrix:\n");
+
+   for (int i = 0; i < n; i++)
+      for (int j = 0; j < n; j++)
+            scanf("%d", &matrix[i][j]);
+
+   if (isIdentityMatrix(matrix, n))
+      printf("The matrix is an identity matrix.\n");
+   else
+      printf("The matrix is not an identity matrix.\n");
+
+   return 0;
+}
+```
+
 ###### Matrix Part 4 : Rows,columns and Diagonal
 
 - row and column sum
@@ -10444,137 +10562,207 @@ int main()
 }
 ```
 
-###### Matrix Programs 5 : identity matrix
+###### Matrix Part 5 : Transpose, Symmetry and Rotation
 
-![identity matrix](images/identity-matrix.png)
+- Transpose matrix
 
 ```c
-// method 1
 #include <stdio.h>
-
-#define MAX 10
 
 int main()
 {
-  // int matrix[2][2] = {{1, 0}, {0, 1}};
-  // int matrix[3][3] = {{1, 0, 0}, {0, 1, 0}, {1, 0, 1}};
-  int matrix[MAX][MAX];
-  int isIdentity = 1;
-  int rows, cols;
+  int rowSize, colSize, isSymmetric = 1;
 
-  printf("Enter number of rows and columns: ");
-  if (scanf("%d %d", &rows, &cols) != 2)
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
   {
-    printf("Invalid Input!\n");
+    printf("Invalid Input\n");
     return 1;
   }
 
-  if (rows != cols)
+  if (rowSize <= 0 || colSize <= 0)
   {
-    printf("Not an Identity Matrix.\n");
-    printf("An identity matrix must be square.\n");
+    printf("Column and row size must be greater than 0");
     return 0;
   }
 
-  // input Matrix
-  for (int i = 0; i < rows; i++)
+  if (rowSize != colSize)
   {
-    for (int j = 0; j < cols; j++)
-    {
-      printf("Matrix[%d][%d] = ", i, j);
-      scanf("%d", &matrix[i][j]);
-    }
+    printf("It is not a square matrix therefore it can not be a symmetric matrix.\n");
+    return 0;
   }
 
-  // check identity matrix
-  for (int i = 0; i < 2; i++)
+  int A[rowSize][colSize], T[colSize][rowSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
   {
-    for (int j = 0; j < 2; j++)
+    for (int col = 0; col < colSize; col++)
     {
-      if (i == j)
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
       {
-        // diagonal elements
-        if (matrix[i][j] != 1)
-        {
-          isIdentity = 0;
-        }
-      }
-      else
-      {
-        // diagonal elements
-        if (matrix[i][j] != 0)
-        {
-          isIdentity = 0;
-        }
+        printf("Invalid Input\n");
+        return 1;
       }
     }
   }
 
-  if (isIdentity)
+  // Find transpose matrix
+  for (int row = 0; row < rowSize; row++)
   {
-    printf("The matrix is an Identity Matrix.\n");
+    for (int col = 0; col < colSize; col++)
+    {
+      T[col][row] = A[row][col];
+    }
+  }
+
+  // Print transpose matrix
+  printf("transpose of A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", T[row][col]);
+    }
+    printf("\n");
+  }
+
+
+  return 0;
+}
+```
+
+- Symmetric matrix: A sqaure matrix where matrix A is equal to its Transpose.
+
+```c
+// MUST BE sqaure matrix
+
+
+// step 1: Input A Matrix
+// step 2: Find Transpose of A matrix
+// step 3:
+//         isSymmetric=1
+//         is A matrix equal to its transpose?
+//         no => isSyemmetric=0
+// step 4: print result based
+//             on isSymmetric value
+
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize, isSymmetric = 1;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  if (rowSize != colSize)
+  {
+    printf("It is not a square matrix therefore it can not be a symmetric matrix.\n");
+    return 0;
+  }
+
+  int A[rowSize][colSize], T[colSize][rowSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // Find transpose matrix
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      T[col][row] = A[row][col];
+    }
+  }
+
+  // Print transpose matrix
+  printf("transpose of A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", T[row][col]);
+    }
+    printf("\n");
+  }
+
+  // check symmetric
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      if (A[row][col] != T[row][col])
+      {
+        isSymmetric = 0;
+      }
+    }
+  }
+
+  if (isSymmetric)
+  {
+    printf("Symmetric matrix.\n");
   }
   else
   {
-    printf("The matrix is not an Identity Matrix.\n");
+    printf("Not a Symmetric matrix.\n");
   }
+
   return 0;
 }
 
-//method 2
-#include <stdio.h>
 
-#define MAX 10
-
-int isIdentityMatrix(int matrix[MAX][MAX], int n) {
-   // Check for square matrix
-   if (n != n)
-      return 0;
-
-   // Check for identity matrix
-   for (int i = 0; i < n; i++)
-      for (int j = 0; j < n; j++)
-            if ((i == j && matrix[i][j] != 1) || (i != j && matrix[i][j] != 0))
-               return 0;
-
-   return 1;
-}
-
-int main() {
-   int matrix[MAX][MAX];
-   int n;
-
-   printf("Enter the size of the square matrix: ");
-   scanf("%d", &n);
-
-   printf("Enter the elements of the matrix:\n");
-
-   for (int i = 0; i < n; i++)
-      for (int j = 0; j < n; j++)
-            scanf("%d", &matrix[i][j]);
-
-   if (isIdentityMatrix(matrix, n))
-      printf("The matrix is an identity matrix.\n");
-   else
-      printf("The matrix is not an identity matrix.\n");
-
-   return 0;
-}
+// more cleaner
+ // check symmetric
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      if (A[row][col] != A[col][row])
+      {
+        isSymmetric = 0;
+      }
+    }
+  }
 ```
 
-###### Matrix Programs 6 : Transpose matrix
+###### Matrix Part 6 : Matrix Multiplication
+
+- Matrix Multiplication
 
 ```c
 
 ```
 
-###### Matrix Programs 7 : Sum of upper / lower triangle elements
+###### Matrix Part 7 : Determinant and Inverse
 
-```c
-
-```
-
-###### Matrix Programs 8 : Inverse Matrix
+- Inverse Matrix
 
 ```c
 
