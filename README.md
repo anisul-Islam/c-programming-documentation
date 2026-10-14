@@ -10567,6 +10567,7 @@ int main()
 - Transpose matrix
 
 ```c
+// method 1
 #include <stdio.h>
 
 int main()
@@ -10630,6 +10631,91 @@ int main()
     printf("\n");
   }
 
+
+  return 0;
+}
+
+```
+
+- Transpose Matrix in place
+  ![transpose in place](images/transpose-in-place.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int rowSize, colSize;
+
+  printf("Enter the row and column size: ");
+
+  if (scanf("%d %d", &rowSize, &colSize) != 2)
+  {
+    printf("Invalid Input\n");
+    return 1;
+  }
+
+  if (rowSize <= 0 || colSize <= 0)
+  {
+    printf("Column and row size must be greater than 0");
+    return 0;
+  }
+
+  if (rowSize != colSize)
+  {
+    printf("It is not a square matrix.\n");
+    return 0;
+  }
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // print a matrix before Transpose
+  printf("A matrix before Transpose: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", A[row][col]);
+    }
+    printf("\n");
+  }
+
+  // Inplace transpose matrix
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = row + 1; col < colSize; col++)
+    {
+      int temp = A[row][col];
+      A[row][col] = A[col][row];
+      A[col][row] = temp;
+    }
+  }
+
+  // print a matrix before Transpose
+  printf("A matrix after in-place Transpose: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%4d", A[row][col]);
+    }
+    printf("\n");
+  }
 
   return 0;
 }
@@ -10826,10 +10912,313 @@ int main()
 
 ###### Matrix Part 6 : Matrix Multiplication
 
-- Matrix Multiplication
+- matrix multiplication concept
+  ![Matrix Multiplication](images/multiplication.png)
+
+```txt
+Matrix Multiplication
+
+step 1: 1st matrix colSize == 2nd Matrix rowSize
+step 2: for rows => outer loop run until 1st matrix rowSize
+                 for columns => Inner loop run until 2nd matrix colSize
+                       for incremented value => innermest loop k run until col2Size
+                            sum+=first[row][k]*second[k][col]
+                       result[row][col] = sum;
+                       sum=0
+
+
+```
+
+- Matrix Multiplication without dynamic memory allocation
 
 ```c
+#include <stdio.h>
 
+int main()
+{
+    int row1Size, col1Size, row2Size, col2Size;
+
+    printf("Enter the row and column size for First Matrix: ");
+    if (scanf("%d %d", &row1Size, &col1Size) != 2)
+    {
+        printf("Invalid Input\n");
+        return 1;
+    }
+
+    printf("Enter the row and column size for Second Matrix: ");
+    if (scanf("%d %d", &row2Size, &col2Size) != 2)
+    {
+        printf("Invalid Input\n");
+        return 1;
+    }
+
+    if (row1Size <= 0 || col1Size <= 0 || row2Size <= 0 || col2Size <= 0)
+    {
+        printf("Column and row sizes must be greater than 0\n");
+        return 1;
+    }
+
+    while (col1Size != row2Size)
+    {
+        printf("Error !! Column of first matrix not equal to the row of second matrix.\n");
+        printf("Enter the row and column size for First Matrix: ");
+        if (scanf("%d %d", &row1Size, &col1Size) != 2)
+        {
+            printf("Invalid Input\n");
+            return 1;
+        }
+
+        printf("Enter the row and column size for Second Matrix: ");
+        if (scanf("%d %d", &row2Size, &col2Size) != 2)
+        {
+            printf("Invalid Input\n");
+            return 1;
+        }
+
+        if (row1Size <= 0 || col1Size <= 0 || row2Size <= 0 || col2Size <= 0)
+        {
+            printf("Column and row sizes must be greater than 0\n");
+            return 1;
+        }
+    }
+
+    // Declare Variable Length Arrays (VLAs) now that final sizes are confirmed
+    int first[row1Size][col1Size];
+    int second[row2Size][col2Size];
+    int result[row1Size][col2Size];
+
+    // Get inputs for first matrix
+    printf("Enter elements for First matrix:\n");
+    for (int row = 0; row < row1Size; row++)
+    {
+        for (int col = 0; col < col1Size; col++)
+        {
+            printf("first[%d][%d] = ", row, col);
+            if (scanf("%d", &first[row][col]) != 1)
+            {
+                printf("Invalid Input\n");
+                return 1;
+            }
+        }
+    }
+
+    // Get inputs for second matrix
+    printf("Enter elements for Second matrix:\n");
+    for (int row = 0; row < row2Size; row++)
+    {
+        for (int col = 0; col < col2Size; col++)
+        {
+            printf("second[%d][%d] = ", row, col);
+            if (scanf("%d", &second[row][col]) != 1)
+            {
+                printf("Invalid Input\n");
+                return 1;
+            }
+        }
+    }
+
+    // Print first matrix
+    printf("\nFirst Matrix:\n");
+    for (int row = 0; row < row1Size; row++)
+    {
+        for (int col = 0; col < col1Size; col++)
+        {
+            printf("%4d", first[row][col]);
+        }
+        printf("\n");
+    }
+
+    // Print second matrix
+    printf("\nSecond Matrix:\n");
+    for (int row = 0; row < row2Size; row++)
+    {
+        for (int col = 0; col < col2Size; col++)
+        {
+            printf("%4d", second[row][col]);
+        }
+        printf("\n");
+    }
+
+    // Matrix multiplication
+    for (int row = 0; row < row1Size; row++)
+    {
+        for (int col = 0; col < col2Size; col++)
+        {
+            int sum = 0; // Local scope variable for the sum
+            for (int k = 0; k < col1Size; k++)
+            {
+                sum += first[row][k] * second[k][col];
+            }
+            result[row][col] = sum;
+        }
+    }
+
+    // Print result matrix
+    printf("\nResult Matrix:\n");
+    for (int row = 0; row < row1Size; row++)
+    {
+        for (int col = 0; col < col2Size; col++)
+        {
+            printf("%4d", result[row][col]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+- Matrix Multiplication with dynamic memory allocation
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int row1Size, col1Size, row2Size, col2Size;
+
+    printf("Enter the row and column size for First Matrix: ");
+    if (scanf("%d %d", &row1Size, &col1Size) != 2)
+    {
+        printf("Invalid Input\n");
+        return 1;
+    }
+
+    printf("Enter the row and column size for Second Matrix: ");
+    if (scanf("%d %d", &row2Size, &col2Size) != 2)
+    {
+        printf("Invalid Input\n");
+        return 1;
+    }
+
+    if (row1Size <= 0 || col1Size <= 0 || row2Size <= 0 || col2Size <= 0)
+    {
+        printf("Column and row sizes must be greater than 0\n");
+        return 1;
+    }
+
+    // Ensure multiplication is possible
+    while (col1Size != row2Size)
+    {
+        printf("Error: Columns of the first matrix must equal the rows of the second matrix.\n");
+        printf("Enter the row and column size for First Matrix: ");
+        if (scanf("%d %d", &row1Size, &col1Size) != 2)
+        {
+            printf("Invalid Input\n");
+            return 1;
+        }
+
+        printf("Enter the row and column size for Second Matrix: ");
+        if (scanf("%d %d", &row2Size, &col2Size) != 2)
+        {
+            printf("Invalid Input\n");
+            return 1;
+        }
+    }
+
+    // Dynamically allocate memory for the matrices
+    int **first = (int **)malloc(row1Size * sizeof(int *));
+    int **second = (int **)malloc(row2Size * sizeof(int *));
+    int **result = (int **)malloc(row1Size * sizeof(int *));
+
+    for (int i = 0; i < row1Size; i++)
+        first[i] = (int *)malloc(col1Size * sizeof(int));
+    for (int i = 0; i < row2Size; i++)
+        second[i] = (int *)malloc(col2Size * sizeof(int));
+    for (int i = 0; i < row1Size; i++)
+        result[i] = (int *)malloc(col2Size * sizeof(int));
+
+    // Get inputs for first matrix
+    printf("Enter elements for First matrix:\n");
+    for (int row = 0; row < row1Size; row++)
+    {
+        for (int col = 0; col < col1Size; col++)
+        {
+            printf("first[%d][%d] = ", row, col);
+            if (scanf("%d", &first[row][col]) != 1)
+            {
+                printf("Invalid Input\n");
+                // Clean up memory before exiting
+                // (Omitted cleanup brevity for simple exit, but good to keep in mind)
+                return 1;
+            }
+        }
+    }
+
+    // Get inputs for second matrix
+    printf("Enter elements for Second matrix:\n");
+    for (int row = 0; row < row2Size; row++)
+    {
+        for (int col = 0; col < col2Size; col++)
+        {
+            printf("second[%d][%d] = ", row, col);
+            if (scanf("%d", &second[row][col]) != 1)
+            {
+                printf("Invalid Input\n");
+                return 1;
+            }
+        }
+    }
+
+    // Print first matrix
+    printf("\nFirst Matrix:\n");
+    for (int row = 0; row < row1Size; row++)
+    {
+        for (int col = 0; col < col1Size; col++)
+        {
+            printf("%4d", first[row][col]);
+        }
+        printf("\n");
+    }
+
+    // Print second matrix
+    printf("\nSecond Matrix:\n");
+    for (int row = 0; row < row2Size; row++)
+    {
+        for (int col = 0; col < col2Size; col++)
+        {
+            printf("%4d", second[row][col]);
+        }
+        printf("\n");
+    }
+
+    // Matrix multiplication
+    for (int row = 0; row < row1Size; row++)
+    {
+        for (int col = 0; col < col2Size; col++)
+        {
+            int sum = 0; // Local scope sum
+            for (int k = 0; k < col1Size; k++)
+            {
+                sum += first[row][k] * second[k][col];
+            }
+            result[row][col] = sum;
+        }
+    }
+
+    // Print result matrix
+    printf("\nResult Matrix:\n");
+    for (int row = 0; row < row1Size; row++)
+    {
+        for (int col = 0; col < col2Size; col++)
+        {
+            printf("%4d", result[row][col]);
+        }
+        printf("\n");
+    }
+
+    // Free dynamically allocated memory
+    for (int i = 0; i < row1Size; i++) free(first[i]);
+    for (int i = 0; i < row2Size; i++) free(second[i]);
+    for (int i = 0; i < row1Size; i++) free(result[i]);
+
+    free(first);
+    free(second);
+    free(result);
+
+    return 0;
+}
 ```
 
 ###### Matrix Part 7 : Determinant and Inverse
