@@ -11223,6 +11223,80 @@ int main()
 
 ###### Matrix Part 7 : Determinant and Inverse
 
+- Determiant of 3 x 3 Matrix
+  ![determinant matrix](images/determinant-2.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int rowSize = 2, colSize = 2;
+  int determinant;
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // Determinant of 2*2
+  determinant = A[0][0] * A[1][1] - A[0][1] * A[1][0];
+
+  printf("Determinant = %d\n", determinant);
+
+  return 0;
+}
+```
+
+- Determiant of 3 x 3 Matrix
+  ![determinant matrix](images/determinant-3.png)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int rowSize = 3, colSize = 3;
+  int determinant;
+
+  int A[rowSize][colSize];
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // Determinant of 3X3
+  determinant = A[0][0] * (A[1][1] * A[2][2] - A[1][2] * A[2][1]) - A[0][1] * (A[1][0] * A[2][2] - A[1][2] * A[2][0]) + A[0][2] * (A[1][0] * A[2][1] - A[1][1] * A[2][0]);
+
+  printf("Determinant of A matrix = %d\n", determinant);
+
+  return 0;
+}
+```
+
 - Inverse Matrix
 
 ```c
