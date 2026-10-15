@@ -11297,10 +11297,72 @@ int main()
 }
 ```
 
-- Inverse Matrix
+- Inverse Matrix 2 x 2
+  ![Inverse Matrix](images/inverse-matrix.png)
 
 ```c
+#include <stdio.h>
 
+int main()
+{
+  int rowSize = 2, colSize = 2;
+  int determinant;
+
+  int A[rowSize][colSize];
+  int adj[rowSize][colSize];   // to hold adjoint matrix
+  float inv[rowSize][colSize]; // to hold inverse matrix
+
+  // Get inputs for matrix from user
+  printf("Enter elements for A matrix: \n");
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("A[%d][%d] = ", row, col);
+      if (scanf("%d", &A[row][col]) != 1)
+      {
+        printf("Invalid Input\n");
+        return 1;
+      }
+    }
+  }
+
+  // determinant of 2 x 2
+  determinant = A[0][0] * A[1][1] - A[0][1] * A[1][0];
+
+  if (determinant == 0)
+  {
+    printf("Inverse matrix does not exist.\n");
+    return 0;
+  }
+
+  // Finding adjoint matrix
+  adj[0][0] = A[1][1];
+  adj[0][1] = -A[0][1];
+  adj[1][0] = -A[1][0];
+  adj[1][1] = A[0][0];
+
+  // finding inverse matrix
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      inv[row][col] = (float)adj[row][col] / determinant;
+    }
+  }
+
+  // printing inverse matrix
+  for (int row = 0; row < rowSize; row++)
+  {
+    for (int col = 0; col < colSize; col++)
+    {
+      printf("%.2f ", inv[row][col]);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
 ```
 
 ### 1.13 String
