@@ -9593,6 +9593,81 @@ int main()
 }
 ```
 
+###### Frequency count method
+
+![Frequency count](images/frequency-count.png)
+
+```c
+#include <stdio.h>
+int main()
+{
+  int arr[] = {2, 5, 3, 2, 5, 2};
+  int arrSize = 6;
+
+  int freq[10] = {0};
+
+  // building the frequency array
+  for (int i = 0; i < arrSize; i++)
+  {
+    freq[arr[i]]++;
+  }
+
+  // int maxFrequncy = 0;
+  // int mostFrequentItem = arr[0];
+  for (int i = 0; i < 10; i++)
+  {
+    // find missing items
+    if (freq[i] == 0)
+    {
+      printf("%d is missing in the array\n", i);
+    }
+
+    // find max frequncy item
+    // if (freq[i] > maxFrequncy)
+    // {
+    //   maxFrequncy = freq[i];
+    //   mostFrequentItem = i;
+    // }
+
+    // counting frequncy for each array item
+    // if (freq[i] > 0)
+    // {
+    //   printf("%d exist %d times\n", i, freq[i]);
+    // }
+
+    // duplicate items
+    // if (freq[i] > 1)
+    // {
+    //   printf("%d duplicates\n", i);
+    // }
+
+    // unique items
+    // if (freq[i] == 1)
+    // {
+    //   printf("%d unique\n", i);
+    // }
+
+    // check existance
+    // if (freq[i] > 0)
+    // {
+    //   printf("%d exist\n", i);
+    // }
+
+    // check existance
+    // if (freq[i] == 2)
+    // {
+    //   printf("%d exist exactly twice\n", i);
+    // }
+  }
+
+  // printf("Most frequent Item: %d\n", mostFrequentItem);
+  // printf("Frequency: %d\n", maxFrequncy);
+
+  return 0;
+}
+
+```
+
 ##### Two dimensional array (2D) Matrix
 
 - Represents a table of elements arranged in rows and columns.
